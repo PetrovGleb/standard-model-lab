@@ -1,0 +1,9 @@
+{
+  "name": "@standard-model/scripts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@standard-model/contracts": "workspace:*"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "source": "PYTHIA 8.3: manual defaults of the Monash 2013 tune, StringFlav SU(6) tables from src/FragmentationFlavZpT.cc and diquark masses from share/Pythia8/xmldoc/ParticleData.xml of release 8.312; transcribed in docs/STANDARD_MODEL_REFERENCE.md sections 3.10 and 3.13",
+  "lundA": 0.68,
+  "lundBInPerGevSquared": 0.98,
+  "bowlerFactors": {
+    "charm": 1.32,
+    "bottom": 0.855
+  },
+  "transverseMomentumWidthInGev": 0.335,
+  "strangeToLightRatio": 0.217,
+  "vectorToPseudoscalarRatios": {
+    "light": 0.5,
+    "strange": 0.55,
+    "charm": 0.88,
+    "bottom": 2.2
+  },
+  "etaSuppression": 0.6,
+  "etaPrimeSuppression": 0.12,
+  "pseudoscalarMixingAngleInDegrees": -15,
+  "vectorMixingAngleInDegrees": 36,
+  "stopMassInGev": 0.8,
+  "stopNewFlavor": 2.0,
+  "stopSmear": 0.2,
+  "diquarkToQuarkRatio": 0.081,
+  "strangeDiquarkSuppression": 0.915,
+  "spinOneDiquarkSuppression": 0.0275,
+  "decupletSuppression": 1.0,
+  "baryonSpinFlavorWeights": {
+    "order": [
+      "spinZeroWithShared",
+      "spinZeroWithOther",
+      "spinOneSameFlavorWithShared",
+      "spinOneSameFlavorWithOther",
+      "spinOneMixedWithShared",
+      "spinOneMixedWithOther"
+    ],
+    "octet": [
+      0.75,
+      0.5,
+      0.0,
+      0.1667,
+      0.0833,
+      0.1667
+    ],
+    "decuplet": [
+      0.0,
+      0.0,
+      1.0,
+      0.3333,
+      0.6667,
+      0.3333
+    ]
+  },
+  "lambdaLikeShares": {
+    "spinZeroDiquarkWithLighterFreeQuark": 0.25,
+    "spinOneDiquarkWithLighterFreeQuark": 0.75
+  },
+  "diquarks": [
+    {
+      "name": "downDownSpinOne",
+      "pdgId": 1103,
+      "quarks": [
+        "down",
+        "down"
+      ],
+      "spin": 1,
+      "massInGev": 0.77133
+    },
+    {
+      "name": "upDownSpinZero",
+      "pdgId": 2101,
+      "quarks": [
+        "up",
+        "down"
+      ],
+      "spin": 0,
+      "massInGev": 0.57933
+    },
+    {
+      "name": "upDownSpinOne",
+      "pdgId": 2103,
+      "quarks": [
+        "up",
+        "down"
+      ],
+      "spin": 1,
+      "massInGev": 0.77133
+    },
+    {
+      "name": "upUpSpinOne",
+      "pdgId": 2203,
+      "quarks": [
+        "up",
+        "up"
+      ],
+      "spin": 1,
+      "massInGev": 0.77133
+    },
+    {
+      "name": "strangeDownSpinZero",
+      "pdgId": 3101,
+      "quarks": [
+        "strange",
+        "down"
+      ],
+      "spin": 0,
+      "massInGev": 0.80473
+    },
+    {
+      "name": "strangeDownSpinOne",
+      "pdgId": 3103,
+      "quarks": [
+        "strange",
+        "down"
+      ],
+      "spin": 1,
+      "massInGev": 0.92953
+    },
+    {
+      "name": "strangeUpSpinZero",
+      "pdgId": 3201,
+      "quarks": [
+        "strange",
+        "up"
+      ],
+      "spin": 0,
+      "massInGev": 0.80473
+    },
+    {
+      "name": "strangeUpSpinOne",
+      "pdgId": 3203,
+      "quarks": [
+        "strange",
+        "up"
+      ],
+      "spin": 1,
+      "massInGev": 0.92953
+    },
+    {
+      "name": "strangeStrangeSpinOne",
+      "pdgId": 3303,
+      "quarks": [
+        "strange",
+        "strange"
+      ],
+      "spin": 1,
+      "massInGev": 1.09361
+    }
+  ],
+  "beamRemnants": {
+    "primordialTransverseMomentumWidthInGev": 1.8,
+    "valencePowerUpInProton": 3.5,
+    "valencePowerDownInProton": 2.0,
+    "valenceDiquarkEnhancement": 2.0,
+    "companionPower": 4,
+    "gluonPower": 4.0
+  }
+}

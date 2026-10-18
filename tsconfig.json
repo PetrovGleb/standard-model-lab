@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": [
+    "libs/*/src",
+    "libs/*/test",
+    "libs/*/scripts",
+    "packages/*/src",
+    "packages/*/test",
+    "apps/api/src",
+    "apps/api/test",
+    "apps/desktop/src",
+    "apps/desktop/scripts",
+    "scripts",
+    "vitest.config.ts"
+  ]
+}

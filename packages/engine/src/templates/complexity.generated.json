@@ -1,0 +1,1145 @@
+{
+ "machine": "arm64",
+ "measuredAt": "2026-10-18",
+ "complexity": {
+  "sternGerlach": {
+   "firstShotMilliseconds": 1.28,
+   "meanShotMilliseconds": 0.0162,
+   "stepShares": [
+    0.353,
+    0.647
+   ]
+  },
+  "singletCorrelation": {
+   "firstShotMilliseconds": 0.237,
+   "meanShotMilliseconds": 0.0236,
+   "stepShares": [
+    0.0312,
+    0.0203,
+    0.25,
+    0.201,
+    0.497
+   ]
+  },
+  "chsh": {
+   "firstShotMilliseconds": 0.197,
+   "meanShotMilliseconds": 0.0598,
+   "stepShares": [
+    0.0114,
+    0.00781,
+    0.0725,
+    0.0657,
+    0.0666,
+    0.0121,
+    0.00966,
+    0.0618,
+    0.0599,
+    0.142,
+    0.014,
+    0.00768,
+    0.0726,
+    0.0693,
+    0.111,
+    0.0124,
+    0.0088,
+    0.0685,
+    0.0636,
+    0.0623
+   ]
+  },
+  "larmorPrecession": {
+   "firstShotMilliseconds": 1.16,
+   "meanShotMilliseconds": 0.028,
+   "stepShares": [
+    0.0626,
+    0.0815,
+    0.728,
+    0.128
+   ]
+  },
+  "muonDecay": {
+   "firstShotMilliseconds": 50.9,
+   "meanShotMilliseconds": 0.147,
+   "stepShares": [
+    0.00184,
+    0.998
+   ]
+  },
+  "neutrinoOscillation": {
+   "firstShotMilliseconds": 0.351,
+   "meanShotMilliseconds": 0.0335,
+   "stepShares": [
+    0.0713,
+    0.841,
+    0.0881
+   ]
+  },
+  "doubleSlit": {
+   "firstShotMilliseconds": 0.196,
+   "meanShotMilliseconds": 0.00495,
+   "stepShares": [
+    0.0783,
+    0.922
+   ]
+  },
+  "doubleSlitWhichPath": {
+   "firstShotMilliseconds": 0.0105,
+   "meanShotMilliseconds": 0.00342,
+   "stepShares": [
+    0.171,
+    0.829
+   ]
+  },
+  "delayedChoiceEraser": {
+   "firstShotMilliseconds": 0.282,
+   "meanShotMilliseconds": 0.0186,
+   "stepShares": [
+    0.0795,
+    0.0237,
+    0.28,
+    0.383,
+    0.233
+   ]
+  },
+  "doubleSlitInGas": {
+   "firstShotMilliseconds": 0.246,
+   "meanShotMilliseconds": 0.00646,
+   "stepShares": [
+    0.0588,
+    0.474,
+    0.467
+   ]
+  },
+  "neutronDoubleSlit": {
+   "firstShotMilliseconds": 0.116,
+   "meanShotMilliseconds": 0.00447,
+   "stepShares": [
+    0.486,
+    0.514
+   ]
+  },
+  "malusLaw": {
+   "firstShotMilliseconds": 0.0289,
+   "meanShotMilliseconds": 0.00684,
+   "stepShares": [
+    0.343,
+    0.657
+   ]
+  },
+  "michelSpectrum": {
+   "firstShotMilliseconds": 19.2,
+   "meanShotMilliseconds": 0.132,
+   "stepShares": [
+    0.00303,
+    0.997
+   ]
+  },
+  "muonTimeDilation": {
+   "firstShotMilliseconds": 18.8,
+   "meanShotMilliseconds": 0.129,
+   "stepShares": [
+    0.00299,
+    0.997
+   ]
+  },
+  "neutronBetaSpectrum": {
+   "firstShotMilliseconds": 0.159,
+   "meanShotMilliseconds": 0.0136,
+   "stepShares": [
+    0.102,
+    0.898
+   ]
+  },
+  "wBosonDecays": {
+   "firstShotMilliseconds": 524,
+   "meanShotMilliseconds": 0.405,
+   "stepShares": [
+    0.000365,
+    0.00836,
+    0.979,
+    0.0127
+   ]
+  },
+  "zBosonDecays": {
+   "firstShotMilliseconds": 1.71,
+   "meanShotMilliseconds": 67.4,
+   "stepShares": [
+    0.0000611,
+    0.00145,
+    0.998,
+    0.000582
+   ]
+  },
+  "higgsDecays": {
+   "firstShotMilliseconds": 229,
+   "meanShotMilliseconds": 58.3,
+   "stepShares": [
+    0.000105,
+    0.985,
+    0.0145,
+    0.000711
+   ]
+  },
+  "neutronFromQuarks": {
+   "firstShotMilliseconds": 0.359,
+   "meanShotMilliseconds": 0.0353,
+   "stepShares": [
+    0.00954,
+    0.00701,
+    0.00918,
+    0.525,
+    0.0966,
+    0.352
+   ]
+  },
+  "protonFromQuarks": {
+   "firstShotMilliseconds": 0.397,
+   "meanShotMilliseconds": 0.143,
+   "stepShares": [
+    0.00319,
+    0.00167,
+    0.00257,
+    0.00192,
+    0.00251,
+    0.724,
+    0.235,
+    0.0298
+   ]
+  },
+  "stringFragmentation": {
+   "firstShotMilliseconds": 0.13,
+   "meanShotMilliseconds": 0.201,
+   "stepShares": [
+    0.00301,
+    0.00132,
+    0.847,
+    0.149
+   ]
+  },
+  "bMesonDecays": {
+   "firstShotMilliseconds": 0.214,
+   "meanShotMilliseconds": 1.23,
+   "stepShares": [
+    0.00102,
+    0.605,
+    0.367,
+    0.0267
+   ]
+  },
+  "reactorAntineutrino": {
+   "firstShotMilliseconds": 0.0941,
+   "meanShotMilliseconds": 0.0181,
+   "stepShares": [
+    0.0833,
+    0.781,
+    0.136
+   ]
+  },
+  "thermalPolarization": {
+   "firstShotMilliseconds": 0.32,
+   "meanShotMilliseconds": 0.0163,
+   "stepShares": [
+    0.0786,
+    0.0763,
+    0.0585,
+    0.651,
+    0.136
+   ]
+  },
+  "spinDephasing": {
+   "firstShotMilliseconds": 0.287,
+   "meanShotMilliseconds": 0.0137,
+   "stepShares": [
+    0.0879,
+    0.0823,
+    0.655,
+    0.175
+   ]
+  },
+  "zResonance": {
+   "firstShotMilliseconds": 1040,
+   "meanShotMilliseconds": 0.426,
+   "stepShares": [
+    0.00015,
+    0.0000783,
+    0.927,
+    0.0666,
+    0.00574
+   ]
+  },
+  "forwardBackwardAsymmetry": {
+   "firstShotMilliseconds": 924,
+   "meanShotMilliseconds": 0.00889,
+   "stepShares": [
+    0.0000565,
+    0.000044,
+    1
+   ]
+  },
+  "annihilationAtRest": {
+   "firstShotMilliseconds": 198,
+   "meanShotMilliseconds": 0.0147,
+   "stepShares": [
+    0.000379,
+    0.000229,
+    0.995,
+    0.00231,
+    0.00203
+   ]
+  },
+  "comptonScattering": {
+   "firstShotMilliseconds": 82.9,
+   "meanShotMilliseconds": 0.00688,
+   "stepShares": [
+    0.000597,
+    0.00053,
+    0.999
+   ]
+  },
+  "photonCollider": {
+   "firstShotMilliseconds": 26.9,
+   "meanShotMilliseconds": 0.0074,
+   "stepShares": [
+    0.00192,
+    0.00133,
+    0.997
+   ]
+  },
+  "bhabhaScattering": {
+   "firstShotMilliseconds": 928,
+   "meanShotMilliseconds": 0.00922,
+   "stepShares": [
+    0.0000564,
+    0.000056,
+    1
+   ]
+  },
+  "wPairProduction": {
+   "firstShotMilliseconds": 1380,
+   "meanShotMilliseconds": 0.616,
+   "stepShares": [
+    0.000089,
+    0.0000387,
+    0.92,
+    0.00108,
+    0.00148,
+    0.0727,
+    0.00476
+   ]
+  },
+  "higgsStrahlung": {
+   "firstShotMilliseconds": 1500,
+   "meanShotMilliseconds": 22.8,
+   "stepShares": [
+    0.000019,
+    0.00000633,
+    0.61,
+    0.000218,
+    0.353,
+    0.0352,
+    0.000803
+   ]
+  },
+  "lhcJets": {
+   "firstShotMilliseconds": 9900,
+   "meanShotMilliseconds": 1.79,
+   "stepShares": [
+    0.0000471,
+    0.000021,
+    0.969,
+    0.0294,
+    0.00133
+   ]
+  },
+  "drellYan": {
+   "firstShotMilliseconds": 1890,
+   "meanShotMilliseconds": 0.63,
+   "stepShares": [
+    0.00014,
+    0.0000755,
+    0.951,
+    0.044,
+    0.0049
+   ]
+  },
+  "lhcTopPairs": {
+   "firstShotMilliseconds": 16900,
+   "meanShotMilliseconds": 3.41,
+   "stepShares": [
+    0.000117,
+    0.0000585,
+    0.963,
+    0.000158,
+    0.0000682,
+    0.0353,
+    0.000921
+   ]
+  },
+  "tevatronTopPairs": {
+   "firstShotMilliseconds": 20600,
+   "meanShotMilliseconds": 0.121,
+   "stepShares": [
+    0.0000114,
+    0.00000829,
+    1
+   ]
+  },
+  "heraDeepInelastic": {
+   "firstShotMilliseconds": 3110,
+   "meanShotMilliseconds": 0.595,
+   "stepShares": [
+    0.000233,
+    0.0000814,
+    0.968,
+    0.0291,
+    0.00259
+   ]
+  },
+  "deuteriumTritiumBeam": {
+   "firstShotMilliseconds": 0.622,
+   "meanShotMilliseconds": 0.0291,
+   "stepShares": [
+    0.102,
+    0.0853,
+    0.812
+   ]
+  },
+  "deuteriumTritiumPlasma": {
+   "firstShotMilliseconds": 150,
+   "meanShotMilliseconds": 0.0975,
+   "stepShares": [
+    0.00504,
+    0.00455,
+    0.953,
+    0.0369
+   ]
+  },
+  "solarProtonChain": {
+   "firstShotMilliseconds": 1.45,
+   "meanShotMilliseconds": 0.632,
+   "stepShares": [
+    0.0164,
+    0.0131,
+    0.496,
+    0.0741,
+    0.319,
+    0.0817
+   ]
+  },
+  "solarHeliumChain": {
+   "firstShotMilliseconds": 1.13,
+   "meanShotMilliseconds": 0.739,
+   "stepShares": [
+    0.00292,
+    0.00732,
+    0.94,
+    0.0495
+   ]
+  },
+  "starMatterEvolution": {
+   "firstShotMilliseconds": 0.891,
+   "meanShotMilliseconds": 0.631,
+   "stepShares": [
+    0.00299,
+    0.00977,
+    0.167,
+    0.0497,
+    0.416,
+    0.0557,
+    0.247,
+    0.0511
+   ]
+  },
+  "heliumThreeBranches": {
+   "firstShotMilliseconds": 0.914,
+   "meanShotMilliseconds": 0.71,
+   "stepShares": [
+    0.00812,
+    0.00838,
+    0.926,
+    0.0579
+   ]
+  },
+  "cnoCycle": {
+   "firstShotMilliseconds": 3.36,
+   "meanShotMilliseconds": 2.75,
+   "stepShares": [
+    0.0055,
+    0.00355,
+    0.254,
+    0.0268,
+    0.143,
+    0.0244,
+    0.504,
+    0.0383
+   ]
+  },
+  "tripleAlpha": {
+   "firstShotMilliseconds": 1.69,
+   "meanShotMilliseconds": 1.03,
+   "stepShares": [
+    0.00471,
+    0.00505,
+    0.946,
+    0.0445
+   ]
+  },
+  "sProcessIron": {
+   "firstShotMilliseconds": 48.2,
+   "meanShotMilliseconds": 54,
+   "stepShares": [
+    0.000817,
+    0.000317,
+    0.00712,
+    0.00122,
+    0.0995,
+    0.00245,
+    0.879,
+    0.00965
+   ]
+  },
+  "carbonBurning": {
+   "firstShotMilliseconds": 0.868,
+   "meanShotMilliseconds": 0.603,
+   "stepShares": [
+    0.0246,
+    0.0133,
+    0.836,
+    0.126
+   ]
+  },
+  "firstNucleiAfterBigBang": {
+   "firstShotMilliseconds": 4.6,
+   "meanShotMilliseconds": 3.64,
+   "stepShares": [
+    0.00135,
+    0.00383,
+    0.163,
+    0.016,
+    0.00244,
+    0.785,
+    0.0279
+   ]
+  },
+  "neutronCaptureInHydrogen": {
+   "firstShotMilliseconds": 0.644,
+   "meanShotMilliseconds": 0.104,
+   "stepShares": [
+    0.0124,
+    0.0197,
+    0.705,
+    0.263
+   ]
+  },
+  "hydrogenRecombination": {
+   "firstShotMilliseconds": 0.701,
+   "meanShotMilliseconds": 0.105,
+   "stepShares": [
+    0.0159,
+    0.0256,
+    0.623,
+    0.335
+   ]
+  },
+  "hydrogenPlasmaBalance": {
+   "firstShotMilliseconds": 0.675,
+   "meanShotMilliseconds": 0.117,
+   "stepShares": [
+    0.0275,
+    0.0201,
+    0.643,
+    0.309
+   ]
+  },
+  "photoionization": {
+   "firstShotMilliseconds": 0.33,
+   "meanShotMilliseconds": 0.012,
+   "stepShares": [
+    0.167,
+    0.0295,
+    0.804
+   ]
+  },
+  "antihydrogen": {
+   "firstShotMilliseconds": 0.137,
+   "meanShotMilliseconds": 0.0472,
+   "stepShares": [
+    0.0332,
+    0.00897,
+    0.958
+   ]
+  },
+  "hydrogenAtom": {
+   "firstShotMilliseconds": 21.1,
+   "meanShotMilliseconds": 0.152,
+   "stepShares": [
+    0.00872,
+    0.393,
+    0.599
+   ]
+  },
+  "wavepacketSpreading": {
+   "firstShotMilliseconds": 356,
+   "meanShotMilliseconds": 0.0277,
+   "stepShares": [
+    0.000418,
+    0.0646,
+    0.921,
+    0.0144
+   ]
+  },
+  "quantumTunneling": {
+   "firstShotMilliseconds": 283,
+   "meanShotMilliseconds": 0.0203,
+   "stepShares": [
+    0.000547,
+    0.00736,
+    0.984,
+    0.00796
+   ]
+  },
+  "harmonicOscillator": {
+   "firstShotMilliseconds": 480,
+   "meanShotMilliseconds": 0.0204,
+   "stepShares": [
+    0.000359,
+    0.00271,
+    0.992,
+    0.00497
+   ]
+  },
+  "pairAnnihilationInTrap": {
+   "firstShotMilliseconds": 2.88,
+   "meanShotMilliseconds": 0.0807,
+   "stepShares": [
+    0.00817,
+    0.00362,
+    0.0647,
+    0.0569,
+    0.532,
+    0.335
+   ]
+  },
+  "doubleSlitInCube": {
+   "firstShotMilliseconds": 152,
+   "meanShotMilliseconds": 0.0404,
+   "stepShares": [
+    0.000933,
+    0.0103,
+    0.177,
+    0.162,
+    0.157,
+    0.158,
+    0.157,
+    0.159,
+    0.0186
+   ]
+  },
+  "electronWaveOnProton": {
+   "firstShotMilliseconds": 176,
+   "meanShotMilliseconds": 0.0468,
+   "stepShares": [
+    0.000963,
+    0.00875,
+    0.176,
+    0.159,
+    0.159,
+    0.158,
+    0.16,
+    0.159,
+    0.0194
+   ]
+  },
+  "tunnelingMovie": {
+   "firstShotMilliseconds": 282,
+   "meanShotMilliseconds": 0.0361,
+   "stepShares": [
+    0.000446,
+    0.00563,
+    0.166,
+    0.167,
+    0.163,
+    0.163,
+    0.163,
+    0.162,
+    0.0109
+   ]
+  },
+  "doubleWellTunneling": {
+   "firstShotMilliseconds": 4720,
+   "meanShotMilliseconds": 0.0619,
+   "stepShares": [
+    0.0000545,
+    0.000313,
+    0.125,
+    0.125,
+    0.125,
+    0.124,
+    0.126,
+    0.124,
+    0.126,
+    0.124,
+    0.000892
+   ]
+  },
+  "hydrogenOrbital2s": {
+   "firstShotMilliseconds": 53.1,
+   "meanShotMilliseconds": 0.0443,
+   "stepShares": [
+    0.00194,
+    0.862,
+    0.136
+   ]
+  },
+  "hydrogenOrbital2p": {
+   "firstShotMilliseconds": 18.7,
+   "meanShotMilliseconds": 0.043,
+   "stepShares": [
+    0.00615,
+    0.691,
+    0.303
+   ]
+  },
+  "hydrogenOrbital3d": {
+   "firstShotMilliseconds": 19.5,
+   "meanShotMilliseconds": 0.061,
+   "stepShares": [
+    0.00683,
+    0.629,
+    0.364
+   ]
+  },
+  "hydrogenDipoleOscillation": {
+   "firstShotMilliseconds": 206,
+   "meanShotMilliseconds": 0.0341,
+   "stepShares": [
+    0.000577,
+    0.0432,
+    0.164,
+    0.165,
+    0.152,
+    0.153,
+    0.155,
+    0.153,
+    0.0154
+   ]
+  },
+  "schrodingerCatInTrap": {
+   "firstShotMilliseconds": 494,
+   "meanShotMilliseconds": 0.0257,
+   "stepShares": [
+    0.000232,
+    0.00908,
+    0.25,
+    0.246,
+    0.243,
+    0.246,
+    0.00535
+   ]
+  },
+  "quantumCarpetInBox": {
+   "firstShotMilliseconds": 1830,
+   "meanShotMilliseconds": 0.0274,
+   "stepShares": [
+    0.0000692,
+    0.00075,
+    0.25,
+    0.247,
+    0.246,
+    0.254,
+    0.00154
+   ]
+  },
+  "silverSternGerlach": {
+   "firstShotMilliseconds": 0.307,
+   "meanShotMilliseconds": 0.174,
+   "stepShares": [
+    0.624,
+    0.0224,
+    0.354
+   ]
+  },
+  "sodiumLaserCooling": {
+   "firstShotMilliseconds": 0.313,
+   "meanShotMilliseconds": 0.101,
+   "stepShares": [
+    0.183,
+    0.32,
+    0.0457,
+    0.451
+   ]
+  },
+  "hydrogenUltravioletIonization": {
+   "firstShotMilliseconds": 0.457,
+   "meanShotMilliseconds": 0.0411,
+   "stepShares": [
+    0.0473,
+    0.25,
+    0.703
+   ]
+  },
+  "deuteronPhotodisintegration": {
+   "firstShotMilliseconds": 0.0905,
+   "meanShotMilliseconds": 0.0367,
+   "stepShares": [
+    0.0563,
+    0.229,
+    0.715
+   ]
+  },
+  "microwaveWaterVapor": {
+   "firstShotMilliseconds": 3.4,
+   "meanShotMilliseconds": 0.32,
+   "stepShares": [
+    0.00428,
+    0.00835,
+    0.0627,
+    0.163,
+    0.609,
+    0.153
+   ]
+  },
+  "waterFromAtoms": {
+   "firstShotMilliseconds": 2.44,
+   "meanShotMilliseconds": 0.25,
+   "stepShares": [
+    0.00451,
+    0.00884,
+    0.0517,
+    0.1,
+    0.202,
+    0.129,
+    0.201,
+    0.103,
+    0.2
+   ]
+  },
+  "waterInHydrogenBubble": {
+   "firstShotMilliseconds": 0.423,
+   "meanShotMilliseconds": 0.225,
+   "stepShares": [
+    0.0625,
+    0.0562,
+    0.00608,
+    0.0106,
+    0.0116,
+    0.173,
+    0.284,
+    0.105,
+    0.291
+   ]
+  },
+  "ammoniaFromAtoms": {
+   "firstShotMilliseconds": 3.71,
+   "meanShotMilliseconds": 0.179,
+   "stepShares": [
+    0.00408,
+    0.00972,
+    0.0578,
+    0.187,
+    0.254,
+    0.241,
+    0.246
+   ]
+  },
+  "hydrogenThermalDissociation": {
+   "firstShotMilliseconds": 0.229,
+   "meanShotMilliseconds": 0.0393,
+   "stepShares": [
+    0.0156,
+    0.11,
+    0.166,
+    0.708
+   ]
+  },
+  "uraniumAlphaDecay": {
+   "firstShotMilliseconds": 1.07,
+   "meanShotMilliseconds": 0.466,
+   "stepShares": [
+    0.394,
+    0.0742,
+    0.438,
+    0.0945
+   ]
+  },
+  "waterPhases": {
+   "firstShotMilliseconds": 0.565,
+   "meanShotMilliseconds": 0.179,
+   "stepShares": [
+    0.104,
+    0.025,
+    0.274,
+    0.0149,
+    0.282,
+    0.0144,
+    0.285
+   ]
+  },
+  "carbonDioxideOnPlanets": {
+   "firstShotMilliseconds": 0.6,
+   "meanShotMilliseconds": 0.192,
+   "stepShares": [
+    0.196,
+    0.0141,
+    0.226,
+    0.0128,
+    0.251,
+    0.0142,
+    0.285
+   ]
+  },
+  "recombinationEpoch": {
+   "firstShotMilliseconds": 0.882,
+   "meanShotMilliseconds": 0.309,
+   "stepShares": [
+    0.00659,
+    0.0101,
+    0.869,
+    0.115
+   ]
+  },
+  "saltInWater": {
+   "firstShotMilliseconds": 1.42,
+   "meanShotMilliseconds": 0.447,
+   "stepShares": [
+    0.122,
+    0.111,
+    0.0123,
+    0.0152,
+    0.516,
+    0.223
+   ]
+  },
+  "acidStrength": {
+   "firstShotMilliseconds": 1.31,
+   "meanShotMilliseconds": 0.761,
+   "stepShares": [
+    0.0389,
+    0.0385,
+    0.0212,
+    0.0418,
+    0.00653,
+    0.00473,
+    0.638,
+    0.211
+   ]
+  },
+  "glycineAcrossPh": {
+   "firstShotMilliseconds": 102,
+   "meanShotMilliseconds": 1.31,
+   "stepShares": [
+    0.00326,
+    0.0441,
+    0.0463,
+    0.0506,
+    0.00354,
+    0.00199,
+    0.436,
+    0.414
+   ]
+  },
+  "waterElectrolysis": {
+   "firstShotMilliseconds": 1.44,
+   "meanShotMilliseconds": 0.601,
+   "stepShares": [
+    0.00595,
+    0.189,
+    0.542,
+    0.263
+   ]
+  },
+  "hydrogenOxygenIgnition": {
+   "firstShotMilliseconds": 9.69,
+   "meanShotMilliseconds": 2.59,
+   "stepShares": [
+    0.00128,
+    0.00141,
+    0.00248,
+    0.0422,
+    0.0373,
+    0.0495,
+    0.0499,
+    0.0648,
+    0.0677,
+    0.0882,
+    0.0822,
+    0.117,
+    0.109,
+    0.157,
+    0.129
+   ]
+  },
+  "carbonBurnsInOxygen": {
+   "firstShotMilliseconds": 2.24,
+   "meanShotMilliseconds": 1.23,
+   "stepShares": [
+    0.00131,
+    0.00139,
+    0.0531,
+    0.276,
+    0.125,
+    0.369,
+    0.174
+   ]
+  },
+  "diamondUnderPressure": {
+   "firstShotMilliseconds": 0.284,
+   "meanShotMilliseconds": 0.114,
+   "stepShares": [
+    0.0835,
+    0.00973,
+    0.283,
+    0.00726,
+    0.266,
+    0.0074,
+    0.343
+   ]
+  },
+  "methaneFarm": {
+   "firstShotMilliseconds": 6.49,
+   "meanShotMilliseconds": 1.87,
+   "stepShares": [
+    0.00121,
+    0.00115,
+    0.134,
+    0.228,
+    0.192,
+    0.271,
+    0.174
+   ]
+  },
+  "carbonVaporClusters": {
+   "firstShotMilliseconds": 195,
+   "meanShotMilliseconds": 5.65,
+   "stepShares": [
+    0.000466,
+    0.000465,
+    0.0356,
+    0.258,
+    0.0557,
+    0.563,
+    0.0868
+   ]
+  },
+  "carbonInAtomicOxygen": {
+   "firstShotMilliseconds": 2.55,
+   "meanShotMilliseconds": 1.28,
+   "stepShares": [
+    0.00134,
+    0.00141,
+    0.104,
+    0.15,
+    0.116,
+    0.474,
+    0.154
+   ]
+  },
+  "primordialSoup": {
+   "firstShotMilliseconds": 3,
+   "meanShotMilliseconds": 1.6,
+   "stepShares": [
+    0.00112,
+    0.00107,
+    0.0455,
+    0.0592,
+    0.0554,
+    0.19,
+    0.189,
+    0.281,
+    0.178
+   ]
+  },
+  "gammaShield": {
+   "firstShotMilliseconds": 1.2,
+   "meanShotMilliseconds": 0.621,
+   "stepShares": [
+    0.00546,
+    0.0399,
+    0.77,
+    0.184
+   ]
+  },
+  "alphaInWater": {
+   "firstShotMilliseconds": 1.66,
+   "meanShotMilliseconds": 0.812,
+   "stepShares": [
+    0.00396,
+    0.00555,
+    0.899,
+    0.0912
+   ]
+  },
+  "xrayHeatsWater": {
+   "firstShotMilliseconds": 0.498,
+   "meanShotMilliseconds": 0.29,
+   "stepShares": [
+    0.0159,
+    0.2,
+    0.58,
+    0.204
+   ]
+  },
+  "uraniumChainReaction": {
+   "firstShotMilliseconds": 97.2,
+   "meanShotMilliseconds": 117,
+   "stepShares": [
+    0.00029,
+    0.000161,
+    0.0259,
+    0.00129,
+    0.0346,
+    0.00231,
+    0.048,
+    0.00376,
+    0.0667,
+    0.00889,
+    0.106,
+    0.0112,
+    0.134,
+    0.0138,
+    0.223,
+    0.0254,
+    0.269,
+    0.0258
+   ]
+  },
+  "naturalUraniumChainDies": {
+   "firstShotMilliseconds": 1.88,
+   "meanShotMilliseconds": 3.36,
+   "stepShares": [
+    0.00208,
+    0.00134,
+    0.284,
+    0.0209,
+    0.14,
+    0.0203,
+    0.0997,
+    0.0189,
+    0.0744,
+    0.0213,
+    0.0598,
+    0.0227,
+    0.0612,
+    0.0201,
+    0.0548,
+    0.02,
+    0.0548,
+    0.023
+   ]
+  },
+  "quarkGluonSoup": {
+   "firstShotMilliseconds": 1.18,
+   "meanShotMilliseconds": 0.307,
+   "stepShares": [
+    0.07,
+    0.00351,
+    0.00253,
+    0.419,
+    0.0876,
+    0.0674,
+    0.26,
+    0.09
+   ]
+  }
+ }
+}

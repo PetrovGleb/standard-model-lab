@@ -1,0 +1,12 @@
+node_modules
+dist
+release
+.desktop-build
+.env
+.idea
+.vscode
+.DS_Store
+*.log
+libs/constants/data/endf/*.zip
+*.tsbuildinfo
+.claude/

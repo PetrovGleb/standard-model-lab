@@ -1,0 +1,54 @@
+{
+ "source": "Data of aqueous solutions. Electron affinities of atoms in eV: CRC Handbook of Chemistry and Physics, 97th ed., 'Electron Affinities' (T. Andersen, H. K. Haugen, H. Hotop and later measurements: H, F, Cl, Br, I, O, S, C, Li, Na, K). Absolute molar Gibbs energies of hydration of ions at 298.15 K in kJ/mol, experimental column ΔhydG* of Table 1 in Y. Marcus, J. Chem. Soc. Faraday Trans. 87, 2995 (1991), copied in marcus1991/. Relative permittivity of liquid water from C. G. Malmberg and A. A. Maryott, J. Res. Natl. Bur. Stand. 56, 1 (1956): ε = Σ a_k t^k with t in °C, 0–100 °C. Ionization constant of water from the IAPWS Revised Release R11-24 (2024), Eqs. (2)–(4) and Table 1, copied in iapws/; its test values are kept for checking the code",
+ "electronAffinities": [
+  { "protons": 1, "electronAffinityInEv": 0.754195 },
+  { "protons": 3, "electronAffinityInEv": 0.618049 },
+  { "protons": 6, "electronAffinityInEv": 1.262119 },
+  { "protons": 8, "electronAffinityInEv": 1.4611136 },
+  { "protons": 9, "electronAffinityInEv": 3.4011898 },
+  { "protons": 11, "electronAffinityInEv": 0.547926 },
+  { "protons": 16, "electronAffinityInEv": 2.0771029 },
+  { "protons": 17, "electronAffinityInEv": 3.612725 },
+  { "protons": 19, "electronAffinityInEv": 0.50147 },
+  { "protons": 35, "electronAffinityInEv": 3.363588 },
+  { "protons": 53, "electronAffinityInEv": 3.059038 }
+ ],
+ "hydrationGibbsEnergies": [
+  { "protons": 1, "charge": 1, "gibbsEnergyInKjPerMole": -1050 },
+  { "protons": 3, "charge": 1, "gibbsEnergyInKjPerMole": -475 },
+  { "protons": 11, "charge": 1, "gibbsEnergyInKjPerMole": -365 },
+  { "protons": 19, "charge": 1, "gibbsEnergyInKjPerMole": -295 },
+  { "protons": 37, "charge": 1, "gibbsEnergyInKjPerMole": -275 },
+  { "protons": 55, "charge": 1, "gibbsEnergyInKjPerMole": -250 },
+  { "protons": 47, "charge": 1, "gibbsEnergyInKjPerMole": -430 },
+  { "protons": 29, "charge": 1, "gibbsEnergyInKjPerMole": -525 },
+  { "protons": 12, "charge": 2, "gibbsEnergyInKjPerMole": -1830 },
+  { "protons": 20, "charge": 2, "gibbsEnergyInKjPerMole": -1505 },
+  { "protons": 9, "charge": -1, "gibbsEnergyInKjPerMole": -465 },
+  { "protons": 17, "charge": -1, "gibbsEnergyInKjPerMole": -340 },
+  { "protons": 35, "charge": -1, "gibbsEnergyInKjPerMole": -315 },
+  { "protons": 53, "charge": -1, "gibbsEnergyInKjPerMole": -275 }
+ ],
+ "hydrationReferenceTemperatureInKelvin": 298.15,
+ "waterPermittivity": {
+  "species": "molecule:8-16,1-1,1-1;0-1-1,0-2-1",
+  "coefficientsInCelsiusPowers": [87.74, -0.40008, 0.0009398, -0.00000141],
+  "lowestTemperatureInCelsius": 0,
+  "highestTemperatureInCelsius": 100
+ },
+ "waterIonization": {
+  "coordinationNumber": 6,
+  "molarMassInGramsPerMole": 18.015268,
+  "crowdingCoefficients": [-0.702132, 8681.05, -24145.1],
+  "shellCoefficients": [0.813876, -51.4471, -0.46992],
+  "idealGasCoefficients": [0.61415, 48251.33, -67707.93, 10102100],
+  "tests": [
+   { "temperatureInKelvin": 300, "densityInGramsPerCubicCentimeter": 1.0, "negativeLogarithm": 13.906672 },
+   { "temperatureInKelvin": 600, "densityInGramsPerCubicCentimeter": 0.07, "negativeLogarithm": 20.161651 },
+   { "temperatureInKelvin": 600, "densityInGramsPerCubicCentimeter": 0.7, "negativeLogarithm": 11.147093 },
+   { "temperatureInKelvin": 800, "densityInGramsPerCubicCentimeter": 0.2, "negativeLogarithm": 14.487671 },
+   { "temperatureInKelvin": 800, "densityInGramsPerCubicCentimeter": 1.2, "negativeLogarithm": 6.4058649 },
+   { "temperatureInKelvin": 1270, "densityInGramsPerCubicCentimeter": 0.0, "negativeLogarithm": 35.081557 }
+  ]
+ }
+}

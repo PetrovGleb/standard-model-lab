@@ -1,0 +1,12 @@
+packages:
+  - libs/*
+  - packages/*
+  - apps/*
+  - scripts
+
+supportedArchitectures:
+  os: [current, darwin, win32]
+  cpu: [current, arm64, x64]
+
+onlyBuiltDependencies:
+  - electron

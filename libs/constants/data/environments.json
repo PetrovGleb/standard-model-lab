@@ -1,0 +1,1107 @@
+{
+ "source": "Each preset names its own source; landmarks on the scales repeat values of the presets and of CODATA",
+ "environments": [
+  {
+   "name": "earthSeaLevel",
+   "group": {
+    "ru": "Атмосфера Земли",
+    "en": "Earth atmosphere"
+   },
+   "title": {
+    "ru": "Уровень моря",
+    "en": "Sea level"
+   },
+   "components": [
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 1.989e+25
+    },
+    {
+     "species": "molecule:8-16,8-16;0-1-2",
+     "numberDensityPerCubicMeter": 5.335e+24
+    },
+    {
+     "species": "atom:18:40:0",
+     "numberDensityPerCubicMeter": 2.379e+23
+    },
+    {
+     "species": "molecule:6-12,8-16,8-16;0-1-2,0-2-2",
+     "numberDensityPerCubicMeter": 1.062e+22
+    }
+   ],
+   "temperatureInKelvin": 288.15,
+   "pressureInPascals": 101325.0,
+   "radiationTemperatureInKelvin": null,
+   "source": "US Standard Atmosphere 1976 (NOAA/NASA/USAF): temperature and pressure from the seven-layer model constants; composition by volume N2 78.084%, O2 20.9476%, Ar 0.934%, CO2 0.0417% (2022 mean)",
+   "note": {
+    "ru": "15 °C, 1 атм; воздух как смесь N₂, O₂, Ar и CO₂",
+    "en": "15 °C, 1 atm; air as N₂, O₂, Ar and CO₂"
+   }
+  },
+  {
+   "name": "earthOneKilometre",
+   "group": {
+    "ru": "Атмосфера Земли",
+    "en": "Earth atmosphere"
+   },
+   "title": {
+    "ru": "1 км над морем",
+    "en": "1 km above sea level"
+   },
+   "components": [
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 1.805e+25
+    },
+    {
+     "species": "molecule:8-16,8-16;0-1-2",
+     "numberDensityPerCubicMeter": 4.841e+24
+    },
+    {
+     "species": "atom:18:40:0",
+     "numberDensityPerCubicMeter": 2.159e+23
+    },
+    {
+     "species": "molecule:6-12,8-16,8-16;0-1-2,0-2-2",
+     "numberDensityPerCubicMeter": 9.638e+21
+    }
+   ],
+   "temperatureInKelvin": 281.65,
+   "pressureInPascals": 89874.6,
+   "radiationTemperatureInKelvin": null,
+   "source": "US Standard Atmosphere 1976 (NOAA/NASA/USAF): temperature and pressure from the seven-layer model constants; composition by volume N2 78.084%, O2 20.9476%, Ar 0.934%, CO2 0.0417% (2022 mean)",
+   "note": {
+    "ru": "Температура падает на 6.5 К на километр",
+    "en": "Temperature falls by 6.5 K per kilometre"
+   }
+  },
+  {
+   "name": "earthThreeKilometres",
+   "group": {
+    "ru": "Атмосфера Земли",
+    "en": "Earth atmosphere"
+   },
+   "title": {
+    "ru": "3 км, высокогорье",
+    "en": "3 km, high mountains"
+   },
+   "components": [
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 1.476e+25
+    },
+    {
+     "species": "molecule:8-16,8-16;0-1-2",
+     "numberDensityPerCubicMeter": 3.959e+24
+    },
+    {
+     "species": "atom:18:40:0",
+     "numberDensityPerCubicMeter": 1.765e+23
+    },
+    {
+     "species": "molecule:6-12,8-16,8-16;0-1-2,0-2-2",
+     "numberDensityPerCubicMeter": 7.882e+21
+    }
+   ],
+   "temperatureInKelvin": 268.65,
+   "pressureInPascals": 70108.5,
+   "radiationTemperatureInKelvin": null,
+   "source": "US Standard Atmosphere 1976 (NOAA/NASA/USAF): temperature and pressure from the seven-layer model constants; composition by volume N2 78.084%, O2 20.9476%, Ar 0.934%, CO2 0.0417% (2022 mean)",
+   "note": {
+    "ru": "Давление 70 кПа, кислорода на треть меньше",
+    "en": "70 kPa, a third less oxygen"
+   }
+  },
+  {
+   "name": "earthTenKilometres",
+   "group": {
+    "ru": "Атмосфера Земли",
+    "en": "Earth atmosphere"
+   },
+   "title": {
+    "ru": "10 км, эшелон авиалайнера",
+    "en": "10 km, airliner cruise"
+   },
+   "components": [
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 6.7e+24
+    },
+    {
+     "species": "molecule:8-16,8-16;0-1-2",
+     "numberDensityPerCubicMeter": 1.797e+24
+    },
+    {
+     "species": "atom:18:40:0",
+     "numberDensityPerCubicMeter": 8.014e+22
+    },
+    {
+     "species": "molecule:6-12,8-16,8-16;0-1-2,0-2-2",
+     "numberDensityPerCubicMeter": 3.578e+21
+    }
+   ],
+   "temperatureInKelvin": 223.15,
+   "pressureInPascals": 26436.3,
+   "radiationTemperatureInKelvin": null,
+   "source": "US Standard Atmosphere 1976 (NOAA/NASA/USAF): temperature and pressure from the seven-layer model constants; composition by volume N2 78.084%, O2 20.9476%, Ar 0.934%, CO2 0.0417% (2022 mean)",
+   "note": {
+    "ru": "−50 °C, четверть атмосферы",
+    "en": "−50 °C, a quarter of an atmosphere"
+   }
+  },
+  {
+   "name": "earthStratosphere",
+   "group": {
+    "ru": "Атмосфера Земли",
+    "en": "Earth atmosphere"
+   },
+   "title": {
+    "ru": "30 км, стратосфера",
+    "en": "30 km, stratosphere"
+   },
+   "components": [
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 2.924e+23
+    },
+    {
+     "species": "molecule:8-16,8-16;0-1-2",
+     "numberDensityPerCubicMeter": 7.845e+22
+    },
+    {
+     "species": "atom:18:40:0",
+     "numberDensityPerCubicMeter": 3.498e+21
+    },
+    {
+     "species": "molecule:6-12,8-16,8-16;0-1-2,0-2-2",
+     "numberDensityPerCubicMeter": 1.562e+20
+    }
+   ],
+   "temperatureInKelvin": 226.65,
+   "pressureInPascals": 1171.87,
+   "radiationTemperatureInKelvin": null,
+   "source": "US Standard Atmosphere 1976 (NOAA/NASA/USAF): temperature and pressure from the seven-layer model constants; composition by volume N2 78.084%, O2 20.9476%, Ar 0.934%, CO2 0.0417% (2022 mean)",
+   "note": {
+    "ru": "Высота стратостатов, 1% атмосферы",
+    "en": "Balloon altitude, 1% of the atmosphere"
+   }
+  },
+  {
+   "name": "earthKarmanLine",
+   "group": {
+    "ru": "Атмосфера Земли",
+    "en": "Earth atmosphere"
+   },
+   "title": {
+    "ru": "100 км, линия Кармана",
+    "en": "100 km, the Kármán line"
+   },
+   "components": [
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 9.2e+18
+    },
+    {
+     "species": "molecule:8-16,8-16;0-1-2",
+     "numberDensityPerCubicMeter": 2.1e+18
+    },
+    {
+     "species": "atom:8:16:0",
+     "numberDensityPerCubicMeter": 4.3e+17
+    },
+    {
+     "species": "atom:18:40:0",
+     "numberDensityPerCubicMeter": 9.5e+16
+    }
+   ],
+   "temperatureInKelvin": 195.08,
+   "pressureInPascals": 0.032,
+   "radiationTemperatureInKelvin": null,
+   "source": "US Standard Atmosphere 1976, number densities at 100 km (N2, O2, O, Ar), rounded to two digits",
+   "note": {
+    "ru": "Граница космоса; атомарный кислород уже заметен",
+    "en": "Edge of space; atomic oxygen already shows"
+   }
+  },
+  {
+   "name": "earthStationOrbit",
+   "group": {
+    "ru": "Атмосфера Земли",
+    "en": "Earth atmosphere"
+   },
+   "title": {
+    "ru": "400 км, орбита МКС",
+    "en": "400 km, ISS orbit"
+   },
+   "components": [
+    {
+     "species": "atom:8:16:0",
+     "numberDensityPerCubicMeter": 100000000000000.0
+    },
+    {
+     "species": "heliumAtom",
+     "numberDensityPerCubicMeter": 2500000000000.0
+    },
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 2000000000000.0
+    },
+    {
+     "species": "hydrogenAtom",
+     "numberDensityPerCubicMeter": 150000000000.0
+    }
+   ],
+   "temperatureInKelvin": 995.83,
+   "pressureInPascals": 1.45e-06,
+   "radiationTemperatureInKelvin": null,
+   "source": "US Standard Atmosphere 1976 at 400 km: T = 995.83 K, density 2.80e-12 kg/m³ (1.06e14 m⁻³), atomic oxygen dominant; species split rounded to two digits",
+   "note": {
+    "ru": "Термосфера: горячий разреженный атомарный кислород, который разъедает обшивку станций",
+    "en": "Thermosphere: hot, thin atomic oxygen that erodes station skins"
+   }
+  },
+  {
+   "name": "oceanSurface",
+   "group": {
+    "ru": "Океан",
+    "en": "Ocean"
+   },
+   "title": {
+    "ru": "Поверхность океана",
+    "en": "Ocean surface"
+   },
+   "components": [
+    {
+     "species": "molecule:8-16,1-1,1-1;0-1-1,0-2-1",
+     "numberDensityPerCubicMeter": 3.34e+28
+    },
+    {
+     "species": "molecule:8-16,8-16;0-1-2",
+     "numberDensityPerCubicMeter": 1.6e+23
+    },
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 3e+23
+    }
+   ],
+   "temperatureInKelvin": 288.15,
+   "pressureInPascals": 101325,
+   "radiationTemperatureInKelvin": null,
+   "source": "Water 1025 kg/m³ at 15 °C (UNESCO seawater; salts omitted, the catalog holds no anions); dissolved O2 and N2 at air saturation, 2.7e-4 and 5e-4 mol/L",
+   "note": {
+    "ru": "Жидкая вода: 3.3·10²⁸ молекул в кубометре",
+    "en": "Liquid water: 3.3·10²⁸ molecules per cubic metre"
+   }
+  },
+  {
+   "name": "oceanFloor",
+   "group": {
+    "ru": "Океан",
+    "en": "Ocean"
+   },
+   "title": {
+    "ru": "Дно, 5 км",
+    "en": "Sea floor, 5 km"
+   },
+   "components": [
+    {
+     "species": "molecule:8-16,1-1,1-1;0-1-1,0-2-1",
+     "numberDensityPerCubicMeter": 3.5e+28
+    },
+    {
+     "species": "molecule:8-16,8-16;0-1-2",
+     "numberDensityPerCubicMeter": 1.2e+23
+    }
+   ],
+   "temperatureInKelvin": 275.15,
+   "pressureInPascals": 50400000.0,
+   "radiationTemperatureInKelvin": null,
+   "source": "Hydrostatic pressure 1 atm + 1025 kg/m³ × 9.81 m/s² × 5000 m; abyssal water 2 °C, density 1046 kg/m³ at that pressure (UNESCO equation of state)",
+   "note": {
+    "ru": "500 атмосфер, 2 °C; вода сжата на 2%",
+    "en": "500 atmospheres, 2 °C; water squeezed by 2%"
+   }
+  },
+  {
+   "name": "marsSurface",
+   "group": {
+    "ru": "Солнечная система",
+    "en": "Solar system"
+   },
+   "title": {
+    "ru": "Поверхность Марса",
+    "en": "Surface of Mars"
+   },
+   "components": [
+    {
+     "species": "molecule:6-12,8-16,8-16;0-1-2,0-2-2",
+     "numberDensityPerCubicMeter": 2e+23
+    },
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 5.7e+21
+    },
+    {
+     "species": "atom:18:40:0",
+     "numberDensityPerCubicMeter": 3.4e+21
+    }
+   ],
+   "temperatureInKelvin": 210,
+   "pressureInPascals": 610,
+   "radiationTemperatureInKelvin": null,
+   "source": "NASA Mars Fact Sheet: mean surface pressure 6.1 mbar, mean temperature 210 K, CO2 95.1%, N2 2.6%, Ar 1.9%",
+   "note": {
+    "ru": "Углекислый газ при 0.6% земного давления",
+    "en": "Carbon dioxide at 0.6% of Earth's pressure"
+   }
+  },
+  {
+   "name": "venusSurface",
+   "group": {
+    "ru": "Солнечная система",
+    "en": "Solar system"
+   },
+   "title": {
+    "ru": "Поверхность Венеры",
+    "en": "Surface of Venus"
+   },
+   "components": [
+    {
+     "species": "molecule:6-12,8-16,8-16;0-1-2,0-2-2",
+     "numberDensityPerCubicMeter": 8.7e+26
+    },
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 3.2e+25
+    }
+   ],
+   "temperatureInKelvin": 737,
+   "pressureInPascals": 9200000.0,
+   "radiationTemperatureInKelvin": null,
+   "source": "NASA Venus Fact Sheet: surface pressure 92 bar, temperature 737 K, CO2 96.5%, N2 3.5%",
+   "note": {
+    "ru": "Сверхкритический CO₂: давление и температура выше критических",
+    "en": "Supercritical CO₂: above its critical pressure and temperature"
+   }
+  },
+  {
+   "name": "titanSurface",
+   "group": {
+    "ru": "Солнечная система",
+    "en": "Solar system"
+   },
+   "title": {
+    "ru": "Поверхность Титана",
+    "en": "Surface of Titan"
+   },
+   "components": [
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 1.07e+26
+    },
+    {
+     "species": "molecule:6-12,1-1,1-1,1-1,1-1;0-1-1,0-2-1,0-3-1,0-4-1",
+     "numberDensityPerCubicMeter": 6.4e+24
+    }
+   ],
+   "temperatureInKelvin": 94,
+   "pressureInPascals": 146700.0,
+   "radiationTemperatureInKelvin": null,
+   "source": "NASA Saturnian Satellite Fact Sheet and the Huygens probe: 1.467 bar, 93.7 K, N2 94.2%, CH4 5.65%",
+   "note": {
+    "ru": "Метан у точки кипения: дожди и озера из метана",
+    "en": "Methane near its boiling point: methane rain and lakes"
+   }
+  },
+  {
+   "name": "jupiterOneBar",
+   "group": {
+    "ru": "Солнечная система",
+    "en": "Solar system"
+   },
+   "title": {
+    "ru": "Юпитер, уровень 1 бар",
+    "en": "Jupiter, the 1 bar level"
+   },
+   "components": [
+    {
+     "species": "molecule:1-1,1-1;0-1-1",
+     "numberDensityPerCubicMeter": 3.8e+25
+    },
+    {
+     "species": "heliumAtom",
+     "numberDensityPerCubicMeter": 6e+24
+    }
+   ],
+   "temperatureInKelvin": 165,
+   "pressureInPascals": 100000.0,
+   "radiationTemperatureInKelvin": null,
+   "source": "NASA Jupiter Fact Sheet: 165 K at 1 bar, H2 89.8%, He 10.2% by volume",
+   "note": {
+    "ru": "Водородно-гелиевая атмосфера газового гиганта",
+    "en": "The hydrogen–helium atmosphere of a gas giant"
+   }
+  },
+  {
+   "name": "solarPhotosphere",
+   "group": {
+    "ru": "Звезды",
+    "en": "Stars"
+   },
+   "title": {
+    "ru": "Фотосфера Солнца",
+    "en": "Solar photosphere"
+   },
+   "components": [
+    {
+     "species": "hydrogenAtom",
+     "numberDensityPerCubicMeter": 1.2e+23
+    },
+    {
+     "species": "heliumAtom",
+     "numberDensityPerCubicMeter": 1e+22
+    },
+    {
+     "species": "electron",
+     "numberDensityPerCubicMeter": 6e+19
+    },
+    {
+     "species": "proton",
+     "numberDensityPerCubicMeter": 6e+19
+    }
+   ],
+   "temperatureInKelvin": 5772,
+   "pressureInPascals": 10000.0,
+   "radiationTemperatureInKelvin": 5772,
+   "source": "Effective temperature 5772 K (IAU 2015 nominal); photospheric density about 2e-4 kg/m³ at optical depth 1 (Vernazza, Avrett and Loeser 1981, model C); hydrogen ionized to about 5e-4",
+   "note": {
+    "ru": "Видимая поверхность Солнца: нейтральный водород под излучением 5772 К",
+    "en": "The visible surface of the Sun: neutral hydrogen under 5772 K radiation"
+   }
+  },
+  {
+   "name": "solarCorona",
+   "group": {
+    "ru": "Звезды",
+    "en": "Stars"
+   },
+   "title": {
+    "ru": "Корона Солнца",
+    "en": "Solar corona"
+   },
+   "components": [
+    {
+     "species": "proton",
+     "numberDensityPerCubicMeter": 1000000000000000.0
+    },
+    {
+     "species": "electron",
+     "numberDensityPerCubicMeter": 1100000000000000.0
+    },
+    {
+     "species": "alphaParticle",
+     "numberDensityPerCubicMeter": 50000000000000.0
+    }
+   ],
+   "temperatureInKelvin": 1500000.0,
+   "pressureInPascals": 0.044,
+   "radiationTemperatureInKelvin": 5772,
+   "source": "Quiet corona near 1.1 solar radii: n_e about 1e9 cm⁻³, T about 1.5 MK (Aschwanden, Physics of the Solar Corona, 2005); photospheric radiation",
+   "note": {
+    "ru": "Разреженная плазма в 300 раз горячее поверхности",
+    "en": "A thin plasma 300 times hotter than the surface"
+   }
+  },
+  {
+   "name": "solarCore",
+   "group": {
+    "ru": "Звезды",
+    "en": "Stars"
+   },
+   "title": {
+    "ru": "Ядро Солнца",
+    "en": "Solar core"
+   },
+   "components": [
+    {
+     "species": "proton",
+     "numberDensityPerCubicMeter": 3.05e+31
+    },
+    {
+     "species": "alphaParticle",
+     "numberDensityPerCubicMeter": 1.44e+31
+    },
+    {
+     "species": "helion",
+     "numberDensityPerCubicMeter": 9.1e+26
+    },
+    {
+     "species": "electron",
+     "numberDensityPerCubicMeter": 5.94e+31
+    }
+   ],
+   "temperatureInKelvin": 15700000.0,
+   "pressureInPascals": 2.5e+16,
+   "radiationTemperatureInKelvin": 15700000.0,
+   "source": "Standard solar model (Bahcall, Serenelli and Basu 2005): central T 15.7 MK, density 150 g/cm³, X = 0.34, Y = 0.64, ³He/H about 3e-5",
+   "note": {
+    "ru": "Где горит водород: 150 г/см³ и 250 млрд атмосфер",
+    "en": "Where hydrogen burns: 150 g/cm³ and 250 billion atmospheres"
+   }
+  },
+  {
+   "name": "redGiantHeliumCore",
+   "group": {
+    "ru": "Звезды",
+    "en": "Stars"
+   },
+   "title": {
+    "ru": "Гелиевое ядро красного гиганта",
+    "en": "Helium core of a red giant"
+   },
+   "components": [
+    {
+     "species": "alphaParticle",
+     "numberDensityPerCubicMeter": 5e+33
+    },
+    {
+     "species": "electron",
+     "numberDensityPerCubicMeter": 1e+34
+    }
+   ],
+   "temperatureInKelvin": 150000000.0,
+   "pressureInPascals": 3.1e+19,
+   "radiationTemperatureInKelvin": 150000000.0,
+   "source": "Core helium burning: T about 1.5e8 K, density about 3e4 g/cm³ (Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution, 2nd ed.)",
+   "note": {
+    "ru": "Здесь тройная альфа делает углерод",
+    "en": "Where the triple-alpha reaction makes carbon"
+   }
+  },
+  {
+   "name": "molecularCloudCore",
+   "group": {
+    "ru": "Межзвездная среда",
+    "en": "Interstellar medium"
+   },
+   "title": {
+    "ru": "Ядро молекулярного облака",
+    "en": "Molecular cloud core"
+   },
+   "components": [
+    {
+     "species": "molecule:1-1,1-1;0-1-1",
+     "numberDensityPerCubicMeter": 10000000000.0
+    },
+    {
+     "species": "heliumAtom",
+     "numberDensityPerCubicMeter": 1000000000.0
+    }
+   ],
+   "temperatureInKelvin": 10,
+   "pressureInPascals": 1.5e-12,
+   "radiationTemperatureInKelvin": 2.725,
+   "source": "Draine, Physics of the Interstellar and Intergalactic Medium (2011), Table 1.3: dense molecular gas n_H about 1e4 cm⁻³ at 10–50 K; CMB 2.725 K",
+   "note": {
+    "ru": "Где рождаются звезды: холодный молекулярный водород",
+    "en": "Where stars are born: cold molecular hydrogen"
+   }
+  },
+  {
+   "name": "coldNeutralMedium",
+   "group": {
+    "ru": "Межзвездная среда",
+    "en": "Interstellar medium"
+   },
+   "title": {
+    "ru": "Холодный нейтральный газ",
+    "en": "Cold neutral medium"
+   },
+   "components": [
+    {
+     "species": "hydrogenAtom",
+     "numberDensityPerCubicMeter": 30000000.0
+    },
+    {
+     "species": "heliumAtom",
+     "numberDensityPerCubicMeter": 3000000.0
+    }
+   ],
+   "temperatureInKelvin": 80,
+   "pressureInPascals": 3.6e-14,
+   "radiationTemperatureInKelvin": 2.725,
+   "source": "Draine 2011, Table 1.3: CNM n_H about 30 cm⁻³, T about 100 K",
+   "note": {
+    "ru": "Атомарный водород галактического диска",
+    "en": "The atomic hydrogen of the galactic disc"
+   }
+  },
+  {
+   "name": "warmIonizedMedium",
+   "group": {
+    "ru": "Межзвездная среда",
+    "en": "Interstellar medium"
+   },
+   "title": {
+    "ru": "Теплый ионизованный газ",
+    "en": "Warm ionized medium"
+   },
+   "components": [
+    {
+     "species": "proton",
+     "numberDensityPerCubicMeter": 300000.0
+    },
+    {
+     "species": "electron",
+     "numberDensityPerCubicMeter": 300000.0
+    },
+    {
+     "species": "heliumAtom",
+     "numberDensityPerCubicMeter": 30000.0
+    }
+   ],
+   "temperatureInKelvin": 8000,
+   "pressureInPascals": 6.6e-14,
+   "radiationTemperatureInKelvin": 2.725,
+   "source": "Draine 2011, Table 1.3: WIM n_e about 0.3 cm⁻³, T about 8000 K",
+   "note": {
+    "ru": "Водород, ионизованный ультрафиолетом звезд",
+    "en": "Hydrogen ionized by starlight"
+   }
+  },
+  {
+   "name": "hotIonizedMedium",
+   "group": {
+    "ru": "Межзвездная среда",
+    "en": "Interstellar medium"
+   },
+   "title": {
+    "ru": "Горячий корональный газ",
+    "en": "Hot coronal gas"
+   },
+   "components": [
+    {
+     "species": "proton",
+     "numberDensityPerCubicMeter": 4000.0
+    },
+    {
+     "species": "electron",
+     "numberDensityPerCubicMeter": 4400.0
+    },
+    {
+     "species": "alphaParticle",
+     "numberDensityPerCubicMeter": 400.0
+    }
+   ],
+   "temperatureInKelvin": 1000000.0,
+   "pressureInPascals": 1.2e-13,
+   "radiationTemperatureInKelvin": 2.725,
+   "source": "Draine 2011, Table 1.3: HIM n_H about 4e-3 cm⁻³, T about 1e6 K, heated by supernovae",
+   "note": {
+    "ru": "Пузыри после сверхновых",
+    "en": "Supernova-blown bubbles"
+   }
+  },
+  {
+   "name": "intergalacticMedium",
+   "group": {
+    "ru": "Межгалактическая среда",
+    "en": "Intergalactic medium"
+   },
+   "title": {
+    "ru": "Теплая межгалактическая среда",
+    "en": "Warm-hot intergalactic medium"
+   },
+   "components": [
+    {
+     "species": "proton",
+     "numberDensityPerCubicMeter": 10
+    },
+    {
+     "species": "electron",
+     "numberDensityPerCubicMeter": 11
+    },
+    {
+     "species": "alphaParticle",
+     "numberDensityPerCubicMeter": 0.8
+    }
+   ],
+   "temperatureInKelvin": 1000000.0,
+   "pressureInPascals": 3e-16,
+   "radiationTemperatureInKelvin": 2.725,
+   "source": "Cen and Ostriker 1999, ApJ 514, 1: WHIM at 1e5–1e7 K with about 10 baryons per m³",
+   "note": {
+    "ru": "Половина барионов Вселенной прячется здесь",
+    "en": "Half of the baryons of the Universe hide here"
+   }
+  },
+  {
+   "name": "cosmicVoid",
+   "group": {
+    "ru": "Межгалактическая среда",
+    "en": "Intergalactic medium"
+   },
+   "title": {
+    "ru": "Космический войд",
+    "en": "Cosmic void"
+   },
+   "components": [
+    {
+     "species": "proton",
+     "numberDensityPerCubicMeter": 0.03
+    },
+    {
+     "species": "electron",
+     "numberDensityPerCubicMeter": 0.03
+    }
+   ],
+   "temperatureInKelvin": 10000.0,
+   "pressureInPascals": 8e-21,
+   "radiationTemperatureInKelvin": 2.725,
+   "source": "Mean cosmic baryon density 0.25 m⁻³ (Planck 2018) at a tenth of the mean inside voids; photoionized gas near 1e4 K",
+   "note": {
+    "ru": "Самая пустая среда: три протона на сто кубометров",
+    "en": "The emptiest medium: three protons per hundred cubic metres"
+   }
+  },
+  {
+   "name": "laboratoryUltraHighVacuum",
+   "group": {
+    "ru": "Лаборатория",
+    "en": "Laboratory"
+   },
+   "title": {
+    "ru": "Сверхвысокий вакуум",
+    "en": "Ultra-high vacuum"
+   },
+   "components": [
+    {
+     "species": "molecule:1-1,1-1;0-1-1",
+     "numberDensityPerCubicMeter": 2000000000000.0
+    },
+    {
+     "species": "molecule:7-14,7-14;0-1-3",
+     "numberDensityPerCubicMeter": 500000000000.0
+    }
+   ],
+   "temperatureInKelvin": 293.15,
+   "pressureInPascals": 1e-08,
+   "radiationTemperatureInKelvin": null,
+   "source": "A baked stainless chamber at 1e-8 Pa (1e-10 mbar), residual gas mostly H2 (O'Hanlon, A User's Guide to Vacuum Technology)",
+   "note": {
+    "ru": "Камера ускорителя или ловушки: молекула пролетает километры между столкновениями",
+    "en": "An accelerator or trap chamber: a molecule flies kilometres between collisions"
+   }
+  },
+  {
+   "name": "tokamakPlasma",
+   "group": {
+    "ru": "Лаборатория",
+    "en": "Laboratory"
+   },
+   "title": {
+    "ru": "Плазма токамака",
+    "en": "Tokamak plasma"
+   },
+   "components": [
+    {
+     "species": "deuteron",
+     "numberDensityPerCubicMeter": 5e+19
+    },
+    {
+     "species": "triton",
+     "numberDensityPerCubicMeter": 5e+19
+    },
+    {
+     "species": "electron",
+     "numberDensityPerCubicMeter": 1e+20
+    }
+   ],
+   "temperatureInKelvin": 174000000.0,
+   "pressureInPascals": 480000.0,
+   "radiationTemperatureInKelvin": null,
+   "source": "ITER baseline: n_e 1e20 m⁻³, T_i 15 keV, 50:50 D–T",
+   "note": {
+    "ru": "15 кэВ и 10²⁰ м⁻³: критерий Лоусона",
+    "en": "15 keV and 10²⁰ m⁻³: the Lawson criterion"
+   }
+  },
+  {
+   "name": "recombinationEpoch",
+   "group": {
+    "ru": "Ранняя Вселенная",
+    "en": "Early Universe"
+   },
+   "title": {
+    "ru": "Эпоха рекомбинации",
+    "en": "Recombination epoch"
+   },
+   "components": [
+    {
+     "species": "proton",
+     "numberDensityPerCubicMeter": 250000000.0
+    },
+    {
+     "species": "electron",
+     "numberDensityPerCubicMeter": 250000000.0
+    },
+    {
+     "species": "alphaParticle",
+     "numberDensityPerCubicMeter": 20000000.0
+    }
+   ],
+   "temperatureInKelvin": 3000,
+   "pressureInPascals": 2.2e-11,
+   "radiationTemperatureInKelvin": 3000,
+   "source": "Planck 2018 cosmology at z = 1090: T = 2.725 K × 1091, baryon density 0.25 m⁻³ × 1091³",
+   "note": {
+    "ru": "380 тысяч лет: фотоны отпускают электроны, и Вселенная становится прозрачной",
+    "en": "380 thousand years: photons let the electrons go and the Universe turns transparent"
+   }
+  },
+  {
+   "name": "firstMinutes",
+   "group": {
+    "ru": "Ранняя Вселенная",
+    "en": "Early Universe"
+   },
+   "title": {
+    "ru": "Первые минуты, нуклеосинтез",
+    "en": "First minutes, nucleosynthesis"
+   },
+   "components": [
+    {
+     "species": "proton",
+     "numberDensityPerCubicMeter": 1e+25
+    },
+    {
+     "species": "neutron",
+     "numberDensityPerCubicMeter": 2e+24
+    },
+    {
+     "species": "electron",
+     "numberDensityPerCubicMeter": 1e+25
+    }
+   ],
+   "temperatureInKelvin": 700000000.0,
+   "pressureInPascals": 120000000000000.0,
+   "radiationTemperatureInKelvin": 700000000.0,
+   "source": "Standard Big Bang nucleosynthesis at T9 = 0.7 (about 3 minutes): n_b = η n_γ with η = 6.1e-10, n/p about 1/5",
+   "note": {
+    "ru": "Дейтериевое горлышко пройдено, собирается гелий",
+    "en": "Past the deuterium bottleneck, helium assembles"
+   }
+  }
+ ],
+ "scales": {
+  "numberDensityPerCubicMeter": [
+   {
+    "value": 0.03,
+    "label": {
+     "ru": "войд",
+     "en": "void"
+    }
+   },
+   {
+    "value": 10,
+    "label": {
+     "ru": "межгалактическая",
+     "en": "intergalactic"
+    }
+   },
+   {
+    "value": 1000000.0,
+    "label": {
+     "ru": "межзвездная",
+     "en": "interstellar"
+    }
+   },
+   {
+    "value": 2000000000000.0,
+    "label": {
+     "ru": "сверхвысокий вакуум",
+     "en": "ultra-high vacuum"
+    }
+   },
+   {
+    "value": 106000000000000.0,
+    "label": {
+     "ru": "орбита МКС",
+     "en": "ISS orbit"
+    }
+   },
+   {
+    "value": 1e+20,
+    "label": {
+     "ru": "токамак",
+     "en": "tokamak"
+    }
+   },
+   {
+    "value": 2.547e+25,
+    "label": {
+     "ru": "воздух",
+     "en": "air"
+    }
+   },
+   {
+    "value": 3.34e+28,
+    "label": {
+     "ru": "вода",
+     "en": "water"
+    }
+   },
+   {
+    "value": 3.05e+31,
+    "label": {
+     "ru": "ядро Солнца",
+     "en": "solar core"
+    }
+   },
+   {
+    "value": 5e+33,
+    "label": {
+     "ru": "ядро гиганта",
+     "en": "giant core"
+    }
+   }
+  ],
+  "temperatureInKelvin": [
+   {
+    "value": 2.725,
+    "label": {
+     "ru": "реликтовый фон",
+     "en": "CMB"
+    }
+   },
+   {
+    "value": 10,
+    "label": {
+     "ru": "молекулярное облако",
+     "en": "molecular cloud"
+    }
+   },
+   {
+    "value": 77,
+    "label": {
+     "ru": "жидкий азот",
+     "en": "liquid nitrogen"
+    }
+   },
+   {
+    "value": 288.15,
+    "label": {
+     "ru": "Земля",
+     "en": "Earth"
+    }
+   },
+   {
+    "value": 737,
+    "label": {
+     "ru": "Венера",
+     "en": "Venus"
+    }
+   },
+   {
+    "value": 5772,
+    "label": {
+     "ru": "фотосфера",
+     "en": "photosphere"
+    }
+   },
+   {
+    "value": 1000000.0,
+    "label": {
+     "ru": "корона",
+     "en": "corona"
+    }
+   },
+   {
+    "value": 15700000.0,
+    "label": {
+     "ru": "ядро Солнца",
+     "en": "solar core"
+    }
+   },
+   {
+    "value": 174000000.0,
+    "label": {
+     "ru": "токамак",
+     "en": "tokamak"
+    }
+   },
+   {
+    "value": 700000000.0,
+    "label": {
+     "ru": "первые минуты",
+     "en": "first minutes"
+    }
+   },
+   {
+    "value": 2000000000000.0,
+    "label": {
+     "ru": "кварк-глюонная плазма",
+     "en": "quark-gluon plasma"
+    }
+   }
+  ],
+  "pressureInPascals": [
+   {
+    "value": 1e-08,
+    "label": {
+     "ru": "сверхвысокий вакуум",
+     "en": "ultra-high vacuum"
+    }
+   },
+   {
+    "value": 1.45e-06,
+    "label": {
+     "ru": "орбита МКС",
+     "en": "ISS orbit"
+    }
+   },
+   {
+    "value": 610,
+    "label": {
+     "ru": "Марс",
+     "en": "Mars"
+    }
+   },
+   {
+    "value": 101325,
+    "label": {
+     "ru": "Земля",
+     "en": "Earth"
+    }
+   },
+   {
+    "value": 9200000.0,
+    "label": {
+     "ru": "Венера",
+     "en": "Venus"
+    }
+   },
+   {
+    "value": 50400000.0,
+    "label": {
+     "ru": "дно океана",
+     "en": "sea floor"
+    }
+   },
+   {
+    "value": 360000000000.0,
+    "label": {
+     "ru": "центр Земли",
+     "en": "Earth's centre"
+    }
+   },
+   {
+    "value": 2.5e+16,
+    "label": {
+     "ru": "ядро Солнца",
+     "en": "solar core"
+    }
+   }
+  ]
+ }
+}

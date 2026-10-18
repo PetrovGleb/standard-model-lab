@@ -1,0 +1,339 @@
+{
+ "source": "Joback group contributions for the normal boiling point, melting point, critical temperature and critical pressure of organic compounds: K. G. Joback and R. C. Reid, Estimation of Pure-Component Properties from Group-Contributions, Chem. Eng. Commun. 57, 233 (1987); group values and the formula constants transcribed from the table and formulas of the English Wikipedia article 'Joback method' (revision 1309334695, 3 September 2025), whose worked acetone example the tests reproduce: Tb = base + sum Tb, Tm = base + sum Tm, Tc = Tb / (constant + linear sum Tc - (sum Tc)^2), Pc in bar = (base + per atom N - sum Pc)^-2 with N all atoms including hydrogen; null where the article gives no value",
+ "boilingTemperatureBaseInKelvin": 198.2,
+ "meltingTemperatureBaseInKelvin": 122.5,
+ "criticalTemperatureDenominatorConstant": 0.584,
+ "criticalTemperatureDenominatorLinear": 0.965,
+ "criticalPressureBaseInInverseRootBar": 0.113,
+ "criticalPressurePerAtomInInverseRootBar": 0.0032,
+ "groups": [
+  {
+   "key": "methyl",
+   "group": "−CH3",
+   "criticalTemperatureShare": 0.0141,
+   "criticalPressureShareInInverseRootBar": -0.0012,
+   "boilingTemperatureInKelvin": 23.58,
+   "meltingTemperatureInKelvin": -5.1
+  },
+  {
+   "key": "methylene",
+   "group": "−CH2−",
+   "criticalTemperatureShare": 0.0189,
+   "criticalPressureShareInInverseRootBar": 0.0,
+   "boilingTemperatureInKelvin": 22.88,
+   "meltingTemperatureInKelvin": 11.27
+  },
+  {
+   "key": "methine",
+   "group": ">CH−",
+   "criticalTemperatureShare": 0.0164,
+   "criticalPressureShareInInverseRootBar": 0.002,
+   "boilingTemperatureInKelvin": 21.74,
+   "meltingTemperatureInKelvin": 12.64
+  },
+  {
+   "key": "quaternaryCarbon",
+   "group": ">C<",
+   "criticalTemperatureShare": 0.0067,
+   "criticalPressureShareInInverseRootBar": 0.0043,
+   "boilingTemperatureInKelvin": 18.25,
+   "meltingTemperatureInKelvin": 46.43
+  },
+  {
+   "key": "doubleBondedMethylene",
+   "group": "=CH2",
+   "criticalTemperatureShare": 0.0113,
+   "criticalPressureShareInInverseRootBar": -0.0028,
+   "boilingTemperatureInKelvin": 18.18,
+   "meltingTemperatureInKelvin": -4.32
+  },
+  {
+   "key": "doubleBondedMethine",
+   "group": "=CH−",
+   "criticalTemperatureShare": 0.0129,
+   "criticalPressureShareInInverseRootBar": -0.0006,
+   "boilingTemperatureInKelvin": 24.96,
+   "meltingTemperatureInKelvin": 8.73
+  },
+  {
+   "key": "doubleBondedCarbon",
+   "group": "=C<",
+   "criticalTemperatureShare": 0.0117,
+   "criticalPressureShareInInverseRootBar": 0.0011,
+   "boilingTemperatureInKelvin": 24.14,
+   "meltingTemperatureInKelvin": 11.14
+  },
+  {
+   "key": "cumulatedCarbon",
+   "group": "=C=",
+   "criticalTemperatureShare": 0.0026,
+   "criticalPressureShareInInverseRootBar": 0.0028,
+   "boilingTemperatureInKelvin": 26.15,
+   "meltingTemperatureInKelvin": 17.78
+  },
+  {
+   "key": "terminalAlkyneCarbon",
+   "group": "≡CH",
+   "criticalTemperatureShare": 0.0027,
+   "criticalPressureShareInInverseRootBar": -0.0008,
+   "boilingTemperatureInKelvin": 9.2,
+   "meltingTemperatureInKelvin": -11.18
+  },
+  {
+   "key": "internalAlkyneCarbon",
+   "group": "≡C−",
+   "criticalTemperatureShare": 0.002,
+   "criticalPressureShareInInverseRootBar": 0.0016,
+   "boilingTemperatureInKelvin": 27.38,
+   "meltingTemperatureInKelvin": 64.32
+  },
+  {
+   "key": "ringMethylene",
+   "group": "−CH2−",
+   "criticalTemperatureShare": 0.01,
+   "criticalPressureShareInInverseRootBar": 0.0025,
+   "boilingTemperatureInKelvin": 27.15,
+   "meltingTemperatureInKelvin": 7.75
+  },
+  {
+   "key": "ringMethine",
+   "group": ">CH−",
+   "criticalTemperatureShare": 0.0122,
+   "criticalPressureShareInInverseRootBar": 0.0004,
+   "boilingTemperatureInKelvin": 21.78,
+   "meltingTemperatureInKelvin": 19.88
+  },
+  {
+   "key": "ringQuaternaryCarbon",
+   "group": ">C<",
+   "criticalTemperatureShare": 0.0042,
+   "criticalPressureShareInInverseRootBar": 0.0061,
+   "boilingTemperatureInKelvin": 21.32,
+   "meltingTemperatureInKelvin": 60.15
+  },
+  {
+   "key": "ringDoubleBondedMethine",
+   "group": "=CH−",
+   "criticalTemperatureShare": 0.0082,
+   "criticalPressureShareInInverseRootBar": 0.0011,
+   "boilingTemperatureInKelvin": 26.73,
+   "meltingTemperatureInKelvin": 8.13
+  },
+  {
+   "key": "ringDoubleBondedCarbon",
+   "group": "=C<",
+   "criticalTemperatureShare": 0.0143,
+   "criticalPressureShareInInverseRootBar": 0.0008,
+   "boilingTemperatureInKelvin": 31.01,
+   "meltingTemperatureInKelvin": 37.02
+  },
+  {
+   "key": "fluorine",
+   "group": "−F",
+   "criticalTemperatureShare": 0.0111,
+   "criticalPressureShareInInverseRootBar": -0.0057,
+   "boilingTemperatureInKelvin": -0.03,
+   "meltingTemperatureInKelvin": -15.78
+  },
+  {
+   "key": "chlorine",
+   "group": "−Cl",
+   "criticalTemperatureShare": 0.0105,
+   "criticalPressureShareInInverseRootBar": -0.0049,
+   "boilingTemperatureInKelvin": 38.13,
+   "meltingTemperatureInKelvin": 13.55
+  },
+  {
+   "key": "bromine",
+   "group": "−Br",
+   "criticalTemperatureShare": 0.0133,
+   "criticalPressureShareInInverseRootBar": 0.0057,
+   "boilingTemperatureInKelvin": 66.86,
+   "meltingTemperatureInKelvin": 43.43
+  },
+  {
+   "key": "iodine",
+   "group": "−I",
+   "criticalTemperatureShare": 0.0068,
+   "criticalPressureShareInInverseRootBar": -0.0034,
+   "boilingTemperatureInKelvin": 93.84,
+   "meltingTemperatureInKelvin": 41.69
+  },
+  {
+   "key": "alcoholHydroxyl",
+   "group": "−OH (alcohol)",
+   "criticalTemperatureShare": 0.0741,
+   "criticalPressureShareInInverseRootBar": 0.0112,
+   "boilingTemperatureInKelvin": 92.88,
+   "meltingTemperatureInKelvin": 44.45
+  },
+  {
+   "key": "phenolHydroxyl",
+   "group": "−OH (phenol)",
+   "criticalTemperatureShare": 0.024,
+   "criticalPressureShareInInverseRootBar": 0.0184,
+   "boilingTemperatureInKelvin": 76.34,
+   "meltingTemperatureInKelvin": 82.83
+  },
+  {
+   "key": "ether",
+   "group": "−O− (non-ring)",
+   "criticalTemperatureShare": 0.0168,
+   "criticalPressureShareInInverseRootBar": 0.0015,
+   "boilingTemperatureInKelvin": 22.42,
+   "meltingTemperatureInKelvin": 22.23
+  },
+  {
+   "key": "ringEther",
+   "group": "−O− (ring)",
+   "criticalTemperatureShare": 0.0098,
+   "criticalPressureShareInInverseRootBar": 0.0048,
+   "boilingTemperatureInKelvin": 31.22,
+   "meltingTemperatureInKelvin": 23.05
+  },
+  {
+   "key": "ketone",
+   "group": ">C=O (non-ring)",
+   "criticalTemperatureShare": 0.038,
+   "criticalPressureShareInInverseRootBar": 0.0031,
+   "boilingTemperatureInKelvin": 76.75,
+   "meltingTemperatureInKelvin": 61.2
+  },
+  {
+   "key": "ringKetone",
+   "group": ">C=O (ring)",
+   "criticalTemperatureShare": 0.0284,
+   "criticalPressureShareInInverseRootBar": 0.0028,
+   "boilingTemperatureInKelvin": 94.97,
+   "meltingTemperatureInKelvin": 75.97
+  },
+  {
+   "key": "aldehyde",
+   "group": "O=CH− (aldehyde)",
+   "criticalTemperatureShare": 0.0379,
+   "criticalPressureShareInInverseRootBar": 0.003,
+   "boilingTemperatureInKelvin": 72.24,
+   "meltingTemperatureInKelvin": 36.9
+  },
+  {
+   "key": "carboxylicAcid",
+   "group": "−COOH (acid)",
+   "criticalTemperatureShare": 0.0791,
+   "criticalPressureShareInInverseRootBar": 0.0077,
+   "boilingTemperatureInKelvin": 169.09,
+   "meltingTemperatureInKelvin": 155.5
+  },
+  {
+   "key": "ester",
+   "group": "−COO− (ester)",
+   "criticalTemperatureShare": 0.0481,
+   "criticalPressureShareInInverseRootBar": 0.0005,
+   "boilingTemperatureInKelvin": 81.1,
+   "meltingTemperatureInKelvin": 53.6
+  },
+  {
+   "key": "otherDoubleBondedOxygen",
+   "group": "=O (other than above)",
+   "criticalTemperatureShare": 0.0143,
+   "criticalPressureShareInInverseRootBar": 0.0101,
+   "boilingTemperatureInKelvin": -10.5,
+   "meltingTemperatureInKelvin": 2.08
+  },
+  {
+   "key": "primaryAmine",
+   "group": "−NH2",
+   "criticalTemperatureShare": 0.0243,
+   "criticalPressureShareInInverseRootBar": 0.0109,
+   "boilingTemperatureInKelvin": 73.23,
+   "meltingTemperatureInKelvin": 66.89
+  },
+  {
+   "key": "secondaryAmine",
+   "group": ">NH (non-ring)",
+   "criticalTemperatureShare": 0.0295,
+   "criticalPressureShareInInverseRootBar": 0.0077,
+   "boilingTemperatureInKelvin": 50.17,
+   "meltingTemperatureInKelvin": 52.66
+  },
+  {
+   "key": "ringSecondaryAmine",
+   "group": ">NH (ring)",
+   "criticalTemperatureShare": 0.013,
+   "criticalPressureShareInInverseRootBar": 0.0114,
+   "boilingTemperatureInKelvin": 52.82,
+   "meltingTemperatureInKelvin": 101.51
+  },
+  {
+   "key": "tertiaryAmine",
+   "group": ">N− (non-ring)",
+   "criticalTemperatureShare": 0.0169,
+   "criticalPressureShareInInverseRootBar": 0.0074,
+   "boilingTemperatureInKelvin": 11.74,
+   "meltingTemperatureInKelvin": 48.84
+  },
+  {
+   "key": "imineNitrogen",
+   "group": "−N= (non-ring)",
+   "criticalTemperatureShare": 0.0255,
+   "criticalPressureShareInInverseRootBar": -0.0099,
+   "boilingTemperatureInKelvin": 74.6,
+   "meltingTemperatureInKelvin": null
+  },
+  {
+   "key": "ringImineNitrogen",
+   "group": "−N= (ring)",
+   "criticalTemperatureShare": 0.0085,
+   "criticalPressureShareInInverseRootBar": 0.0076,
+   "boilingTemperatureInKelvin": 57.55,
+   "meltingTemperatureInKelvin": 68.4
+  },
+  {
+   "key": "imine",
+   "group": "=NH",
+   "criticalTemperatureShare": null,
+   "criticalPressureShareInInverseRootBar": null,
+   "boilingTemperatureInKelvin": 83.08,
+   "meltingTemperatureInKelvin": 68.91
+  },
+  {
+   "key": "nitrile",
+   "group": "−CN",
+   "criticalTemperatureShare": 0.0496,
+   "criticalPressureShareInInverseRootBar": -0.0101,
+   "boilingTemperatureInKelvin": 125.66,
+   "meltingTemperatureInKelvin": 59.89
+  },
+  {
+   "key": "nitro",
+   "group": "−NO2",
+   "criticalTemperatureShare": 0.0437,
+   "criticalPressureShareInInverseRootBar": 0.0064,
+   "boilingTemperatureInKelvin": 152.54,
+   "meltingTemperatureInKelvin": 127.24
+  },
+  {
+   "key": "thiol",
+   "group": "−SH",
+   "criticalTemperatureShare": 0.0031,
+   "criticalPressureShareInInverseRootBar": 0.0084,
+   "boilingTemperatureInKelvin": 63.56,
+   "meltingTemperatureInKelvin": 20.09
+  },
+  {
+   "key": "thioether",
+   "group": "−S− (non-ring)",
+   "criticalTemperatureShare": 0.0119,
+   "criticalPressureShareInInverseRootBar": 0.0049,
+   "boilingTemperatureInKelvin": 68.78,
+   "meltingTemperatureInKelvin": 34.4
+  },
+  {
+   "key": "ringThioether",
+   "group": "−S− (ring)",
+   "criticalTemperatureShare": 0.0019,
+   "criticalPressureShareInInverseRootBar": 0.0051,
+   "boilingTemperatureInKelvin": 52.1,
+   "meltingTemperatureInKelvin": 79.93
+  }
+ ]
+}

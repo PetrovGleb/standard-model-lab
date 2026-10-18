@@ -1,0 +1,2846 @@
+{
+ "source": "NIST CODATA 2022, https://physics.nist.gov/cuu/Constants/Table/allascii.txt",
+ "count": 355,
+ "constants": [
+  {
+   "name": "alpha particle-electron mass ratio",
+   "value": 7294.29954171,
+   "uncertainty": 1.7e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "7294.299 541 71"
+  },
+  {
+   "name": "alpha particle mass",
+   "value": 6.644657345e-27,
+   "uncertainty": 2.1e-36,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "6.644 657 3450 e-27"
+  },
+  {
+   "name": "alpha particle mass energy equivalent",
+   "value": 5.9719201997e-10,
+   "uncertainty": 1.9e-19,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "5.971 920 1997 e-10"
+  },
+  {
+   "name": "alpha particle mass energy equivalent in MeV",
+   "value": 3727.3794118,
+   "uncertainty": 1.2e-06,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "3727.379 4118"
+  },
+  {
+   "name": "alpha particle mass in u",
+   "value": 4.001506179129,
+   "uncertainty": 6.2e-11,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "4.001 506 179 129"
+  },
+  {
+   "name": "alpha particle molar mass",
+   "value": 0.0040015061833,
+   "uncertainty": 1.2e-12,
+   "exact": false,
+   "unit": "kg mol^-1",
+   "value_as_printed": "4.001 506 1833 e-3"
+  },
+  {
+   "name": "alpha particle-proton mass ratio",
+   "value": 3.972599690252,
+   "uncertainty": 7e-11,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "3.972 599 690 252"
+  },
+  {
+   "name": "alpha particle relative atomic mass",
+   "value": 4.001506179129,
+   "uncertainty": 6.2e-11,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "4.001 506 179 129"
+  },
+  {
+   "name": "alpha particle rms charge radius",
+   "value": 1.6785e-15,
+   "uncertainty": 2.1e-18,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "1.6785 e-15"
+  },
+  {
+   "name": "Angstrom star",
+   "value": 1.00001495e-10,
+   "uncertainty": 9e-17,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "1.000 014 95 e-10"
+  },
+  {
+   "name": "atomic mass constant",
+   "value": 1.66053906892e-27,
+   "uncertainty": 5.2e-37,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "1.660 539 068 92 e-27"
+  },
+  {
+   "name": "atomic mass constant energy equivalent",
+   "value": 1.49241808768e-10,
+   "uncertainty": 4.6e-20,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "1.492 418 087 68 e-10"
+  },
+  {
+   "name": "atomic mass constant energy equivalent in MeV",
+   "value": 931.49410372,
+   "uncertainty": 2.9e-07,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "931.494 103 72"
+  },
+  {
+   "name": "atomic mass unit-electron volt relationship",
+   "value": 931494103.72,
+   "uncertainty": 0.29,
+   "exact": false,
+   "unit": "eV",
+   "value_as_printed": "9.314 941 0372 e8"
+  },
+  {
+   "name": "atomic mass unit-hartree relationship",
+   "value": 34231776.922,
+   "uncertainty": 0.011,
+   "exact": false,
+   "unit": "E_h",
+   "value_as_printed": "3.423 177 6922 e7"
+  },
+  {
+   "name": "atomic mass unit-hertz relationship",
+   "value": 2.25234272185e+23,
+   "uncertainty": 70000000000000.0,
+   "exact": false,
+   "unit": "Hz",
+   "value_as_printed": "2.252 342 721 85 e23"
+  },
+  {
+   "name": "atomic mass unit-inverse meter relationship",
+   "value": 751300662090000.0,
+   "uncertainty": 230000.0,
+   "exact": false,
+   "unit": "m^-1",
+   "value_as_printed": "7.513 006 6209 e14"
+  },
+  {
+   "name": "atomic mass unit-joule relationship",
+   "value": 1.49241808768e-10,
+   "uncertainty": 4.6e-20,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "1.492 418 087 68 e-10"
+  },
+  {
+   "name": "atomic mass unit-kelvin relationship",
+   "value": 10809540206700.0,
+   "uncertainty": 3400.0,
+   "exact": false,
+   "unit": "K",
+   "value_as_printed": "1.080 954 020 67 e13"
+  },
+  {
+   "name": "atomic mass unit-kilogram relationship",
+   "value": 1.66053906892e-27,
+   "uncertainty": 5.2e-37,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "1.660 539 068 92 e-27"
+  },
+  {
+   "name": "atomic unit of 1st hyperpolarizability",
+   "value": 3.2063612996e-53,
+   "uncertainty": 1.5e-62,
+   "exact": false,
+   "unit": "C^3 m^3 J^-2",
+   "value_as_printed": "3.206 361 2996 e-53"
+  },
+  {
+   "name": "atomic unit of 2nd hyperpolarizability",
+   "value": 6.2353799735e-65,
+   "uncertainty": 3.9e-74,
+   "exact": false,
+   "unit": "C^4 m^4 J^-3",
+   "value_as_printed": "6.235 379 9735 e-65"
+  },
+  {
+   "name": "atomic unit of action",
+   "value": 1.054571817e-34,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J s",
+   "value_as_printed": "1.054 571 817... e-34"
+  },
+  {
+   "name": "atomic unit of charge",
+   "value": 1.602176634e-19,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "C",
+   "value_as_printed": "1.602 176 634 e-19"
+  },
+  {
+   "name": "atomic unit of charge density",
+   "value": 1081202386770.0,
+   "uncertainty": 510.0,
+   "exact": false,
+   "unit": "C m^-3",
+   "value_as_printed": "1.081 202 386 77 e12"
+  },
+  {
+   "name": "atomic unit of current",
+   "value": 0.0066236182375082,
+   "uncertainty": 7.2e-15,
+   "exact": false,
+   "unit": "A",
+   "value_as_printed": "6.623 618 237 5082 e-3"
+  },
+  {
+   "name": "atomic unit of electric dipole mom.",
+   "value": 8.4783536198e-30,
+   "uncertainty": 1.3e-39,
+   "exact": false,
+   "unit": "C m",
+   "value_as_printed": "8.478 353 6198 e-30"
+  },
+  {
+   "name": "atomic unit of electric field",
+   "value": 514220675112.0,
+   "uncertainty": 80.0,
+   "exact": false,
+   "unit": "V m^-1",
+   "value_as_printed": "5.142 206 751 12 e11"
+  },
+  {
+   "name": "atomic unit of electric field gradient",
+   "value": 9.7173624424e+21,
+   "uncertainty": 3000000000000.0,
+   "exact": false,
+   "unit": "V m^-2",
+   "value_as_printed": "9.717 362 4424 e21"
+  },
+  {
+   "name": "atomic unit of electric polarizability",
+   "value": 1.64877727212e-41,
+   "uncertainty": 5.1e-51,
+   "exact": false,
+   "unit": "C^2 m^2 J^-1",
+   "value_as_printed": "1.648 777 272 12 e-41"
+  },
+  {
+   "name": "atomic unit of electric potential",
+   "value": 27.211386245981,
+   "uncertainty": 3e-11,
+   "exact": false,
+   "unit": "V",
+   "value_as_printed": "27.211 386 245 981"
+  },
+  {
+   "name": "atomic unit of electric quadrupole mom.",
+   "value": 4.4865515185e-40,
+   "uncertainty": 1.4e-49,
+   "exact": false,
+   "unit": "C m^2",
+   "value_as_printed": "4.486 551 5185 e-40"
+  },
+  {
+   "name": "atomic unit of energy",
+   "value": 4.359744722206e-18,
+   "uncertainty": 4.8e-30,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "4.359 744 722 2060 e-18"
+  },
+  {
+   "name": "atomic unit of force",
+   "value": 8.2387235038e-08,
+   "uncertainty": 1.3e-17,
+   "exact": false,
+   "unit": "N",
+   "value_as_printed": "8.238 723 5038 e-8"
+  },
+  {
+   "name": "atomic unit of length",
+   "value": 5.29177210544e-11,
+   "uncertainty": 8.2e-21,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "5.291 772 105 44 e-11"
+  },
+  {
+   "name": "atomic unit of mag. dipole mom.",
+   "value": 1.85480201315e-23,
+   "uncertainty": 5.8e-33,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "1.854 802 013 15 e-23"
+  },
+  {
+   "name": "atomic unit of mag. flux density",
+   "value": 235051.757077,
+   "uncertainty": 7.3e-05,
+   "exact": false,
+   "unit": "T",
+   "value_as_printed": "2.350 517 570 77 e5"
+  },
+  {
+   "name": "atomic unit of magnetizability",
+   "value": 7.8910365794e-29,
+   "uncertainty": 4.9e-38,
+   "exact": false,
+   "unit": "J T^-2",
+   "value_as_printed": "7.891 036 5794 e-29"
+  },
+  {
+   "name": "atomic unit of mass",
+   "value": 9.1093837139e-31,
+   "uncertainty": 2.8e-40,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "9.109 383 7139 e-31"
+  },
+  {
+   "name": "atomic unit of momentum",
+   "value": 1.99285191545e-24,
+   "uncertainty": 3.1e-34,
+   "exact": false,
+   "unit": "kg m s^-1",
+   "value_as_printed": "1.992 851 915 45 e-24"
+  },
+  {
+   "name": "atomic unit of permittivity",
+   "value": 1.1126500562e-10,
+   "uncertainty": 1.7e-20,
+   "exact": false,
+   "unit": "F m^-1",
+   "value_as_printed": "1.112 650 056 20 e-10"
+  },
+  {
+   "name": "atomic unit of time",
+   "value": 2.4188843265864e-17,
+   "uncertainty": 2.6e-29,
+   "exact": false,
+   "unit": "s",
+   "value_as_printed": "2.418 884 326 5864 e-17"
+  },
+  {
+   "name": "atomic unit of velocity",
+   "value": 2187691.26216,
+   "uncertainty": 0.00034,
+   "exact": false,
+   "unit": "m s^-1",
+   "value_as_printed": "2.187 691 262 16 e6"
+  },
+  {
+   "name": "Avogadro constant",
+   "value": 6.02214076e+23,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "mol^-1",
+   "value_as_printed": "6.022 140 76 e23"
+  },
+  {
+   "name": "Bohr magneton",
+   "value": 9.2740100657e-24,
+   "uncertainty": 2.9e-33,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "9.274 010 0657 e-24"
+  },
+  {
+   "name": "Bohr magneton in eV/T",
+   "value": 5.7883817982e-05,
+   "uncertainty": 1.8e-14,
+   "exact": false,
+   "unit": "eV T^-1",
+   "value_as_printed": "5.788 381 7982 e-5"
+  },
+  {
+   "name": "Bohr magneton in Hz/T",
+   "value": 13996244917.1,
+   "uncertainty": 4.4,
+   "exact": false,
+   "unit": "Hz T^-1",
+   "value_as_printed": "1.399 624 491 71 e10"
+  },
+  {
+   "name": "Bohr magneton in inverse meter per tesla",
+   "value": 46.686447719,
+   "uncertainty": 1.5e-08,
+   "exact": false,
+   "unit": "m^-1 T^-1",
+   "value_as_printed": "46.686 447 719"
+  },
+  {
+   "name": "Bohr magneton in K/T",
+   "value": 0.67171381472,
+   "uncertainty": 2.1e-10,
+   "exact": false,
+   "unit": "K T^-1",
+   "value_as_printed": "0.671 713 814 72"
+  },
+  {
+   "name": "Bohr radius",
+   "value": 5.29177210544e-11,
+   "uncertainty": 8.2e-21,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "5.291 772 105 44 e-11"
+  },
+  {
+   "name": "Boltzmann constant",
+   "value": 1.380649e-23,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J K^-1",
+   "value_as_printed": "1.380 649 e-23"
+  },
+  {
+   "name": "Boltzmann constant in eV/K",
+   "value": 8.617333262e-05,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "eV K^-1",
+   "value_as_printed": "8.617 333 262... e-5"
+  },
+  {
+   "name": "Boltzmann constant in Hz/K",
+   "value": 20836619120.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Hz K^-1",
+   "value_as_printed": "2.083 661 912... e10"
+  },
+  {
+   "name": "Boltzmann constant in inverse meter per kelvin",
+   "value": 69.50348004,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m^-1 K^-1",
+   "value_as_printed": "69.503 480 04..."
+  },
+  {
+   "name": "characteristic impedance of vacuum",
+   "value": 376.730313412,
+   "uncertainty": 5.9e-08,
+   "exact": false,
+   "unit": "ohm",
+   "value_as_printed": "376.730 313 412"
+  },
+  {
+   "name": "classical electron radius",
+   "value": 2.8179403205e-15,
+   "uncertainty": 1.3e-24,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "2.817 940 3205 e-15"
+  },
+  {
+   "name": "Compton wavelength",
+   "value": 2.42631023538e-12,
+   "uncertainty": 7.6e-22,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "2.426 310 235 38 e-12"
+  },
+  {
+   "name": "conductance quantum",
+   "value": 7.748091729e-05,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "S",
+   "value_as_printed": "7.748 091 729... e-5"
+  },
+  {
+   "name": "conventional value of ampere-90",
+   "value": 1.00000008887,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "A",
+   "value_as_printed": "1.000 000 088 87..."
+  },
+  {
+   "name": "conventional value of coulomb-90",
+   "value": 1.00000008887,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "C",
+   "value_as_printed": "1.000 000 088 87..."
+  },
+  {
+   "name": "conventional value of farad-90",
+   "value": 0.9999999822,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "F",
+   "value_as_printed": "0.999 999 982 20..."
+  },
+  {
+   "name": "conventional value of henry-90",
+   "value": 1.00000001779,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "H",
+   "value_as_printed": "1.000 000 017 79..."
+  },
+  {
+   "name": "conventional value of Josephson constant",
+   "value": 483597900000000.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Hz V^-1",
+   "value_as_printed": "483 597.9 e9"
+  },
+  {
+   "name": "conventional value of ohm-90",
+   "value": 1.00000001779,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "ohm",
+   "value_as_printed": "1.000 000 017 79..."
+  },
+  {
+   "name": "conventional value of volt-90",
+   "value": 1.00000010666,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "V",
+   "value_as_printed": "1.000 000 106 66..."
+  },
+  {
+   "name": "conventional value of von Klitzing constant",
+   "value": 25812.807,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "ohm",
+   "value_as_printed": "25 812.807"
+  },
+  {
+   "name": "conventional value of watt-90",
+   "value": 1.00000019553,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "W",
+   "value_as_printed": "1.000 000 195 53..."
+  },
+  {
+   "name": "Copper x unit",
+   "value": 1.00207697e-13,
+   "uncertainty": 2.8e-20,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "1.002 076 97 e-13"
+  },
+  {
+   "name": "deuteron-electron mag. mom. ratio",
+   "value": -0.000466434555,
+   "uncertainty": 1.2e-12,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-4.664 345 550 e-4"
+  },
+  {
+   "name": "deuteron-electron mass ratio",
+   "value": 3670.482967655,
+   "uncertainty": 6.3e-08,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "3670.482 967 655"
+  },
+  {
+   "name": "deuteron g factor",
+   "value": 0.8574382335,
+   "uncertainty": 2.2e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "0.857 438 2335"
+  },
+  {
+   "name": "deuteron mag. mom.",
+   "value": 4.330735087e-27,
+   "uncertainty": 1.1e-35,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "4.330 735 087 e-27"
+  },
+  {
+   "name": "deuteron mag. mom. to Bohr magneton ratio",
+   "value": 0.0004669754568,
+   "uncertainty": 1.2e-12,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "4.669 754 568 e-4"
+  },
+  {
+   "name": "deuteron mag. mom. to nuclear magneton ratio",
+   "value": 0.8574382335,
+   "uncertainty": 2.2e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "0.857 438 2335"
+  },
+  {
+   "name": "deuteron mass",
+   "value": 3.3435837768e-27,
+   "uncertainty": 1e-36,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "3.343 583 7768 e-27"
+  },
+  {
+   "name": "deuteron mass energy equivalent",
+   "value": 3.00506323491e-10,
+   "uncertainty": 9.4e-20,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "3.005 063 234 91 e-10"
+  },
+  {
+   "name": "deuteron mass energy equivalent in MeV",
+   "value": 1875.612945,
+   "uncertainty": 5.8e-07,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "1875.612 945 00"
+  },
+  {
+   "name": "deuteron mass in u",
+   "value": 2.013553212544,
+   "uncertainty": 1.5e-11,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "2.013 553 212 544"
+  },
+  {
+   "name": "deuteron molar mass",
+   "value": 0.00201355321466,
+   "uncertainty": 6.3e-13,
+   "exact": false,
+   "unit": "kg mol^-1",
+   "value_as_printed": "2.013 553 214 66 e-3"
+  },
+  {
+   "name": "deuteron-neutron mag. mom. ratio",
+   "value": -0.44820652,
+   "uncertainty": 1.1e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-0.448 206 52"
+  },
+  {
+   "name": "deuteron-proton mag. mom. ratio",
+   "value": 0.3070122093,
+   "uncertainty": 7.9e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "0.307 012 209 30"
+  },
+  {
+   "name": "deuteron-proton mass ratio",
+   "value": 1.9990075012699,
+   "uncertainty": 8.4e-12,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.999 007 501 2699"
+  },
+  {
+   "name": "deuteron relative atomic mass",
+   "value": 2.013553212544,
+   "uncertainty": 1.5e-11,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "2.013 553 212 544"
+  },
+  {
+   "name": "deuteron rms charge radius",
+   "value": 2.12778e-15,
+   "uncertainty": 2.7e-19,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "2.127 78 e-15"
+  },
+  {
+   "name": "electron charge to mass quotient",
+   "value": -175882000838.0,
+   "uncertainty": 55.0,
+   "exact": false,
+   "unit": "C kg^-1",
+   "value_as_printed": "-1.758 820 008 38 e11"
+  },
+  {
+   "name": "electron-deuteron mag. mom. ratio",
+   "value": -2143.9234921,
+   "uncertainty": 5.6e-06,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-2143.923 4921"
+  },
+  {
+   "name": "electron-deuteron mass ratio",
+   "value": 0.0002724437107629,
+   "uncertainty": 4.7e-15,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "2.724 437 107 629 e-4"
+  },
+  {
+   "name": "electron g factor",
+   "value": -2.00231930436092,
+   "uncertainty": 3.6e-13,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-2.002 319 304 360 92"
+  },
+  {
+   "name": "electron gyromag. ratio",
+   "value": 176085962784.0,
+   "uncertainty": 55.0,
+   "exact": false,
+   "unit": "s^-1 T^-1",
+   "value_as_printed": "1.760 859 627 84 e11"
+  },
+  {
+   "name": "electron gyromag. ratio in MHz/T",
+   "value": 28024.9513861,
+   "uncertainty": 8.7e-06,
+   "exact": false,
+   "unit": "MHz T^-1",
+   "value_as_printed": "28 024.951 3861"
+  },
+  {
+   "name": "electron-helion mass ratio",
+   "value": 0.0001819543074649,
+   "uncertainty": 5.3e-15,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.819 543 074 649 e-4"
+  },
+  {
+   "name": "electron mag. mom.",
+   "value": -9.2847646917e-24,
+   "uncertainty": 2.9e-33,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "-9.284 764 6917 e-24"
+  },
+  {
+   "name": "electron mag. mom. anomaly",
+   "value": 0.00115965218046,
+   "uncertainty": 1.8e-13,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.159 652 180 46 e-3"
+  },
+  {
+   "name": "electron mag. mom. to Bohr magneton ratio",
+   "value": -1.00115965218046,
+   "uncertainty": 1.8e-13,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-1.001 159 652 180 46"
+  },
+  {
+   "name": "electron mag. mom. to nuclear magneton ratio",
+   "value": -1838.281971877,
+   "uncertainty": 3.2e-08,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-1838.281 971 877"
+  },
+  {
+   "name": "electron mass",
+   "value": 9.1093837139e-31,
+   "uncertainty": 2.8e-40,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "9.109 383 7139 e-31"
+  },
+  {
+   "name": "electron mass energy equivalent",
+   "value": 8.187105788e-14,
+   "uncertainty": 2.6e-23,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "8.187 105 7880 e-14"
+  },
+  {
+   "name": "electron mass energy equivalent in MeV",
+   "value": 0.51099895069,
+   "uncertainty": 1.6e-10,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "0.510 998 950 69"
+  },
+  {
+   "name": "electron mass in u",
+   "value": 0.0005485799090441,
+   "uncertainty": 9.7e-15,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "5.485 799 090 441 e-4"
+  },
+  {
+   "name": "electron molar mass",
+   "value": 5.4857990962e-07,
+   "uncertainty": 1.7e-16,
+   "exact": false,
+   "unit": "kg mol^-1",
+   "value_as_printed": "5.485 799 0962 e-7"
+  },
+  {
+   "name": "electron-muon mag. mom. ratio",
+   "value": 206.7669881,
+   "uncertainty": 4.6e-06,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "206.766 9881"
+  },
+  {
+   "name": "electron-muon mass ratio",
+   "value": 0.0048363317,
+   "uncertainty": 1.1e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "4.836 331 70 e-3"
+  },
+  {
+   "name": "electron-neutron mag. mom. ratio",
+   "value": 960.92048,
+   "uncertainty": 0.00023,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "960.920 48"
+  },
+  {
+   "name": "electron-neutron mass ratio",
+   "value": 0.00054386734416,
+   "uncertainty": 2.2e-13,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "5.438 673 4416 e-4"
+  },
+  {
+   "name": "electron-proton mag. mom. ratio",
+   "value": -658.21068789,
+   "uncertainty": 1.9e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-658.210 687 89"
+  },
+  {
+   "name": "electron-proton mass ratio",
+   "value": 0.0005446170214889,
+   "uncertainty": 9.4e-15,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "5.446 170 214 889 e-4"
+  },
+  {
+   "name": "electron relative atomic mass",
+   "value": 0.0005485799090441,
+   "uncertainty": 9.7e-15,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "5.485 799 090 441 e-4"
+  },
+  {
+   "name": "electron-tau mass ratio",
+   "value": 0.000287585,
+   "uncertainty": 1.9e-08,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "2.875 85 e-4"
+  },
+  {
+   "name": "electron to alpha particle mass ratio",
+   "value": 0.0001370933554733,
+   "uncertainty": 3.2e-15,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.370 933 554 733 e-4"
+  },
+  {
+   "name": "electron to shielded helion mag. mom. ratio",
+   "value": 864.05823986,
+   "uncertainty": 7e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "864.058 239 86"
+  },
+  {
+   "name": "electron to shielded proton mag. mom. ratio",
+   "value": -658.2275856,
+   "uncertainty": 2.7e-06,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-658.227 5856"
+  },
+  {
+   "name": "electron-triton mass ratio",
+   "value": 0.0001819200062327,
+   "uncertainty": 6.8e-15,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.819 200 062 327 e-4"
+  },
+  {
+   "name": "electron volt",
+   "value": 1.602176634e-19,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J",
+   "value_as_printed": "1.602 176 634 e-19"
+  },
+  {
+   "name": "electron volt-atomic mass unit relationship",
+   "value": 1.07354410083e-09,
+   "uncertainty": 3.3e-19,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "1.073 544 100 83 e-9"
+  },
+  {
+   "name": "electron volt-hartree relationship",
+   "value": 0.036749322175665,
+   "uncertainty": 4e-14,
+   "exact": false,
+   "unit": "E_h",
+   "value_as_printed": "3.674 932 217 5665 e-2"
+  },
+  {
+   "name": "electron volt-hertz relationship",
+   "value": 241798924200000.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Hz",
+   "value_as_printed": "2.417 989 242... e14"
+  },
+  {
+   "name": "electron volt-inverse meter relationship",
+   "value": 806554.3937,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m^-1",
+   "value_as_printed": "8.065 543 937... e5"
+  },
+  {
+   "name": "electron volt-joule relationship",
+   "value": 1.602176634e-19,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J",
+   "value_as_printed": "1.602 176 634 e-19"
+  },
+  {
+   "name": "electron volt-kelvin relationship",
+   "value": 11604.51812,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "K",
+   "value_as_printed": "1.160 451 812... e4"
+  },
+  {
+   "name": "electron volt-kilogram relationship",
+   "value": 1.782661921e-36,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "kg",
+   "value_as_printed": "1.782 661 921... e-36"
+  },
+  {
+   "name": "elementary charge",
+   "value": 1.602176634e-19,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "C",
+   "value_as_printed": "1.602 176 634 e-19"
+  },
+  {
+   "name": "elementary charge over h-bar",
+   "value": 1519267447000000.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "A J^-1",
+   "value_as_printed": "1.519 267 447... e15"
+  },
+  {
+   "name": "Faraday constant",
+   "value": 96485.33212,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "C mol^-1",
+   "value_as_printed": "96 485.332 12..."
+  },
+  {
+   "name": "Fermi coupling constant",
+   "value": 1.1663787e-05,
+   "uncertainty": 6e-12,
+   "exact": false,
+   "unit": "GeV^-2",
+   "value_as_printed": "1.166 3787 e-5"
+  },
+  {
+   "name": "fine-structure constant",
+   "value": 0.0072973525643,
+   "uncertainty": 1.1e-12,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "7.297 352 5643 e-3"
+  },
+  {
+   "name": "first radiation constant",
+   "value": 3.741771852e-16,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "W m^2",
+   "value_as_printed": "3.741 771 852... e-16"
+  },
+  {
+   "name": "first radiation constant for spectral radiance",
+   "value": 1.191042972e-16,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "W m^2 sr^-1",
+   "value_as_printed": "1.191 042 972... e-16"
+  },
+  {
+   "name": "hartree-atomic mass unit relationship",
+   "value": 2.92126231797e-08,
+   "uncertainty": 9.1e-18,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "2.921 262 317 97 e-8"
+  },
+  {
+   "name": "hartree-electron volt relationship",
+   "value": 27.211386245981,
+   "uncertainty": 3e-11,
+   "exact": false,
+   "unit": "eV",
+   "value_as_printed": "27.211 386 245 981"
+  },
+  {
+   "name": "Hartree energy",
+   "value": 4.359744722206e-18,
+   "uncertainty": 4.8e-30,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "4.359 744 722 2060 e-18"
+  },
+  {
+   "name": "Hartree energy in eV",
+   "value": 27.211386245981,
+   "uncertainty": 3e-11,
+   "exact": false,
+   "unit": "eV",
+   "value_as_printed": "27.211 386 245 981"
+  },
+  {
+   "name": "hartree-hertz relationship",
+   "value": 6579683920499900.0,
+   "uncertainty": 7200.0,
+   "exact": false,
+   "unit": "Hz",
+   "value_as_printed": "6.579 683 920 4999 e15"
+  },
+  {
+   "name": "hartree-inverse meter relationship",
+   "value": 21947463.136314,
+   "uncertainty": 2.4e-05,
+   "exact": false,
+   "unit": "m^-1",
+   "value_as_printed": "2.194 746 313 6314 e7"
+  },
+  {
+   "name": "hartree-joule relationship",
+   "value": 4.359744722206e-18,
+   "uncertainty": 4.8e-30,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "4.359 744 722 2060 e-18"
+  },
+  {
+   "name": "hartree-kelvin relationship",
+   "value": 315775.02480398,
+   "uncertainty": 3.4e-07,
+   "exact": false,
+   "unit": "K",
+   "value_as_printed": "3.157 750 248 0398 e5"
+  },
+  {
+   "name": "hartree-kilogram relationship",
+   "value": 4.8508702095419e-35,
+   "uncertainty": 5.3e-47,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "4.850 870 209 5419 e-35"
+  },
+  {
+   "name": "helion-electron mass ratio",
+   "value": 5495.88527984,
+   "uncertainty": 1.6e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "5495.885 279 84"
+  },
+  {
+   "name": "helion g factor",
+   "value": -4.2552506995,
+   "uncertainty": 3.4e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-4.255 250 6995"
+  },
+  {
+   "name": "helion mag. mom.",
+   "value": -1.07461755198e-26,
+   "uncertainty": 9.3e-36,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "-1.074 617 551 98 e-26"
+  },
+  {
+   "name": "helion mag. mom. to Bohr magneton ratio",
+   "value": -0.00115874098083,
+   "uncertainty": 9.4e-13,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-1.158 740 980 83 e-3"
+  },
+  {
+   "name": "helion mag. mom. to nuclear magneton ratio",
+   "value": -2.1276253498,
+   "uncertainty": 1.7e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-2.127 625 3498"
+  },
+  {
+   "name": "helion mass",
+   "value": 5.0064127862e-27,
+   "uncertainty": 1.6e-36,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "5.006 412 7862 e-27"
+  },
+  {
+   "name": "helion mass energy equivalent",
+   "value": 4.4995394185e-10,
+   "uncertainty": 1.4e-19,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "4.499 539 4185 e-10"
+  },
+  {
+   "name": "helion mass energy equivalent in MeV",
+   "value": 2808.39161112,
+   "uncertainty": 8.8e-07,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "2808.391 611 12"
+  },
+  {
+   "name": "helion mass in u",
+   "value": 3.014932246932,
+   "uncertainty": 7.4e-11,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "3.014 932 246 932"
+  },
+  {
+   "name": "helion molar mass",
+   "value": 0.0030149322501,
+   "uncertainty": 9.4e-13,
+   "exact": false,
+   "unit": "kg mol^-1",
+   "value_as_printed": "3.014 932 250 10 e-3"
+  },
+  {
+   "name": "helion-proton mass ratio",
+   "value": 2.993152671552,
+   "uncertainty": 7e-11,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "2.993 152 671 552"
+  },
+  {
+   "name": "helion relative atomic mass",
+   "value": 3.014932246932,
+   "uncertainty": 7.4e-11,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "3.014 932 246 932"
+  },
+  {
+   "name": "helion shielding shift",
+   "value": 5.9967029e-05,
+   "uncertainty": 2.3e-11,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "5.996 7029 e-5"
+  },
+  {
+   "name": "hertz-atomic mass unit relationship",
+   "value": 4.439821659e-24,
+   "uncertainty": 1.4e-33,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "4.439 821 6590 e-24"
+  },
+  {
+   "name": "hertz-electron volt relationship",
+   "value": 4.135667696e-15,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "eV",
+   "value_as_printed": "4.135 667 696... e-15"
+  },
+  {
+   "name": "hertz-hartree relationship",
+   "value": 1.5198298460574e-16,
+   "uncertainty": 1.7e-28,
+   "exact": false,
+   "unit": "E_h",
+   "value_as_printed": "1.519 829 846 0574 e-16"
+  },
+  {
+   "name": "hertz-inverse meter relationship",
+   "value": 3.335640951e-09,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m^-1",
+   "value_as_printed": "3.335 640 951... e-9"
+  },
+  {
+   "name": "hertz-joule relationship",
+   "value": 6.62607015e-34,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J",
+   "value_as_printed": "6.626 070 15 e-34"
+  },
+  {
+   "name": "hertz-kelvin relationship",
+   "value": 4.799243073e-11,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "K",
+   "value_as_printed": "4.799 243 073... e-11"
+  },
+  {
+   "name": "hertz-kilogram relationship",
+   "value": 7.372497323e-51,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "kg",
+   "value_as_printed": "7.372 497 323... e-51"
+  },
+  {
+   "name": "hyperfine transition frequency of Cs-133",
+   "value": 9192631770.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Hz",
+   "value_as_printed": "9 192 631 770"
+  },
+  {
+   "name": "inverse fine-structure constant",
+   "value": 137.035999177,
+   "uncertainty": 2.1e-08,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "137.035 999 177"
+  },
+  {
+   "name": "inverse meter-atomic mass unit relationship",
+   "value": 1.33102504824e-15,
+   "uncertainty": 4.1e-25,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "1.331 025 048 24 e-15"
+  },
+  {
+   "name": "inverse meter-electron volt relationship",
+   "value": 1.239841984e-06,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "eV",
+   "value_as_printed": "1.239 841 984... e-6"
+  },
+  {
+   "name": "inverse meter-hartree relationship",
+   "value": 4.5563352529132e-08,
+   "uncertainty": 5e-20,
+   "exact": false,
+   "unit": "E_h",
+   "value_as_printed": "4.556 335 252 9132 e-8"
+  },
+  {
+   "name": "inverse meter-hertz relationship",
+   "value": 299792458.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Hz",
+   "value_as_printed": "299 792 458"
+  },
+  {
+   "name": "inverse meter-joule relationship",
+   "value": 1.986445857e-25,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J",
+   "value_as_printed": "1.986 445 857... e-25"
+  },
+  {
+   "name": "inverse meter-kelvin relationship",
+   "value": 0.01438776877,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "K",
+   "value_as_printed": "1.438 776 877... e-2"
+  },
+  {
+   "name": "inverse meter-kilogram relationship",
+   "value": 2.210219094e-42,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "kg",
+   "value_as_printed": "2.210 219 094... e-42"
+  },
+  {
+   "name": "inverse of conductance quantum",
+   "value": 12906.40372,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "ohm",
+   "value_as_printed": "12 906.403 72..."
+  },
+  {
+   "name": "Josephson constant",
+   "value": 483597848400000.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Hz V^-1",
+   "value_as_printed": "483 597.848 4... e9"
+  },
+  {
+   "name": "joule-atomic mass unit relationship",
+   "value": 6700535247.1,
+   "uncertainty": 2.1,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "6.700 535 2471 e9"
+  },
+  {
+   "name": "joule-electron volt relationship",
+   "value": 6.241509074e+18,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "eV",
+   "value_as_printed": "6.241 509 074... e18"
+  },
+  {
+   "name": "joule-hartree relationship",
+   "value": 2.2937122783969e+17,
+   "uncertainty": 250000.0,
+   "exact": false,
+   "unit": "E_h",
+   "value_as_printed": "2.293 712 278 3969 e17"
+  },
+  {
+   "name": "joule-hertz relationship",
+   "value": 1.509190179e+33,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Hz",
+   "value_as_printed": "1.509 190 179... e33"
+  },
+  {
+   "name": "joule-inverse meter relationship",
+   "value": 5.034116567e+24,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m^-1",
+   "value_as_printed": "5.034 116 567... e24"
+  },
+  {
+   "name": "joule-kelvin relationship",
+   "value": 7.242970516e+22,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "K",
+   "value_as_printed": "7.242 970 516... e22"
+  },
+  {
+   "name": "joule-kilogram relationship",
+   "value": 1.112650056e-17,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "kg",
+   "value_as_printed": "1.112 650 056... e-17"
+  },
+  {
+   "name": "kelvin-atomic mass unit relationship",
+   "value": 9.2510872884e-14,
+   "uncertainty": 2.9e-23,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "9.251 087 2884 e-14"
+  },
+  {
+   "name": "kelvin-electron volt relationship",
+   "value": 8.617333262e-05,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "eV",
+   "value_as_printed": "8.617 333 262... e-5"
+  },
+  {
+   "name": "kelvin-hartree relationship",
+   "value": 3.1668115634564e-06,
+   "uncertainty": 3.5e-18,
+   "exact": false,
+   "unit": "E_h",
+   "value_as_printed": "3.166 811 563 4564 e-6"
+  },
+  {
+   "name": "kelvin-hertz relationship",
+   "value": 20836619120.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Hz",
+   "value_as_printed": "2.083 661 912... e10"
+  },
+  {
+   "name": "kelvin-inverse meter relationship",
+   "value": 69.50348004,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m^-1",
+   "value_as_printed": "69.503 480 04..."
+  },
+  {
+   "name": "kelvin-joule relationship",
+   "value": 1.380649e-23,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J",
+   "value_as_printed": "1.380 649 e-23"
+  },
+  {
+   "name": "kelvin-kilogram relationship",
+   "value": 1.536179187e-40,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "kg",
+   "value_as_printed": "1.536 179 187... e-40"
+  },
+  {
+   "name": "kilogram-atomic mass unit relationship",
+   "value": 6.0221407537e+26,
+   "uncertainty": 1.9e+17,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "6.022 140 7537 e26"
+  },
+  {
+   "name": "kilogram-electron volt relationship",
+   "value": 5.609588603e+35,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "eV",
+   "value_as_printed": "5.609 588 603... e35"
+  },
+  {
+   "name": "kilogram-hartree relationship",
+   "value": 2.0614857887415e+34,
+   "uncertainty": 2.2e+22,
+   "exact": false,
+   "unit": "E_h",
+   "value_as_printed": "2.061 485 788 7415 e34"
+  },
+  {
+   "name": "kilogram-hertz relationship",
+   "value": 1.356392489e+50,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Hz",
+   "value_as_printed": "1.356 392 489... e50"
+  },
+  {
+   "name": "kilogram-inverse meter relationship",
+   "value": 4.524438335e+41,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m^-1",
+   "value_as_printed": "4.524 438 335... e41"
+  },
+  {
+   "name": "kilogram-joule relationship",
+   "value": 8.987551787e+16,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J",
+   "value_as_printed": "8.987 551 787... e16"
+  },
+  {
+   "name": "kilogram-kelvin relationship",
+   "value": 6.50965726e+39,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "K",
+   "value_as_printed": "6.509 657 260... e39"
+  },
+  {
+   "name": "lattice parameter of silicon",
+   "value": 5.431020511e-10,
+   "uncertainty": 8.9e-18,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "5.431 020 511 e-10"
+  },
+  {
+   "name": "lattice spacing of ideal Si (220)",
+   "value": 1.920155716e-10,
+   "uncertainty": 3.2e-18,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "1.920 155 716 e-10"
+  },
+  {
+   "name": "Loschmidt constant (273.15 K, 100 kPa)",
+   "value": 2.651645804e+25,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m^-3",
+   "value_as_printed": "2.651 645 804... e25"
+  },
+  {
+   "name": "Loschmidt constant (273.15 K, 101.325 kPa)",
+   "value": 2.686780111e+25,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m^-3",
+   "value_as_printed": "2.686 780 111... e25"
+  },
+  {
+   "name": "luminous efficacy",
+   "value": 683.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "lm W^-1",
+   "value_as_printed": "683"
+  },
+  {
+   "name": "mag. flux quantum",
+   "value": 2.067833848e-15,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Wb",
+   "value_as_printed": "2.067 833 848... e-15"
+  },
+  {
+   "name": "molar gas constant",
+   "value": 8.314462618,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J mol^-1 K^-1",
+   "value_as_printed": "8.314 462 618..."
+  },
+  {
+   "name": "molar mass constant",
+   "value": 0.00100000000105,
+   "uncertainty": 3.1e-13,
+   "exact": false,
+   "unit": "kg mol^-1",
+   "value_as_printed": "1.000 000 001 05 e-3"
+  },
+  {
+   "name": "molar mass of carbon-12",
+   "value": 0.0120000000126,
+   "uncertainty": 3.7e-12,
+   "exact": false,
+   "unit": "kg mol^-1",
+   "value_as_printed": "12.000 000 0126 e-3"
+  },
+  {
+   "name": "molar Planck constant",
+   "value": 3.990312712e-10,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J Hz^-1 mol^-1",
+   "value_as_printed": "3.990 312 712... e-10"
+  },
+  {
+   "name": "molar volume of ideal gas (273.15 K, 100 kPa)",
+   "value": 0.02271095464,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m^3 mol^-1",
+   "value_as_printed": "22.710 954 64... e-3"
+  },
+  {
+   "name": "molar volume of ideal gas (273.15 K, 101.325 kPa)",
+   "value": 0.02241396954,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m^3 mol^-1",
+   "value_as_printed": "22.413 969 54... e-3"
+  },
+  {
+   "name": "molar volume of silicon",
+   "value": 1.205883199e-05,
+   "uncertainty": 6e-13,
+   "exact": false,
+   "unit": "m^3 mol^-1",
+   "value_as_printed": "1.205 883 199 e-5"
+  },
+  {
+   "name": "Molybdenum x unit",
+   "value": 1.00209952e-13,
+   "uncertainty": 5.3e-20,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "1.002 099 52 e-13"
+  },
+  {
+   "name": "muon Compton wavelength",
+   "value": 1.17344411e-14,
+   "uncertainty": 2.6e-22,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "1.173 444 110 e-14"
+  },
+  {
+   "name": "muon-electron mass ratio",
+   "value": 206.7682827,
+   "uncertainty": 4.6e-06,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "206.768 2827"
+  },
+  {
+   "name": "muon g factor",
+   "value": -2.00233184123,
+   "uncertainty": 8.2e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-2.002 331 841 23"
+  },
+  {
+   "name": "muon mag. mom.",
+   "value": -4.4904483e-26,
+   "uncertainty": 1e-33,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "-4.490 448 30 e-26"
+  },
+  {
+   "name": "muon mag. mom. anomaly",
+   "value": 0.00116592062,
+   "uncertainty": 4.1e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.165 920 62 e-3"
+  },
+  {
+   "name": "muon mag. mom. to Bohr magneton ratio",
+   "value": -0.00484197048,
+   "uncertainty": 1.1e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-4.841 970 48 e-3"
+  },
+  {
+   "name": "muon mag. mom. to nuclear magneton ratio",
+   "value": -8.89059704,
+   "uncertainty": 2e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-8.890 597 04"
+  },
+  {
+   "name": "muon mass",
+   "value": 1.883531627e-28,
+   "uncertainty": 4.2e-36,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "1.883 531 627 e-28"
+  },
+  {
+   "name": "muon mass energy equivalent",
+   "value": 1.692833804e-11,
+   "uncertainty": 3.8e-19,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "1.692 833 804 e-11"
+  },
+  {
+   "name": "muon mass energy equivalent in MeV",
+   "value": 105.6583755,
+   "uncertainty": 2.3e-06,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "105.658 3755"
+  },
+  {
+   "name": "muon mass in u",
+   "value": 0.1134289257,
+   "uncertainty": 2.5e-09,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "0.113 428 9257"
+  },
+  {
+   "name": "muon molar mass",
+   "value": 0.0001134289258,
+   "uncertainty": 2.5e-12,
+   "exact": false,
+   "unit": "kg mol^-1",
+   "value_as_printed": "1.134 289 258 e-4"
+  },
+  {
+   "name": "muon-neutron mass ratio",
+   "value": 0.1124545168,
+   "uncertainty": 2.5e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "0.112 454 5168"
+  },
+  {
+   "name": "muon-proton mag. mom. ratio",
+   "value": -3.183345146,
+   "uncertainty": 7.1e-08,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-3.183 345 146"
+  },
+  {
+   "name": "muon-proton mass ratio",
+   "value": 0.1126095262,
+   "uncertainty": 2.5e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "0.112 609 5262"
+  },
+  {
+   "name": "muon-tau mass ratio",
+   "value": 0.0594635,
+   "uncertainty": 4e-06,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "5.946 35 e-2"
+  },
+  {
+   "name": "natural unit of action",
+   "value": 1.054571817e-34,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J s",
+   "value_as_printed": "1.054 571 817... e-34"
+  },
+  {
+   "name": "natural unit of action in eV s",
+   "value": 6.582119569e-16,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "eV s",
+   "value_as_printed": "6.582 119 569... e-16"
+  },
+  {
+   "name": "natural unit of energy",
+   "value": 8.187105788e-14,
+   "uncertainty": 2.6e-23,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "8.187 105 7880 e-14"
+  },
+  {
+   "name": "natural unit of energy in MeV",
+   "value": 0.51099895069,
+   "uncertainty": 1.6e-10,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "0.510 998 950 69"
+  },
+  {
+   "name": "natural unit of length",
+   "value": 3.8615926744e-13,
+   "uncertainty": 1.2e-22,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "3.861 592 6744 e-13"
+  },
+  {
+   "name": "natural unit of mass",
+   "value": 9.1093837139e-31,
+   "uncertainty": 2.8e-40,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "9.109 383 7139 e-31"
+  },
+  {
+   "name": "natural unit of momentum",
+   "value": 2.73092453446e-22,
+   "uncertainty": 8.5e-32,
+   "exact": false,
+   "unit": "kg m s^-1",
+   "value_as_printed": "2.730 924 534 46 e-22"
+  },
+  {
+   "name": "natural unit of momentum in MeV/c",
+   "value": 0.51099895069,
+   "uncertainty": 1.6e-10,
+   "exact": false,
+   "unit": "MeV/c",
+   "value_as_printed": "0.510 998 950 69"
+  },
+  {
+   "name": "natural unit of time",
+   "value": 1.28808866644e-21,
+   "uncertainty": 4e-31,
+   "exact": false,
+   "unit": "s",
+   "value_as_printed": "1.288 088 666 44 e-21"
+  },
+  {
+   "name": "natural unit of velocity",
+   "value": 299792458.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m s^-1",
+   "value_as_printed": "299 792 458"
+  },
+  {
+   "name": "neutron Compton wavelength",
+   "value": 1.31959090382e-15,
+   "uncertainty": 6.7e-25,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "1.319 590 903 82 e-15"
+  },
+  {
+   "name": "neutron-electron mag. mom. ratio",
+   "value": 0.00104066884,
+   "uncertainty": 2.4e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.040 668 84 e-3"
+  },
+  {
+   "name": "neutron-electron mass ratio",
+   "value": 1838.683662,
+   "uncertainty": 7.4e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1838.683 662 00"
+  },
+  {
+   "name": "neutron g factor",
+   "value": -3.82608552,
+   "uncertainty": 9e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-3.826 085 52"
+  },
+  {
+   "name": "neutron gyromag. ratio",
+   "value": 183247174.0,
+   "uncertainty": 43.0,
+   "exact": false,
+   "unit": "s^-1 T^-1",
+   "value_as_printed": "1.832 471 74 e8"
+  },
+  {
+   "name": "neutron gyromag. ratio in MHz/T",
+   "value": 29.1646935,
+   "uncertainty": 6.9e-06,
+   "exact": false,
+   "unit": "MHz T^-1",
+   "value_as_printed": "29.164 6935"
+  },
+  {
+   "name": "neutron mag. mom.",
+   "value": -9.6623653e-27,
+   "uncertainty": 2.3e-33,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "-9.662 3653 e-27"
+  },
+  {
+   "name": "neutron mag. mom. to Bohr magneton ratio",
+   "value": -0.00104187565,
+   "uncertainty": 2.5e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-1.041 875 65 e-3"
+  },
+  {
+   "name": "neutron mag. mom. to nuclear magneton ratio",
+   "value": -1.91304276,
+   "uncertainty": 4.5e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-1.913 042 76"
+  },
+  {
+   "name": "neutron mass",
+   "value": 1.67492750056e-27,
+   "uncertainty": 8.5e-37,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "1.674 927 500 56 e-27"
+  },
+  {
+   "name": "neutron mass energy equivalent",
+   "value": 1.50534976514e-10,
+   "uncertainty": 7.6e-20,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "1.505 349 765 14 e-10"
+  },
+  {
+   "name": "neutron mass energy equivalent in MeV",
+   "value": 939.56542194,
+   "uncertainty": 4.8e-07,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "939.565 421 94"
+  },
+  {
+   "name": "neutron mass in u",
+   "value": 1.00866491606,
+   "uncertainty": 4e-10,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "1.008 664 916 06"
+  },
+  {
+   "name": "neutron molar mass",
+   "value": 0.00100866491712,
+   "uncertainty": 5.1e-13,
+   "exact": false,
+   "unit": "kg mol^-1",
+   "value_as_printed": "1.008 664 917 12 e-3"
+  },
+  {
+   "name": "neutron-muon mass ratio",
+   "value": 8.89248408,
+   "uncertainty": 2e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "8.892 484 08"
+  },
+  {
+   "name": "neutron-proton mag. mom. ratio",
+   "value": -0.68497935,
+   "uncertainty": 1.6e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-0.684 979 35"
+  },
+  {
+   "name": "neutron-proton mass difference",
+   "value": 2.30557461e-30,
+   "uncertainty": 6.7e-37,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "2.305 574 61 e-30"
+  },
+  {
+   "name": "neutron-proton mass difference energy equivalent",
+   "value": 2.07214712e-13,
+   "uncertainty": 6e-20,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "2.072 147 12 e-13"
+  },
+  {
+   "name": "neutron-proton mass difference energy equivalent in MeV",
+   "value": 1.29333251,
+   "uncertainty": 3.8e-07,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "1.293 332 51"
+  },
+  {
+   "name": "neutron-proton mass difference in u",
+   "value": 0.00138844948,
+   "uncertainty": 4e-10,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "1.388 449 48 e-3"
+  },
+  {
+   "name": "neutron-proton mass ratio",
+   "value": 1.00137841946,
+   "uncertainty": 4e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.001 378 419 46"
+  },
+  {
+   "name": "neutron relative atomic mass",
+   "value": 1.00866491606,
+   "uncertainty": 4e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.008 664 916 06"
+  },
+  {
+   "name": "neutron-tau mass ratio",
+   "value": 0.528779,
+   "uncertainty": 3.6e-05,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "0.528 779"
+  },
+  {
+   "name": "neutron to shielded proton mag. mom. ratio",
+   "value": -0.68499694,
+   "uncertainty": 1.6e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-0.684 996 94"
+  },
+  {
+   "name": "Newtonian constant of gravitation",
+   "value": 6.6743e-11,
+   "uncertainty": 1.5e-15,
+   "exact": false,
+   "unit": "m^3 kg^-1 s^-2",
+   "value_as_printed": "6.674 30 e-11"
+  },
+  {
+   "name": "Newtonian constant of gravitation over h-bar c",
+   "value": 6.70883e-39,
+   "uncertainty": 1.5e-43,
+   "exact": false,
+   "unit": "(GeV/c^2)^-2",
+   "value_as_printed": "6.708 83 e-39"
+  },
+  {
+   "name": "nuclear magneton",
+   "value": 5.0507837393e-27,
+   "uncertainty": 1.6e-36,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "5.050 783 7393 e-27"
+  },
+  {
+   "name": "nuclear magneton in eV/T",
+   "value": 3.15245125417e-08,
+   "uncertainty": 9.8e-18,
+   "exact": false,
+   "unit": "eV T^-1",
+   "value_as_printed": "3.152 451 254 17 e-8"
+  },
+  {
+   "name": "nuclear magneton in inverse meter per tesla",
+   "value": 0.0254262341009,
+   "uncertainty": 7.9e-12,
+   "exact": false,
+   "unit": "m^-1 T^-1",
+   "value_as_printed": "2.542 623 410 09 e-2"
+  },
+  {
+   "name": "nuclear magneton in K/T",
+   "value": 0.00036582677706,
+   "uncertainty": 1.1e-13,
+   "exact": false,
+   "unit": "K T^-1",
+   "value_as_printed": "3.658 267 7706 e-4"
+  },
+  {
+   "name": "nuclear magneton in MHz/T",
+   "value": 7.6225932188,
+   "uncertainty": 2.4e-09,
+   "exact": false,
+   "unit": "MHz T^-1",
+   "value_as_printed": "7.622 593 2188"
+  },
+  {
+   "name": "Planck constant",
+   "value": 6.62607015e-34,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J Hz^-1",
+   "value_as_printed": "6.626 070 15 e-34"
+  },
+  {
+   "name": "Planck constant in eV/Hz",
+   "value": 4.135667696e-15,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "eV Hz^-1",
+   "value_as_printed": "4.135 667 696... e-15"
+  },
+  {
+   "name": "Planck length",
+   "value": 1.616255e-35,
+   "uncertainty": 1.8e-40,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "1.616 255 e-35"
+  },
+  {
+   "name": "Planck mass",
+   "value": 2.176434e-08,
+   "uncertainty": 2.4e-13,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "2.176 434 e-8"
+  },
+  {
+   "name": "Planck mass energy equivalent in GeV",
+   "value": 1.22089e+19,
+   "uncertainty": 140000000000000.0,
+   "exact": false,
+   "unit": "GeV",
+   "value_as_printed": "1.220 890 e19"
+  },
+  {
+   "name": "Planck temperature",
+   "value": 1.416784e+32,
+   "uncertainty": 1.6e+27,
+   "exact": false,
+   "unit": "K",
+   "value_as_printed": "1.416 784 e32"
+  },
+  {
+   "name": "Planck time",
+   "value": 5.391247e-44,
+   "uncertainty": 6e-49,
+   "exact": false,
+   "unit": "s",
+   "value_as_printed": "5.391 247 e-44"
+  },
+  {
+   "name": "proton charge to mass quotient",
+   "value": 95788331.43,
+   "uncertainty": 0.03,
+   "exact": false,
+   "unit": "C kg^-1",
+   "value_as_printed": "9.578 833 1430 e7"
+  },
+  {
+   "name": "proton Compton wavelength",
+   "value": 1.3214098536e-15,
+   "uncertainty": 4.1e-25,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "1.321 409 853 60 e-15"
+  },
+  {
+   "name": "proton-electron mass ratio",
+   "value": 1836.152673426,
+   "uncertainty": 3.2e-08,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1836.152 673 426"
+  },
+  {
+   "name": "proton g factor",
+   "value": 5.5856946893,
+   "uncertainty": 1.6e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "5.585 694 6893"
+  },
+  {
+   "name": "proton gyromag. ratio",
+   "value": 267522187.08,
+   "uncertainty": 0.11,
+   "exact": false,
+   "unit": "s^-1 T^-1",
+   "value_as_printed": "2.675 221 8708 e8"
+  },
+  {
+   "name": "proton gyromag. ratio in MHz/T",
+   "value": 42.577478461,
+   "uncertainty": 1.8e-08,
+   "exact": false,
+   "unit": "MHz T^-1",
+   "value_as_printed": "42.577 478 461"
+  },
+  {
+   "name": "proton mag. mom.",
+   "value": 1.41060679545e-26,
+   "uncertainty": 6e-36,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "1.410 606 795 45 e-26"
+  },
+  {
+   "name": "proton mag. mom. to Bohr magneton ratio",
+   "value": 0.0015210322023,
+   "uncertainty": 4.5e-13,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.521 032 202 30 e-3"
+  },
+  {
+   "name": "proton mag. mom. to nuclear magneton ratio",
+   "value": 2.79284734463,
+   "uncertainty": 8.2e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "2.792 847 344 63"
+  },
+  {
+   "name": "proton mag. shielding correction",
+   "value": 2.56715e-05,
+   "uncertainty": 4.1e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "2.567 15 e-5"
+  },
+  {
+   "name": "proton mass",
+   "value": 1.67262192595e-27,
+   "uncertainty": 5.2e-37,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "1.672 621 925 95 e-27"
+  },
+  {
+   "name": "proton mass energy equivalent",
+   "value": 1.50327761802e-10,
+   "uncertainty": 4.7e-20,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "1.503 277 618 02 e-10"
+  },
+  {
+   "name": "proton mass energy equivalent in MeV",
+   "value": 938.27208943,
+   "uncertainty": 2.9e-07,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "938.272 089 43"
+  },
+  {
+   "name": "proton mass in u",
+   "value": 1.0072764665789,
+   "uncertainty": 8.3e-12,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "1.007 276 466 5789"
+  },
+  {
+   "name": "proton molar mass",
+   "value": 0.00100727646764,
+   "uncertainty": 3.1e-13,
+   "exact": false,
+   "unit": "kg mol^-1",
+   "value_as_printed": "1.007 276 467 64 e-3"
+  },
+  {
+   "name": "proton-muon mass ratio",
+   "value": 8.88024338,
+   "uncertainty": 2e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "8.880 243 38"
+  },
+  {
+   "name": "proton-neutron mag. mom. ratio",
+   "value": -1.45989802,
+   "uncertainty": 3.4e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-1.459 898 02"
+  },
+  {
+   "name": "proton-neutron mass ratio",
+   "value": 0.99862347797,
+   "uncertainty": 4e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "0.998 623 477 97"
+  },
+  {
+   "name": "proton relative atomic mass",
+   "value": 1.0072764665789,
+   "uncertainty": 8.3e-12,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.007 276 466 5789"
+  },
+  {
+   "name": "proton rms charge radius",
+   "value": 8.4075e-16,
+   "uncertainty": 6.4e-19,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "8.4075 e-16"
+  },
+  {
+   "name": "proton-tau mass ratio",
+   "value": 0.528051,
+   "uncertainty": 3.6e-05,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "0.528 051"
+  },
+  {
+   "name": "quantum of circulation",
+   "value": 0.00036369475467,
+   "uncertainty": 1.1e-13,
+   "exact": false,
+   "unit": "m^2 s^-1",
+   "value_as_printed": "3.636 947 5467 e-4"
+  },
+  {
+   "name": "quantum of circulation times 2",
+   "value": 0.00072738950934,
+   "uncertainty": 2.3e-13,
+   "exact": false,
+   "unit": "m^2 s^-1",
+   "value_as_printed": "7.273 895 0934 e-4"
+  },
+  {
+   "name": "reduced Compton wavelength",
+   "value": 3.8615926744e-13,
+   "uncertainty": 1.2e-22,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "3.861 592 6744 e-13"
+  },
+  {
+   "name": "reduced muon Compton wavelength",
+   "value": 1.867594306e-15,
+   "uncertainty": 4.2e-23,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "1.867 594 306 e-15"
+  },
+  {
+   "name": "reduced neutron Compton wavelength",
+   "value": 2.100194152e-16,
+   "uncertainty": 1.1e-25,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "2.100 194 1520 e-16"
+  },
+  {
+   "name": "reduced Planck constant",
+   "value": 1.054571817e-34,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "J s",
+   "value_as_printed": "1.054 571 817... e-34"
+  },
+  {
+   "name": "reduced Planck constant in eV s",
+   "value": 6.582119569e-16,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "eV s",
+   "value_as_printed": "6.582 119 569... e-16"
+  },
+  {
+   "name": "reduced Planck constant times c in MeV fm",
+   "value": 197.3269804,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "MeV fm",
+   "value_as_printed": "197.326 980 4..."
+  },
+  {
+   "name": "reduced proton Compton wavelength",
+   "value": 2.10308910051e-16,
+   "uncertainty": 6.6e-26,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "2.103 089 100 51 e-16"
+  },
+  {
+   "name": "reduced tau Compton wavelength",
+   "value": 1.110538e-16,
+   "uncertainty": 7.5e-21,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "1.110 538 e-16"
+  },
+  {
+   "name": "Rydberg constant",
+   "value": 10973731.568157,
+   "uncertainty": 1.2e-05,
+   "exact": false,
+   "unit": "m^-1",
+   "value_as_printed": "10 973 731.568 157"
+  },
+  {
+   "name": "Rydberg constant times c in Hz",
+   "value": 3289841960250000.0,
+   "uncertainty": 3600.0,
+   "exact": false,
+   "unit": "Hz",
+   "value_as_printed": "3.289 841 960 2500 e15"
+  },
+  {
+   "name": "Rydberg constant times hc in eV",
+   "value": 13.60569312299,
+   "uncertainty": 1.5e-11,
+   "exact": false,
+   "unit": "eV",
+   "value_as_printed": "13.605 693 122 990"
+  },
+  {
+   "name": "Rydberg constant times hc in J",
+   "value": 2.179872361103e-18,
+   "uncertainty": 2.4e-30,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "2.179 872 361 1030 e-18"
+  },
+  {
+   "name": "Sackur-Tetrode constant (1 K, 100 kPa)",
+   "value": -1.15170753496,
+   "uncertainty": 4.7e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-1.151 707 534 96"
+  },
+  {
+   "name": "Sackur-Tetrode constant (1 K, 101.325 kPa)",
+   "value": -1.16487052149,
+   "uncertainty": 4.7e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-1.164 870 521 49"
+  },
+  {
+   "name": "second radiation constant",
+   "value": 0.01438776877,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m K",
+   "value_as_printed": "1.438 776 877... e-2"
+  },
+  {
+   "name": "shielded helion gyromag. ratio",
+   "value": 203789460.78,
+   "uncertainty": 0.18,
+   "exact": false,
+   "unit": "s^-1 T^-1",
+   "value_as_printed": "2.037 894 6078 e8"
+  },
+  {
+   "name": "shielded helion gyromag. ratio in MHz/T",
+   "value": 32.434100033,
+   "uncertainty": 2.8e-08,
+   "exact": false,
+   "unit": "MHz T^-1",
+   "value_as_printed": "32.434 100 033"
+  },
+  {
+   "name": "shielded helion mag. mom.",
+   "value": -1.07455311035e-26,
+   "uncertainty": 9.3e-36,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "-1.074 553 110 35 e-26"
+  },
+  {
+   "name": "shielded helion mag. mom. to Bohr magneton ratio",
+   "value": -0.00115867149457,
+   "uncertainty": 9.4e-13,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-1.158 671 494 57 e-3"
+  },
+  {
+   "name": "shielded helion mag. mom. to nuclear magneton ratio",
+   "value": -2.1274977624,
+   "uncertainty": 1.7e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-2.127 497 7624"
+  },
+  {
+   "name": "shielded helion to proton mag. mom. ratio",
+   "value": -0.76176657721,
+   "uncertainty": 6.6e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-0.761 766 577 21"
+  },
+  {
+   "name": "shielded helion to shielded proton mag. mom. ratio",
+   "value": -0.7617861334,
+   "uncertainty": 3.1e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "-0.761 786 1334"
+  },
+  {
+   "name": "shielded proton gyromag. ratio",
+   "value": 267515319.4,
+   "uncertainty": 1.1,
+   "exact": false,
+   "unit": "s^-1 T^-1",
+   "value_as_printed": "2.675 153 194 e8"
+  },
+  {
+   "name": "shielded proton gyromag. ratio in MHz/T",
+   "value": 42.57638543,
+   "uncertainty": 1.7e-07,
+   "exact": false,
+   "unit": "MHz T^-1",
+   "value_as_printed": "42.576 385 43"
+  },
+  {
+   "name": "shielded proton mag. mom.",
+   "value": 1.410570583e-26,
+   "uncertainty": 5.8e-35,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "1.410 570 5830 e-26"
+  },
+  {
+   "name": "shielded proton mag. mom. to Bohr magneton ratio",
+   "value": 0.0015209931551,
+   "uncertainty": 6.2e-12,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.520 993 1551 e-3"
+  },
+  {
+   "name": "shielded proton mag. mom. to nuclear magneton ratio",
+   "value": 2.792775648,
+   "uncertainty": 1.1e-08,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "2.792 775 648"
+  },
+  {
+   "name": "shielding difference of d and p in HD",
+   "value": 1.9877e-08,
+   "uncertainty": 1e-12,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.987 70 e-8"
+  },
+  {
+   "name": "shielding difference of t and p in HT",
+   "value": 2.3945e-08,
+   "uncertainty": 2e-12,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "2.394 50 e-8"
+  },
+  {
+   "name": "speed of light in vacuum",
+   "value": 299792458.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m s^-1",
+   "value_as_printed": "299 792 458"
+  },
+  {
+   "name": "standard acceleration of gravity",
+   "value": 9.80665,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m s^-2",
+   "value_as_printed": "9.806 65"
+  },
+  {
+   "name": "standard atmosphere",
+   "value": 101325.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Pa",
+   "value_as_printed": "101 325"
+  },
+  {
+   "name": "standard-state pressure",
+   "value": 100000.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Pa",
+   "value_as_printed": "100 000"
+  },
+  {
+   "name": "Stefan-Boltzmann constant",
+   "value": 5.670374419e-08,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "W m^-2 K^-4",
+   "value_as_printed": "5.670 374 419... e-8"
+  },
+  {
+   "name": "tau Compton wavelength",
+   "value": 6.97771e-16,
+   "uncertainty": 4.7e-20,
+   "exact": false,
+   "unit": "m",
+   "value_as_printed": "6.977 71 e-16"
+  },
+  {
+   "name": "tau-electron mass ratio",
+   "value": 3477.23,
+   "uncertainty": 0.23,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "3477.23"
+  },
+  {
+   "name": "tau energy equivalent",
+   "value": 1776.86,
+   "uncertainty": 0.12,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "1776.86"
+  },
+  {
+   "name": "tau mass",
+   "value": 3.16754e-27,
+   "uncertainty": 2.1e-31,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "3.167 54 e-27"
+  },
+  {
+   "name": "tau mass energy equivalent",
+   "value": 2.84684e-10,
+   "uncertainty": 1.9e-14,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "2.846 84 e-10"
+  },
+  {
+   "name": "tau mass in u",
+   "value": 1.90754,
+   "uncertainty": 0.00013,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "1.907 54"
+  },
+  {
+   "name": "tau molar mass",
+   "value": 0.00190754,
+   "uncertainty": 1.3e-07,
+   "exact": false,
+   "unit": "kg mol^-1",
+   "value_as_printed": "1.907 54 e-3"
+  },
+  {
+   "name": "tau-muon mass ratio",
+   "value": 16.817,
+   "uncertainty": 0.0011,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "16.8170"
+  },
+  {
+   "name": "tau-neutron mass ratio",
+   "value": 1.89115,
+   "uncertainty": 0.00013,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.891 15"
+  },
+  {
+   "name": "tau-proton mass ratio",
+   "value": 1.89376,
+   "uncertainty": 0.00013,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.893 76"
+  },
+  {
+   "name": "Thomson cross section",
+   "value": 6.6524587051e-29,
+   "uncertainty": 6.2e-38,
+   "exact": false,
+   "unit": "m^2",
+   "value_as_printed": "6.652 458 7051 e-29"
+  },
+  {
+   "name": "triton-electron mass ratio",
+   "value": 5496.92153551,
+   "uncertainty": 2.1e-07,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "5496.921 535 51"
+  },
+  {
+   "name": "triton g factor",
+   "value": 5.95792493,
+   "uncertainty": 1.2e-08,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "5.957 924 930"
+  },
+  {
+   "name": "triton mag. mom.",
+   "value": 1.5046095178e-26,
+   "uncertainty": 3e-35,
+   "exact": false,
+   "unit": "J T^-1",
+   "value_as_printed": "1.504 609 5178 e-26"
+  },
+  {
+   "name": "triton mag. mom. to Bohr magneton ratio",
+   "value": 0.0016223936648,
+   "uncertainty": 3.2e-12,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.622 393 6648 e-3"
+  },
+  {
+   "name": "triton mag. mom. to nuclear magneton ratio",
+   "value": 2.978962465,
+   "uncertainty": 5.9e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "2.978 962 4650"
+  },
+  {
+   "name": "triton mass",
+   "value": 5.0073567512e-27,
+   "uncertainty": 1.6e-36,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "5.007 356 7512 e-27"
+  },
+  {
+   "name": "triton mass energy equivalent",
+   "value": 4.5003878119e-10,
+   "uncertainty": 1.4e-19,
+   "exact": false,
+   "unit": "J",
+   "value_as_printed": "4.500 387 8119 e-10"
+  },
+  {
+   "name": "triton mass energy equivalent in MeV",
+   "value": 2808.92113668,
+   "uncertainty": 8.8e-07,
+   "exact": false,
+   "unit": "MeV",
+   "value_as_printed": "2808.921 136 68"
+  },
+  {
+   "name": "triton mass in u",
+   "value": 3.01550071597,
+   "uncertainty": 1e-10,
+   "exact": false,
+   "unit": "u",
+   "value_as_printed": "3.015 500 715 97"
+  },
+  {
+   "name": "triton molar mass",
+   "value": 0.00301550071913,
+   "uncertainty": 9.4e-13,
+   "exact": false,
+   "unit": "kg mol^-1",
+   "value_as_printed": "3.015 500 719 13 e-3"
+  },
+  {
+   "name": "triton-proton mass ratio",
+   "value": 2.99371703403,
+   "uncertainty": 1e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "2.993 717 034 03"
+  },
+  {
+   "name": "triton relative atomic mass",
+   "value": 3.01550071597,
+   "uncertainty": 1e-10,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "3.015 500 715 97"
+  },
+  {
+   "name": "triton to proton mag. mom. ratio",
+   "value": 1.0666399189,
+   "uncertainty": 2.1e-09,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "1.066 639 9189"
+  },
+  {
+   "name": "unified atomic mass unit",
+   "value": 1.66053906892e-27,
+   "uncertainty": 5.2e-37,
+   "exact": false,
+   "unit": "kg",
+   "value_as_printed": "1.660 539 068 92 e-27"
+  },
+  {
+   "name": "vacuum electric permittivity",
+   "value": 8.8541878188e-12,
+   "uncertainty": 1.4e-21,
+   "exact": false,
+   "unit": "F m^-1",
+   "value_as_printed": "8.854 187 8188 e-12"
+  },
+  {
+   "name": "vacuum mag. permeability",
+   "value": 1.25663706127e-06,
+   "uncertainty": 2e-16,
+   "exact": false,
+   "unit": "N A^-2",
+   "value_as_printed": "1.256 637 061 27 e-6"
+  },
+  {
+   "name": "von Klitzing constant",
+   "value": 25812.80745,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "ohm",
+   "value_as_printed": "25 812.807 45..."
+  },
+  {
+   "name": "weak mixing angle",
+   "value": 0.22305,
+   "uncertainty": 0.00023,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "0.223 05"
+  },
+  {
+   "name": "Wien frequency displacement law constant",
+   "value": 58789257570.0,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "Hz K^-1",
+   "value_as_printed": "5.878 925 757... e10"
+  },
+  {
+   "name": "Wien wavelength displacement law constant",
+   "value": 0.002897771955,
+   "uncertainty": null,
+   "exact": true,
+   "unit": "m K",
+   "value_as_printed": "2.897 771 955... e-3"
+  },
+  {
+   "name": "W to Z mass ratio",
+   "value": 0.88145,
+   "uncertainty": 0.00013,
+   "exact": false,
+   "unit": "",
+   "value_as_printed": "0.881 45"
+  }
+ ]
+}

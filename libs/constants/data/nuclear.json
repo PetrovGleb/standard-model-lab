@@ -1,0 +1,356 @@
+{
+ "source": "Light nuclei: masses and moments from CODATA 2022 by name, spins and parities from NUBASE2020 (F. G. Kondev et al., Chin. Phys. C 45, 030001, 2021), triton half-life from NIST NCNR neutron table; fusion cross sections from H.-S. Bosch and G. M. Hale, Nucl. Fusion 32, 611 (1992), Table IV, and E. G. Adelberger et al., Rev. Mod. Phys. 83, 195 (2011); neutron data from V. F. Sears, Neutron News 3, 26 (1992) via www.ncnr.nist.gov/resources/n-lengths; ionization energies from the NIST Atomic Spectra Database. Transcribed in docs/STANDARD_MODEL_REFERENCE.md sections 3.14 to 3.17. Branches pp-II and pp-III (3He(alpha,gamma)7Be, 7Be(p,gamma)8B, 7Li(p,alpha)4He) from the same Solar Fusion II paper, verbatim copy in data/solar-fusion-ii/1004.2318.pdf (arXiv:1004.2318).",
+ "nuclei": {
+  "deuteron": {
+   "symbol": "d",
+   "pdgId": 1000010020,
+   "protons": 1,
+   "neutrons": 1,
+   "spin": 1,
+   "parity": 1,
+   "halfLifeInYears": null
+  },
+  "triton": {
+   "symbol": "t",
+   "pdgId": 1000010030,
+   "protons": 1,
+   "neutrons": 2,
+   "spin": 0.5,
+   "parity": 1,
+   "halfLifeInYears": {
+    "value": 12.32,
+    "uncertainty": null
+   },
+   "decays": [
+    {
+     "products": [
+      "helion",
+      "electron",
+      "electronAntineutrino"
+     ],
+     "value": 1.0,
+     "uncertainty": null
+    }
+   ]
+  },
+  "helion": {
+   "symbol": "h",
+   "pdgId": 1000020030,
+   "protons": 2,
+   "neutrons": 1,
+   "spin": 0.5,
+   "parity": 1,
+   "halfLifeInYears": null
+  },
+  "alphaParticle": {
+   "symbol": "alpha",
+   "pdgId": 1000020040,
+   "protons": 2,
+   "neutrons": 2,
+   "spin": 0,
+   "parity": 1,
+   "halfLifeInYears": null
+  }
+ },
+ "chargedReactions": [
+  {
+   "reactants": [
+    "deuteron",
+    "triton"
+   ],
+   "products": [
+    "alphaParticle",
+    "neutron"
+   ],
+   "model": "boschHale",
+   "numerator": [
+    69270.0,
+    745400000.0,
+    2050000.0,
+    52002.0,
+    0
+   ],
+   "denominator": [
+    63.8,
+    -0.995,
+    6.981e-05,
+    0.0001728
+   ],
+   "validityInKev": [
+    0.5,
+    550
+   ],
+   "note": "T(d,n)4He"
+  },
+  {
+   "reactants": [
+    "deuteron",
+    "deuteron"
+   ],
+   "products": [
+    "helion",
+    "neutron"
+   ],
+   "model": "boschHale",
+   "numerator": [
+    53701.0,
+    330.27,
+    -0.12706,
+    2.9327e-05,
+    -2.5151e-09
+   ],
+   "denominator": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "validityInKev": [
+    0.5,
+    4900
+   ],
+   "note": "D(d,n)3He"
+  },
+  {
+   "reactants": [
+    "deuteron",
+    "deuteron"
+   ],
+   "products": [
+    "triton",
+    "proton"
+   ],
+   "model": "boschHale",
+   "numerator": [
+    55576.0,
+    210.54,
+    -0.032638,
+    1.4987e-06,
+    1.8181e-10
+   ],
+   "denominator": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "validityInKev": [
+    0.5,
+    5000
+   ],
+   "note": "D(d,p)T"
+  },
+  {
+   "reactants": [
+    "deuteron",
+    "helion"
+   ],
+   "products": [
+    "alphaParticle",
+    "proton"
+   ],
+   "model": "boschHale",
+   "numerator": [
+    5750100.0,
+    2522.6,
+    45.566,
+    0,
+    0
+   ],
+   "denominator": [
+    -0.0031995,
+    -8.553e-06,
+    5.9014e-08,
+    0
+   ],
+   "validityInKev": [
+    0.3,
+    900
+   ],
+   "note": "3He(d,p)4He"
+  },
+  {
+   "reactants": [
+    "proton",
+    "proton"
+   ],
+   "products": [
+    "deuteron",
+    "positron",
+    "electronNeutrino"
+   ],
+   "model": "sFactorLinear",
+   "uncertaintyAtZero": 3.6e-27,
+   "validityInKev": [
+    0,
+    100
+   ],
+   "note": "p(p,e+ nu)d: S11(0) = 4.01(1 +- 0.009) x 10^-25 MeV b, eq. (25); S11'(0) = S11(0) x (11.2 +- 0.1) MeV^-1, eq. (26)",
+   "atZeroInMevBarn": 4.01e-25,
+   "relativeSlopePerMev": 11.2
+  },
+  {
+   "reactants": [
+    "proton",
+    "deuteron"
+   ],
+   "products": [
+    "helion",
+    "photon"
+   ],
+   "model": "sFactorPowerSeriesInEvBarn",
+   "uncertaintyAtZero": 0.017,
+   "validityInKev": [
+    0,
+    1000
+   ],
+   "note": "d(p,gamma)3He best quadratic fit S(E) = 0.2145 + 5.5612 (E/MeV) + 4.6581 (E/MeV)^2 eV b, eq. (29)",
+   "coefficients": [
+    0.2145,
+    5.5612,
+    4.6581
+   ]
+  },
+  {
+   "reactants": [
+    "helion",
+    "helion"
+   ],
+   "products": [
+    "alphaParticle",
+    "proton",
+    "proton"
+   ],
+   "model": "sFactorTaylor",
+   "uncertaintyAtZero": 0.27,
+   "validityInKev": [
+    0,
+    350
+   ],
+   "note": "3He(3He,2p)4He: S33(0) = 5.21 +- 0.27 MeV b, S'33(0) = -4.90 +- 3.18 b, S''33(0) = 22.4 +- 17.1 MeV^-1 b, eqs. (32)-(33); S(E) = S(0) + S' E + S'' E^2 / 2",
+   "atZeroInMevBarn": 5.21,
+   "firstDerivativeInBarn": -4.9,
+   "secondDerivativeInBarnPerMev": 22.4
+  },
+  {
+   "reactants": [
+    "helion",
+    "alphaParticle"
+   ],
+   "products": [
+    "nucleus:4:7",
+    "photon"
+   ],
+   "model": "sFactorTaylor",
+   "uncertaintyAtZero": 3e-05,
+   "validityInKev": [
+    0,
+    1000
+   ],
+   "note": "3He(4He,gamma)7Be: S34(0) = 0.56 +- 0.02(expt) +- 0.02(theor) keV b, eq. (36) and Table I; S'(0) = -3.6e-4 b, S''(0) = 0.151e-6 b/keV from Table I (S'/S and S''/S from theory)",
+   "atZeroInMevBarn": 0.00056,
+   "firstDerivativeInBarn": -0.00036,
+   "secondDerivativeInBarnPerMev": 0.00015099999999999998
+  },
+  {
+   "reactants": [
+    "proton",
+    "nucleus:4:7"
+   ],
+   "products": [
+    "nucleus:5:8",
+    "photon"
+   ],
+   "model": "sFactorTaylor",
+   "uncertaintyAtZero": 1.6e-06,
+   "validityInKev": [
+    0,
+    475
+   ],
+   "note": "7Be(p,gamma)8B: S17(0) = 20.8 +- 0.7(expt) +- 1.4(theor) eV b, eq. (49) and Table I; S'(0) = -3.1e-5 b, S''(0) = 2.3e-7 b/keV from Table I; fit valid for E <= 475 keV",
+   "atZeroInMevBarn": 2.08e-05,
+   "firstDerivativeInBarn": -3.1e-05,
+   "secondDerivativeInBarnPerMev": 0.00023
+  },
+  {
+   "reactants": [
+    "proton",
+    "nucleus:3:7"
+   ],
+   "products": [
+    "alphaParticle",
+    "alphaParticle"
+   ],
+   "model": "sFactorTaylor",
+   "uncertaintyAtZero": 0.006,
+   "validityInKev": [
+    0,
+    100
+   ],
+   "note": "7Li(p,alpha)4He: S(0) = 55 +- 6 keV b, Trojan Horse test of Lattuada et al. 2001 normalized to Engstler et al. 1992, Sec. XII.C; energy dependence not quoted, S taken constant",
+   "atZeroInMevBarn": 0.055,
+   "firstDerivativeInBarn": 0.0,
+   "secondDerivativeInBarnPerMev": 0.0
+  }
+ ],
+ "neutronCaptures": [
+  {
+   "target": "proton",
+   "products": [
+    "deuteron",
+    "photon"
+   ],
+   "thermalCrossSectionInBarn": {
+    "value": 0.3326,
+    "uncertainty": null
+   }
+  },
+  {
+   "target": "deuteron",
+   "products": [
+    "triton",
+    "photon"
+   ],
+   "thermalCrossSectionInBarn": {
+    "value": 0.000519,
+    "uncertainty": null
+   }
+  },
+  {
+   "target": "helion",
+   "products": [
+    "triton",
+    "proton"
+   ],
+   "thermalCrossSectionInBarn": {
+    "value": 5333,
+    "uncertainty": 7
+   }
+  }
+ ],
+ "thermalNeutronSpeedInMetersPerSecond": 2200,
+ "boundScatteringCrossSectionsInBarn": {
+  "proton": 82.03,
+  "deuteron": 7.64,
+  "triton": 3.03,
+  "helion": 6,
+  "alphaParticle": 1.34
+ },
+ "ionizationEnergiesInEv": {
+  "hydrogen": {
+   "value": 13.598434599702,
+   "uncertainty": 1.2e-11,
+   "source": "NIST ASD H I"
+  },
+  "heliumNeutral": {
+   "value": 24.587389011,
+   "uncertainty": 2.5e-08,
+   "source": "NIST ASD He I"
+  },
+  "heliumIon": {
+   "value": 54.4177655282,
+   "uncertainty": 1e-09,
+   "source": "NIST ASD He II"
+  }
+ }
+}

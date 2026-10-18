@@ -1,0 +1,41 @@
+{
+  "name": "standard-model",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "packageManager": "pnpm@10.32.1",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json && tsc -p apps/web/tsconfig.json",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "check": "pnpm typecheck && pnpm lint && pnpm test",
+    "generate:codata": "tsx libs/constants/scripts/generate-codata.ts",
+    "generate:pdf": "tsx libs/constants/scripts/generate-pdf.ts",
+    "generate:matter": "tsx libs/constants/scripts/generate-matter.ts",
+    "generate:reaclib": "tsx libs/constants/scripts/generate-reaclib.ts",
+    "fetch:endf": "tsx libs/constants/scripts/fetch-endf.ts",
+    "generate:endf": "tsx libs/constants/scripts/generate-endf.ts",
+    "measure:templates": "tsx scripts/measure-templates.ts",
+    "generate:molecules": "tsx scripts/generate-molecule-traits.ts",
+    "db:sync": "node --env-file-if-exists=.env --import tsx scripts/db-sync.ts",
+    "dev:api": "node --env-file-if-exists=.env --import tsx apps/api/src/main.ts",
+    "start:api": "node --import tsx apps/api/src/main.ts",
+    "dev:web": "pnpm --filter @standard-model/web dev",
+    "build:web": "pnpm --filter @standard-model/web build",
+    "package": "tsx apps/desktop/scripts/package.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.20.5",
+    "eslint": "^10.12.0",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.5"
+  }
+}

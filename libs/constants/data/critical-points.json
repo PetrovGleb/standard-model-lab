@@ -1,0 +1,115 @@
+{
+ "source": "Critical points, normal boiling and melting points from the NIST Chemistry WebBook (webbook.nist.gov, Thermophysical Properties of Fluid Systems) and the CRC Handbook of Chemistry and Physics, 97th ed.; temperatures in kelvin, pressures in pascals; carbon dioxide sublimes at 1 atm, so its sublimation point stands as the boiling temperature and its triple point is given",
+ "substances": [
+  {
+   "species": "molecule:8-16,1-1,1-1;0-1-1,0-2-1",
+   "formula": "H2O",
+   "criticalTemperatureInKelvin": 647.096,
+   "criticalPressureInPascals": 22064000.0,
+   "boilingTemperatureInKelvin": 373.124,
+   "meltingTemperatureInKelvin": 273.15,
+   "triplePointTemperatureInKelvin": 273.16,
+   "triplePointPressureInPascals": 611.657
+  },
+  {
+   "species": "molecule:7-14,7-14;0-1-3",
+   "formula": "N2",
+   "criticalTemperatureInKelvin": 126.192,
+   "criticalPressureInPascals": 3395800.0,
+   "boilingTemperatureInKelvin": 77.355,
+   "meltingTemperatureInKelvin": 63.151,
+   "triplePointTemperatureInKelvin": 63.151,
+   "triplePointPressureInPascals": 12520
+  },
+  {
+   "species": "molecule:8-16,8-16;0-1-2",
+   "formula": "O2",
+   "criticalTemperatureInKelvin": 154.581,
+   "criticalPressureInPascals": 5043000.0,
+   "boilingTemperatureInKelvin": 90.188,
+   "meltingTemperatureInKelvin": 54.361,
+   "triplePointTemperatureInKelvin": 54.361,
+   "triplePointPressureInPascals": 146.3
+  },
+  {
+   "species": "molecule:6-12,8-16,8-16;0-1-2,0-2-2",
+   "formula": "CO2",
+   "criticalTemperatureInKelvin": 304.128,
+   "criticalPressureInPascals": 7377300.0,
+   "boilingTemperatureInKelvin": 194.686,
+   "meltingTemperatureInKelvin": 216.592,
+   "triplePointTemperatureInKelvin": 216.592,
+   "triplePointPressureInPascals": 517950
+  },
+  {
+   "species": "molecule:6-12,1-1,1-1,1-1,1-1;0-1-1,0-2-1,0-3-1,0-4-1",
+   "formula": "CH4",
+   "criticalTemperatureInKelvin": 190.564,
+   "criticalPressureInPascals": 4599200.0,
+   "boilingTemperatureInKelvin": 111.667,
+   "meltingTemperatureInKelvin": 90.694,
+   "triplePointTemperatureInKelvin": 90.694,
+   "triplePointPressureInPascals": 11696
+  },
+  {
+   "species": "molecule:7-14,1-1,1-1,1-1;0-1-1,0-2-1,0-3-1",
+   "formula": "NH3",
+   "criticalTemperatureInKelvin": 405.56,
+   "criticalPressureInPascals": 11357000.0,
+   "boilingTemperatureInKelvin": 239.823,
+   "meltingTemperatureInKelvin": 195.495,
+   "triplePointTemperatureInKelvin": 195.495,
+   "triplePointPressureInPascals": 6091
+  },
+  {
+   "species": "molecule:1-1,1-1;0-1-1",
+   "formula": "H2",
+   "criticalTemperatureInKelvin": 33.145,
+   "criticalPressureInPascals": 1296400.0,
+   "boilingTemperatureInKelvin": 20.271,
+   "meltingTemperatureInKelvin": 13.957,
+   "triplePointTemperatureInKelvin": 13.957,
+   "triplePointPressureInPascals": 7358
+  },
+  {
+   "species": "heliumAtom",
+   "formula": "He",
+   "criticalTemperatureInKelvin": 5.1953,
+   "criticalPressureInPascals": 227460,
+   "boilingTemperatureInKelvin": 4.222,
+   "meltingTemperatureInKelvin": null,
+   "triplePointTemperatureInKelvin": null,
+   "triplePointPressureInPascals": null
+  },
+  {
+   "species": "atom:10:20:0",
+   "formula": "Ne",
+   "criticalTemperatureInKelvin": 44.4918,
+   "criticalPressureInPascals": 2678600.0,
+   "boilingTemperatureInKelvin": 27.104,
+   "meltingTemperatureInKelvin": 24.556,
+   "triplePointTemperatureInKelvin": 24.556,
+   "triplePointPressureInPascals": 43368
+  },
+  {
+   "species": "atom:18:40:0",
+   "formula": "Ar",
+   "criticalTemperatureInKelvin": 150.687,
+   "criticalPressureInPascals": 4863000.0,
+   "boilingTemperatureInKelvin": 87.302,
+   "meltingTemperatureInKelvin": 83.806,
+   "triplePointTemperatureInKelvin": 83.806,
+   "triplePointPressureInPascals": 68891
+  },
+  {
+   "species": "atom:54:132:0",
+   "formula": "Xe",
+   "criticalTemperatureInKelvin": 289.733,
+   "criticalPressureInPascals": 5842000.0,
+   "boilingTemperatureInKelvin": 165.051,
+   "meltingTemperatureInKelvin": 161.405,
+   "triplePointTemperatureInKelvin": 161.405,
+   "triplePointPressureInPascals": 81770
+  }
+ ]
+}

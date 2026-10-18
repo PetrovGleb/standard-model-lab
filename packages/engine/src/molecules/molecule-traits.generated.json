@@ -1,0 +1,956 @@
+{
+ "traits": {
+  "hydrogen": {
+   "massInDaltons": 2.01565,
+   "linear": true
+  },
+  "nitrogen": {
+   "massInDaltons": 28.0061,
+   "linear": true
+  },
+  "oxygen": {
+   "massInDaltons": 31.9898,
+   "linear": true
+  },
+  "fluorine": {
+   "massInDaltons": 37.9968,
+   "linear": true
+  },
+  "chlorine": {
+   "massInDaltons": 69.9377,
+   "linear": true
+  },
+  "bromine": {
+   "massInDaltons": 157.837,
+   "linear": true
+  },
+  "iodine": {
+   "massInDaltons": 253.809,
+   "linear": true
+  },
+  "ozone": {
+   "massInDaltons": 47.9847,
+   "linear": false
+  },
+  "whitePhosphorus": {
+   "massInDaltons": 123.895,
+   "linear": false
+  },
+  "cyclooctasulfur": {
+   "massInDaltons": 255.777,
+   "linear": false
+  },
+  "deuterium": {
+   "massInDaltons": 4.0282,
+   "linear": true
+  },
+  "hydrogenDeuteride": {
+   "massInDaltons": 3.02193,
+   "linear": true
+  },
+  "water": {
+   "massInDaltons": 18.0106,
+   "linear": false
+  },
+  "hydrogenPeroxide": {
+   "massInDaltons": 34.0055,
+   "linear": false
+  },
+  "carbonMonoxide": {
+   "massInDaltons": 27.9949,
+   "linear": true
+  },
+  "carbonDioxide": {
+   "massInDaltons": 43.9898,
+   "linear": true
+  },
+  "nitricOxide": {
+   "massInDaltons": 29.998,
+   "linear": true
+  },
+  "nitrogenDioxide": {
+   "massInDaltons": 45.9929,
+   "linear": false
+  },
+  "sulfurDioxide": {
+   "massInDaltons": 63.9619,
+   "linear": false
+  },
+  "heavyWater": {
+   "massInDaltons": 20.0231,
+   "linear": false
+  },
+  "semiheavyWater": {
+   "massInDaltons": 19.0168,
+   "linear": false
+  },
+  "sulfurTrioxide": {
+   "massInDaltons": 79.9568,
+   "linear": false
+  },
+  "dinitrogenTetroxide": {
+   "massInDaltons": 91.9858,
+   "linear": false
+  },
+  "dichlorineMonoxide": {
+   "massInDaltons": 85.9326,
+   "linear": false
+  },
+  "oxygenDifluoride": {
+   "massInDaltons": 53.9917,
+   "linear": false
+  },
+  "siliconDioxide": {
+   "massInDaltons": 59.9668,
+   "linear": false
+  },
+  "carbonSuboxide": {
+   "massInDaltons": 67.9898,
+   "linear": true
+  },
+  "ammonia": {
+   "massInDaltons": 17.0265,
+   "linear": false
+  },
+  "hydrazine": {
+   "massInDaltons": 32.0374,
+   "linear": false
+  },
+  "phosphine": {
+   "massInDaltons": 33.9972,
+   "linear": false
+  },
+  "silane": {
+   "massInDaltons": 32.0082,
+   "linear": false
+  },
+  "germane": {
+   "massInDaltons": 77.9525,
+   "linear": false
+  },
+  "arsine": {
+   "massInDaltons": 77.9451,
+   "linear": false
+  },
+  "hydrogenSelenide": {
+   "massInDaltons": 81.9322,
+   "linear": false
+  },
+  "borane": {
+   "massInDaltons": 14.0328,
+   "linear": false
+  },
+  "lithiumHydride": {
+   "massInDaltons": 8.02383,
+   "linear": true
+  },
+  "sodiumHydride": {
+   "massInDaltons": 23.9976,
+   "linear": true
+  },
+  "berylliumHydride": {
+   "massInDaltons": 11.0278,
+   "linear": false
+  },
+  "boronTrifluoride": {
+   "massInDaltons": 68.0045,
+   "linear": false
+  },
+  "boronTrichloride": {
+   "massInDaltons": 115.916,
+   "linear": false
+  },
+  "aluminiumChloride": {
+   "massInDaltons": 131.888,
+   "linear": false
+  },
+  "siliconTetrachloride": {
+   "massInDaltons": 167.852,
+   "linear": false
+  },
+  "siliconTetrafluoride": {
+   "massInDaltons": 103.971,
+   "linear": false
+  },
+  "phosphorusTrichloride": {
+   "massInDaltons": 135.88,
+   "linear": false
+  },
+  "phosphorusPentachloride": {
+   "massInDaltons": 205.818,
+   "linear": false
+  },
+  "sulfurHexafluoride": {
+   "massInDaltons": 145.962,
+   "linear": false
+  },
+  "sulfurTetrafluoride": {
+   "massInDaltons": 107.966,
+   "linear": false
+  },
+  "nitrogenTrifluoride": {
+   "massInDaltons": 70.9983,
+   "linear": false
+  },
+  "xenonDifluoride": {
+   "massInDaltons": 169.901,
+   "linear": false
+  },
+  "xenonTetrafluoride": {
+   "massInDaltons": 207.898,
+   "linear": false
+  },
+  "kryptonDifluoride": {
+   "massInDaltons": 121.908,
+   "linear": false
+  },
+  "titaniumTetrachloride": {
+   "massInDaltons": 187.823,
+   "linear": false
+  },
+  "uraniumTetrafluoride": {
+   "massInDaltons": 314.044,
+   "linear": false
+  },
+  "tungstenHexafluoride": {
+   "massInDaltons": 297.941,
+   "linear": false
+  },
+  "carbonDisulfide": {
+   "massInDaltons": 75.9441,
+   "linear": true
+  },
+  "nitrousOxide": {
+   "massInDaltons": 44.0011,
+   "linear": true
+  },
+  "carbonylSulfide": {
+   "massInDaltons": 59.967,
+   "linear": true
+  },
+  "sulfurDichloride": {
+   "massInDaltons": 101.91,
+   "linear": false
+  },
+  "disulfurDichloride": {
+   "massInDaltons": 133.882,
+   "linear": false
+  },
+  "thionylChloride": {
+   "massInDaltons": 117.905,
+   "linear": false
+  },
+  "sulfurylChloride": {
+   "massInDaltons": 133.9,
+   "linear": false
+  },
+  "phosgene": {
+   "massInDaltons": 97.9326,
+   "linear": false
+  },
+  "cyanogen": {
+   "massInDaltons": 52.0061,
+   "linear": true
+  },
+  "hydrazoicAcid": {
+   "massInDaltons": 43.017,
+   "linear": false
+  },
+  "nitrosylChloride": {
+   "massInDaltons": 64.9668,
+   "linear": false
+  },
+  "hydrogenFluoride": {
+   "massInDaltons": 20.0062,
+   "linear": true
+  },
+  "hydrogenChloride": {
+   "massInDaltons": 35.9767,
+   "linear": true
+  },
+  "hydrogenBromide": {
+   "massInDaltons": 79.9262,
+   "linear": true
+  },
+  "hydrogenIodide": {
+   "massInDaltons": 127.912,
+   "linear": true
+  },
+  "hydrogenSulfide": {
+   "massInDaltons": 33.9877,
+   "linear": false
+  },
+  "hydrogenCyanide": {
+   "massInDaltons": 27.0109,
+   "linear": true
+  },
+  "sulfuricAcid": {
+   "massInDaltons": 97.9674,
+   "linear": false
+  },
+  "phosphoricAcid": {
+   "massInDaltons": 97.9769,
+   "linear": false
+  },
+  "nitrousAcid": {
+   "massInDaltons": 47.0007,
+   "linear": false
+  },
+  "sulfurousAcid": {
+   "massInDaltons": 81.9725,
+   "linear": false
+  },
+  "carbonicAcid": {
+   "massInDaltons": 62.0004,
+   "linear": false
+  },
+  "hypochlorousAcid": {
+   "massInDaltons": 51.9716,
+   "linear": false
+  },
+  "boricAcid": {
+   "massInDaltons": 62.0175,
+   "linear": false
+  },
+  "phosphorousAcid": {
+   "massInDaltons": 81.982,
+   "linear": false
+  },
+  "thiocyanicAcid": {
+   "massInDaltons": 58.983,
+   "linear": false
+  },
+  "formicAcid": {
+   "massInDaltons": 46.0055,
+   "linear": false
+  },
+  "aceticAcid": {
+   "massInDaltons": 60.0211,
+   "linear": false
+  },
+  "propionicAcid": {
+   "massInDaltons": 74.0368,
+   "linear": false
+  },
+  "butyricAcid": {
+   "massInDaltons": 88.0524,
+   "linear": false
+  },
+  "oxalicAcid": {
+   "massInDaltons": 89.9953,
+   "linear": false
+  },
+  "malonicAcid": {
+   "massInDaltons": 104.011,
+   "linear": false
+  },
+  "acrylicAcid": {
+   "massInDaltons": 72.0211,
+   "linear": false
+  },
+  "benzoicAcid": {
+   "massInDaltons": 122.037,
+   "linear": false
+  },
+  "trifluoroaceticAcid": {
+   "massInDaltons": 113.993,
+   "linear": false
+  },
+  "sodiumHydroxide": {
+   "massInDaltons": 39.9925,
+   "linear": false
+  },
+  "potassiumHydroxide": {
+   "massInDaltons": 55.9664,
+   "linear": false
+  },
+  "lithiumHydroxide": {
+   "massInDaltons": 24.0187,
+   "linear": false
+  },
+  "caesiumHydroxide": {
+   "massInDaltons": 149.908,
+   "linear": false
+  },
+  "calciumHydroxide": {
+   "massInDaltons": 73.9681,
+   "linear": false
+  },
+  "magnesiumHydroxide": {
+   "massInDaltons": 57.9905,
+   "linear": false
+  },
+  "bariumHydroxide": {
+   "massInDaltons": 171.911,
+   "linear": false
+  },
+  "hydroxylamine": {
+   "massInDaltons": 33.0215,
+   "linear": false
+  },
+  "sodiumChloride": {
+   "massInDaltons": 57.9586,
+   "linear": true
+  },
+  "potassiumChloride": {
+   "massInDaltons": 73.9326,
+   "linear": true
+  },
+  "lithiumFluoride": {
+   "massInDaltons": 26.0144,
+   "linear": true
+  },
+  "sodiumFluoride": {
+   "massInDaltons": 41.9882,
+   "linear": true
+  },
+  "sodiumBromide": {
+   "massInDaltons": 101.908,
+   "linear": true
+  },
+  "potassiumBromide": {
+   "massInDaltons": 117.882,
+   "linear": true
+  },
+  "potassiumIodide": {
+   "massInDaltons": 165.868,
+   "linear": true
+  },
+  "lithiumChloride": {
+   "massInDaltons": 41.9849,
+   "linear": true
+  },
+  "sodiumIodide": {
+   "massInDaltons": 149.894,
+   "linear": true
+  },
+  "caesiumChloride": {
+   "massInDaltons": 167.874,
+   "linear": true
+  },
+  "calciumFluoride": {
+   "massInDaltons": 77.9594,
+   "linear": false
+  },
+  "calciumChloride": {
+   "massInDaltons": 109.9,
+   "linear": false
+  },
+  "magnesiumChloride": {
+   "massInDaltons": 93.9227,
+   "linear": false
+  },
+  "bariumChloride": {
+   "massInDaltons": 207.843,
+   "linear": false
+  },
+  "silverChloride": {
+   "massInDaltons": 141.874,
+   "linear": true
+  },
+  "silverBromide": {
+   "massInDaltons": 185.823,
+   "linear": true
+  },
+  "zincChloride": {
+   "massInDaltons": 133.867,
+   "linear": false
+  },
+  "copperChloride": {
+   "massInDaltons": 97.8984,
+   "linear": true
+  },
+  "ironDichloride": {
+   "massInDaltons": 125.873,
+   "linear": false
+  },
+  "sodiumCarbonate": {
+   "massInDaltons": 105.964,
+   "linear": false
+  },
+  "sodiumBicarbonate": {
+   "massInDaltons": 83.9823,
+   "linear": false
+  },
+  "potassiumCarbonate": {
+   "massInDaltons": 137.912,
+   "linear": false
+  },
+  "calciumCarbonate": {
+   "massInDaltons": 99.9473,
+   "linear": false
+  },
+  "sodiumSulfate": {
+   "massInDaltons": 141.931,
+   "linear": false
+  },
+  "potassiumSulfate": {
+   "massInDaltons": 173.879,
+   "linear": false
+  },
+  "magnesiumSulfate": {
+   "massInDaltons": 119.937,
+   "linear": false
+  },
+  "sodiumHypochlorite": {
+   "massInDaltons": 73.9535,
+   "linear": false
+  },
+  "sodiumPhosphate": {
+   "massInDaltons": 163.923,
+   "linear": false
+  },
+  "sodiumAcetate": {
+   "massInDaltons": 82.0031,
+   "linear": false
+  },
+  "methane": {
+   "massInDaltons": 16.0313,
+   "linear": false
+  },
+  "ethane": {
+   "massInDaltons": 30.047,
+   "linear": false
+  },
+  "propane": {
+   "massInDaltons": 44.0626,
+   "linear": false
+  },
+  "butane": {
+   "massInDaltons": 58.0783,
+   "linear": false
+  },
+  "isobutane": {
+   "massInDaltons": 58.0783,
+   "linear": false
+  },
+  "pentane": {
+   "massInDaltons": 72.0939,
+   "linear": false
+  },
+  "neopentane": {
+   "massInDaltons": 72.0939,
+   "linear": false
+  },
+  "hexane": {
+   "massInDaltons": 86.1096,
+   "linear": false
+  },
+  "heptane": {
+   "massInDaltons": 100.125,
+   "linear": false
+  },
+  "octane": {
+   "massInDaltons": 114.141,
+   "linear": false
+  },
+  "isooctane": {
+   "massInDaltons": 114.141,
+   "linear": false
+  },
+  "cyclopropane": {
+   "massInDaltons": 42.047,
+   "linear": false
+  },
+  "cyclohexane": {
+   "massInDaltons": 84.0939,
+   "linear": false
+  },
+  "ethylene": {
+   "massInDaltons": 28.0313,
+   "linear": false
+  },
+  "acetylene": {
+   "massInDaltons": 26.0157,
+   "linear": true
+  },
+  "propylene": {
+   "massInDaltons": 42.047,
+   "linear": false
+  },
+  "butene": {
+   "massInDaltons": 56.0626,
+   "linear": false
+  },
+  "butadiene": {
+   "massInDaltons": 54.047,
+   "linear": false
+  },
+  "isoprene": {
+   "massInDaltons": 68.0626,
+   "linear": false
+  },
+  "propyne": {
+   "massInDaltons": 40.0313,
+   "linear": false
+  },
+  "ketene": {
+   "massInDaltons": 42.0106,
+   "linear": false
+  },
+  "benzene": {
+   "massInDaltons": 78.047,
+   "linear": false
+  },
+  "toluene": {
+   "massInDaltons": 92.0626,
+   "linear": false
+  },
+  "orthoXylene": {
+   "massInDaltons": 106.078,
+   "linear": false
+  },
+  "styrene": {
+   "massInDaltons": 104.063,
+   "linear": false
+  },
+  "naphthalene": {
+   "massInDaltons": 128.063,
+   "linear": false
+  },
+  "anthracene": {
+   "massInDaltons": 178.078,
+   "linear": false
+  },
+  "phenol": {
+   "massInDaltons": 94.0419,
+   "linear": false
+  },
+  "aniline": {
+   "massInDaltons": 93.0578,
+   "linear": false
+  },
+  "pyridine": {
+   "massInDaltons": 79.0422,
+   "linear": false
+  },
+  "pyrrole": {
+   "massInDaltons": 67.0422,
+   "linear": false
+  },
+  "thiophene": {
+   "massInDaltons": 84.0034,
+   "linear": false
+  },
+  "methanol": {
+   "massInDaltons": 32.0262,
+   "linear": false
+  },
+  "ethanol": {
+   "massInDaltons": 46.0419,
+   "linear": false
+  },
+  "propanol": {
+   "massInDaltons": 60.0575,
+   "linear": false
+  },
+  "isopropanol": {
+   "massInDaltons": 60.0575,
+   "linear": false
+  },
+  "butanol": {
+   "massInDaltons": 74.0732,
+   "linear": false
+  },
+  "ethyleneGlycol": {
+   "massInDaltons": 62.0368,
+   "linear": false
+  },
+  "glycerol": {
+   "massInDaltons": 92.0473,
+   "linear": false
+  },
+  "dimethylEther": {
+   "massInDaltons": 46.0419,
+   "linear": false
+  },
+  "diethylEther": {
+   "massInDaltons": 74.0732,
+   "linear": false
+  },
+  "tetrahydrofuran": {
+   "massInDaltons": 72.0575,
+   "linear": false
+  },
+  "ethyleneOxide": {
+   "massInDaltons": 44.0262,
+   "linear": false
+  },
+  "formaldehyde": {
+   "massInDaltons": 30.0106,
+   "linear": false
+  },
+  "acetone": {
+   "massInDaltons": 58.0419,
+   "linear": false
+  },
+  "acetaldehyde": {
+   "massInDaltons": 44.0262,
+   "linear": false
+  },
+  "butanone": {
+   "massInDaltons": 72.0575,
+   "linear": false
+  },
+  "benzaldehyde": {
+   "massInDaltons": 106.042,
+   "linear": false
+  },
+  "methylFormate": {
+   "massInDaltons": 60.0211,
+   "linear": false
+  },
+  "ethylAcetate": {
+   "massInDaltons": 88.0524,
+   "linear": false
+  },
+  "aceticAnhydride": {
+   "massInDaltons": 102.032,
+   "linear": false
+  },
+  "methylamine": {
+   "massInDaltons": 31.0422,
+   "linear": false
+  },
+  "dimethylamine": {
+   "massInDaltons": 45.0578,
+   "linear": false
+  },
+  "trimethylamine": {
+   "massInDaltons": 59.0735,
+   "linear": false
+  },
+  "ethylamine": {
+   "massInDaltons": 45.0578,
+   "linear": false
+  },
+  "acetonitrile": {
+   "massInDaltons": 41.0265,
+   "linear": false
+  },
+  "formamide": {
+   "massInDaltons": 45.0215,
+   "linear": false
+  },
+  "acetamide": {
+   "massInDaltons": 59.0371,
+   "linear": false
+  },
+  "methylIsocyanate": {
+   "massInDaltons": 57.0215,
+   "linear": false
+  },
+  "nitromethane": {
+   "massInDaltons": 61.0164,
+   "linear": false
+  },
+  "methanethiol": {
+   "massInDaltons": 48.0034,
+   "linear": false
+  },
+  "dimethylSulfide": {
+   "massInDaltons": 62.019,
+   "linear": false
+  },
+  "dimethylSulfoxide": {
+   "massInDaltons": 78.0139,
+   "linear": false
+  },
+  "chloromethane": {
+   "massInDaltons": 49.9923,
+   "linear": false
+  },
+  "dichloromethane": {
+   "massInDaltons": 83.9534,
+   "linear": false
+  },
+  "chloroform": {
+   "massInDaltons": 117.914,
+   "linear": false
+  },
+  "carbonTetrachloride": {
+   "massInDaltons": 151.875,
+   "linear": false
+  },
+  "tetrafluoromethane": {
+   "massInDaltons": 87.9936,
+   "linear": false
+  },
+  "dichlorodifluoromethane": {
+   "massInDaltons": 119.935,
+   "linear": false
+  },
+  "trichlorofluoromethane": {
+   "massInDaltons": 135.905,
+   "linear": false
+  },
+  "tetrafluoroethane": {
+   "massInDaltons": 102.009,
+   "linear": false
+  },
+  "vinylChloride": {
+   "massInDaltons": 61.9923,
+   "linear": false
+  },
+  "tetrafluoroethylene": {
+   "massInDaltons": 99.9936,
+   "linear": false
+  },
+  "chlorobenzene": {
+   "massInDaltons": 112.008,
+   "linear": false
+  },
+  "bromomethane": {
+   "massInDaltons": 93.9418,
+   "linear": false
+  },
+  "iodomethane": {
+   "massInDaltons": 141.928,
+   "linear": false
+  },
+  "glycine": {
+   "massInDaltons": 75.032,
+   "linear": false
+  },
+  "alanine": {
+   "massInDaltons": 89.0477,
+   "linear": false
+  },
+  "serine": {
+   "massInDaltons": 105.043,
+   "linear": false
+  },
+  "cysteine": {
+   "massInDaltons": 121.02,
+   "linear": false
+  },
+  "valine": {
+   "massInDaltons": 117.079,
+   "linear": false
+  },
+  "leucine": {
+   "massInDaltons": 131.095,
+   "linear": false
+  },
+  "isoleucine": {
+   "massInDaltons": 131.095,
+   "linear": false
+  },
+  "threonine": {
+   "massInDaltons": 119.058,
+   "linear": false
+  },
+  "asparticAcid": {
+   "massInDaltons": 133.038,
+   "linear": false
+  },
+  "glutamicAcid": {
+   "massInDaltons": 147.053,
+   "linear": false
+  },
+  "asparagine": {
+   "massInDaltons": 132.053,
+   "linear": false
+  },
+  "glutamine": {
+   "massInDaltons": 146.069,
+   "linear": false
+  },
+  "lysine": {
+   "massInDaltons": 146.106,
+   "linear": false
+  },
+  "arginine": {
+   "massInDaltons": 174.112,
+   "linear": false
+  },
+  "methionine": {
+   "massInDaltons": 149.051,
+   "linear": false
+  },
+  "phenylalanine": {
+   "massInDaltons": 165.079,
+   "linear": false
+  },
+  "tyrosine": {
+   "massInDaltons": 181.074,
+   "linear": false
+  },
+  "proline": {
+   "massInDaltons": 115.063,
+   "linear": false
+  },
+  "histidine": {
+   "massInDaltons": 155.069,
+   "linear": false
+  },
+  "tryptophan": {
+   "massInDaltons": 204.09,
+   "linear": false
+  },
+  "glucose": {
+   "massInDaltons": 180.063,
+   "linear": false
+  },
+  "fructose": {
+   "massInDaltons": 180.063,
+   "linear": false
+  },
+  "ribose": {
+   "massInDaltons": 150.053,
+   "linear": false
+  },
+  "deoxyribose": {
+   "massInDaltons": 134.058,
+   "linear": false
+  },
+  "glyceraldehyde": {
+   "massInDaltons": 90.0317,
+   "linear": false
+  },
+  "adenine": {
+   "massInDaltons": 135.054,
+   "linear": false
+  },
+  "guanine": {
+   "massInDaltons": 151.049,
+   "linear": false
+  },
+  "cytosine": {
+   "massInDaltons": 111.043,
+   "linear": false
+  },
+  "thymine": {
+   "massInDaltons": 126.043,
+   "linear": false
+  },
+  "uracil": {
+   "massInDaltons": 112.027,
+   "linear": false
+  },
+  "urea": {
+   "massInDaltons": 60.0324,
+   "linear": false
+  },
+  "lacticAcid": {
+   "massInDaltons": 90.0317,
+   "linear": false
+  },
+  "pyruvicAcid": {
+   "massInDaltons": 88.016,
+   "linear": false
+  },
+  "citricAcid": {
+   "massInDaltons": 192.027,
+   "linear": false
+  },
+  "caffeine": {
+   "massInDaltons": 194.08,
+   "linear": false
+  },
+  "aspirin": {
+   "massInDaltons": 180.042,
+   "linear": false
+  }
+ }
+}

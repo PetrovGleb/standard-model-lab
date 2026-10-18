@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "types": ["node"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "paths": {
+      "@standard-model/contracts": ["./libs/contracts/src/index.ts"],
+      "@standard-model/constants": ["./libs/constants/src/index.ts"],
+      "@standard-model/utils": ["./libs/utils/src/index.ts"],
+      "@standard-model/engine": ["./packages/engine/src/index.ts"],
+      "@standard-model/contracts/db": ["./libs/contracts/src/db/index.ts"]
+    }
+  }
+}

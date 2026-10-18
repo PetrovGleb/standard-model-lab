@@ -1,0 +1,6587 @@
+{
+  "source": "Catalogue of common molecules for the species picker: structures (atoms with the most abundant isotope and bonds with their orders) written from their standard Lewis formulas (new entries from SMILES with implicit hydrogens at the lowest default valence), names in Russian and English; every structure is checked by the valence and connectivity rules of the molecule configurator before it reaches the catalogue",
+  "groups": [
+    {
+      "key": "inorganic",
+      "ru": "Неорганические",
+      "en": "Inorganic"
+    },
+    {
+      "key": "acidsAndBases",
+      "ru": "Кислоты и основания",
+      "en": "Acids and bases"
+    },
+    {
+      "key": "salts",
+      "ru": "Соли",
+      "en": "Salts"
+    },
+    {
+      "key": "organic",
+      "ru": "Органические",
+      "en": "Organic"
+    },
+    {
+      "key": "biomolecules",
+      "ru": "Биомолекулы",
+      "en": "Biomolecules"
+    }
+  ],
+  "categories": [
+    {
+      "key": "elementMolecules",
+      "group": "inorganic",
+      "ru": "Простые вещества",
+      "en": "Elements"
+    },
+    {
+      "key": "waterAndOxides",
+      "group": "inorganic",
+      "ru": "Вода и оксиды",
+      "en": "Water and oxides"
+    },
+    {
+      "key": "hydrides",
+      "group": "inorganic",
+      "ru": "Гидриды",
+      "en": "Hydrides"
+    },
+    {
+      "key": "halides",
+      "group": "inorganic",
+      "ru": "Галогениды неметаллов",
+      "en": "Non-metal halides"
+    },
+    {
+      "key": "nitrogenAndSulfur",
+      "group": "inorganic",
+      "ru": "Азот, сера, углерод",
+      "en": "Nitrogen, sulfur, carbon"
+    },
+    {
+      "key": "acids",
+      "group": "acidsAndBases",
+      "ru": "Неорганические кислоты",
+      "en": "Inorganic acids"
+    },
+    {
+      "key": "organicAcids",
+      "group": "acidsAndBases",
+      "ru": "Органические кислоты",
+      "en": "Organic acids"
+    },
+    {
+      "key": "bases",
+      "group": "acidsAndBases",
+      "ru": "Основания",
+      "en": "Bases"
+    },
+    {
+      "key": "saltsAndBases",
+      "group": "salts",
+      "ru": "Галогениды металлов",
+      "en": "Metal halides"
+    },
+    {
+      "key": "oxygenSalts",
+      "group": "salts",
+      "ru": "Кислородные соли",
+      "en": "Oxygen salts"
+    },
+    {
+      "key": "hydrocarbons",
+      "group": "organic",
+      "ru": "Алканы и циклоалканы",
+      "en": "Alkanes and cycloalkanes"
+    },
+    {
+      "key": "unsaturated",
+      "group": "organic",
+      "ru": "Алкены и алкины",
+      "en": "Alkenes and alkynes"
+    },
+    {
+      "key": "aromatics",
+      "group": "organic",
+      "ru": "Ароматические",
+      "en": "Aromatics"
+    },
+    {
+      "key": "organics",
+      "group": "organic",
+      "ru": "Спирты и эфиры",
+      "en": "Alcohols and ethers"
+    },
+    {
+      "key": "carbonyls",
+      "group": "organic",
+      "ru": "Альдегиды, кетоны, сложные эфиры",
+      "en": "Aldehydes, ketones, esters"
+    },
+    {
+      "key": "nitrogenOrganics",
+      "group": "organic",
+      "ru": "Азот- и сероорганика",
+      "en": "Nitrogen and sulfur organics"
+    },
+    {
+      "key": "halogenOrganics",
+      "group": "organic",
+      "ru": "Галогенорганика и фреоны",
+      "en": "Organohalides and freons"
+    },
+    {
+      "key": "aminoAcids",
+      "group": "biomolecules",
+      "ru": "Аминокислоты",
+      "en": "Amino acids"
+    },
+    {
+      "key": "sugars",
+      "group": "biomolecules",
+      "ru": "Сахара",
+      "en": "Sugars"
+    },
+    {
+      "key": "nucleobases",
+      "group": "biomolecules",
+      "ru": "Азотистые основания",
+      "en": "Nucleobases"
+    },
+    {
+      "key": "metabolites",
+      "group": "biomolecules",
+      "ru": "Метаболиты и лекарства",
+      "en": "Metabolites and drugs"
+    }
+  ],
+  "molecules": [
+    {
+      "key": "hydrogen",
+      "formula": "H₂",
+      "ru": "водород",
+      "en": "hydrogen",
+      "category": "elementMolecules",
+      "atoms": [
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "nitrogen",
+      "formula": "N₂",
+      "ru": "азот",
+      "en": "nitrogen",
+      "category": "elementMolecules",
+      "atoms": [
+        [7, 14],
+        [7, 14]
+      ],
+      "bonds": [
+        [0, 1, 3]
+      ]
+    },
+    {
+      "key": "oxygen",
+      "formula": "O₂",
+      "ru": "кислород",
+      "en": "oxygen",
+      "category": "elementMolecules",
+      "atoms": [
+        [8, 16],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2]
+      ]
+    },
+    {
+      "key": "fluorine",
+      "formula": "F₂",
+      "ru": "фтор",
+      "en": "fluorine",
+      "category": "elementMolecules",
+      "atoms": [
+        [9, 19],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "chlorine",
+      "formula": "Cl₂",
+      "ru": "хлор",
+      "en": "chlorine",
+      "category": "elementMolecules",
+      "atoms": [
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "bromine",
+      "formula": "Br₂",
+      "ru": "бром",
+      "en": "bromine",
+      "category": "elementMolecules",
+      "atoms": [
+        [35, 79],
+        [35, 79]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "iodine",
+      "formula": "I₂",
+      "ru": "иод",
+      "en": "iodine",
+      "category": "elementMolecules",
+      "atoms": [
+        [53, 127],
+        [53, 127]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "ozone",
+      "formula": "O₃",
+      "ru": "озон",
+      "en": "ozone",
+      "category": "elementMolecules",
+      "atoms": [
+        [8, 16],
+        [8, 16],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "whitePhosphorus",
+      "formula": "P₄",
+      "ru": "белый фосфор",
+      "en": "white phosphorus",
+      "category": "elementMolecules",
+      "atoms": [
+        [15, 31],
+        [15, 31],
+        [15, 31],
+        [15, 31]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 2, 1],
+        [2, 3, 1],
+        [0, 3, 1],
+        [1, 3, 1]
+      ]
+    },
+    {
+      "key": "cyclooctasulfur",
+      "formula": "S₈",
+      "ru": "циклооктасера",
+      "en": "cyclooctasulfur",
+      "category": "elementMolecules",
+      "atoms": [
+        [16, 32],
+        [16, 32],
+        [16, 32],
+        [16, 32],
+        [16, 32],
+        [16, 32],
+        [16, 32],
+        [16, 32]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [5, 6, 1],
+        [6, 7, 1],
+        [0, 7, 1]
+      ]
+    },
+    {
+      "key": "deuterium",
+      "formula": "D₂",
+      "ru": "дейтерий",
+      "en": "deuterium",
+      "category": "elementMolecules",
+      "atoms": [
+        [1, 2],
+        [1, 2]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "hydrogenDeuteride",
+      "formula": "HD",
+      "ru": "дейтероводород",
+      "en": "hydrogen deuteride",
+      "category": "elementMolecules",
+      "atoms": [
+        [1, 1],
+        [1, 2]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "water",
+      "formula": "H₂O",
+      "ru": "вода",
+      "en": "water",
+      "category": "waterAndOxides",
+      "atoms": [
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1]
+      ]
+    },
+    {
+      "key": "hydrogenPeroxide",
+      "formula": "H₂O₂",
+      "ru": "перекись водорода",
+      "en": "hydrogen peroxide",
+      "category": "waterAndOxides",
+      "atoms": [
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [1, 3, 1]
+      ]
+    },
+    {
+      "key": "carbonMonoxide",
+      "formula": "CO",
+      "ru": "угарный газ",
+      "en": "carbon monoxide",
+      "category": "waterAndOxides",
+      "atoms": [
+        [6, 12],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2]
+      ]
+    },
+    {
+      "key": "carbonDioxide",
+      "formula": "CO₂",
+      "ru": "углекислый газ",
+      "en": "carbon dioxide",
+      "category": "waterAndOxides",
+      "atoms": [
+        [6, 12],
+        [8, 16],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [0, 2, 2]
+      ]
+    },
+    {
+      "key": "nitricOxide",
+      "formula": "NO",
+      "ru": "оксид азота",
+      "en": "nitric oxide",
+      "category": "waterAndOxides",
+      "atoms": [
+        [7, 14],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2]
+      ]
+    },
+    {
+      "key": "nitrogenDioxide",
+      "formula": "NO₂",
+      "ru": "диоксид азота",
+      "en": "nitrogen dioxide",
+      "category": "waterAndOxides",
+      "atoms": [
+        [7, 14],
+        [8, 16],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [0, 2, 1]
+      ]
+    },
+    {
+      "key": "sulfurDioxide",
+      "formula": "SO₂",
+      "ru": "сернистый газ",
+      "en": "sulfur dioxide",
+      "category": "waterAndOxides",
+      "atoms": [
+        [16, 32],
+        [8, 16],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [0, 2, 2]
+      ]
+    },
+    {
+      "key": "heavyWater",
+      "formula": "D₂O",
+      "ru": "тяжёлая вода",
+      "en": "heavy water",
+      "category": "waterAndOxides",
+      "atoms": [
+        [1, 2],
+        [8, 16],
+        [1, 2]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "semiheavyWater",
+      "formula": "HDO",
+      "ru": "полутяжёлая вода",
+      "en": "semiheavy water",
+      "category": "waterAndOxides",
+      "atoms": [
+        [1, 2],
+        [8, 16],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "sulfurTrioxide",
+      "formula": "SO₃",
+      "ru": "серный ангидрид",
+      "en": "sulfur trioxide",
+      "category": "waterAndOxides",
+      "atoms": [
+        [8, 16],
+        [16, 32],
+        [8, 16],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 2],
+        [1, 3, 2]
+      ]
+    },
+    {
+      "key": "dinitrogenTetroxide",
+      "formula": "N₂O₄",
+      "ru": "тетраоксид диазота",
+      "en": "dinitrogen tetroxide",
+      "category": "waterAndOxides",
+      "atoms": [
+        [8, 16],
+        [7, 14],
+        [8, 16],
+        [7, 14],
+        [8, 16],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [1, 3, 1],
+        [3, 4, 2],
+        [3, 5, 1]
+      ]
+    },
+    {
+      "key": "dichlorineMonoxide",
+      "formula": "Cl₂O",
+      "ru": "оксид хлора",
+      "en": "dichlorine monoxide",
+      "category": "waterAndOxides",
+      "atoms": [
+        [17, 35],
+        [8, 16],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "oxygenDifluoride",
+      "formula": "OF₂",
+      "ru": "дифторид кислорода",
+      "en": "oxygen difluoride",
+      "category": "waterAndOxides",
+      "atoms": [
+        [9, 19],
+        [8, 16],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "siliconDioxide",
+      "formula": "SiO₂",
+      "ru": "диоксид кремния",
+      "en": "silicon dioxide",
+      "category": "waterAndOxides",
+      "atoms": [
+        [8, 16],
+        [14, 28],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 2]
+      ]
+    },
+    {
+      "key": "carbonSuboxide",
+      "formula": "C₃O₂",
+      "ru": "недоокись углерода",
+      "en": "carbon suboxide",
+      "category": "waterAndOxides",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 2],
+        [2, 3, 2],
+        [3, 4, 2]
+      ]
+    },
+    {
+      "key": "ammonia",
+      "formula": "NH₃",
+      "ru": "аммиак",
+      "en": "ammonia",
+      "category": "hydrides",
+      "atoms": [
+        [7, 14],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1]
+      ]
+    },
+    {
+      "key": "hydrazine",
+      "formula": "N₂H₄",
+      "ru": "гидразин",
+      "en": "hydrazine",
+      "category": "hydrides",
+      "atoms": [
+        [7, 14],
+        [7, 14],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [1, 4, 1],
+        [1, 5, 1]
+      ]
+    },
+    {
+      "key": "phosphine",
+      "formula": "PH₃",
+      "ru": "фосфин",
+      "en": "phosphine",
+      "category": "hydrides",
+      "atoms": [
+        [15, 31],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1]
+      ]
+    },
+    {
+      "key": "silane",
+      "formula": "SiH₄",
+      "ru": "силан",
+      "en": "silane",
+      "category": "hydrides",
+      "atoms": [
+        [14, 28],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1]
+      ]
+    },
+    {
+      "key": "germane",
+      "formula": "GeH₄",
+      "ru": "герман",
+      "en": "germane",
+      "category": "hydrides",
+      "atoms": [
+        [32, 74],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1]
+      ]
+    },
+    {
+      "key": "arsine",
+      "formula": "AsH₃",
+      "ru": "арсин",
+      "en": "arsine",
+      "category": "hydrides",
+      "atoms": [
+        [33, 75],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1]
+      ]
+    },
+    {
+      "key": "hydrogenSelenide",
+      "formula": "H₂Se",
+      "ru": "селеноводород",
+      "en": "hydrogen selenide",
+      "category": "hydrides",
+      "atoms": [
+        [34, 80],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1]
+      ]
+    },
+    {
+      "key": "borane",
+      "formula": "BH₃",
+      "ru": "боран",
+      "en": "borane",
+      "category": "hydrides",
+      "atoms": [
+        [5, 11],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1]
+      ]
+    },
+    {
+      "key": "lithiumHydride",
+      "formula": "LiH",
+      "ru": "гидрид лития",
+      "en": "lithium hydride",
+      "category": "hydrides",
+      "atoms": [
+        [3, 7],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "sodiumHydride",
+      "formula": "NaH",
+      "ru": "гидрид натрия",
+      "en": "sodium hydride",
+      "category": "hydrides",
+      "atoms": [
+        [11, 23],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "berylliumHydride",
+      "formula": "BeH₂",
+      "ru": "гидрид бериллия",
+      "en": "beryllium hydride",
+      "category": "hydrides",
+      "atoms": [
+        [4, 9],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1]
+      ]
+    },
+    {
+      "key": "boronTrifluoride",
+      "formula": "BF₃",
+      "ru": "трифторид бора",
+      "en": "boron trifluoride",
+      "category": "halides",
+      "atoms": [
+        [9, 19],
+        [5, 11],
+        [9, 19],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1]
+      ]
+    },
+    {
+      "key": "boronTrichloride",
+      "formula": "BCl₃",
+      "ru": "трихлорид бора",
+      "en": "boron trichloride",
+      "category": "halides",
+      "atoms": [
+        [17, 35],
+        [5, 11],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1]
+      ]
+    },
+    {
+      "key": "aluminiumChloride",
+      "formula": "AlCl₃",
+      "ru": "хлорид алюминия",
+      "en": "aluminium chloride",
+      "category": "halides",
+      "atoms": [
+        [17, 35],
+        [13, 27],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1]
+      ]
+    },
+    {
+      "key": "siliconTetrachloride",
+      "formula": "SiCl₄",
+      "ru": "тетрахлорид кремния",
+      "en": "silicon tetrachloride",
+      "category": "halides",
+      "atoms": [
+        [17, 35],
+        [14, 28],
+        [17, 35],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "siliconTetrafluoride",
+      "formula": "SiF₄",
+      "ru": "тетрафторид кремния",
+      "en": "silicon tetrafluoride",
+      "category": "halides",
+      "atoms": [
+        [9, 19],
+        [14, 28],
+        [9, 19],
+        [9, 19],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "phosphorusTrichloride",
+      "formula": "PCl₃",
+      "ru": "трихлорид фосфора",
+      "en": "phosphorus trichloride",
+      "category": "halides",
+      "atoms": [
+        [17, 35],
+        [15, 31],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1]
+      ]
+    },
+    {
+      "key": "phosphorusPentachloride",
+      "formula": "PCl₅",
+      "ru": "пентахлорид фосфора",
+      "en": "phosphorus pentachloride",
+      "category": "halides",
+      "atoms": [
+        [17, 35],
+        [15, 31],
+        [17, 35],
+        [17, 35],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1],
+        [1, 5, 1]
+      ]
+    },
+    {
+      "key": "sulfurHexafluoride",
+      "formula": "SF₆",
+      "ru": "элегаз",
+      "en": "sulfur hexafluoride",
+      "category": "halides",
+      "atoms": [
+        [9, 19],
+        [16, 32],
+        [9, 19],
+        [9, 19],
+        [9, 19],
+        [9, 19],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1],
+        [1, 5, 1],
+        [1, 6, 1]
+      ]
+    },
+    {
+      "key": "sulfurTetrafluoride",
+      "formula": "SF₄",
+      "ru": "тетрафторид серы",
+      "en": "sulfur tetrafluoride",
+      "category": "halides",
+      "atoms": [
+        [9, 19],
+        [16, 32],
+        [9, 19],
+        [9, 19],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "nitrogenTrifluoride",
+      "formula": "NF₃",
+      "ru": "трифторид азота",
+      "en": "nitrogen trifluoride",
+      "category": "halides",
+      "atoms": [
+        [9, 19],
+        [7, 14],
+        [9, 19],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1]
+      ]
+    },
+    {
+      "key": "xenonDifluoride",
+      "formula": "XeF₂",
+      "ru": "дифторид ксенона",
+      "en": "xenon difluoride",
+      "category": "halides",
+      "atoms": [
+        [9, 19],
+        [54, 132],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "xenonTetrafluoride",
+      "formula": "XeF₄",
+      "ru": "тетрафторид ксенона",
+      "en": "xenon tetrafluoride",
+      "category": "halides",
+      "atoms": [
+        [9, 19],
+        [54, 132],
+        [9, 19],
+        [9, 19],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "kryptonDifluoride",
+      "formula": "KrF₂",
+      "ru": "дифторид криптона",
+      "en": "krypton difluoride",
+      "category": "halides",
+      "atoms": [
+        [9, 19],
+        [36, 84],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "titaniumTetrachloride",
+      "formula": "TiCl₄",
+      "ru": "тетрахлорид титана",
+      "en": "titanium tetrachloride",
+      "category": "halides",
+      "atoms": [
+        [17, 35],
+        [22, 48],
+        [17, 35],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "uraniumTetrafluoride",
+      "formula": "UF₄",
+      "ru": "тетрафторид урана",
+      "en": "uranium tetrafluoride",
+      "category": "halides",
+      "atoms": [
+        [9, 19],
+        [92, 238],
+        [9, 19],
+        [9, 19],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "tungstenHexafluoride",
+      "formula": "WF₆",
+      "ru": "гексафторид вольфрама",
+      "en": "tungsten hexafluoride",
+      "category": "halides",
+      "atoms": [
+        [9, 19],
+        [74, 184],
+        [9, 19],
+        [9, 19],
+        [9, 19],
+        [9, 19],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1],
+        [1, 5, 1],
+        [1, 6, 1]
+      ]
+    },
+    {
+      "key": "carbonDisulfide",
+      "formula": "CS₂",
+      "ru": "сероуглерод",
+      "en": "carbon disulfide",
+      "category": "nitrogenAndSulfur",
+      "atoms": [
+        [6, 12],
+        [16, 32],
+        [16, 32]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [0, 2, 2]
+      ]
+    },
+    {
+      "key": "nitrousOxide",
+      "formula": "N₂O",
+      "ru": "веселящий газ",
+      "en": "nitrous oxide",
+      "category": "nitrogenAndSulfur",
+      "atoms": [
+        [7, 14],
+        [7, 14],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 2]
+      ]
+    },
+    {
+      "key": "carbonylSulfide",
+      "formula": "OCS",
+      "ru": "сероокись углерода",
+      "en": "carbonyl sulfide",
+      "category": "nitrogenAndSulfur",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [16, 32]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 2]
+      ]
+    },
+    {
+      "key": "sulfurDichloride",
+      "formula": "SCl₂",
+      "ru": "дихлорид серы",
+      "en": "sulfur dichloride",
+      "category": "nitrogenAndSulfur",
+      "atoms": [
+        [17, 35],
+        [16, 32],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "disulfurDichloride",
+      "formula": "S₂Cl₂",
+      "ru": "монохлорид серы",
+      "en": "disulfur dichloride",
+      "category": "nitrogenAndSulfur",
+      "atoms": [
+        [17, 35],
+        [16, 32],
+        [16, 32],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1]
+      ]
+    },
+    {
+      "key": "thionylChloride",
+      "formula": "SOCl₂",
+      "ru": "тионилхлорид",
+      "en": "thionyl chloride",
+      "category": "nitrogenAndSulfur",
+      "atoms": [
+        [8, 16],
+        [16, 32],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [1, 3, 1]
+      ]
+    },
+    {
+      "key": "sulfurylChloride",
+      "formula": "SO₂Cl₂",
+      "ru": "сульфурилхлорид",
+      "en": "sulfuryl chloride",
+      "category": "nitrogenAndSulfur",
+      "atoms": [
+        [8, 16],
+        [16, 32],
+        [8, 16],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 2],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "phosgene",
+      "formula": "COCl₂",
+      "ru": "фосген",
+      "en": "phosgene",
+      "category": "nitrogenAndSulfur",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [1, 3, 1]
+      ]
+    },
+    {
+      "key": "cyanogen",
+      "formula": "C₂N₂",
+      "ru": "дициан",
+      "en": "cyanogen",
+      "category": "nitrogenAndSulfur",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [7, 14]
+      ],
+      "bonds": [
+        [0, 1, 3],
+        [1, 2, 1],
+        [2, 3, 3]
+      ]
+    },
+    {
+      "key": "hydrazoicAcid",
+      "formula": "HN₃",
+      "ru": "азотистоводородная кислота",
+      "en": "hydrazoic acid",
+      "category": "nitrogenAndSulfur",
+      "atoms": [
+        [7, 14],
+        [7, 14],
+        [7, 14],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 2],
+        [0, 3, 1]
+      ]
+    },
+    {
+      "key": "nitrosylChloride",
+      "formula": "NOCl",
+      "ru": "нитрозилхлорид",
+      "en": "nitrosyl chloride",
+      "category": "nitrogenAndSulfur",
+      "atoms": [
+        [8, 16],
+        [7, 14],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "hydrogenFluoride",
+      "formula": "HF",
+      "ru": "фтороводород",
+      "en": "hydrogen fluoride",
+      "category": "acids",
+      "atoms": [
+        [1, 1],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "hydrogenChloride",
+      "formula": "HCl",
+      "ru": "хлороводород",
+      "en": "hydrogen chloride",
+      "category": "acids",
+      "atoms": [
+        [1, 1],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "hydrogenBromide",
+      "formula": "HBr",
+      "ru": "бромоводород",
+      "en": "hydrogen bromide",
+      "category": "acids",
+      "atoms": [
+        [1, 1],
+        [35, 79]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "hydrogenIodide",
+      "formula": "HI",
+      "ru": "иодоводород",
+      "en": "hydrogen iodide",
+      "category": "acids",
+      "atoms": [
+        [1, 1],
+        [53, 127]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "hydrogenSulfide",
+      "formula": "H₂S",
+      "ru": "сероводород",
+      "en": "hydrogen sulfide",
+      "category": "acids",
+      "atoms": [
+        [16, 32],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1]
+      ]
+    },
+    {
+      "key": "hydrogenCyanide",
+      "formula": "HCN",
+      "ru": "синильная кислота",
+      "en": "hydrogen cyanide",
+      "category": "acids",
+      "atoms": [
+        [6, 12],
+        [1, 1],
+        [7, 14]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 3]
+      ]
+    },
+    {
+      "key": "sulfuricAcid",
+      "formula": "H₂SO₄",
+      "ru": "серная кислота",
+      "en": "sulfuric acid",
+      "category": "acids",
+      "atoms": [
+        [16, 32],
+        [8, 16],
+        [8, 16],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [0, 2, 2],
+        [0, 3, 1],
+        [0, 4, 1],
+        [3, 5, 1],
+        [4, 6, 1]
+      ]
+    },
+    {
+      "key": "phosphoricAcid",
+      "formula": "H₃PO₄",
+      "ru": "фосфорная кислота",
+      "en": "phosphoric acid",
+      "category": "acids",
+      "atoms": [
+        [15, 31],
+        [8, 16],
+        [8, 16],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [2, 5, 1],
+        [3, 6, 1],
+        [4, 7, 1]
+      ]
+    },
+    {
+      "key": "nitrousAcid",
+      "formula": "HNO₂",
+      "ru": "азотистая кислота",
+      "en": "nitrous acid",
+      "category": "acids",
+      "atoms": [
+        [8, 16],
+        [7, 14],
+        [8, 16],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [0, 3, 1]
+      ]
+    },
+    {
+      "key": "sulfurousAcid",
+      "formula": "H₂SO₃",
+      "ru": "сернистая кислота",
+      "en": "sulfurous acid",
+      "category": "acids",
+      "atoms": [
+        [8, 16],
+        [16, 32],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [0, 4, 1],
+        [3, 5, 1]
+      ]
+    },
+    {
+      "key": "carbonicAcid",
+      "formula": "H₂CO₃",
+      "ru": "угольная кислота",
+      "en": "carbonic acid",
+      "category": "acids",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [0, 4, 1],
+        [3, 5, 1]
+      ]
+    },
+    {
+      "key": "hypochlorousAcid",
+      "formula": "HClO",
+      "ru": "хлорноватистая кислота",
+      "en": "hypochlorous acid",
+      "category": "acids",
+      "atoms": [
+        [8, 16],
+        [17, 35],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1]
+      ]
+    },
+    {
+      "key": "boricAcid",
+      "formula": "H₃BO₃",
+      "ru": "борная кислота",
+      "en": "boric acid",
+      "category": "acids",
+      "atoms": [
+        [8, 16],
+        [5, 11],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [0, 4, 1],
+        [2, 5, 1],
+        [3, 6, 1]
+      ]
+    },
+    {
+      "key": "phosphorousAcid",
+      "formula": "H₃PO₃",
+      "ru": "фосфористая кислота",
+      "en": "phosphorous acid",
+      "category": "acids",
+      "atoms": [
+        [8, 16],
+        [15, 31],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [0, 4, 1],
+        [2, 5, 1],
+        [3, 6, 1]
+      ]
+    },
+    {
+      "key": "thiocyanicAcid",
+      "formula": "HSCN",
+      "ru": "роданистоводородная кислота",
+      "en": "thiocyanic acid",
+      "category": "acids",
+      "atoms": [
+        [16, 32],
+        [6, 12],
+        [7, 14],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 3],
+        [0, 3, 1]
+      ]
+    },
+    {
+      "key": "formicAcid",
+      "formula": "HCOOH",
+      "ru": "муравьиная кислота",
+      "en": "formic acid",
+      "category": "organicAcids",
+      "atoms": [
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [0, 2, 1],
+        [0, 3, 1],
+        [2, 4, 1]
+      ]
+    },
+    {
+      "key": "aceticAcid",
+      "formula": "CH₃COOH",
+      "ru": "уксусная кислота",
+      "en": "acetic acid",
+      "category": "organicAcids",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1]
+      ]
+    },
+    {
+      "key": "propionicAcid",
+      "formula": "C₂H₅COOH",
+      "ru": "пропионовая кислота",
+      "en": "propionic acid",
+      "category": "organicAcids",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 2],
+        [2, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [1, 8, 1],
+        [1, 9, 1],
+        [4, 10, 1]
+      ]
+    },
+    {
+      "key": "butyricAcid",
+      "formula": "C₃H₇COOH",
+      "ru": "масляная кислота",
+      "en": "butyric acid",
+      "category": "organicAcids",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 2],
+        [3, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [0, 8, 1],
+        [1, 9, 1],
+        [1, 10, 1],
+        [2, 11, 1],
+        [2, 12, 1],
+        [5, 13, 1]
+      ]
+    },
+    {
+      "key": "oxalicAcid",
+      "formula": "(COOH)₂",
+      "ru": "щавелевая кислота",
+      "en": "oxalic acid",
+      "category": "organicAcids",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 2],
+        [3, 5, 1],
+        [0, 6, 1],
+        [5, 7, 1]
+      ]
+    },
+    {
+      "key": "malonicAcid",
+      "formula": "CH₂(COOH)₂",
+      "ru": "малоновая кислота",
+      "en": "malonic acid",
+      "category": "organicAcids",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 2],
+        [4, 6, 1],
+        [0, 7, 1],
+        [3, 8, 1],
+        [3, 9, 1],
+        [6, 10, 1]
+      ]
+    },
+    {
+      "key": "acrylicAcid",
+      "formula": "CH₂CHCOOH",
+      "ru": "акриловая кислота",
+      "en": "acrylic acid",
+      "category": "organicAcids",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 2],
+        [2, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [1, 7, 1],
+        [4, 8, 1]
+      ]
+    },
+    {
+      "key": "benzoicAcid",
+      "formula": "C₆H₅COOH",
+      "ru": "бензойная кислота",
+      "en": "benzoic acid",
+      "category": "organicAcids",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 2],
+        [6, 7, 1],
+        [7, 8, 2],
+        [3, 8, 1],
+        [0, 9, 1],
+        [4, 10, 1],
+        [5, 11, 1],
+        [6, 12, 1],
+        [7, 13, 1],
+        [8, 14, 1]
+      ]
+    },
+    {
+      "key": "trifluoroaceticAcid",
+      "formula": "CF₃COOH",
+      "ru": "трифторуксусная кислота",
+      "en": "trifluoroacetic acid",
+      "category": "organicAcids",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [9, 19],
+        [9, 19],
+        [9, 19],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [3, 5, 1],
+        [3, 6, 1],
+        [0, 7, 1]
+      ]
+    },
+    {
+      "key": "sodiumHydroxide",
+      "formula": "NaOH",
+      "ru": "гидроксид натрия",
+      "en": "sodium hydroxide",
+      "category": "bases",
+      "atoms": [
+        [11, 23],
+        [8, 16],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "potassiumHydroxide",
+      "formula": "KOH",
+      "ru": "гидроксид калия",
+      "en": "potassium hydroxide",
+      "category": "bases",
+      "atoms": [
+        [19, 39],
+        [8, 16],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "lithiumHydroxide",
+      "formula": "LiOH",
+      "ru": "гидроксид лития",
+      "en": "lithium hydroxide",
+      "category": "bases",
+      "atoms": [
+        [3, 7],
+        [8, 16],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "caesiumHydroxide",
+      "formula": "CsOH",
+      "ru": "гидроксид цезия",
+      "en": "caesium hydroxide",
+      "category": "bases",
+      "atoms": [
+        [55, 133],
+        [8, 16],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "calciumHydroxide",
+      "formula": "Ca(OH)₂",
+      "ru": "гашёная известь",
+      "en": "calcium hydroxide",
+      "category": "bases",
+      "atoms": [
+        [8, 16],
+        [20, 40],
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 3, 1],
+        [2, 4, 1]
+      ]
+    },
+    {
+      "key": "magnesiumHydroxide",
+      "formula": "Mg(OH)₂",
+      "ru": "гидроксид магния",
+      "en": "magnesium hydroxide",
+      "category": "bases",
+      "atoms": [
+        [8, 16],
+        [12, 24],
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 3, 1],
+        [2, 4, 1]
+      ]
+    },
+    {
+      "key": "bariumHydroxide",
+      "formula": "Ba(OH)₂",
+      "ru": "гидроксид бария",
+      "en": "barium hydroxide",
+      "category": "bases",
+      "atoms": [
+        [8, 16],
+        [56, 138],
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 3, 1],
+        [2, 4, 1]
+      ]
+    },
+    {
+      "key": "hydroxylamine",
+      "formula": "NH₂OH",
+      "ru": "гидроксиламин",
+      "en": "hydroxylamine",
+      "category": "bases",
+      "atoms": [
+        [7, 14],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "sodiumChloride",
+      "formula": "NaCl",
+      "ru": "поваренная соль",
+      "en": "sodium chloride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [11, 23],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "potassiumChloride",
+      "formula": "KCl",
+      "ru": "хлорид калия",
+      "en": "potassium chloride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [19, 39],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "lithiumFluoride",
+      "formula": "LiF",
+      "ru": "фторид лития",
+      "en": "lithium fluoride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [3, 7],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "sodiumFluoride",
+      "formula": "NaF",
+      "ru": "фторид натрия",
+      "en": "sodium fluoride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [11, 23],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "sodiumBromide",
+      "formula": "NaBr",
+      "ru": "бромид натрия",
+      "en": "sodium bromide",
+      "category": "saltsAndBases",
+      "atoms": [
+        [11, 23],
+        [35, 79]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "potassiumBromide",
+      "formula": "KBr",
+      "ru": "бромид калия",
+      "en": "potassium bromide",
+      "category": "saltsAndBases",
+      "atoms": [
+        [19, 39],
+        [35, 79]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "potassiumIodide",
+      "formula": "KI",
+      "ru": "иодид калия",
+      "en": "potassium iodide",
+      "category": "saltsAndBases",
+      "atoms": [
+        [19, 39],
+        [53, 127]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "lithiumChloride",
+      "formula": "LiCl",
+      "ru": "хлорид лития",
+      "en": "lithium chloride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [3, 7],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "sodiumIodide",
+      "formula": "NaI",
+      "ru": "иодид натрия",
+      "en": "sodium iodide",
+      "category": "saltsAndBases",
+      "atoms": [
+        [11, 23],
+        [53, 127]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "caesiumChloride",
+      "formula": "CsCl",
+      "ru": "хлорид цезия",
+      "en": "caesium chloride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [55, 133],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "calciumFluoride",
+      "formula": "CaF₂",
+      "ru": "флюорит",
+      "en": "calcium fluoride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [9, 19],
+        [20, 40],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "calciumChloride",
+      "formula": "CaCl₂",
+      "ru": "хлорид кальция",
+      "en": "calcium chloride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [17, 35],
+        [20, 40],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "magnesiumChloride",
+      "formula": "MgCl₂",
+      "ru": "хлорид магния",
+      "en": "magnesium chloride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [17, 35],
+        [12, 24],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "bariumChloride",
+      "formula": "BaCl₂",
+      "ru": "хлорид бария",
+      "en": "barium chloride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [17, 35],
+        [56, 138],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "silverChloride",
+      "formula": "AgCl",
+      "ru": "хлорид серебра",
+      "en": "silver chloride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [47, 107],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "silverBromide",
+      "formula": "AgBr",
+      "ru": "бромид серебра",
+      "en": "silver bromide",
+      "category": "saltsAndBases",
+      "atoms": [
+        [47, 107],
+        [35, 79]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "zincChloride",
+      "formula": "ZnCl₂",
+      "ru": "хлорид цинка",
+      "en": "zinc chloride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [17, 35],
+        [30, 64],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "copperChloride",
+      "formula": "CuCl",
+      "ru": "хлорид меди(I)",
+      "en": "copper(I) chloride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [29, 63],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1]
+      ]
+    },
+    {
+      "key": "ironDichloride",
+      "formula": "FeCl₂",
+      "ru": "хлорид железа(II)",
+      "en": "iron(II) chloride",
+      "category": "saltsAndBases",
+      "atoms": [
+        [17, 35],
+        [26, 56],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "sodiumCarbonate",
+      "formula": "Na₂CO₃",
+      "ru": "кальцинированная сода",
+      "en": "sodium carbonate",
+      "category": "oxygenSalts",
+      "atoms": [
+        [11, 23],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [11, 23]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 2],
+        [2, 4, 1],
+        [4, 5, 1]
+      ]
+    },
+    {
+      "key": "sodiumBicarbonate",
+      "formula": "NaHCO₃",
+      "ru": "пищевая сода",
+      "en": "sodium bicarbonate",
+      "category": "oxygenSalts",
+      "atoms": [
+        [11, 23],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 2],
+        [2, 4, 1],
+        [4, 5, 1]
+      ]
+    },
+    {
+      "key": "potassiumCarbonate",
+      "formula": "K₂CO₃",
+      "ru": "поташ",
+      "en": "potassium carbonate",
+      "category": "oxygenSalts",
+      "atoms": [
+        [19, 39],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [19, 39]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 2],
+        [2, 4, 1],
+        [4, 5, 1]
+      ]
+    },
+    {
+      "key": "calciumCarbonate",
+      "formula": "CaCO₃",
+      "ru": "карбонат кальция",
+      "en": "calcium carbonate",
+      "category": "oxygenSalts",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [20, 40],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "sodiumSulfate",
+      "formula": "Na₂SO₄",
+      "ru": "сульфат натрия",
+      "en": "sodium sulfate",
+      "category": "oxygenSalts",
+      "atoms": [
+        [11, 23],
+        [8, 16],
+        [16, 32],
+        [8, 16],
+        [8, 16],
+        [8, 16],
+        [11, 23]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 2],
+        [2, 4, 2],
+        [2, 5, 1],
+        [5, 6, 1]
+      ]
+    },
+    {
+      "key": "potassiumSulfate",
+      "formula": "K₂SO₄",
+      "ru": "сульфат калия",
+      "en": "potassium sulfate",
+      "category": "oxygenSalts",
+      "atoms": [
+        [19, 39],
+        [8, 16],
+        [16, 32],
+        [8, 16],
+        [8, 16],
+        [8, 16],
+        [19, 39]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 2],
+        [2, 4, 2],
+        [2, 5, 1],
+        [5, 6, 1]
+      ]
+    },
+    {
+      "key": "magnesiumSulfate",
+      "formula": "MgSO₄",
+      "ru": "английская соль",
+      "en": "magnesium sulfate",
+      "category": "oxygenSalts",
+      "atoms": [
+        [8, 16],
+        [16, 32],
+        [8, 16],
+        [8, 16],
+        [12, 24],
+        [8, 16]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [1, 5, 1]
+      ]
+    },
+    {
+      "key": "sodiumHypochlorite",
+      "formula": "NaClO",
+      "ru": "гипохлорит натрия",
+      "en": "sodium hypochlorite",
+      "category": "oxygenSalts",
+      "atoms": [
+        [11, 23],
+        [8, 16],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1]
+      ]
+    },
+    {
+      "key": "sodiumPhosphate",
+      "formula": "Na₃PO₄",
+      "ru": "фосфат натрия",
+      "en": "sodium phosphate",
+      "category": "oxygenSalts",
+      "atoms": [
+        [11, 23],
+        [8, 16],
+        [15, 31],
+        [8, 16],
+        [8, 16],
+        [11, 23],
+        [8, 16],
+        [11, 23]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 2],
+        [2, 4, 1],
+        [4, 5, 1],
+        [2, 6, 1],
+        [6, 7, 1]
+      ]
+    },
+    {
+      "key": "sodiumAcetate",
+      "formula": "CH₃COONa",
+      "ru": "ацетат натрия",
+      "en": "sodium acetate",
+      "category": "oxygenSalts",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [11, 23],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1]
+      ]
+    },
+    {
+      "key": "methane",
+      "formula": "CH₄",
+      "ru": "метан",
+      "en": "methane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1]
+      ]
+    },
+    {
+      "key": "ethane",
+      "formula": "C₂H₆",
+      "ru": "этан",
+      "en": "ethane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [1, 5, 1],
+        [1, 6, 1],
+        [1, 7, 1]
+      ]
+    },
+    {
+      "key": "propane",
+      "formula": "C₃H₈",
+      "ru": "пропан",
+      "en": "propane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [1, 6, 1],
+        [1, 7, 1],
+        [2, 8, 1],
+        [2, 9, 1],
+        [2, 10, 1]
+      ]
+    },
+    {
+      "key": "butane",
+      "formula": "C₄H₁₀",
+      "ru": "бутан",
+      "en": "butane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [1, 7, 1],
+        [1, 8, 1],
+        [2, 9, 1],
+        [2, 10, 1],
+        [3, 11, 1],
+        [3, 12, 1],
+        [3, 13, 1]
+      ]
+    },
+    {
+      "key": "isobutane",
+      "formula": "(CH₃)₃CH",
+      "ru": "изобутан",
+      "en": "isobutane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [1, 7, 1],
+        [2, 8, 1],
+        [2, 9, 1],
+        [2, 10, 1],
+        [3, 11, 1],
+        [3, 12, 1],
+        [3, 13, 1]
+      ]
+    },
+    {
+      "key": "pentane",
+      "formula": "C₅H₁₂",
+      "ru": "пентан",
+      "en": "pentane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [1, 8, 1],
+        [1, 9, 1],
+        [2, 10, 1],
+        [2, 11, 1],
+        [3, 12, 1],
+        [3, 13, 1],
+        [4, 14, 1],
+        [4, 15, 1],
+        [4, 16, 1]
+      ]
+    },
+    {
+      "key": "neopentane",
+      "formula": "C(CH₃)₄",
+      "ru": "неопентан",
+      "en": "neopentane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [2, 8, 1],
+        [2, 9, 1],
+        [2, 10, 1],
+        [3, 11, 1],
+        [3, 12, 1],
+        [3, 13, 1],
+        [4, 14, 1],
+        [4, 15, 1],
+        [4, 16, 1]
+      ]
+    },
+    {
+      "key": "hexane",
+      "formula": "C₆H₁₄",
+      "ru": "гексан",
+      "en": "hexane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [0, 8, 1],
+        [1, 9, 1],
+        [1, 10, 1],
+        [2, 11, 1],
+        [2, 12, 1],
+        [3, 13, 1],
+        [3, 14, 1],
+        [4, 15, 1],
+        [4, 16, 1],
+        [5, 17, 1],
+        [5, 18, 1],
+        [5, 19, 1]
+      ]
+    },
+    {
+      "key": "heptane",
+      "formula": "C₇H₁₆",
+      "ru": "гептан",
+      "en": "heptane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [5, 6, 1],
+        [0, 7, 1],
+        [0, 8, 1],
+        [0, 9, 1],
+        [1, 10, 1],
+        [1, 11, 1],
+        [2, 12, 1],
+        [2, 13, 1],
+        [3, 14, 1],
+        [3, 15, 1],
+        [4, 16, 1],
+        [4, 17, 1],
+        [5, 18, 1],
+        [5, 19, 1],
+        [6, 20, 1],
+        [6, 21, 1],
+        [6, 22, 1]
+      ]
+    },
+    {
+      "key": "octane",
+      "formula": "C₈H₁₈",
+      "ru": "октан",
+      "en": "octane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [5, 6, 1],
+        [6, 7, 1],
+        [0, 8, 1],
+        [0, 9, 1],
+        [0, 10, 1],
+        [1, 11, 1],
+        [1, 12, 1],
+        [2, 13, 1],
+        [2, 14, 1],
+        [3, 15, 1],
+        [3, 16, 1],
+        [4, 17, 1],
+        [4, 18, 1],
+        [5, 19, 1],
+        [5, 20, 1],
+        [6, 21, 1],
+        [6, 22, 1],
+        [7, 23, 1],
+        [7, 24, 1],
+        [7, 25, 1]
+      ]
+    },
+    {
+      "key": "isooctane",
+      "formula": "C₈H₁₈",
+      "ru": "изооктан",
+      "en": "isooctane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [4, 6, 1],
+        [4, 7, 1],
+        [0, 8, 1],
+        [0, 9, 1],
+        [0, 10, 1],
+        [1, 11, 1],
+        [2, 12, 1],
+        [2, 13, 1],
+        [2, 14, 1],
+        [3, 15, 1],
+        [3, 16, 1],
+        [5, 17, 1],
+        [5, 18, 1],
+        [5, 19, 1],
+        [6, 20, 1],
+        [6, 21, 1],
+        [6, 22, 1],
+        [7, 23, 1],
+        [7, 24, 1],
+        [7, 25, 1]
+      ]
+    },
+    {
+      "key": "cyclopropane",
+      "formula": "C₃H₆",
+      "ru": "циклопропан",
+      "en": "cyclopropane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [1, 5, 1],
+        [1, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1]
+      ]
+    },
+    {
+      "key": "cyclohexane",
+      "formula": "C₆H₁₂",
+      "ru": "циклогексан",
+      "en": "cyclohexane",
+      "category": "hydrocarbons",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [1, 8, 1],
+        [1, 9, 1],
+        [2, 10, 1],
+        [2, 11, 1],
+        [3, 12, 1],
+        [3, 13, 1],
+        [4, 14, 1],
+        [4, 15, 1],
+        [5, 16, 1],
+        [5, 17, 1]
+      ]
+    },
+    {
+      "key": "ethylene",
+      "formula": "C₂H₄",
+      "ru": "этилен",
+      "en": "ethylene",
+      "category": "unsaturated",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [0, 2, 1],
+        [0, 3, 1],
+        [1, 4, 1],
+        [1, 5, 1]
+      ]
+    },
+    {
+      "key": "acetylene",
+      "formula": "C₂H₂",
+      "ru": "ацетилен",
+      "en": "acetylene",
+      "category": "unsaturated",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 3],
+        [0, 2, 1],
+        [1, 3, 1]
+      ]
+    },
+    {
+      "key": "propylene",
+      "formula": "C₃H₆",
+      "ru": "пропилен",
+      "en": "propylene",
+      "category": "unsaturated",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [1, 5, 1],
+        [2, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1]
+      ]
+    },
+    {
+      "key": "butene",
+      "formula": "C₄H₈",
+      "ru": "бутен-1",
+      "en": "1-butene",
+      "category": "unsaturated",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [1, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1],
+        [3, 9, 1],
+        [3, 10, 1],
+        [3, 11, 1]
+      ]
+    },
+    {
+      "key": "butadiene",
+      "formula": "C₄H₆",
+      "ru": "бутадиен",
+      "en": "1,3-butadiene",
+      "category": "unsaturated",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 2],
+        [0, 4, 1],
+        [0, 5, 1],
+        [1, 6, 1],
+        [2, 7, 1],
+        [3, 8, 1],
+        [3, 9, 1]
+      ]
+    },
+    {
+      "key": "isoprene",
+      "formula": "C₅H₈",
+      "ru": "изопрен",
+      "en": "isoprene",
+      "category": "unsaturated",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [1, 3, 1],
+        [3, 4, 2],
+        [0, 5, 1],
+        [0, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1],
+        [2, 9, 1],
+        [3, 10, 1],
+        [4, 11, 1],
+        [4, 12, 1]
+      ]
+    },
+    {
+      "key": "propyne",
+      "formula": "C₃H₄",
+      "ru": "пропин",
+      "en": "propyne",
+      "category": "unsaturated",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 3],
+        [1, 2, 1],
+        [0, 3, 1],
+        [2, 4, 1],
+        [2, 5, 1],
+        [2, 6, 1]
+      ]
+    },
+    {
+      "key": "ketene",
+      "formula": "CH₂CO",
+      "ru": "кетен",
+      "en": "ketene",
+      "category": "unsaturated",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 2],
+        [0, 3, 1],
+        [0, 4, 1]
+      ]
+    },
+    {
+      "key": "benzene",
+      "formula": "C₆H₆",
+      "ru": "бензол",
+      "en": "benzene",
+      "category": "aromatics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 2],
+        [3, 4, 1],
+        [4, 5, 2],
+        [5, 0, 1],
+        [0, 6, 1],
+        [1, 7, 1],
+        [2, 8, 1],
+        [3, 9, 1],
+        [4, 10, 1],
+        [5, 11, 1]
+      ]
+    },
+    {
+      "key": "toluene",
+      "formula": "C₆H₅CH₃",
+      "ru": "толуол",
+      "en": "toluene",
+      "category": "aromatics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [2, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 2],
+        [1, 6, 1],
+        [0, 7, 1],
+        [0, 8, 1],
+        [0, 9, 1],
+        [2, 10, 1],
+        [3, 11, 1],
+        [4, 12, 1],
+        [5, 13, 1],
+        [6, 14, 1]
+      ]
+    },
+    {
+      "key": "orthoXylene",
+      "formula": "C₆H₄(CH₃)₂",
+      "ru": "о-ксилол",
+      "en": "o-xylene",
+      "category": "aromatics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [2, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 2],
+        [1, 6, 1],
+        [6, 7, 1],
+        [0, 8, 1],
+        [0, 9, 1],
+        [0, 10, 1],
+        [2, 11, 1],
+        [3, 12, 1],
+        [4, 13, 1],
+        [5, 14, 1],
+        [7, 15, 1],
+        [7, 16, 1],
+        [7, 17, 1]
+      ]
+    },
+    {
+      "key": "styrene",
+      "formula": "C₆H₅CHCH₂",
+      "ru": "стирол",
+      "en": "styrene",
+      "category": "aromatics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 2],
+        [3, 4, 1],
+        [4, 5, 2],
+        [5, 6, 1],
+        [6, 7, 2],
+        [2, 7, 1],
+        [0, 8, 1],
+        [0, 9, 1],
+        [1, 10, 1],
+        [3, 11, 1],
+        [4, 12, 1],
+        [5, 13, 1],
+        [6, 14, 1],
+        [7, 15, 1]
+      ]
+    },
+    {
+      "key": "naphthalene",
+      "formula": "C₁₀H₈",
+      "ru": "нафталин",
+      "en": "naphthalene",
+      "category": "aromatics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 2],
+        [3, 4, 1],
+        [4, 5, 2],
+        [5, 6, 1],
+        [6, 7, 2],
+        [7, 8, 1],
+        [3, 8, 1],
+        [8, 9, 2],
+        [0, 9, 1],
+        [0, 10, 1],
+        [1, 11, 1],
+        [2, 12, 1],
+        [4, 13, 1],
+        [5, 14, 1],
+        [6, 15, 1],
+        [7, 16, 1],
+        [9, 17, 1]
+      ]
+    },
+    {
+      "key": "anthracene",
+      "formula": "C₁₄H₁₀",
+      "ru": "антрацен",
+      "en": "anthracene",
+      "category": "aromatics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 2],
+        [3, 4, 1],
+        [4, 5, 2],
+        [5, 6, 1],
+        [6, 7, 2],
+        [7, 8, 1],
+        [8, 9, 2],
+        [9, 10, 1],
+        [5, 10, 1],
+        [10, 11, 2],
+        [11, 12, 1],
+        [3, 12, 1],
+        [12, 13, 2],
+        [0, 13, 1],
+        [0, 14, 1],
+        [1, 15, 1],
+        [2, 16, 1],
+        [4, 17, 1],
+        [6, 18, 1],
+        [7, 19, 1],
+        [8, 20, 1],
+        [9, 21, 1],
+        [11, 22, 1],
+        [13, 23, 1]
+      ]
+    },
+    {
+      "key": "phenol",
+      "formula": "C₆H₅OH",
+      "ru": "фенол",
+      "en": "phenol",
+      "category": "aromatics",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [2, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 2],
+        [1, 6, 1],
+        [0, 7, 1],
+        [2, 8, 1],
+        [3, 9, 1],
+        [4, 10, 1],
+        [5, 11, 1],
+        [6, 12, 1]
+      ]
+    },
+    {
+      "key": "aniline",
+      "formula": "C₆H₅NH₂",
+      "ru": "анилин",
+      "en": "aniline",
+      "category": "aromatics",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [2, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 2],
+        [1, 6, 1],
+        [0, 7, 1],
+        [0, 8, 1],
+        [2, 9, 1],
+        [3, 10, 1],
+        [4, 11, 1],
+        [5, 12, 1],
+        [6, 13, 1]
+      ]
+    },
+    {
+      "key": "pyridine",
+      "formula": "C₅H₅N",
+      "ru": "пиридин",
+      "en": "pyridine",
+      "category": "aromatics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 2],
+        [3, 4, 1],
+        [4, 5, 2],
+        [0, 5, 1],
+        [0, 6, 1],
+        [1, 7, 1],
+        [2, 8, 1],
+        [4, 9, 1],
+        [5, 10, 1]
+      ]
+    },
+    {
+      "key": "pyrrole",
+      "formula": "C₄H₄NH",
+      "ru": "пиррол",
+      "en": "pyrrole",
+      "category": "aromatics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 2],
+        [3, 4, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [1, 6, 1],
+        [2, 7, 1],
+        [3, 8, 1],
+        [4, 9, 1]
+      ]
+    },
+    {
+      "key": "thiophene",
+      "formula": "C₄H₄S",
+      "ru": "тиофен",
+      "en": "thiophene",
+      "category": "aromatics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [16, 32],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 2],
+        [3, 4, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [1, 6, 1],
+        [2, 7, 1],
+        [3, 8, 1]
+      ]
+    },
+    {
+      "key": "methanol",
+      "formula": "CH₃OH",
+      "ru": "метанол",
+      "en": "methanol",
+      "category": "organics",
+      "atoms": [
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [1, 5, 1]
+      ]
+    },
+    {
+      "key": "ethanol",
+      "formula": "C₂H₅OH",
+      "ru": "этанол",
+      "en": "ethanol",
+      "category": "organics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [1, 6, 1],
+        [1, 7, 1],
+        [2, 8, 1]
+      ]
+    },
+    {
+      "key": "propanol",
+      "formula": "C₃H₇OH",
+      "ru": "пропанол-1",
+      "en": "1-propanol",
+      "category": "organics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [1, 7, 1],
+        [1, 8, 1],
+        [2, 9, 1],
+        [2, 10, 1],
+        [3, 11, 1]
+      ]
+    },
+    {
+      "key": "isopropanol",
+      "formula": "(CH₃)₂CHOH",
+      "ru": "изопропанол",
+      "en": "isopropanol",
+      "category": "organics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [1, 7, 1],
+        [2, 8, 1],
+        [2, 9, 1],
+        [2, 10, 1],
+        [3, 11, 1]
+      ]
+    },
+    {
+      "key": "butanol",
+      "formula": "C₄H₉OH",
+      "ru": "бутанол-1",
+      "en": "1-butanol",
+      "category": "organics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [1, 8, 1],
+        [1, 9, 1],
+        [2, 10, 1],
+        [2, 11, 1],
+        [3, 12, 1],
+        [3, 13, 1],
+        [4, 14, 1]
+      ]
+    },
+    {
+      "key": "ethyleneGlycol",
+      "formula": "C₂H₄(OH)₂",
+      "ru": "этиленгликоль",
+      "en": "ethylene glycol",
+      "category": "organics",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [0, 4, 1],
+        [1, 5, 1],
+        [1, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1],
+        [3, 9, 1]
+      ]
+    },
+    {
+      "key": "glycerol",
+      "formula": "C₃H₅(OH)₃",
+      "ru": "глицерин",
+      "en": "glycerol",
+      "category": "organics",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [2, 4, 1],
+        [4, 5, 1],
+        [0, 6, 1],
+        [1, 7, 1],
+        [1, 8, 1],
+        [2, 9, 1],
+        [3, 10, 1],
+        [4, 11, 1],
+        [4, 12, 1],
+        [5, 13, 1]
+      ]
+    },
+    {
+      "key": "dimethylEther",
+      "formula": "(CH₃)₂O",
+      "ru": "диметиловый эфир",
+      "en": "dimethyl ether",
+      "category": "organics",
+      "atoms": [
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [2, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1]
+      ]
+    },
+    {
+      "key": "diethylEther",
+      "formula": "(C₂H₅)₂O",
+      "ru": "диэтиловый эфир",
+      "en": "diethyl ether",
+      "category": "organics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [1, 8, 1],
+        [1, 9, 1],
+        [3, 10, 1],
+        [3, 11, 1],
+        [4, 12, 1],
+        [4, 13, 1],
+        [4, 14, 1]
+      ]
+    },
+    {
+      "key": "tetrahydrofuran",
+      "formula": "C₄H₈O",
+      "ru": "тетрагидрофуран",
+      "en": "tetrahydrofuran",
+      "category": "organics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [1, 7, 1],
+        [1, 8, 1],
+        [2, 9, 1],
+        [2, 10, 1],
+        [4, 11, 1],
+        [4, 12, 1]
+      ]
+    },
+    {
+      "key": "ethyleneOxide",
+      "formula": "C₂H₄O",
+      "ru": "оксид этилена",
+      "en": "ethylene oxide",
+      "category": "organics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [1, 5, 1],
+        [1, 6, 1]
+      ]
+    },
+    {
+      "key": "formaldehyde",
+      "formula": "CH₂O",
+      "ru": "формальдегид",
+      "en": "formaldehyde",
+      "category": "carbonyls",
+      "atoms": [
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [0, 2, 1],
+        [0, 3, 1]
+      ]
+    },
+    {
+      "key": "acetone",
+      "formula": "(CH₃)₂CO",
+      "ru": "ацетон",
+      "en": "acetone",
+      "category": "carbonyls",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 2],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1],
+        [2, 9, 1]
+      ]
+    },
+    {
+      "key": "acetaldehyde",
+      "formula": "CH₃CHO",
+      "ru": "ацетальдегид",
+      "en": "acetaldehyde",
+      "category": "carbonyls",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [0, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [1, 6, 1]
+      ]
+    },
+    {
+      "key": "butanone",
+      "formula": "C₂H₅COCH₃",
+      "ru": "бутанон",
+      "en": "butanone",
+      "category": "carbonyls",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [2, 4, 2],
+        [0, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [1, 8, 1],
+        [1, 9, 1],
+        [3, 10, 1],
+        [3, 11, 1],
+        [3, 12, 1]
+      ]
+    },
+    {
+      "key": "benzaldehyde",
+      "formula": "C₆H₅CHO",
+      "ru": "бензальдегид",
+      "en": "benzaldehyde",
+      "category": "carbonyls",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 2],
+        [3, 4, 1],
+        [4, 5, 2],
+        [5, 6, 1],
+        [6, 7, 2],
+        [2, 7, 1],
+        [1, 8, 1],
+        [3, 9, 1],
+        [4, 10, 1],
+        [5, 11, 1],
+        [6, 12, 1],
+        [7, 13, 1]
+      ]
+    },
+    {
+      "key": "methylFormate",
+      "formula": "HCOOCH₃",
+      "ru": "метилформиат",
+      "en": "methyl formate",
+      "category": "carbonyls",
+      "atoms": [
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 2],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [2, 7, 1]
+      ]
+    },
+    {
+      "key": "ethylAcetate",
+      "formula": "CH₃COOC₂H₅",
+      "ru": "этилацетат",
+      "en": "ethyl acetate",
+      "category": "carbonyls",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [3, 5, 2],
+        [0, 6, 1],
+        [0, 7, 1],
+        [0, 8, 1],
+        [1, 9, 1],
+        [1, 10, 1],
+        [4, 11, 1],
+        [4, 12, 1],
+        [4, 13, 1]
+      ]
+    },
+    {
+      "key": "aceticAnhydride",
+      "formula": "(CH₃CO)₂O",
+      "ru": "уксусный ангидрид",
+      "en": "acetic anhydride",
+      "category": "carbonyls",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [4, 6, 2],
+        [0, 7, 1],
+        [0, 8, 1],
+        [0, 9, 1],
+        [5, 10, 1],
+        [5, 11, 1],
+        [5, 12, 1]
+      ]
+    },
+    {
+      "key": "methylamine",
+      "formula": "CH₃NH₂",
+      "ru": "метиламин",
+      "en": "methylamine",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [6, 12],
+        [7, 14],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [1, 5, 1],
+        [1, 6, 1]
+      ]
+    },
+    {
+      "key": "dimethylamine",
+      "formula": "(CH₃)₂NH",
+      "ru": "диметиламин",
+      "en": "dimethylamine",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [1, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1],
+        [2, 9, 1]
+      ]
+    },
+    {
+      "key": "trimethylamine",
+      "formula": "(CH₃)₃N",
+      "ru": "триметиламин",
+      "en": "trimethylamine",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1],
+        [2, 9, 1],
+        [3, 10, 1],
+        [3, 11, 1],
+        [3, 12, 1]
+      ]
+    },
+    {
+      "key": "ethylamine",
+      "formula": "C₂H₅NH₂",
+      "ru": "этиламин",
+      "en": "ethylamine",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [1, 6, 1],
+        [1, 7, 1],
+        [2, 8, 1],
+        [2, 9, 1]
+      ]
+    },
+    {
+      "key": "acetonitrile",
+      "formula": "CH₃CN",
+      "ru": "ацетонитрил",
+      "en": "acetonitrile",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 3],
+        [0, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1]
+      ]
+    },
+    {
+      "key": "formamide",
+      "formula": "HCONH₂",
+      "ru": "формамид",
+      "en": "formamide",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [0, 3, 1],
+        [0, 4, 1],
+        [1, 5, 1]
+      ]
+    },
+    {
+      "key": "acetamide",
+      "formula": "CH₃CONH₂",
+      "ru": "ацетамид",
+      "en": "acetamide",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 2],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1]
+      ]
+    },
+    {
+      "key": "methylIsocyanate",
+      "formula": "CH₃NCO",
+      "ru": "метилизоцианат",
+      "en": "methyl isocyanate",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [2, 3, 2],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1]
+      ]
+    },
+    {
+      "key": "nitromethane",
+      "formula": "CH₃NO₂",
+      "ru": "нитрометан",
+      "en": "nitromethane",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [6, 12],
+        [7, 14],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1]
+      ]
+    },
+    {
+      "key": "methanethiol",
+      "formula": "CH₃SH",
+      "ru": "метантиол",
+      "en": "methanethiol",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [6, 12],
+        [16, 32],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [1, 5, 1]
+      ]
+    },
+    {
+      "key": "dimethylSulfide",
+      "formula": "(CH₃)₂S",
+      "ru": "диметилсульфид",
+      "en": "dimethyl sulfide",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [6, 12],
+        [16, 32],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [0, 5, 1],
+        [2, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1]
+      ]
+    },
+    {
+      "key": "dimethylSulfoxide",
+      "formula": "(CH₃)₂SO",
+      "ru": "диметилсульфоксид",
+      "en": "dimethyl sulfoxide",
+      "category": "nitrogenOrganics",
+      "atoms": [
+        [6, 12],
+        [16, 32],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 2],
+        [0, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [2, 7, 1],
+        [2, 8, 1],
+        [2, 9, 1]
+      ]
+    },
+    {
+      "key": "chloromethane",
+      "formula": "CH₃Cl",
+      "ru": "хлорметан",
+      "en": "chloromethane",
+      "category": "halogenOrganics",
+      "atoms": [
+        [6, 12],
+        [17, 35],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1]
+      ]
+    },
+    {
+      "key": "dichloromethane",
+      "formula": "CH₂Cl₂",
+      "ru": "дихлорметан",
+      "en": "dichloromethane",
+      "category": "halogenOrganics",
+      "atoms": [
+        [17, 35],
+        [6, 12],
+        [17, 35],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "chloroform",
+      "formula": "CHCl₃",
+      "ru": "хлороформ",
+      "en": "chloroform",
+      "category": "halogenOrganics",
+      "atoms": [
+        [17, 35],
+        [6, 12],
+        [17, 35],
+        [17, 35],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "carbonTetrachloride",
+      "formula": "CCl₄",
+      "ru": "четырёххлористый углерод",
+      "en": "carbon tetrachloride",
+      "category": "halogenOrganics",
+      "atoms": [
+        [17, 35],
+        [6, 12],
+        [17, 35],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "tetrafluoromethane",
+      "formula": "CF₄",
+      "ru": "тетрафторметан",
+      "en": "tetrafluoromethane",
+      "category": "halogenOrganics",
+      "atoms": [
+        [9, 19],
+        [6, 12],
+        [9, 19],
+        [9, 19],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "dichlorodifluoromethane",
+      "formula": "CCl₂F₂",
+      "ru": "фреон-12",
+      "en": "freon-12",
+      "category": "halogenOrganics",
+      "atoms": [
+        [9, 19],
+        [6, 12],
+        [9, 19],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "trichlorofluoromethane",
+      "formula": "CCl₃F",
+      "ru": "фреон-11",
+      "en": "freon-11",
+      "category": "halogenOrganics",
+      "atoms": [
+        [9, 19],
+        [6, 12],
+        [17, 35],
+        [17, 35],
+        [17, 35]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [1, 4, 1]
+      ]
+    },
+    {
+      "key": "tetrafluoroethane",
+      "formula": "CH₂FCF₃",
+      "ru": "фреон-134a",
+      "en": "freon-134a",
+      "category": "halogenOrganics",
+      "atoms": [
+        [9, 19],
+        [6, 12],
+        [6, 12],
+        [9, 19],
+        [9, 19],
+        [9, 19],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [2, 4, 1],
+        [2, 5, 1],
+        [1, 6, 1],
+        [1, 7, 1]
+      ]
+    },
+    {
+      "key": "vinylChloride",
+      "formula": "C₂H₃Cl",
+      "ru": "винилхлорид",
+      "en": "vinyl chloride",
+      "category": "halogenOrganics",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [17, 35],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1],
+        [1, 5, 1]
+      ]
+    },
+    {
+      "key": "tetrafluoroethylene",
+      "formula": "C₂F₄",
+      "ru": "тетрафторэтилен",
+      "en": "tetrafluoroethylene",
+      "category": "halogenOrganics",
+      "atoms": [
+        [9, 19],
+        [6, 12],
+        [9, 19],
+        [6, 12],
+        [9, 19],
+        [9, 19]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 2],
+        [3, 4, 1],
+        [3, 5, 1]
+      ]
+    },
+    {
+      "key": "chlorobenzene",
+      "formula": "C₆H₅Cl",
+      "ru": "хлорбензол",
+      "en": "chlorobenzene",
+      "category": "halogenOrganics",
+      "atoms": [
+        [17, 35],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [2, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 2],
+        [1, 6, 1],
+        [2, 7, 1],
+        [3, 8, 1],
+        [4, 9, 1],
+        [5, 10, 1],
+        [6, 11, 1]
+      ]
+    },
+    {
+      "key": "bromomethane",
+      "formula": "CH₃Br",
+      "ru": "бромметан",
+      "en": "bromomethane",
+      "category": "halogenOrganics",
+      "atoms": [
+        [6, 12],
+        [35, 79],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1]
+      ]
+    },
+    {
+      "key": "iodomethane",
+      "formula": "CH₃I",
+      "ru": "иодметан",
+      "en": "iodomethane",
+      "category": "halogenOrganics",
+      "atoms": [
+        [6, 12],
+        [53, 127],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 3, 1],
+        [0, 4, 1]
+      ]
+    },
+    {
+      "key": "glycine",
+      "formula": "NH₂CH₂COOH",
+      "ru": "глицин",
+      "en": "glycine",
+      "category": "aminoAcids",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 2],
+        [2, 4, 1],
+        [0, 5, 1],
+        [0, 6, 1],
+        [1, 7, 1],
+        [1, 8, 1],
+        [4, 9, 1]
+      ]
+    },
+    {
+      "key": "alanine",
+      "formula": "C₃H₇NO₂",
+      "ru": "аланин",
+      "en": "alanine",
+      "category": "aminoAcids",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [3, 4, 2],
+        [3, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [0, 8, 1],
+        [1, 9, 1],
+        [2, 10, 1],
+        [2, 11, 1],
+        [5, 12, 1]
+      ]
+    },
+    {
+      "key": "serine",
+      "formula": "C₃H₇NO₃",
+      "ru": "серин",
+      "en": "serine",
+      "category": "aminoAcids",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [2, 4, 1],
+        [4, 5, 2],
+        [4, 6, 1],
+        [0, 7, 1],
+        [1, 8, 1],
+        [1, 9, 1],
+        [2, 10, 1],
+        [3, 11, 1],
+        [3, 12, 1],
+        [6, 13, 1]
+      ]
+    },
+    {
+      "key": "cysteine",
+      "formula": "C₃H₇NO₂S",
+      "ru": "цистеин",
+      "en": "cysteine",
+      "category": "aminoAcids",
+      "atoms": [
+        [16, 32],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [2, 4, 1],
+        [4, 5, 2],
+        [4, 6, 1],
+        [0, 7, 1],
+        [1, 8, 1],
+        [1, 9, 1],
+        [2, 10, 1],
+        [3, 11, 1],
+        [3, 12, 1],
+        [6, 13, 1]
+      ]
+    },
+    {
+      "key": "valine",
+      "formula": "C₅H₁₁NO₂",
+      "ru": "валин",
+      "en": "valine",
+      "category": "aminoAcids",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [3, 4, 1],
+        [3, 5, 1],
+        [5, 6, 2],
+        [5, 7, 1],
+        [0, 8, 1],
+        [0, 9, 1],
+        [0, 10, 1],
+        [1, 11, 1],
+        [2, 12, 1],
+        [2, 13, 1],
+        [2, 14, 1],
+        [3, 15, 1],
+        [4, 16, 1],
+        [4, 17, 1],
+        [7, 18, 1]
+      ]
+    },
+    {
+      "key": "leucine",
+      "formula": "C₆H₁₃NO₂",
+      "ru": "лейцин",
+      "en": "leucine",
+      "category": "aminoAcids",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [4, 6, 1],
+        [6, 7, 2],
+        [6, 8, 1],
+        [0, 9, 1],
+        [0, 10, 1],
+        [0, 11, 1],
+        [1, 12, 1],
+        [2, 13, 1],
+        [2, 14, 1],
+        [2, 15, 1],
+        [3, 16, 1],
+        [3, 17, 1],
+        [4, 18, 1],
+        [5, 19, 1],
+        [5, 20, 1],
+        [8, 21, 1]
+      ]
+    },
+    {
+      "key": "isoleucine",
+      "formula": "C₆H₁₃NO₂",
+      "ru": "изолейцин",
+      "en": "isoleucine",
+      "category": "aminoAcids",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [2, 4, 1],
+        [4, 5, 1],
+        [4, 6, 1],
+        [6, 7, 2],
+        [6, 8, 1],
+        [0, 9, 1],
+        [0, 10, 1],
+        [0, 11, 1],
+        [1, 12, 1],
+        [1, 13, 1],
+        [2, 14, 1],
+        [3, 15, 1],
+        [3, 16, 1],
+        [3, 17, 1],
+        [4, 18, 1],
+        [5, 19, 1],
+        [5, 20, 1],
+        [8, 21, 1]
+      ]
+    },
+    {
+      "key": "threonine",
+      "formula": "C₄H₉NO₃",
+      "ru": "треонин",
+      "en": "threonine",
+      "category": "aminoAcids",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [3, 4, 1],
+        [3, 5, 1],
+        [5, 6, 2],
+        [5, 7, 1],
+        [0, 8, 1],
+        [0, 9, 1],
+        [0, 10, 1],
+        [1, 11, 1],
+        [2, 12, 1],
+        [3, 13, 1],
+        [4, 14, 1],
+        [4, 15, 1],
+        [7, 16, 1]
+      ]
+    },
+    {
+      "key": "asparticAcid",
+      "formula": "C₄H₇NO₄",
+      "ru": "аспарагиновая кислота",
+      "en": "aspartic acid",
+      "category": "aminoAcids",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [4, 6, 1],
+        [6, 7, 2],
+        [6, 8, 1],
+        [0, 9, 1],
+        [3, 10, 1],
+        [3, 11, 1],
+        [4, 12, 1],
+        [5, 13, 1],
+        [5, 14, 1],
+        [8, 15, 1]
+      ]
+    },
+    {
+      "key": "glutamicAcid",
+      "formula": "C₅H₉NO₄",
+      "ru": "глутаминовая кислота",
+      "en": "glutamic acid",
+      "category": "aminoAcids",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [5, 6, 1],
+        [5, 7, 1],
+        [7, 8, 2],
+        [7, 9, 1],
+        [0, 10, 1],
+        [3, 11, 1],
+        [3, 12, 1],
+        [4, 13, 1],
+        [4, 14, 1],
+        [5, 15, 1],
+        [6, 16, 1],
+        [6, 17, 1],
+        [9, 18, 1]
+      ]
+    },
+    {
+      "key": "asparagine",
+      "formula": "C₄H₈N₂O₃",
+      "ru": "аспарагин",
+      "en": "asparagine",
+      "category": "aminoAcids",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [4, 6, 1],
+        [6, 7, 2],
+        [6, 8, 1],
+        [0, 9, 1],
+        [0, 10, 1],
+        [3, 11, 1],
+        [3, 12, 1],
+        [4, 13, 1],
+        [5, 14, 1],
+        [5, 15, 1],
+        [8, 16, 1]
+      ]
+    },
+    {
+      "key": "glutamine",
+      "formula": "C₅H₁₀N₂O₃",
+      "ru": "глутамин",
+      "en": "glutamine",
+      "category": "aminoAcids",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [5, 6, 1],
+        [5, 7, 1],
+        [7, 8, 2],
+        [7, 9, 1],
+        [0, 10, 1],
+        [0, 11, 1],
+        [3, 12, 1],
+        [3, 13, 1],
+        [4, 14, 1],
+        [4, 15, 1],
+        [5, 16, 1],
+        [6, 17, 1],
+        [6, 18, 1],
+        [9, 19, 1]
+      ]
+    },
+    {
+      "key": "lysine",
+      "formula": "C₆H₁₄N₂O₂",
+      "ru": "лизин",
+      "en": "lysine",
+      "category": "aminoAcids",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [5, 6, 1],
+        [5, 7, 1],
+        [7, 8, 2],
+        [7, 9, 1],
+        [0, 10, 1],
+        [0, 11, 1],
+        [1, 12, 1],
+        [1, 13, 1],
+        [2, 14, 1],
+        [2, 15, 1],
+        [3, 16, 1],
+        [3, 17, 1],
+        [4, 18, 1],
+        [4, 19, 1],
+        [5, 20, 1],
+        [6, 21, 1],
+        [6, 22, 1],
+        [9, 23, 1]
+      ]
+    },
+    {
+      "key": "arginine",
+      "formula": "C₆H₁₄N₄O₂",
+      "ru": "аргинин",
+      "en": "arginine",
+      "category": "aminoAcids",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [7, 14],
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [5, 6, 1],
+        [6, 7, 1],
+        [7, 8, 1],
+        [7, 9, 1],
+        [9, 10, 2],
+        [9, 11, 1],
+        [0, 12, 1],
+        [0, 13, 1],
+        [2, 14, 1],
+        [3, 15, 1],
+        [4, 16, 1],
+        [4, 17, 1],
+        [5, 18, 1],
+        [5, 19, 1],
+        [6, 20, 1],
+        [6, 21, 1],
+        [7, 22, 1],
+        [8, 23, 1],
+        [8, 24, 1],
+        [11, 25, 1]
+      ]
+    },
+    {
+      "key": "methionine",
+      "formula": "C₅H₁₁NO₂S",
+      "ru": "метионин",
+      "en": "methionine",
+      "category": "aminoAcids",
+      "atoms": [
+        [6, 12],
+        [16, 32],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [4, 6, 1],
+        [6, 7, 2],
+        [6, 8, 1],
+        [0, 9, 1],
+        [0, 10, 1],
+        [0, 11, 1],
+        [2, 12, 1],
+        [2, 13, 1],
+        [3, 14, 1],
+        [3, 15, 1],
+        [4, 16, 1],
+        [5, 17, 1],
+        [5, 18, 1],
+        [8, 19, 1]
+      ]
+    },
+    {
+      "key": "phenylalanine",
+      "formula": "C₉H₁₁NO₂",
+      "ru": "фенилаланин",
+      "en": "phenylalanine",
+      "category": "aminoAcids",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 2],
+        [6, 7, 1],
+        [7, 8, 2],
+        [3, 8, 1],
+        [1, 9, 1],
+        [9, 10, 2],
+        [9, 11, 1],
+        [0, 12, 1],
+        [0, 13, 1],
+        [1, 14, 1],
+        [2, 15, 1],
+        [2, 16, 1],
+        [4, 17, 1],
+        [5, 18, 1],
+        [6, 19, 1],
+        [7, 20, 1],
+        [8, 21, 1],
+        [11, 22, 1]
+      ]
+    },
+    {
+      "key": "tyrosine",
+      "formula": "C₉H₁₁NO₃",
+      "ru": "тирозин",
+      "en": "tyrosine",
+      "category": "aminoAcids",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 2],
+        [6, 7, 1],
+        [6, 8, 1],
+        [8, 9, 2],
+        [3, 9, 1],
+        [1, 10, 1],
+        [10, 11, 2],
+        [10, 12, 1],
+        [0, 13, 1],
+        [0, 14, 1],
+        [1, 15, 1],
+        [2, 16, 1],
+        [2, 17, 1],
+        [4, 18, 1],
+        [5, 19, 1],
+        [7, 20, 1],
+        [8, 21, 1],
+        [9, 22, 1],
+        [12, 23, 1]
+      ]
+    },
+    {
+      "key": "proline",
+      "formula": "C₅H₉NO₂",
+      "ru": "пролин",
+      "en": "proline",
+      "category": "aminoAcids",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [5, 6, 1],
+        [6, 7, 1],
+        [3, 7, 1],
+        [0, 8, 1],
+        [3, 9, 1],
+        [4, 10, 1],
+        [4, 11, 1],
+        [5, 12, 1],
+        [5, 13, 1],
+        [6, 14, 1],
+        [6, 15, 1],
+        [7, 16, 1]
+      ]
+    },
+    {
+      "key": "histidine",
+      "formula": "C₆H₉N₃O₂",
+      "ru": "гистидин",
+      "en": "histidine",
+      "category": "aminoAcids",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 2],
+        [6, 7, 1],
+        [3, 7, 1],
+        [1, 8, 1],
+        [8, 9, 2],
+        [8, 10, 1],
+        [0, 11, 1],
+        [0, 12, 1],
+        [1, 13, 1],
+        [2, 14, 1],
+        [2, 15, 1],
+        [4, 16, 1],
+        [6, 17, 1],
+        [7, 18, 1],
+        [10, 19, 1]
+      ]
+    },
+    {
+      "key": "tryptophan",
+      "formula": "C₁₁H₁₂N₂O₂",
+      "ru": "триптофан",
+      "en": "tryptophan",
+      "category": "aminoAcids",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 1],
+        [6, 7, 2],
+        [7, 8, 1],
+        [8, 9, 2],
+        [9, 10, 1],
+        [10, 11, 2],
+        [3, 11, 1],
+        [6, 11, 1],
+        [1, 12, 1],
+        [12, 13, 2],
+        [12, 14, 1],
+        [0, 15, 1],
+        [0, 16, 1],
+        [1, 17, 1],
+        [2, 18, 1],
+        [2, 19, 1],
+        [4, 20, 1],
+        [5, 21, 1],
+        [7, 22, 1],
+        [8, 23, 1],
+        [9, 24, 1],
+        [10, 25, 1],
+        [14, 26, 1]
+      ]
+    },
+    {
+      "key": "glucose",
+      "formula": "C₆H₁₂O₆",
+      "ru": "глюкоза",
+      "en": "glucose",
+      "category": "sugars",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [4, 6, 1],
+        [6, 7, 1],
+        [6, 8, 1],
+        [8, 9, 1],
+        [8, 10, 1],
+        [2, 10, 1],
+        [10, 11, 1],
+        [0, 12, 1],
+        [1, 13, 1],
+        [1, 14, 1],
+        [2, 15, 1],
+        [4, 16, 1],
+        [5, 17, 1],
+        [6, 18, 1],
+        [7, 19, 1],
+        [8, 20, 1],
+        [9, 21, 1],
+        [10, 22, 1],
+        [11, 23, 1]
+      ]
+    },
+    {
+      "key": "fructose",
+      "formula": "C₆H₁₂O₆",
+      "ru": "фруктоза",
+      "en": "fructose",
+      "category": "sugars",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [4, 6, 1],
+        [6, 7, 1],
+        [4, 8, 1],
+        [8, 9, 1],
+        [8, 10, 1],
+        [2, 10, 1],
+        [10, 11, 1],
+        [0, 12, 1],
+        [1, 13, 1],
+        [1, 14, 1],
+        [2, 15, 1],
+        [5, 16, 1],
+        [6, 17, 1],
+        [6, 18, 1],
+        [7, 19, 1],
+        [8, 20, 1],
+        [9, 21, 1],
+        [10, 22, 1],
+        [11, 23, 1]
+      ]
+    },
+    {
+      "key": "ribose",
+      "formula": "C₅H₁₀O₅",
+      "ru": "рибоза",
+      "en": "ribose",
+      "category": "sugars",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [4, 6, 1],
+        [6, 7, 1],
+        [6, 8, 1],
+        [2, 8, 1],
+        [8, 9, 1],
+        [0, 10, 1],
+        [1, 11, 1],
+        [1, 12, 1],
+        [2, 13, 1],
+        [4, 14, 1],
+        [5, 15, 1],
+        [6, 16, 1],
+        [7, 17, 1],
+        [8, 18, 1],
+        [9, 19, 1]
+      ]
+    },
+    {
+      "key": "deoxyribose",
+      "formula": "C₅H₁₀O₄",
+      "ru": "дезоксирибоза",
+      "en": "deoxyribose",
+      "category": "sugars",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [4, 6, 1],
+        [6, 7, 1],
+        [2, 7, 1],
+        [7, 8, 1],
+        [0, 9, 1],
+        [1, 10, 1],
+        [1, 11, 1],
+        [2, 12, 1],
+        [4, 13, 1],
+        [5, 14, 1],
+        [6, 15, 1],
+        [6, 16, 1],
+        [7, 17, 1],
+        [8, 18, 1]
+      ]
+    },
+    {
+      "key": "glyceraldehyde",
+      "formula": "C₃H₆O₃",
+      "ru": "глицеральдегид",
+      "en": "glyceraldehyde",
+      "category": "sugars",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 1],
+        [2, 4, 1],
+        [4, 5, 2],
+        [0, 6, 1],
+        [1, 7, 1],
+        [1, 8, 1],
+        [2, 9, 1],
+        [3, 10, 1],
+        [4, 11, 1]
+      ]
+    },
+    {
+      "key": "adenine",
+      "formula": "C₅H₅N₅",
+      "ru": "аденин",
+      "en": "adenine",
+      "category": "nucleobases",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [7, 14],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [2, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 2],
+        [1, 6, 1],
+        [6, 7, 1],
+        [7, 8, 2],
+        [8, 9, 1],
+        [5, 9, 1],
+        [0, 10, 1],
+        [0, 11, 1],
+        [3, 12, 1],
+        [8, 13, 1],
+        [9, 14, 1]
+      ]
+    },
+    {
+      "key": "guanine",
+      "formula": "C₅H₅N₅O",
+      "ru": "гуанин",
+      "en": "guanine",
+      "category": "nucleobases",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [7, 14],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [2, 3, 1],
+        [3, 4, 2],
+        [4, 5, 1],
+        [5, 6, 2],
+        [6, 7, 1],
+        [3, 7, 1],
+        [4, 8, 1],
+        [8, 9, 2],
+        [8, 10, 1],
+        [1, 10, 1],
+        [0, 11, 1],
+        [0, 12, 1],
+        [6, 13, 1],
+        [7, 14, 1],
+        [10, 15, 1]
+      ]
+    },
+    {
+      "key": "cytosine",
+      "formula": "C₄H₅N₃O",
+      "ru": "цитозин",
+      "en": "cytosine",
+      "category": "nucleobases",
+      "atoms": [
+        [7, 14],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [2, 3, 1],
+        [3, 4, 2],
+        [3, 5, 1],
+        [5, 6, 1],
+        [6, 7, 2],
+        [1, 7, 1],
+        [0, 8, 1],
+        [0, 9, 1],
+        [5, 10, 1],
+        [6, 11, 1],
+        [7, 12, 1]
+      ]
+    },
+    {
+      "key": "thymine",
+      "formula": "C₅H₆N₂O₂",
+      "ru": "тимин",
+      "en": "thymine",
+      "category": "nucleobases",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [2, 3, 1],
+        [3, 4, 1],
+        [4, 5, 2],
+        [4, 6, 1],
+        [6, 7, 1],
+        [1, 7, 1],
+        [7, 8, 2],
+        [0, 9, 1],
+        [0, 10, 1],
+        [0, 11, 1],
+        [2, 12, 1],
+        [3, 13, 1],
+        [6, 14, 1]
+      ]
+    },
+    {
+      "key": "uracil",
+      "formula": "C₄H₄N₂O₂",
+      "ru": "урацил",
+      "en": "uracil",
+      "category": "nucleobases",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [8, 16],
+        [7, 14],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [1, 2, 1],
+        [2, 3, 2],
+        [3, 4, 1],
+        [4, 5, 1],
+        [5, 6, 2],
+        [5, 7, 1],
+        [1, 7, 1],
+        [2, 8, 1],
+        [3, 9, 1],
+        [4, 10, 1],
+        [7, 11, 1]
+      ]
+    },
+    {
+      "key": "urea",
+      "formula": "(NH₂)₂CO",
+      "ru": "мочевина",
+      "en": "urea",
+      "category": "metabolites",
+      "atoms": [
+        [6, 12],
+        [8, 16],
+        [7, 14],
+        [7, 14],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 2],
+        [0, 2, 1],
+        [0, 3, 1],
+        [2, 4, 1],
+        [2, 5, 1],
+        [3, 6, 1],
+        [3, 7, 1]
+      ]
+    },
+    {
+      "key": "lacticAcid",
+      "formula": "CH₃CH(OH)COOH",
+      "ru": "молочная кислота",
+      "en": "lactic acid",
+      "category": "metabolites",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [1, 3, 1],
+        [3, 4, 2],
+        [3, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [0, 8, 1],
+        [1, 9, 1],
+        [2, 10, 1],
+        [5, 11, 1]
+      ]
+    },
+    {
+      "key": "pyruvicAcid",
+      "formula": "CH₃COCOOH",
+      "ru": "пировиноградная кислота",
+      "en": "pyruvic acid",
+      "category": "metabolites",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 2],
+        [3, 5, 1],
+        [0, 6, 1],
+        [0, 7, 1],
+        [0, 8, 1],
+        [5, 9, 1]
+      ]
+    },
+    {
+      "key": "citricAcid",
+      "formula": "C₆H₈O₇",
+      "ru": "лимонная кислота",
+      "en": "citric acid",
+      "category": "metabolites",
+      "atoms": [
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 1],
+        [4, 6, 1],
+        [6, 7, 2],
+        [6, 8, 1],
+        [4, 9, 1],
+        [9, 10, 1],
+        [10, 11, 2],
+        [10, 12, 1],
+        [0, 13, 1],
+        [3, 14, 1],
+        [3, 15, 1],
+        [5, 16, 1],
+        [8, 17, 1],
+        [9, 18, 1],
+        [9, 19, 1],
+        [12, 20, 1]
+      ]
+    },
+    {
+      "key": "caffeine",
+      "formula": "C₈H₁₀N₄O₂",
+      "ru": "кофеин",
+      "en": "caffeine",
+      "category": "metabolites",
+      "atoms": [
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [7, 14],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [7, 14],
+        [6, 12],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 1],
+        [2, 3, 2],
+        [3, 4, 1],
+        [4, 5, 2],
+        [1, 5, 1],
+        [5, 6, 1],
+        [6, 7, 2],
+        [6, 8, 1],
+        [8, 9, 1],
+        [8, 10, 1],
+        [10, 11, 2],
+        [10, 12, 1],
+        [4, 12, 1],
+        [12, 13, 1],
+        [0, 14, 1],
+        [0, 15, 1],
+        [0, 16, 1],
+        [2, 17, 1],
+        [9, 18, 1],
+        [9, 19, 1],
+        [9, 20, 1],
+        [13, 21, 1],
+        [13, 22, 1],
+        [13, 23, 1]
+      ]
+    },
+    {
+      "key": "aspirin",
+      "formula": "C₉H₈O₄",
+      "ru": "аспирин",
+      "en": "aspirin",
+      "category": "metabolites",
+      "atoms": [
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [6, 12],
+        [8, 16],
+        [8, 16],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ],
+      "bonds": [
+        [0, 1, 1],
+        [1, 2, 2],
+        [1, 3, 1],
+        [3, 4, 1],
+        [4, 5, 2],
+        [5, 6, 1],
+        [6, 7, 2],
+        [7, 8, 1],
+        [8, 9, 2],
+        [4, 9, 1],
+        [9, 10, 1],
+        [10, 11, 2],
+        [10, 12, 1],
+        [0, 13, 1],
+        [0, 14, 1],
+        [0, 15, 1],
+        [5, 16, 1],
+        [6, 17, 1],
+        [7, 18, 1],
+        [8, 19, 1],
+        [12, 20, 1]
+      ]
+    }
+  ]
+}

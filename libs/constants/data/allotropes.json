@@ -1,0 +1,32 @@
+{
+ "source": "Solid allotropes of an element on its phase diagram. Carbon: graphite–diamond equilibrium line P(kbar) = 19.4 + T(°C)/40 measured over 1100–1625 °C by C. S. Kennedy and G. C. Kennedy, J. Geophys. Res. 81, 2467 (1976), extended linearly; graphite and diamond melting curves from Table 2 of L. M. Ghiringhelli et al., Mol. Phys. 106, 2011 (2008), arXiv:0804.1671 (LCBOPI+ free energies, triple point at 16.4 GPa and 4250 K), held flat below their first point; graphite–liquid–vapour triple point near 11 MPa and 4000 K after M. J. Basset, J. Phys. Radium 10, 217 (1939), as quoted in the same review; the vapour curve runs from that triple point with the standard enthalpy of formation of gaseous carbon, 716.68 kJ/mol (CODATA Key Values for Thermodynamics, Cox, Wagman and Medvedev 1989); temperatures in kelvin, pressures in pascals",
+ "elements": [
+  {
+   "protons": 6,
+   "lowPressureSolid": { "key": "graphite", "ru": "графит", "en": "graphite" },
+   "highPressureSolid": { "key": "diamond", "ru": "алмаз", "en": "diamond" },
+   "solidBoundaryInterceptInPascals": 1.94e9,
+   "solidBoundarySlopeInPascalsPerKelvin": 2.5e6,
+   "solidBoundaryReferenceTemperatureInKelvin": 273.15,
+   "lowPressureMelting": [
+    { "pressureInPascals": 2.0e9, "temperatureInKelvin": 3800 },
+    { "pressureInPascals": 6.7e9, "temperatureInKelvin": 4000 },
+    { "pressureInPascals": 16.4e9, "temperatureInKelvin": 4250 }
+   ],
+   "highPressureMelting": [
+    { "pressureInPascals": 16.4e9, "temperatureInKelvin": 4250 },
+    { "pressureInPascals": 25.5e9, "temperatureInKelvin": 4750 },
+    { "pressureInPascals": 43.9e9, "temperatureInKelvin": 5500 },
+    { "pressureInPascals": 59.4e9, "temperatureInKelvin": 6000 },
+    { "pressureInPascals": 99.4e9, "temperatureInKelvin": 7000 },
+    { "pressureInPascals": 148.1e9, "temperatureInKelvin": 8000 },
+    { "pressureInPascals": 263.2e9, "temperatureInKelvin": 10000 },
+    { "pressureInPascals": 330.5e9, "temperatureInKelvin": 11000 },
+    { "pressureInPascals": 408.1e9, "temperatureInKelvin": 12000 }
+   ],
+   "vaporTriplePointTemperatureInKelvin": 4000,
+   "vaporTriplePointPressureInPascals": 1.1e7,
+   "sublimationEnthalpyInJoulesPerMole": 716680
+  }
+ ]
+}

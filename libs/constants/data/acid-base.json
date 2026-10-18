@@ -1,0 +1,45 @@
+{
+ "source": "Brønsted acid–base systems in water at 25 °C. Acid constants Ka of acetic, formic and phosphoric acid and of the hydrogen sulfate ion: OpenStax Chemistry 2e (2019, CC BY 4.0), Appendix H 'Ionization Constants of Weak Acids'; the first ionization of sulfuric acid is complete (Ka1 more than 10², OpenStax Chemistry 2e §14.5 'Polyprotic Acids'); both pages copied in acid-base/. Thermodynamic pK of glycine at 25 °C by cells without liquid junction: E. J. King, J. Am. Chem. Soc. 73, 155 (1951), as transcribed in D. D. Perrin, Dissociation Constants of Organic Bases in Aqueous Solution (1965), entry perrin3140 of the IUPAC Digitized pKa Dataset v2.4 (doi:10.5281/zenodo.7236452, CC BY-NC 4.0, reproduced by permission of IUPAC); its glycine rows are copied in acid-base/. A system names a molecule of molecules.json; protonatedSites are atom indices of its catalogue structure that carry an extra proton in the most protonated form, and each step takes the proton off its site",
+ "systems": [
+  {
+   "molecule": "sulfuricAcid",
+   "reference": "hydrogen sulfate ion",
+   "protonatedSites": [],
+   "steps": [
+    { "site": 3, "complete": true },
+    { "site": 4, "acidConstant": 1.2e-2 }
+   ]
+  },
+  {
+   "molecule": "phosphoricAcid",
+   "reference": "phosphoric",
+   "protonatedSites": [],
+   "steps": [
+    { "site": 2, "acidConstant": 7.5e-3 },
+    { "site": 3, "acidConstant": 6.2e-8 },
+    { "site": 4, "acidConstant": 4.2e-13 }
+   ]
+  },
+  {
+   "molecule": "aceticAcid",
+   "reference": "acetic",
+   "protonatedSites": [],
+   "steps": [{ "site": 3, "acidConstant": 1.8e-5 }]
+  },
+  {
+   "molecule": "formicAcid",
+   "reference": "formic",
+   "protonatedSites": [],
+   "steps": [{ "site": 2, "acidConstant": 1.8e-4 }]
+  },
+  {
+   "molecule": "glycine",
+   "reference": "K26",
+   "protonatedSites": [0],
+   "steps": [
+    { "site": 4, "negativeLogarithm": 2.3503 },
+    { "site": 0, "negativeLogarithm": 9.7796 }
+   ]
+  }
+ ]
+}

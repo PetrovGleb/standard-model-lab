@@ -1,0 +1,414 @@
+{
+  "source": "PDG Review of Particle Physics 2026, transcribed from STANDARD_MODEL_REFERENCE.md",
+  "massesInGev": {
+    "up": { "value": 0.00216, "uncertainty": 0.00007, "scheme": "msBarAtTwoGev" },
+    "down": { "value": 0.0047, "uncertainty": 0.00007, "scheme": "msBarAtTwoGev" },
+    "strange": { "value": 0.0929, "uncertainty": 0.0007, "scheme": "msBarAtTwoGev" },
+    "charm": { "value": 1.2729, "uncertainty": 0.0045, "scheme": "msBarAtOwnMass" },
+    "bottom": { "value": 4.186, "uncertainty": 0.006, "scheme": "msBarAtOwnMass" },
+    "top": { "value": 172.6, "uncertainty": 0.27, "scheme": "directReconstruction" },
+    "tau": { "value": 1.77693, "uncertainty": 0.00009, "scheme": "measured" },
+    "wBoson": { "value": 80.3625, "uncertainty": 0.0077, "scheme": "measured" },
+    "zBoson": { "value": 91.1879, "uncertainty": 0.002, "scheme": "measured" },
+    "higgsBoson": { "value": 125.13, "uncertainty": 0.11, "scheme": "measured" }
+  },
+  "widthsInGev": {
+    "top": { "value": 1.42, "uncertainty": 0.19 },
+    "wBoson": { "value": 2.14, "uncertainty": 0.05 },
+    "zBoson": { "value": 2.4955, "uncertainty": 0.0023 },
+    "higgsBoson": { "value": 0.003, "uncertainty": 0.0015 }
+  },
+  "meanLivesInSeconds": {
+    "muon": { "value": 2.1969811e-6, "uncertainty": 2.2e-12 },
+    "tau": { "value": 2.903e-13, "uncertainty": 5e-16 },
+    "neutron": { "value": 878.3, "uncertainty": 0.4 }
+  },
+  "couplings": {
+    "strongCouplingAtZMass": { "value": 0.118, "uncertainty": 0.0009, "source": "PDG2024" },
+    "effectiveLeptonicWeakMixingAngleSinSquared": { "value": 0.23148, "uncertainty": 0.00012 },
+    "wToZMassRatio": { "value": 0.88136, "uncertainty": 0.00015 },
+    "hadronicVacuumPolarizationAtZMass": { "value": 0.0276, "uncertainty": 0.0001 },
+    "qcdCrossoverTemperatureInGev": {
+      "value": 0.1565,
+      "uncertainty": 0.0015,
+      "source": "HotQCD, A. Bazavov et al., Phys. Lett. B 795, 15 (2019): pseudo-critical temperature of the chiral crossover at zero baryon chemical potential, as quoted in the PDG review Quark-gluon plasma"
+    },
+    "qcdScaleInGev": { "value": 0.21, "uncertainty": null }
+  },
+  "ckmMagnitudes": {
+    "upDown": { "value": 0.97431, "uncertainty": 0.00016 },
+    "upStrange": { "value": 0.22517, "uncertainty": 0.00068 },
+    "upBottom": { "value": 0.003763, "uncertainty": 0.000088 },
+    "charmDown": { "value": 0.22503, "uncertainty": 0.00068 },
+    "charmStrange": { "value": 0.97345, "uncertainty": 0.00016 },
+    "charmBottom": { "value": 0.04189, "uncertainty": 0.00081 },
+    "topDown": { "value": 0.00863, "uncertainty": 0.00019 },
+    "topStrange": { "value": 0.04117, "uncertainty": 0.00079 },
+    "topBottom": { "value": 0.999115, "uncertainty": 0.000034 }
+  },
+  "wolfenstein": {
+    "expansionParameter": { "value": 0.22517, "uncertainty": 0.00068 },
+    "amplitudeParameter": { "value": 0.826, "uncertainty": 0.017 },
+    "unitarityTriangleApexReal": { "value": 0.1576, "uncertainty": 0.0092 },
+    "unitarityTriangleApexImaginary": { "value": 0.3556, "uncertainty": 0.0071 },
+    "jarlskogInvariant": { "value": 3.16e-5, "uncertainty": 1.3e-6 }
+  },
+  "neutrinoOscillation": {
+    "massSquaredDifference21InElectronVoltsSquared": { "value": 7.6e-5, "uncertainty": 1.7e-6 },
+    "massSquaredDifference32NormalOrderingInElectronVoltsSquared": {
+      "value": 0.002445,
+      "uncertainty": 0.000023
+    },
+    "massSquaredDifference32InvertedOrderingInElectronVoltsSquared": {
+      "value": -0.00252,
+      "uncertainty": 0.00004
+    },
+    "mixingAngle12SinSquared": { "value": 0.307, "uncertainty": 0.012 },
+    "mixingAngle23SinSquaredNormalOrdering": { "value": 0.533, "uncertainty": 0.018 },
+    "mixingAngle23SinSquaredInvertedOrdering": { "value": 0.523, "uncertainty": 0.031 },
+    "mixingAngle13SinSquared": { "value": 0.0217, "uncertainty": 0.0007 },
+    "lightNeutrinoSpeciesFromZWidth": { "value": 2.996, "uncertainty": 0.007 }
+  },
+  "branchingFractions": {
+    "muon": [
+      {
+        "products": ["electron", "electronAntineutrino", "muonNeutrino"],
+        "value": 1,
+        "uncertainty": null
+      }
+    ],
+    "tau": [
+      {
+        "products": ["muon", "muonAntineutrino", "tauNeutrino"],
+        "value": 0.1737,
+        "uncertainty": 0.0004
+      },
+      {
+        "products": ["electron", "electronAntineutrino", "tauNeutrino"],
+        "value": 0.1785,
+        "uncertainty": 0.0004
+      },
+      { "products": ["hadrons", "tauNeutrino"], "value": 0.6478, "uncertainty": 0.0006 }
+    ],
+    "top": [{ "products": ["wPlus", "bottom"], "value": 0.957, "uncertainty": 0.034 }],
+    "wPlus": [
+      { "products": ["positron", "electronNeutrino"], "value": 0.1071, "uncertainty": 0.0016 },
+      { "products": ["antiMuon", "muonNeutrino"], "value": 0.1063, "uncertainty": 0.0015 },
+      { "products": ["antiTau", "tauNeutrino"], "value": 0.1138, "uncertainty": 0.0021 },
+      { "products": ["hadrons"], "value": 0.6741, "uncertainty": 0.0027 }
+    ],
+    "zBoson": [
+      { "products": ["electron", "positron"], "value": 0.033632, "uncertainty": 0.000042 },
+      { "products": ["muon", "antiMuon"], "value": 0.033662, "uncertainty": 0.000066 },
+      { "products": ["tau", "antiTau"], "value": 0.033696, "uncertainty": 0.000083 },
+      { "products": ["invisible"], "value": 0.2, "uncertainty": 0.00055 },
+      { "products": ["hadrons"], "value": 0.69911, "uncertainty": 0.00056 }
+    ],
+    "higgsBoson": [
+      { "products": ["bottom", "antiBottom"], "value": 0.53, "uncertainty": 0.08 },
+      { "products": ["wPlus", "wMinus"], "value": 0.257, "uncertainty": 0.025 },
+      { "products": ["tau", "antiTau"], "value": 0.06, "uncertainty": 0.008 },
+      { "products": ["zBoson", "zBoson"], "value": 0.028, "uncertainty": 0.003 },
+      { "products": ["photon", "photon"], "value": 0.0025, "uncertainty": 0.0002 },
+      { "products": ["zBoson", "photon"], "value": 0.0034, "uncertainty": 0.0011 },
+      { "products": ["muon", "antiMuon"], "value": 0.0003, "uncertainty": 0.00009 }
+    ],
+    "neutron": [
+      {
+        "products": ["proton", "electron", "electronAntineutrino"],
+        "value": 1,
+        "uncertainty": null
+      }
+    ]
+  },
+  "mesons": {
+    "pionPlus": {"symbol": "pi+", "pdgId": 211, "quarkContent": ["up", "antiDown"], "isospin": 1.0, "isospinThirdComponent": 1.0, "spin": 0, "parity": -1, "massInGev": {"value": 0.13957039, "uncertainty": 1.8e-07}, "widthInGev": null, "meanLifeInSeconds": {"value": 2.6033e-08, "uncertainty": 5e-12}, "selfConjugate": false, "antiparticle": "pionMinus"},
+    "pionZero": {"symbol": "pi0", "pdgId": 111, "quarkContent": ["up", "antiUp"], "isospin": 1.0, "isospinThirdComponent": 0.0, "spin": 0, "parity": -1, "massInGev": {"value": 0.1349768, "uncertainty": 5e-07}, "widthInGev": null, "meanLifeInSeconds": {"value": 8.43e-17, "uncertainty": 1.3e-18}, "selfConjugate": true, "antiparticle": null},
+    "etaMeson": {"symbol": "etaMeson", "pdgId": 221, "quarkContent": ["up", "antiUp"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 0, "parity": -1, "massInGev": {"value": 0.547862, "uncertainty": 1.7e-05}, "widthInGev": {"value": 1.31e-06, "uncertainty": 5e-08}, "meanLifeInSeconds": null, "selfConjugate": true, "antiparticle": null},
+    "rhoZero": {"symbol": "rho0", "pdgId": 113, "quarkContent": ["up", "antiUp"], "isospin": 1.0, "isospinThirdComponent": 0.0, "spin": 1, "parity": -1, "massInGev": {"value": 0.77526, "uncertainty": 0.00023}, "widthInGev": {"value": 0.1474, "uncertainty": 0.0008}, "meanLifeInSeconds": null, "selfConjugate": true, "antiparticle": null},
+    "rhoPlus": {"symbol": "rho+", "pdgId": 213, "quarkContent": ["up", "antiDown"], "isospin": 1.0, "isospinThirdComponent": 1.0, "spin": 1, "parity": -1, "massInGev": {"value": 0.77511, "uncertainty": 0.00034}, "widthInGev": {"value": 0.1491, "uncertainty": 0.0008}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "rhoMinus"},
+    "omegaMeson": {"symbol": "omegaMeson", "pdgId": 223, "quarkContent": ["up", "antiUp"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 1, "parity": -1, "massInGev": {"value": 0.78266, "uncertainty": 0.00013}, "widthInGev": {"value": 0.00868, "uncertainty": 0.00013}, "meanLifeInSeconds": null, "selfConjugate": true, "antiparticle": null},
+    "etaPrimeMeson": {"symbol": "eta'", "pdgId": 331, "quarkContent": ["strange", "antiStrange"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 0, "parity": -1, "massInGev": {"value": 0.95778, "uncertainty": 6e-05}, "widthInGev": {"value": 0.000188, "uncertainty": 6e-06}, "meanLifeInSeconds": null, "selfConjugate": true, "antiparticle": null},
+    "phiMeson": {"symbol": "phiMeson", "pdgId": 333, "quarkContent": ["strange", "antiStrange"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 1, "parity": -1, "massInGev": {"value": 1.01946, "uncertainty": 1.6e-05}, "widthInGev": {"value": 0.004249, "uncertainty": 1.3e-05}, "meanLifeInSeconds": null, "selfConjugate": true, "antiparticle": null},
+    "kaonPlus": {"symbol": "K+", "pdgId": 321, "quarkContent": ["up", "antiStrange"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 0, "parity": -1, "massInGev": {"value": 0.493677, "uncertainty": 1.5e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.238e-08, "uncertainty": 2e-11}, "selfConjugate": false, "antiparticle": "kaonMinus"},
+    "kaonShort": {"symbol": "K_S", "pdgId": 310, "quarkContent": ["down", "antiStrange"], "isospin": null, "isospinThirdComponent": null, "spin": 0, "parity": -1, "massInGev": {"value": 0.497611, "uncertainty": 1.3e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 8.954e-11, "uncertainty": 4e-14}, "selfConjugate": true, "antiparticle": null},
+    "kaonLong": {"symbol": "K_L", "pdgId": 130, "quarkContent": ["down", "antiStrange"], "isospin": null, "isospinThirdComponent": null, "spin": 0, "parity": -1, "massInGev": {"value": 0.497611, "uncertainty": 1.3e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 5.116e-08, "uncertainty": 2.1e-10}, "selfConjugate": true, "antiparticle": null},
+    "kaonStarPlus": {"symbol": "K*+", "pdgId": 323, "quarkContent": ["up", "antiStrange"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 1, "parity": -1, "massInGev": {"value": 0.89188, "uncertainty": 0.00023}, "widthInGev": {"value": 0.0485, "uncertainty": 0.0012}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "kaonStarMinus"},
+    "kaonStarZero": {"symbol": "K*0", "pdgId": 313, "quarkContent": ["down", "antiStrange"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 1, "parity": -1, "massInGev": {"value": 0.89556, "uncertainty": 0.0002}, "widthInGev": {"value": 0.0471, "uncertainty": 0.0005}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiKaonStarZero"},
+    "dPlus": {"symbol": "D+", "pdgId": 411, "quarkContent": ["charm", "antiDown"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 0, "parity": -1, "massInGev": {"value": 1.86966, "uncertainty": 5e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.033e-12, "uncertainty": 5e-15}, "selfConjugate": false, "antiparticle": "dMinus"},
+    "dZero": {"symbol": "D0", "pdgId": 421, "quarkContent": ["charm", "antiUp"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 0, "parity": -1, "massInGev": {"value": 1.86484, "uncertainty": 4e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 4.103e-13, "uncertainty": 1e-15}, "selfConjugate": false, "antiparticle": "antiDZero"},
+    "dStarZero": {"symbol": "D*0", "pdgId": 423, "quarkContent": ["charm", "antiUp"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 1, "parity": -1, "massInGev": {"value": 2.00686, "uncertainty": 5e-05}, "widthInGev": null, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiDStarZero"},
+    "dStarPlus": {"symbol": "D*+", "pdgId": 413, "quarkContent": ["charm", "antiDown"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 1, "parity": -1, "massInGev": {"value": 2.01027, "uncertainty": 4e-05}, "widthInGev": {"value": 8.34e-05, "uncertainty": 1.8e-06}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "dStarMinus"},
+    "dSPlus": {"symbol": "D_s+", "pdgId": 431, "quarkContent": ["charm", "antiStrange"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 0, "parity": -1, "massInGev": {"value": 1.96835, "uncertainty": 7e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 5.012e-13, "uncertainty": 2.2e-15}, "selfConjugate": false, "antiparticle": "dSMinus"},
+    "dSStarPlus": {"symbol": "D_s*+", "pdgId": 433, "quarkContent": ["charm", "antiStrange"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 1, "parity": -1, "massInGev": {"value": 2.1122, "uncertainty": 0.0004}, "widthInGev": null, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "dSStarMinus"},
+    "bPlus": {"symbol": "B+", "pdgId": 521, "quarkContent": ["up", "antiBottom"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 0, "parity": -1, "massInGev": {"value": 5.27941, "uncertainty": 7e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.637e-12, "uncertainty": 4e-15}, "selfConjugate": false, "antiparticle": "bMinus"},
+    "bZero": {"symbol": "B0", "pdgId": 511, "quarkContent": ["down", "antiBottom"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 0, "parity": -1, "massInGev": {"value": 5.27972, "uncertainty": 8e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.5113e-12, "uncertainty": 2.7e-15}, "selfConjugate": false, "antiparticle": "antiBZero"},
+    "bStarPlus": {"symbol": "B*+", "pdgId": 523, "quarkContent": ["up", "antiBottom"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 1, "parity": -1, "massInGev": {"value": 5.32475, "uncertainty": 0.0002}, "widthInGev": null, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "bStarMinus"},
+    "bStarZero": {"symbol": "B*0", "pdgId": 513, "quarkContent": ["down", "antiBottom"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 1, "parity": -1, "massInGev": {"value": 5.32475, "uncertainty": 0.0002}, "widthInGev": null, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiBStarZero"},
+    "bSZero": {"symbol": "B_s0", "pdgId": 531, "quarkContent": ["strange", "antiBottom"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 0, "parity": -1, "massInGev": {"value": 5.36693, "uncertainty": 0.0001}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.515e-12, "uncertainty": 6e-15}, "selfConjugate": false, "antiparticle": "antiBSZero"},
+    "bSStarZero": {"symbol": "B_s*0", "pdgId": 533, "quarkContent": ["strange", "antiBottom"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 1, "parity": -1, "massInGev": {"value": 5.4154, "uncertainty": 0.0014}, "widthInGev": null, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiBSStarZero"}
+  },
+  "mesonBranchingFractions": {
+    "pionPlus": [
+      {"products": ["antiMuon", "muonNeutrino"], "value": 0.999877, "uncertainty": 4e-07},
+      {"products": ["positron", "electronNeutrino"], "value": 0.000123, "uncertainty": 4e-07}
+    ],
+    "pionZero": [
+      {"products": ["photon", "photon"], "value": 0.98823, "uncertainty": 0.00034},
+      {"products": ["electron", "positron", "photon"], "value": 0.01174, "uncertainty": 0.00035}
+    ],
+    "etaMeson": [
+      {"products": ["photon", "photon"], "value": 0.3936, "uncertainty": 0.0018},
+      {"products": ["pionZero", "pionZero", "pionZero"], "value": 0.3256, "uncertainty": 0.0021},
+      {"products": ["pionPlus", "pionMinus", "pionZero"], "value": 0.2302, "uncertainty": 0.0025},
+      {"products": ["pionPlus", "pionMinus", "photon"], "value": 0.0428, "uncertainty": 0.0007},
+      {"products": ["electron", "positron", "photon"], "value": 0.00696, "uncertainty": 0.00018}
+    ],
+    "rhoZero": [
+      {"products": ["pionPlus", "pionMinus"], "value": 1.0, "uncertainty": null, "mode": "ππ ~100%"}
+    ],
+    "rhoPlus": [
+      {"products": ["pionPlus", "pionZero"], "value": 1.0, "uncertainty": null, "mode": "ππ ~100%"}
+    ],
+    "omegaMeson": [
+      {"products": ["pionPlus", "pionMinus", "pionZero"], "value": 0.892, "uncertainty": 0.007},
+      {"products": ["pionZero", "photon"], "value": 0.0833, "uncertainty": 0.0025},
+      {"products": ["pionPlus", "pionMinus"], "value": 0.0153, "uncertainty": 0.0012}
+    ],
+    "etaPrimeMeson": [
+      {"products": ["pionPlus", "pionMinus", "etaMeson"], "value": 0.425, "uncertainty": 0.005},
+      {"products": ["rhoZero", "photon"], "value": 0.2948, "uncertainty": 0.0035},
+      {"products": ["pionZero", "pionZero", "etaMeson"], "value": 0.224, "uncertainty": 0.005},
+      {"products": ["omegaMeson", "photon"], "value": 0.0252, "uncertainty": 0.0007},
+      {"products": ["photon", "photon"], "value": 0.02307, "uncertainty": 0.00033}
+    ],
+    "phiMeson": [
+      {"products": ["kaonPlus", "kaonMinus"], "value": 0.501, "uncertainty": 0.006},
+      {"products": ["kaonLong", "kaonShort"], "value": 0.336, "uncertainty": 0.004},
+      {"products": ["pionPlus", "pionMinus", "pionZero"], "value": 0.147, "uncertainty": 0.004, "mode": "ρπ + π+π−π0"},
+      {"products": ["etaMeson", "photon"], "value": 0.01306, "uncertainty": 0.00024}
+    ],
+    "kaonPlus": [
+      {"products": ["antiMuon", "muonNeutrino"], "value": 0.6356, "uncertainty": 0.0011},
+      {"products": ["pionPlus", "pionZero"], "value": 0.2067, "uncertainty": 0.0008},
+      {"products": ["pionPlus", "pionPlus", "pionMinus"], "value": 0.05583, "uncertainty": 0.00024},
+      {"products": ["pionZero", "positron", "electronNeutrino"], "value": 0.0507, "uncertainty": 0.0004},
+      {"products": ["pionZero", "antiMuon", "muonNeutrino"], "value": 0.03352, "uncertainty": 0.00034},
+      {"products": ["pionPlus", "pionZero", "pionZero"], "value": 0.0176, "uncertainty": 0.00023}
+    ],
+    "kaonShort": [
+      {"products": ["pionPlus", "pionMinus"], "value": 0.692, "uncertainty": 0.0005},
+      {"products": ["pionZero", "pionZero"], "value": 0.3069, "uncertainty": 0.0005}
+    ],
+    "kaonLong": [
+      {"products": ["pionMinus", "positron", "electronNeutrino"], "value": 0.4055, "uncertainty": 0.0011, "chargeConjugatesTogether": true},
+      {"products": ["pionPlus", "electron", "electronAntineutrino"], "value": 0.4055, "uncertainty": 0.0011, "chargeConjugatesTogether": true},
+      {"products": ["pionMinus", "antiMuon", "muonNeutrino"], "value": 0.2704, "uncertainty": 0.0007, "chargeConjugatesTogether": true},
+      {"products": ["pionPlus", "muon", "muonAntineutrino"], "value": 0.2704, "uncertainty": 0.0007, "chargeConjugatesTogether": true},
+      {"products": ["pionZero", "pionZero", "pionZero"], "value": 0.1952, "uncertainty": 0.0012},
+      {"products": ["pionPlus", "pionMinus", "pionZero"], "value": 0.1254, "uncertainty": 0.0005}
+    ],
+    "dStarZero": [
+      {"products": ["dZero", "pionZero"], "value": 0.647, "uncertainty": 0.009},
+      {"products": ["dZero", "photon"], "value": 0.353, "uncertainty": 0.009}
+    ],
+    "dStarPlus": [
+      {"products": ["dZero", "pionPlus"], "value": 0.677, "uncertainty": 0.005},
+      {"products": ["dPlus", "pionZero"], "value": 0.307, "uncertainty": 0.005},
+      {"products": ["dPlus", "photon"], "value": 0.016, "uncertainty": 0.004}
+    ],
+    "dSStarPlus": [
+      {"products": ["dSPlus", "photon"], "value": 0.936, "uncertainty": 0.004},
+      {"products": ["dSPlus", "pionZero"], "value": 0.0577, "uncertainty": 0.0035}
+    ],
+    "bStarPlus": [
+      {"products": ["bPlus", "photon"], "value": 1.0, "uncertainty": null, "mode": "seen, the only mode listed"}
+    ],
+    "bStarZero": [
+      {"products": ["bZero", "photon"], "value": 1.0, "uncertainty": null, "mode": "seen, the only mode listed"}
+    ],
+    "bSStarZero": [
+      {"products": ["bSZero", "photon"], "value": 1.0, "uncertainty": null, "mode": "seen, the only mode listed"}
+    ],
+    "kaonStarPlus": [
+      {"isospinFamilies": ["kaon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Kπ ~100%"}
+    ],
+    "kaonStarZero": [
+      {"isospinFamilies": ["kaon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Kπ ~100%"}
+    ]
+  },
+  "semileptonicFractions": {
+    "dPlus": {"value": 0.1607, "uncertainty": 0.003, "mode": "e+ semileptonic"},
+    "dZero": {"value": 0.0649, "uncertainty": 0.0011, "mode": "e+ anything"},
+    "dSPlus": {"value": 0.0633, "uncertainty": 0.0015, "mode": "e+ semileptonic"},
+    "bPlus": {"value": 0.1099, "uncertainty": 0.0028, "mode": "ℓ+ νℓ X"},
+    "bZero": {"value": 0.1033, "uncertainty": 0.0028, "mode": "ℓ+ νℓ X"}
+  },
+  "baryons": {
+    "lambdaBaryon": {"symbol": "Lambda", "pdgId": 3122, "quarkContent": ["up", "down", "strange"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 1.115683, "uncertainty": 6e-06}, "widthInGev": null, "meanLifeInSeconds": {"value": 2.617e-10, "uncertainty": 1e-12}, "selfConjugate": false, "antiparticle": "antiLambdaBaryon"},
+    "sigmaPlus": {"symbol": "Sigma+", "pdgId": 3222, "quarkContent": ["up", "up", "strange"], "isospin": 1.0, "isospinThirdComponent": 1.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 1.18937, "uncertainty": 7e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 8.018e-11, "uncertainty": 2.6e-13}, "selfConjugate": false, "antiparticle": "antiSigmaPlus"},
+    "sigmaZero": {"symbol": "Sigma0", "pdgId": 3212, "quarkContent": ["up", "down", "strange"], "isospin": 1.0, "isospinThirdComponent": 0.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 1.192642, "uncertainty": 2.4e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 7.4e-20, "uncertainty": 7e-21}, "selfConjugate": false, "antiparticle": "antiSigmaZero"},
+    "sigmaMinus": {"symbol": "Sigma-", "pdgId": 3112, "quarkContent": ["down", "down", "strange"], "isospin": 1.0, "isospinThirdComponent": -1.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 1.197449, "uncertainty": 2.9e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.479e-10, "uncertainty": 1.1e-12}, "selfConjugate": false, "antiparticle": "antiSigmaMinus"},
+    "xiZero": {"symbol": "Xi0", "pdgId": 3322, "quarkContent": ["up", "strange", "strange"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 0.5, "parity": 1, "massInGev": {"value": 1.31486, "uncertainty": 0.0002}, "widthInGev": null, "meanLifeInSeconds": {"value": 2.9e-10, "uncertainty": 9e-12}, "selfConjugate": false, "antiparticle": "antiXiZero"},
+    "xiMinus": {"symbol": "Xi-", "pdgId": 3312, "quarkContent": ["down", "strange", "strange"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 0.5, "parity": 1, "massInGev": {"value": 1.32171, "uncertainty": 7e-05}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.639e-10, "uncertainty": 1.5e-12}, "selfConjugate": false, "antiparticle": "antiXiMinus"},
+    "deltaPlusPlus": {"symbol": "Delta++", "pdgId": 2224, "quarkContent": ["up", "up", "up"], "isospin": 1.5, "isospinThirdComponent": 1.5, "spin": 1.5, "parity": 1, "massInGev": {"value": 1.232, "uncertainty": 0.002}, "widthInGev": {"value": 0.117, "uncertainty": 0.003}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiDeltaPlusPlus"},
+    "deltaPlus": {"symbol": "Delta+", "pdgId": 2214, "quarkContent": ["up", "up", "down"], "isospin": 1.5, "isospinThirdComponent": 0.5, "spin": 1.5, "parity": 1, "massInGev": {"value": 1.232, "uncertainty": 0.002}, "widthInGev": {"value": 0.117, "uncertainty": 0.003}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiDeltaPlus"},
+    "deltaZero": {"symbol": "Delta0", "pdgId": 2114, "quarkContent": ["up", "down", "down"], "isospin": 1.5, "isospinThirdComponent": -0.5, "spin": 1.5, "parity": 1, "massInGev": {"value": 1.232, "uncertainty": 0.002}, "widthInGev": {"value": 0.117, "uncertainty": 0.003}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiDeltaZero"},
+    "deltaMinus": {"symbol": "Delta-", "pdgId": 1114, "quarkContent": ["down", "down", "down"], "isospin": 1.5, "isospinThirdComponent": -1.5, "spin": 1.5, "parity": 1, "massInGev": {"value": 1.232, "uncertainty": 0.002}, "widthInGev": {"value": 0.117, "uncertainty": 0.003}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiDeltaMinus"},
+    "sigmaStarPlus": {"symbol": "Sigma*+", "pdgId": 3224, "quarkContent": ["up", "up", "strange"], "isospin": 1.0, "isospinThirdComponent": 1.0, "spin": 1.5, "parity": 1, "massInGev": {"value": 1.38283, "uncertainty": 0.00034}, "widthInGev": {"value": 0.0362, "uncertainty": 0.0007}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaStarPlus"},
+    "sigmaStarZero": {"symbol": "Sigma*0", "pdgId": 3214, "quarkContent": ["up", "down", "strange"], "isospin": 1.0, "isospinThirdComponent": 0.0, "spin": 1.5, "parity": 1, "massInGev": {"value": 1.3838, "uncertainty": 0.0009}, "widthInGev": {"value": 0.044, "uncertainty": 0.008}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaStarZero"},
+    "sigmaStarMinus": {"symbol": "Sigma*-", "pdgId": 3114, "quarkContent": ["down", "down", "strange"], "isospin": 1.0, "isospinThirdComponent": -1.0, "spin": 1.5, "parity": 1, "massInGev": {"value": 1.3872, "uncertainty": 0.0005}, "widthInGev": {"value": 0.0394, "uncertainty": 0.0021}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaStarMinus"},
+    "xiStarZero": {"symbol": "Xi*0", "pdgId": 3324, "quarkContent": ["up", "strange", "strange"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 1.5, "parity": 1, "massInGev": {"value": 1.5318, "uncertainty": 0.00032}, "widthInGev": {"value": 0.0091, "uncertainty": 0.0005}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiXiStarZero"},
+    "xiStarMinus": {"symbol": "Xi*-", "pdgId": 3314, "quarkContent": ["down", "strange", "strange"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 1.5, "parity": 1, "massInGev": {"value": 1.535, "uncertainty": 0.0006}, "widthInGev": {"value": 0.0099, "uncertainty": 0.0018}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiXiStarMinus"},
+    "omegaMinus": {"symbol": "Omega-", "pdgId": 3334, "quarkContent": ["strange", "strange", "strange"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 1.5, "parity": 1, "massInGev": {"value": 1.67245, "uncertainty": 0.00029}, "widthInGev": null, "meanLifeInSeconds": {"value": 8.21e-11, "uncertainty": 1.1e-12}, "selfConjugate": false, "antiparticle": "antiOmegaMinus"},
+    "lambdaCPlus": {"symbol": "Lambda_c+", "pdgId": 4122, "quarkContent": ["up", "down", "charm"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 2.28646, "uncertainty": 0.00014}, "widthInGev": null, "meanLifeInSeconds": {"value": 2.026e-13, "uncertainty": 1e-15}, "selfConjugate": false, "antiparticle": "antiLambdaCPlus"},
+    "sigmaCPlusPlus": {"symbol": "Sigma_c++", "pdgId": 4222, "quarkContent": ["up", "up", "charm"], "isospin": 1.0, "isospinThirdComponent": 1.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 2.45397, "uncertainty": 0.00014}, "widthInGev": {"value": 0.00189, "uncertainty": 0.00014}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaCPlusPlus"},
+    "sigmaCPlus": {"symbol": "Sigma_c+", "pdgId": 4212, "quarkContent": ["up", "down", "charm"], "isospin": 1.0, "isospinThirdComponent": 0.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 2.45265, "uncertainty": 0.00019}, "widthInGev": {"value": 0.0023, "uncertainty": 0.0004}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaCPlus"},
+    "sigmaCZero": {"symbol": "Sigma_c0", "pdgId": 4112, "quarkContent": ["down", "down", "charm"], "isospin": 1.0, "isospinThirdComponent": -1.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 2.45375, "uncertainty": 0.00014}, "widthInGev": {"value": 0.00183, "uncertainty": 0.00015}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaCZero"},
+    "sigmaCStarPlusPlus": {"symbol": "Sigma_c*++", "pdgId": 4224, "quarkContent": ["up", "up", "charm"], "isospin": 1.0, "isospinThirdComponent": 1.0, "spin": 1.5, "parity": 1, "massInGev": {"value": 2.51841, "uncertainty": 0.00022}, "widthInGev": {"value": 0.01478, "uncertainty": 0.00035}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaCStarPlusPlus"},
+    "sigmaCStarPlus": {"symbol": "Sigma_c*+", "pdgId": 4214, "quarkContent": ["up", "down", "charm"], "isospin": 1.0, "isospinThirdComponent": 0.0, "spin": 1.5, "parity": 1, "massInGev": {"value": 2.5174, "uncertainty": 0.0006}, "widthInGev": {"value": 0.0172, "uncertainty": 0.0031}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaCStarPlus"},
+    "sigmaCStarZero": {"symbol": "Sigma_c*0", "pdgId": 4114, "quarkContent": ["down", "down", "charm"], "isospin": 1.0, "isospinThirdComponent": -1.0, "spin": 1.5, "parity": 1, "massInGev": {"value": 2.51848, "uncertainty": 0.00021}, "widthInGev": {"value": 0.0153, "uncertainty": 0.00045}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaCStarZero"},
+    "xiCPlus": {"symbol": "Xi_c+", "pdgId": 4232, "quarkContent": ["up", "strange", "charm"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 0.5, "parity": 1, "massInGev": {"value": 2.46779, "uncertainty": 0.00015}, "widthInGev": null, "meanLifeInSeconds": {"value": 4.53e-13, "uncertainty": 5e-15}, "selfConjugate": false, "antiparticle": "antiXiCPlus"},
+    "xiCZero": {"symbol": "Xi_c0", "pdgId": 4132, "quarkContent": ["down", "strange", "charm"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 0.5, "parity": 1, "massInGev": {"value": 2.4705, "uncertainty": 0.00025}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.5e-13, "uncertainty": 1.7e-15}, "selfConjugate": false, "antiparticle": "antiXiCZero"},
+    "xiCPrimePlus": {"symbol": "Xi_c'+", "pdgId": 4322, "quarkContent": ["up", "strange", "charm"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 0.5, "parity": 1, "massInGev": {"value": 2.5783, "uncertainty": 0.0004}, "widthInGev": null, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiXiCPrimePlus"},
+    "xiCPrimeZero": {"symbol": "Xi_c'0", "pdgId": 4312, "quarkContent": ["down", "strange", "charm"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 0.5, "parity": 1, "massInGev": {"value": 2.5788, "uncertainty": 0.0005}, "widthInGev": null, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiXiCPrimeZero"},
+    "xiCStarPlus": {"symbol": "Xi_c*+", "pdgId": 4324, "quarkContent": ["up", "strange", "charm"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 1.5, "parity": 1, "massInGev": {"value": 2.64517, "uncertainty": 0.00027}, "widthInGev": {"value": 0.00214, "uncertainty": 0.00019}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiXiCStarPlus"},
+    "xiCStarZero": {"symbol": "Xi_c*0", "pdgId": 4314, "quarkContent": ["down", "strange", "charm"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 1.5, "parity": 1, "massInGev": {"value": 2.64624, "uncertainty": 0.00018}, "widthInGev": {"value": 0.00235, "uncertainty": 0.00022}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiXiCStarZero"},
+    "omegaCZero": {"symbol": "Omega_c0", "pdgId": 4332, "quarkContent": ["strange", "strange", "charm"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 2.6953, "uncertainty": 0.0004}, "widthInGev": null, "meanLifeInSeconds": {"value": 2.74e-13, "uncertainty": 1e-14}, "selfConjugate": false, "antiparticle": "antiOmegaCZero"},
+    "omegaCStarZero": {"symbol": "Omega_c*0", "pdgId": 4334, "quarkContent": ["strange", "strange", "charm"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 1.5, "parity": 1, "massInGev": {"value": 2.766, "uncertainty": 0.00095}, "widthInGev": null, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiOmegaCStarZero"},
+    "lambdaBZero": {"symbol": "Lambda_b0", "pdgId": 5122, "quarkContent": ["up", "down", "bottom"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 5.61957, "uncertainty": 0.00016}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.465e-12, "uncertainty": 9e-15}, "selfConjugate": false, "antiparticle": "antiLambdaBZero"},
+    "sigmaBPlus": {"symbol": "Sigma_b+", "pdgId": 5222, "quarkContent": ["up", "up", "bottom"], "isospin": 1.0, "isospinThirdComponent": 1.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 5.81056, "uncertainty": 0.00025}, "widthInGev": {"value": 0.005, "uncertainty": 0.0005}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaBPlus"},
+    "sigmaBMinus": {"symbol": "Sigma_b-", "pdgId": 5112, "quarkContent": ["down", "down", "bottom"], "isospin": 1.0, "isospinThirdComponent": -1.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 5.81564, "uncertainty": 0.00027}, "widthInGev": {"value": 0.0053, "uncertainty": 0.0005}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaBMinus"},
+    "sigmaBStarPlus": {"symbol": "Sigma_b*+", "pdgId": 5224, "quarkContent": ["up", "up", "bottom"], "isospin": 1.0, "isospinThirdComponent": 1.0, "spin": 1.5, "parity": 1, "massInGev": {"value": 5.83032, "uncertainty": 0.00027}, "widthInGev": {"value": 0.0094, "uncertainty": 0.0005}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaBStarPlus"},
+    "sigmaBStarMinus": {"symbol": "Sigma_b*-", "pdgId": 5114, "quarkContent": ["down", "down", "bottom"], "isospin": 1.0, "isospinThirdComponent": -1.0, "spin": 1.5, "parity": 1, "massInGev": {"value": 5.83474, "uncertainty": 0.0003}, "widthInGev": {"value": 0.0104, "uncertainty": 0.0008}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiSigmaBStarMinus"},
+    "xiBZero": {"symbol": "Xi_b0", "pdgId": 5232, "quarkContent": ["up", "strange", "bottom"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 0.5, "parity": 1, "massInGev": {"value": 5.7917, "uncertainty": 0.0004}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.472e-12, "uncertainty": 1.6e-14}, "selfConjugate": false, "antiparticle": "antiXiBZero"},
+    "xiBMinus": {"symbol": "Xi_b-", "pdgId": 5132, "quarkContent": ["down", "strange", "bottom"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 0.5, "parity": 1, "massInGev": {"value": 5.797, "uncertainty": 0.0004}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.575e-12, "uncertainty": 2.1e-14}, "selfConjugate": false, "antiparticle": "antiXiBMinus"},
+    "xiBPrimeMinus": {"symbol": "Xi_b'-", "pdgId": 5312, "quarkContent": ["down", "strange", "bottom"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 0.5, "parity": 1, "massInGev": {"value": 5.9349, "uncertainty": 0.0004}, "widthInGev": {"value": 3e-05, "uncertainty": 3.2e-05}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiXiBPrimeMinus"},
+    "xiBStarZero": {"symbol": "Xi_b*0", "pdgId": 5324, "quarkContent": ["up", "strange", "bottom"], "isospin": 0.5, "isospinThirdComponent": 0.5, "spin": 1.5, "parity": 1, "massInGev": {"value": 5.9523, "uncertainty": 0.0006}, "widthInGev": {"value": 0.00087, "uncertainty": 7e-05}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiXiBStarZero"},
+    "xiBStarMinus": {"symbol": "Xi_b*-", "pdgId": 5314, "quarkContent": ["down", "strange", "bottom"], "isospin": 0.5, "isospinThirdComponent": -0.5, "spin": 1.5, "parity": 1, "massInGev": {"value": 5.9555, "uncertainty": 0.0004}, "widthInGev": {"value": 0.00143, "uncertainty": 0.00011}, "meanLifeInSeconds": null, "selfConjugate": false, "antiparticle": "antiXiBStarMinus"},
+    "omegaBMinus": {"symbol": "Omega_b-", "pdgId": 5332, "quarkContent": ["strange", "strange", "bottom"], "isospin": 0.0, "isospinThirdComponent": 0.0, "spin": 0.5, "parity": 1, "massInGev": {"value": 6.0458, "uncertainty": 0.0008}, "widthInGev": null, "meanLifeInSeconds": {"value": 1.64e-12, "uncertainty": 1.6e-13}, "selfConjugate": false, "antiparticle": "antiOmegaBMinus"}
+  },
+  "baryonBranchingFractions": {
+    "lambdaBaryon": [
+      {"products": ["proton", "pionMinus"], "value": 0.641, "uncertainty": 0.005},
+      {"products": ["neutron", "pionZero"], "value": 0.359, "uncertainty": 0.005}
+    ],
+    "sigmaPlus": [
+      {"products": ["proton", "pionZero"], "value": 0.5147, "uncertainty": 0.003},
+      {"products": ["neutron", "pionPlus"], "value": 0.4843, "uncertainty": 0.003}
+    ],
+    "sigmaZero": [
+      {"products": ["lambdaBaryon", "photon"], "value": 1.0, "uncertainty": null, "mode": "Λγ 100%"}
+    ],
+    "sigmaMinus": [
+      {"products": ["neutron", "pionMinus"], "value": 0.99848, "uncertainty": 5e-05}
+    ],
+    "xiZero": [
+      {"products": ["lambdaBaryon", "pionZero"], "value": 0.99517, "uncertainty": 0.00012}
+    ],
+    "xiMinus": [
+      {"products": ["lambdaBaryon", "pionMinus"], "value": 0.99887, "uncertainty": 0.00035}
+    ],
+    "omegaMinus": [
+      {"products": ["lambdaBaryon", "kaonMinus"], "value": 0.677, "uncertainty": 0.007},
+      {"products": ["xiZero", "pionMinus"], "value": 0.243, "uncertainty": 0.007},
+      {"products": ["xiMinus", "pionZero"], "value": 0.0855, "uncertainty": 0.0033}
+    ],
+    "deltaPlusPlus": [
+      {"isospinFamilies": ["nucleon", "pion"], "value": 0.994, "uncertainty": null, "mode": "Nπ 99.4%"}
+    ],
+    "deltaPlus": [
+      {"isospinFamilies": ["nucleon", "pion"], "value": 0.994, "uncertainty": null, "mode": "Nπ 99.4%"}
+    ],
+    "deltaZero": [
+      {"isospinFamilies": ["nucleon", "pion"], "value": 0.994, "uncertainty": null, "mode": "Nπ 99.4%"}
+    ],
+    "deltaMinus": [
+      {"isospinFamilies": ["nucleon", "pion"], "value": 0.994, "uncertainty": null, "mode": "Nπ 99.4%"}
+    ],
+    "sigmaStarPlus": [
+      {"isospinFamilies": ["lambdaBaryon", "pion"], "value": 0.87, "uncertainty": 0.015, "mode": "Λπ"},
+      {"isospinFamilies": ["sigmaBaryon", "pion"], "value": 0.117, "uncertainty": 0.015, "mode": "Σπ"}
+    ],
+    "sigmaStarZero": [
+      {"isospinFamilies": ["lambdaBaryon", "pion"], "value": 0.87, "uncertainty": 0.015, "mode": "Λπ"},
+      {"isospinFamilies": ["sigmaBaryon", "pion"], "value": 0.117, "uncertainty": 0.015, "mode": "Σπ"}
+    ],
+    "sigmaStarMinus": [
+      {"isospinFamilies": ["lambdaBaryon", "pion"], "value": 0.87, "uncertainty": 0.015, "mode": "Λπ"},
+      {"isospinFamilies": ["sigmaBaryon", "pion"], "value": 0.117, "uncertainty": 0.015, "mode": "Σπ"}
+    ],
+    "xiStarZero": [
+      {"isospinFamilies": ["xiBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Ξπ 100%"}
+    ],
+    "xiStarMinus": [
+      {"isospinFamilies": ["xiBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Ξπ 100%"}
+    ],
+    "sigmaCPlusPlus": [
+      {"isospinFamilies": ["lambdaCBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Λc π ≈ 100%"}
+    ],
+    "sigmaCPlus": [
+      {"isospinFamilies": ["lambdaCBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Λc π ≈ 100%"}
+    ],
+    "sigmaCZero": [
+      {"isospinFamilies": ["lambdaCBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Λc π ≈ 100%"}
+    ],
+    "sigmaCStarPlusPlus": [
+      {"isospinFamilies": ["lambdaCBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Λc π ≈ 100%"}
+    ],
+    "sigmaCStarPlus": [
+      {"isospinFamilies": ["lambdaCBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Λc π ≈ 100%"}
+    ],
+    "sigmaCStarZero": [
+      {"isospinFamilies": ["lambdaCBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Λc π ≈ 100%"}
+    ],
+    "xiCPrimePlus": [
+      {"products": ["xiCPlus", "photon"], "value": 1.0, "uncertainty": null, "mode": "Ξc γ seen, the only mode listed"}
+    ],
+    "xiCPrimeZero": [
+      {"products": ["xiCZero", "photon"], "value": 1.0, "uncertainty": null, "mode": "Ξc γ seen, the only mode listed"}
+    ],
+    "xiCStarPlus": [
+      {"isospinFamilies": ["xiCBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Ξc π, the only strong decay allowed"}
+    ],
+    "xiCStarZero": [
+      {"isospinFamilies": ["xiCBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Ξc π, the only strong decay allowed"}
+    ],
+    "omegaCStarZero": [
+      {"products": ["omegaCZero", "photon"], "value": 1.0, "uncertainty": null, "mode": "Ωc γ presumably 100%"}
+    ],
+    "sigmaBPlus": [
+      {"isospinFamilies": ["lambdaBBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Λb π dominant"}
+    ],
+    "sigmaBMinus": [
+      {"isospinFamilies": ["lambdaBBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Λb π dominant"}
+    ],
+    "sigmaBStarPlus": [
+      {"isospinFamilies": ["lambdaBBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Λb π dominant"}
+    ],
+    "sigmaBStarMinus": [
+      {"isospinFamilies": ["lambdaBBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Λb π dominant"}
+    ],
+    "xiBPrimeMinus": [
+      {"isospinFamilies": ["xiBBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Ξb π seen"}
+    ],
+    "xiBStarZero": [
+      {"isospinFamilies": ["xiBBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Ξb π seen"}
+    ],
+    "xiBStarMinus": [
+      {"isospinFamilies": ["xiBBaryon", "pion"], "value": 1.0, "uncertainty": null, "mode": "Ξb π seen"}
+    ]
+  },
+  "isospinMultiplets": {
+    "nucleon": {"isospin": 0.5, "members": [{"names": ["proton"], "isospinThirdComponent": 0.5}, {"names": ["neutron"], "isospinThirdComponent": -0.5}]},
+    "pion": {"isospin": 1, "members": [{"names": ["pionPlus"], "isospinThirdComponent": 1}, {"names": ["pionZero"], "isospinThirdComponent": 0}, {"names": ["pionMinus"], "isospinThirdComponent": -1}]},
+    "kaon": {"isospin": 0.5, "members": [{"names": ["kaonPlus"], "isospinThirdComponent": 0.5}, {"names": ["kaonShort", "kaonLong"], "isospinThirdComponent": -0.5}]},
+    "lambdaBaryon": {"isospin": 0, "members": [{"names": ["lambdaBaryon"], "isospinThirdComponent": 0}]},
+    "sigmaBaryon": {"isospin": 1, "members": [{"names": ["sigmaPlus"], "isospinThirdComponent": 1}, {"names": ["sigmaZero"], "isospinThirdComponent": 0}, {"names": ["sigmaMinus"], "isospinThirdComponent": -1}]},
+    "xiBaryon": {"isospin": 0.5, "members": [{"names": ["xiZero"], "isospinThirdComponent": 0.5}, {"names": ["xiMinus"], "isospinThirdComponent": -0.5}]},
+    "lambdaCBaryon": {"isospin": 0, "members": [{"names": ["lambdaCPlus"], "isospinThirdComponent": 0}]},
+    "xiCBaryon": {"isospin": 0.5, "members": [{"names": ["xiCPlus"], "isospinThirdComponent": 0.5}, {"names": ["xiCZero"], "isospinThirdComponent": -0.5}]},
+    "lambdaBBaryon": {"isospin": 0, "members": [{"names": ["lambdaBZero"], "isospinThirdComponent": 0}]},
+    "xiBBaryon": {"isospin": 0.5, "members": [{"names": ["xiBZero"], "isospinThirdComponent": 0.5}, {"names": ["xiBMinus"], "isospinThirdComponent": -0.5}]}
+  }
+}

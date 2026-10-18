@@ -1,0 +1,5 @@
+node_modules
+pnpm-lock.yaml
+libs/constants/src/codata.generated.ts
+libs/constants/data
+docs/STANDARD_MODEL_REFERENCE.md

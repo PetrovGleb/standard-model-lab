@@ -1,0 +1,874 @@
+[
+  {
+    "name": "create-particle",
+    "body": "<circle  cx=\"10\" cy=\"14\" r=\"5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"10\" cy=\"14\" r=\"1.6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M18.5 2.5v6M15.5 5.5h6\"/>"
+  },
+  {
+    "name": "create-nucleus",
+    "body": "<circle  cx=\"7.2\" cy=\"15.9\" r=\"2.6\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"11.8\" cy=\"15.9\" r=\"2.6\"/><circle  cx=\"9.5\" cy=\"12\" r=\"2.6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M18.5 2.5v6M15.5 5.5h6\"/>"
+  },
+  {
+    "name": "create-atom",
+    "body": "<ellipse  cx=\"10\" cy=\"14\" rx=\"7.5\" ry=\"3.5\" transform=\"rotate(-25 10 14)\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"10\" cy=\"14\" r=\"1.6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M18.5 2.5v6M15.5 5.5h6\"/>"
+  },
+  {
+    "name": "create-molecule",
+    "body": "<circle  cx=\"5.5\" cy=\"17.5\" r=\"2.5\"/><circle  cx=\"13.5\" cy=\"13\" r=\"2.5\"/><circle  cx=\"8\" cy=\"8.5\" r=\"2.5\"/><path  d=\"M7.8 16.2l3.4-1.9M8.6 11l1.6 2.6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M18.5 2.5v6M15.5 5.5h6\"/>"
+  },
+  {
+    "name": "entangle",
+    "body": "<circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"2.9\" cy=\"12\" r=\"1.7\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"21.1\" cy=\"12\" r=\"1.7\"/><rect  x=\"5.5\" y=\"9.75\" width=\"7.5\" height=\"4.5\" rx=\"2.25\"/><rect style=\"stroke:var(--icon-accent,#0E7C6B)\" x=\"11\" y=\"9.75\" width=\"7.5\" height=\"4.5\" rx=\"2.25\"/>"
+  },
+  {
+    "name": "influence",
+    "body": "<circle  cx=\"16\" cy=\"12\" r=\"4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16\" cy=\"12\" r=\"1.4\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 7h6M3 12h7M3 17h6\"/>"
+  },
+  {
+    "name": "evolve",
+    "body": "<path d=\"M6 3h12M6 21h12\"/><path d=\"M7.5 3v2.6c0 2.1 1.7 3.6 4.5 6.4c-2.8 2.8-4.5 4.3-4.5 6.4V21M16.5 3v2.6c0 2.1-1.7 3.6-4.5 6.4c2.8 2.8 4.5 4.3 4.5 6.4V21\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M9.6 19.2c.8-1.1 4-1.1 4.8 0\"/>"
+  },
+  {
+    "name": "measure",
+    "body": "<path  d=\"M3.5 17a8.5 8.5 0 0 1 17 0\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 17l4.2-5.2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"17\" r=\"1.6\"/><path  d=\"M3.5 20.5h17\"/>"
+  },
+  {
+    "name": "measure-system",
+    "body": "<path  d=\"M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9.5\" cy=\"9.5\" r=\"1.4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"14.5\" cy=\"9.5\" r=\"1.4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9.5\" cy=\"14.5\" r=\"1.4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"14.5\" cy=\"14.5\" r=\"1.4\"/>"
+  },
+  {
+    "name": "measure-position",
+    "body": "<path  d=\"M12 21.5s-7-6-7-11.5a7 7 0 0 1 14 0c0 5.5-7 11.5-7 11.5z\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"10\" r=\"2.5\"/>"
+  },
+  {
+    "name": "combine",
+    "body": "<rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"2.5\" y=\"3\" width=\"4\" height=\"4\" rx=\"1\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"17.5\" y=\"3\" width=\"4\" height=\"4\" rx=\"1\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"10\" y=\"18\" width=\"4\" height=\"4\" rx=\"1\"/><path  d=\"M7.5 8l2.5 2.5M16.5 8L14 10.5M12 17v-2\"/><circle  cx=\"12\" cy=\"12\" r=\"2.6\"/>"
+  },
+  {
+    "name": "collide",
+    "body": "<path  d=\"M2 12h5M17 12h5M4.5 9.5 7 12l-2.5 2.5M19.5 9.5 17 12l2.5 2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 6.5v2.5M12 15v2.5M8.6 8.6l1.6 1.6M13.8 13.8l1.6 1.6M15.4 8.6l-1.6 1.6M10.2 13.8l-1.6 1.6\"/>"
+  },
+  {
+    "name": "decay",
+    "body": "<path  d=\"M3 12h6.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"11\" cy=\"12\" r=\"1.8\"/><path  d=\"M12.6 11l7.4-5.5M12.6 13l7.4 5.5\"/><path  d=\"M17 4.5l3 1-1 3M17 19.5l3-1-1-3\"/>"
+  },
+  {
+    "name": "diffract",
+    "body": "<path  d=\"M8 3v5M8 10.5v3M8 16v5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 8a5 5 0 0 1 0 8M15.5 5.5a9 9 0 0 1 0 13M3 9v6\"/>"
+  },
+  {
+    "name": "place",
+    "body": "<path  d=\"M14 7.5l6 3.25v7L14 21l-6-3.25v-7zM8 10.75L14 14l6-3.25M14 14v7\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3.5 3.5l8 6.1M7.5 9.57l4 .03-1.09-3.85\"/>"
+  },
+  {
+    "name": "propagate",
+    "body": "<path d=\"M3 8h13v13H3zM3 8l5-5h13l-5 5M16 21l5-5V3\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M6.8 11h5.4M6.8 18h5.4M7.6 11v.7c0 .9.7 1.5 1.9 2.8c-1.2 1.3-1.9 1.9-1.9 2.8V18M11.4 11v.7c0 .9-.7 1.5-1.9 2.8c1.2 1.3 1.9 1.9 1.9 2.8V18\"/>"
+  },
+  {
+    "name": "report",
+    "body": "<rect  x=\"4.5\" y=\"3\" width=\"15\" height=\"18\" rx=\"2\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M9 17v-3M12 17V9M15 17v-5\"/>"
+  },
+  {
+    "name": "particle",
+    "body": "<circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"17\" cy=\"12\" r=\"1.1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"14.5\" cy=\"16.33\" r=\"1.1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9.5\" cy=\"16.33\" r=\"1.1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"7\" cy=\"12\" r=\"1.1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9.5\" cy=\"7.67\" r=\"1.1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"14.5\" cy=\"7.67\" r=\"1.1\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"20.37\" cy=\"14.72\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"17.17\" cy=\"19.12\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"12\" cy=\"20.8\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"6.83\" cy=\"19.12\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"3.63\" cy=\"14.72\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"3.63\" cy=\"9.28\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"6.83\" cy=\"4.88\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"12\" cy=\"3.2\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"17.17\" cy=\"4.88\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"20.37\" cy=\"9.28\" r=\"0.8\"/>"
+  },
+  {
+    "name": "fermion",
+    "body": "<rect  x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"3.5\"/><path  d=\"M9.5 16V8M7.3 10.2 9.5 8l2.2 2.2\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M14.5 8v8M12.3 13.8l2.2 2.2 2.2-2.2\"/>"
+  },
+  {
+    "name": "boson",
+    "body": "<path stroke-dasharray=\"2 2.6\" d=\"M3 5.5h18M3 18.5h18\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 12h3.5c1 0 1.5 2 2.5 2s1.5-6 3-6 2 6 3 6 1.5-2 2.5-2H21\"/>"
+  },
+  {
+    "name": "quark",
+    "body": "<rect  x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"8.8\" r=\"1.9\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"8.7\" cy=\"14.6\" r=\"1.9\"/><circle  cx=\"15.3\" cy=\"14.6\" r=\"1.9\"/>"
+  },
+  {
+    "name": "antiquark",
+    "body": "<path  d=\"M5 2.5h14\"/><rect  x=\"4\" y=\"6\" width=\"16\" height=\"15\" rx=\"4\"/><circle  cx=\"12\" cy=\"10.6\" r=\"1.9\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"8.7\" cy=\"16.4\" r=\"1.9\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"15.3\" cy=\"16.4\" r=\"1.9\"/>"
+  },
+  {
+    "name": "lepton",
+    "body": "<path  d=\"M6.5 13h9A4.5 4.5 0 1 0 14.2 16.2\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M17.5 5.5h4\"/>"
+  },
+  {
+    "name": "neutrino",
+    "body": "<path  d=\"M6 20.5V10a6 6 0 0 1 12 0v10.5l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5z\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9.8\" cy=\"10.5\" r=\"1.2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"14.2\" cy=\"10.5\" r=\"1.2\"/>"
+  },
+  {
+    "name": "gauge-boson",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"8.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M6 12q1.5 -4 3 0q1.5 4 3 0q1.5 -4 3 0q1.5 4 3 0\"/>"
+  },
+  {
+    "name": "photon",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 12q1.75 -7 3.5 0q1.75 7 3.5 0q1.75 -7 3.5 0q1.75 7 3.5 0\"/><path  d=\"M17 12h4M18.5 9.5 21 12l-2.5 2.5\"/>"
+  },
+  {
+    "name": "gluon",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 16c2 0 3.5-2.5 3.5-5 0-2-2.5-2-2.5 0 0 2.5 1.5 5 3.5 5c2 0 3.5-2.5 3.5-5 0-2-2.5-2-2.5 0 0 2.5 1.5 5 3.5 5c2 0 3.5-2.5 3.5-5 0-2-2.5-2-2.5 0 0 2.5 1.5 5 3.5 5c2 0 3.5-2.5 3.5-5 0-2-2.5-2-2.5 0 0 2.5 1.5 5 3.5 5\"/>"
+  },
+  {
+    "name": "w-boson",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"8.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M8.6 9.5l1.2 5 2.2-4 2.2 4 1.2-5\"/>"
+  },
+  {
+    "name": "z-boson",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"8.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M9.5 9.5h5l-5 5h5\"/>"
+  },
+  {
+    "name": "higgs",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"8.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M9.5 9.2v5.6M14.5 9.2v5.6M9.5 12h5\"/>"
+  },
+  {
+    "name": "hadron",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"8.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"8\" cy=\"12\" r=\"1.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16\" cy=\"12\" r=\"1.5\"/><path  d=\"M9.5 12q.65-1.6 1.3 0t1.3 0 1.3 0\"/>"
+  },
+  {
+    "name": "meson",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"8.5\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"6.5\" y=\"10\" width=\"4\" height=\"4\" rx=\"1\"/><rect style=\"stroke:var(--icon-accent,#0E7C6B)\" x=\"13.5\" y=\"10\" width=\"4\" height=\"4\" rx=\"1\"/>"
+  },
+  {
+    "name": "baryon",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"8.5\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"10.2\" y=\"6.6\" width=\"3.6\" height=\"3.6\" rx=\"1\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"7.2\" y=\"12.4\" width=\"3.6\" height=\"3.6\" rx=\"1\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"13.2\" y=\"12.4\" width=\"3.6\" height=\"3.6\" rx=\"1\"/>"
+  },
+  {
+    "name": "nucleon",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"8.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"8.6\" r=\"1.7\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9\" cy=\"14\" r=\"1.7\"/><circle  cx=\"15\" cy=\"14\" r=\"1.7\"/>"
+  },
+  {
+    "name": "diquark",
+    "body": "<rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"3.5\" y=\"9\" width=\"6\" height=\"6\" rx=\"1.5\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"14.5\" y=\"9\" width=\"6\" height=\"6\" rx=\"1.5\"/><path  d=\"M9.5 12h5\"/>"
+  },
+  {
+    "name": "nucleus",
+    "body": "<circle  cx=\"9.5\" cy=\"9.5\" r=\"3\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"14.5\" cy=\"9.5\" r=\"3\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"9.5\" cy=\"14.5\" r=\"3\"/><circle  cx=\"14.5\" cy=\"14.5\" r=\"3\"/>"
+  },
+  {
+    "name": "isotope",
+    "body": "<circle  cx=\"4.5\" cy=\"14\" r=\"1.9\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"8.3\" cy=\"14\" r=\"1.9\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"6.4\" cy=\"10.7\" r=\"1.9\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"14.6\" cy=\"10.1\" r=\"1.9\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"18.4\" cy=\"10.1\" r=\"1.9\"/><circle  cx=\"14.6\" cy=\"13.9\" r=\"1.9\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"18.4\" cy=\"13.9\" r=\"1.9\"/>"
+  },
+  {
+    "name": "atom",
+    "body": "<ellipse  cx=\"12\" cy=\"12\" rx=\"9\" ry=\"3.5\" transform=\"rotate(-30 12 12)\"/><ellipse  cx=\"12\" cy=\"12\" rx=\"9\" ry=\"3.5\" transform=\"rotate(30 12 12)\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"1.8\"/>"
+  },
+  {
+    "name": "ion-positive",
+    "body": "<circle  cx=\"10\" cy=\"13.5\" r=\"6.5\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"10\" cy=\"13.5\" r=\"1.6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M18.5 2.5v6M15.5 5.5h6\"/>"
+  },
+  {
+    "name": "ion-negative",
+    "body": "<circle  cx=\"10\" cy=\"13.5\" r=\"6.5\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"10\" cy=\"13.5\" r=\"1.6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M15.5 5.5h6\"/>"
+  },
+  {
+    "name": "molecule",
+    "body": "<circle  cx=\"11\" cy=\"13\" r=\"3.2\"/><circle  cx=\"4.5\" cy=\"6.5\" r=\"2.2\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"19\" cy=\"8\" r=\"2.2\"/><circle  cx=\"15\" cy=\"19.5\" r=\"2.2\"/><path  d=\"M8.74 10.74 6.06 8.06M13.71 11.3l3.42-2.13M12.68 15.73l1.17 1.9\"/>"
+  },
+  {
+    "name": "radical",
+    "body": "<circle  cx=\"7.5\" cy=\"14.5\" r=\"3\"/><circle  cx=\"16.5\" cy=\"14.5\" r=\"3\"/><path  d=\"M10.5 14.5h3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16.5\" cy=\"6.5\" r=\"1.6\"/>"
+  },
+  {
+    "name": "matter",
+    "body": "<path  d=\"M4 6h7v4.3a2 2 0 1 1 0 3.4V18H4A1.5 1.5 0 0 1 2.5 16.5v-9A1.5 1.5 0 0 1 4 6z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12.5 6H20A1.5 1.5 0 0 1 21.5 7.5v9A1.5 1.5 0 0 1 20 18h-7.5v-4.3a2 2 0 1 0 0-3.4z\"/>"
+  },
+  {
+    "name": "antimatter",
+    "body": "<path  d=\"M4 6h7v4.3a2 2 0 1 1 0 3.4V18H4A1.5 1.5 0 0 1 2.5 16.5v-9A1.5 1.5 0 0 1 4 6z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12.5 6H20A1.5 1.5 0 0 1 21.5 7.5v9A1.5 1.5 0 0 1 20 18h-7.5v-4.3a2 2 0 1 0 0-3.4z\"/><path  d=\"M5 12h3\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M17 12h2.8\"/>"
+  },
+  {
+    "name": "composite",
+    "body": "<rect  x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"3.5\"/><rect  x=\"7\" y=\"7\" width=\"10\" height=\"10\" rx=\"2\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"10.25\" y=\"10.25\" width=\"3.5\" height=\"3.5\" rx=\"1\"/>"
+  },
+  {
+    "name": "spin",
+    "body": "<path  d=\"M19.5 12a7.5 7.5 0 1 1-2.2-5.3\"/><path  d=\"M18 3v4h-4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"2.2\"/>"
+  },
+  {
+    "name": "spin-up",
+    "body": "<path  d=\"M19.5 12a7.5 7.5 0 1 1-2.2-5.3\"/><path  d=\"M18 3v4h-4\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 16.5V7M9.8 9.2 12 7l2.2 2.2\"/>"
+  },
+  {
+    "name": "spin-down",
+    "body": "<path  d=\"M19.5 12a7.5 7.5 0 1 1-2.2-5.3\"/><path  d=\"M18 3v4h-4\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 7.5V17M9.8 14.8 12 17l2.2-2.2\"/>"
+  },
+  {
+    "name": "polarization",
+    "body": "<path  d=\"M2 12q1.38 -8 2.75 0q1.38 8 2.75 0q1.38 -8 2.75 0q1.38 8 2.75 0\"/><circle  cx=\"18.5\" cy=\"12\" r=\"3.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M18.5 6.5v11M17 8l1.5-1.5L20 8M17 16l1.5 1.5L20 16\"/>"
+  },
+  {
+    "name": "flavor",
+    "body": "<circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"4.8\" r=\"2.3\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"5\" cy=\"18\" r=\"2.3\"/><circle  cx=\"19\" cy=\"18\" r=\"2.3\"/><path  d=\"M14.6 6.4Q18.5 9.3 19 14.5M16.2 19H7.8M5 15.2Q5.5 9.5 9.4 6.4\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M17.3 13.3l1.7 1.7 1.6-1.9M9.6 17.3 7.8 19l1.8 1.7M7.3 6l2.1.4-.2 2.1\"/>"
+  },
+  {
+    "name": "color-charge",
+    "body": "<circle  cx=\"12\" cy=\"8.5\" r=\"4.8\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"8.8\" cy=\"14.5\" r=\"4.8\"/><circle  cx=\"15.2\" cy=\"14.5\" r=\"4.8\"/>"
+  },
+  {
+    "name": "electric-charge",
+    "body": "<circle  cx=\"6.5\" cy=\"12\" r=\"3.8\"/><path  d=\"M4.8 12h3.4M6.5 10.3v3.4\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"17.5\" cy=\"12\" r=\"3.8\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M15.8 12h3.4\"/><path stroke-dasharray=\"2 2.6\" d=\"M9.8 9.6q2.2-2 4.4 0M9.8 14.4q2.2 2 4.4 0\"/>"
+  },
+  {
+    "name": "mass",
+    "body": "<path  d=\"M6 10h12l2.5 10.5h-17z\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"12\" cy=\"6\" r=\"2.5\"/>"
+  },
+  {
+    "name": "lifetime",
+    "body": "<circle  cx=\"12\" cy=\"13.5\" r=\"7.5\"/><path  d=\"M10 2.5h4M12 2.5V6M18.5 6.5l1.5-1.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 13.5V9.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"13.5\" r=\"1.4\"/>"
+  },
+  {
+    "name": "half-life",
+    "body": "<path  d=\"M4 3.5V20h16.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M7 6c3 0 4 7 7 9s4 2 6.5 2\"/><path stroke-dasharray=\"2 2.6\" d=\"M4 12h6.5V20\"/>"
+  },
+  {
+    "name": "width",
+    "body": "<path  d=\"M3.5 12h17\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M7 8.5 3.5 12 7 15.5M17 8.5l3.5 3.5-3.5 3.5\"/>"
+  },
+  {
+    "name": "magnetic-moment",
+    "body": "<path  d=\"M12 5.5C3.5 2 3.5 22 12 18.5M12 5.5c8.5-3.5 8.5 16.5 0 13\"/><path  d=\"M4.2 10.8l1.4 1.8 1.4-1.8M17 10.8l1.4 1.8 1.4-1.8\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 16V7.5M9.8 9.7 12 7.5l2.2 2.2\"/>"
+  },
+  {
+    "name": "parity",
+    "body": "<path stroke-dasharray=\"2 2.6\" d=\"M12 3v18\"/><path  d=\"M8.5 7l-5 5 5 5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M15.5 7l5 5-5 5\"/>"
+  },
+  {
+    "name": "isospin",
+    "body": "<circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"4.8\" r=\"2.6\"/><circle  cx=\"12\" cy=\"19.2\" r=\"2.6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 9v6M10.2 10.8 12 9l1.8 1.8M10.2 13.2 12 15l1.8-1.8\"/>"
+  },
+  {
+    "name": "baryon-number",
+    "body": "<rect  x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"4\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"10.2\" y=\"6.8\" width=\"3.6\" height=\"3.6\" rx=\"1\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"7.2\" y=\"13\" width=\"3.6\" height=\"3.6\" rx=\"1\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"13.2\" y=\"13\" width=\"3.6\" height=\"3.6\" rx=\"1\"/>"
+  },
+  {
+    "name": "lepton-number",
+    "body": "<rect  x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"4\"/><path  d=\"M7.5 13h7A3.5 3.5 0 1 0 13.47 15.47\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M15.5 7.5h3\"/>"
+  },
+  {
+    "name": "flavor-numbers",
+    "body": "<rect  x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"8\" cy=\"12\" r=\"1.8\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"10.3\" y=\"10.3\" width=\"3.4\" height=\"3.4\" rx=\"0.8\"/><path style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" d=\"M16 10.2l2 3.6h-4z\"/>"
+  },
+  {
+    "name": "superposition",
+    "body": "<path  d=\"M3 12q4.5-10 9 0t9 0\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 12q4.5 10 9 0t9 0\"/>"
+  },
+  {
+    "name": "entanglement",
+    "body": "<circle  cx=\"8.5\" cy=\"12\" r=\"5.5\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"15.5\" cy=\"12\" r=\"5.5\"/>"
+  },
+  {
+    "name": "collapse",
+    "body": "<path stroke-dasharray=\"2 2.6\" d=\"M3 19c4 0 5-11 9-11s5 11 9 11\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 20V5.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"4.5\" r=\"1.6\"/>"
+  },
+  {
+    "name": "probability",
+    "body": "<rect  x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"3.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"8.5\" cy=\"8.5\" r=\"1.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"1.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"15.5\" cy=\"15.5\" r=\"1.5\"/>"
+  },
+  {
+    "name": "state-vector",
+    "body": "<path  d=\"M4.5 4v16\"/><path  d=\"M15.5 4l4 8-4 8\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M10 16.5V8M7.8 10.2 10 8l2.2 2.2\"/>"
+  },
+  {
+    "name": "density-matrix",
+    "body": "<path  d=\"M6 4H4v16h2M18 4h2v16h-2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"8\" cy=\"8\" r=\"1.4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"1.4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16\" cy=\"16\" r=\"1.4\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"12\" cy=\"8\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"16\" cy=\"8\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"16\" cy=\"12\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"8\" cy=\"12\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"8\" cy=\"16\" r=\"0.8\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"12\" cy=\"16\" r=\"0.8\"/>"
+  },
+  {
+    "name": "decoherence",
+    "body": "<path  d=\"M2.5 12q2-6 4 0t4 0\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"14\" cy=\"9.5\" r=\"1.1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16.5\" cy=\"14.5\" r=\"1.1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"19.5\" cy=\"9\" r=\"1.1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"21\" cy=\"15\" r=\"1.1\"/>"
+  },
+  {
+    "name": "coherence-time",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 12q1.5 -9 3 0q1.5 6.8 3 0q1.5 -5 3 0q1.5 3.4 3 0q1.5 -2.2 3 0q1.5 1.2 3 0\"/><path stroke-dasharray=\"2 2.6\" d=\"M3 20h18\"/>"
+  },
+  {
+    "name": "energy-level",
+    "body": "<path  d=\"M4 19.5h16M4 12h16M7 5h10\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 18v-4.5M10 15.5l2-2 2 2\"/>"
+  },
+  {
+    "name": "hyperfine",
+    "body": "<path  d=\"M3 12h5.5l3.5-4.5h9M8.5 12l3.5 4.5h9\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M15 7.5h6\"/>"
+  },
+  {
+    "name": "orbital",
+    "body": "<path  d=\"M12 12C9 10 8.5 3.5 12 3.5s3 6.5 0 8.5zM12 12c3 2 3.5 8.5 0 8.5s-3-6.5 0-8.5z\"/><ellipse style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"12\" cy=\"12\" rx=\"8.5\" ry=\"2.6\"/>"
+  },
+  {
+    "name": "electron-configuration",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"4\"/><circle  cx=\"12\" cy=\"12\" r=\"8.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"8\" r=\"1.4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"18\" cy=\"6\" r=\"1.4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"4.5\" cy=\"16\" r=\"1.4\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"12\" cy=\"12\" r=\"1.2\"/>"
+  },
+  {
+    "name": "ionization-energy",
+    "body": "<path  d=\"M4 20h9M4 15h9M4 11h9\"/><path stroke-dasharray=\"2 2.6\" d=\"M4 6h9\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M17.5 20V4M15 6.5 17.5 4 20 6.5\"/>"
+  },
+  {
+    "name": "binding-energy",
+    "body": "<circle  cx=\"4.5\" cy=\"12\" r=\"2.5\"/><circle  cx=\"19.5\" cy=\"12\" r=\"2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M7 12l1.2-2.5 1.6 5 1.6-5 1.6 5 1.6-5 1.6 5 1.2-2.5\"/>"
+  },
+  {
+    "name": "excitation",
+    "body": "<path  d=\"M4 19h16M4 7h16\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M8 17.5V10M6 12l2-2 2 2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"15\" cy=\"7\" r=\"1.8\"/>"
+  },
+  {
+    "name": "proton-count",
+    "body": "<circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"11\" cy=\"13\" r=\"2.3\"/><circle  cx=\"16\" cy=\"13\" r=\"2.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"13.5\" cy=\"17.33\" r=\"2.3\"/><circle  cx=\"8.5\" cy=\"17.33\" r=\"2.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"6\" cy=\"13\" r=\"2.3\"/><circle  cx=\"8.5\" cy=\"8.67\" r=\"2.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"13.5\" cy=\"8.67\" r=\"2.3\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M19.5 1.5v6M16.5 4.5h6\"/>"
+  },
+  {
+    "name": "neutron-count",
+    "body": "<circle  cx=\"11\" cy=\"13\" r=\"2.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16\" cy=\"13\" r=\"2.3\"/><circle  cx=\"13.5\" cy=\"17.33\" r=\"2.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"8.5\" cy=\"17.33\" r=\"2.3\"/><circle  cx=\"6\" cy=\"13\" r=\"2.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"8.5\" cy=\"8.67\" r=\"2.3\"/><circle  cx=\"13.5\" cy=\"8.67\" r=\"2.3\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"19.5\" cy=\"4.5\" r=\"2\"/>"
+  },
+  {
+    "name": "mass-number",
+    "body": "<circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"11\" cy=\"13\" r=\"2.3\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"16\" cy=\"13\" r=\"2.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"13.5\" cy=\"17.33\" r=\"2.3\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"8.5\" cy=\"17.33\" r=\"2.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"6\" cy=\"13\" r=\"2.3\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"8.5\" cy=\"8.67\" r=\"2.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"13.5\" cy=\"8.67\" r=\"2.3\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M21.5 2.5h-4l2 2-2 2h4\"/>"
+  },
+  {
+    "name": "element",
+    "body": "<rect  x=\"3.5\" y=\"3.5\" width=\"17\" height=\"17\" rx=\"3\"/><path  d=\"M7 7.5h2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M15 10A3.54 3.54 0 1 0 15 15\"/>"
+  },
+  {
+    "name": "periodic-table",
+    "body": "<path  d=\"M3 4h4v5h10V4h4v16H3z\"/><path  d=\"M3 14.5h18\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"11\" y=\"11\" width=\"3.5\" height=\"3.5\" rx=\"0.6\"/>"
+  },
+  {
+    "name": "stable",
+    "body": "<circle  cx=\"6.7\" cy=\"14.9\" r=\"2.6\"/><circle  cx=\"11.3\" cy=\"14.9\" r=\"2.6\"/><circle  cx=\"9\" cy=\"11\" r=\"2.6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M15 6l2 2 4-4.5\"/>"
+  },
+  {
+    "name": "radioactive",
+    "body": "<path  d=\"M7.5 4.21A9 9 0 0 1 16.5 4.21L13.75 8.97A3.5 3.5 0 0 0 10.25 8.97ZM21 12A9 9 0 0 1 16.5 19.79L13.75 15.03A3.5 3.5 0 0 0 15.5 12ZM7.5 19.79A9 9 0 0 1 3 12L8.5 12A3.5 3.5 0 0 0 10.25 15.03Z\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"1.6\"/>"
+  },
+  {
+    "name": "alpha-decay",
+    "body": "<circle  cx=\"8\" cy=\"15\" r=\"5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 10.5l2.5-2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16.5\" cy=\"6.8\" r=\"1.7\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"19.5\" cy=\"6.8\" r=\"1.7\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16.5\" cy=\"3.9\" r=\"1.7\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"19.5\" cy=\"3.9\" r=\"1.7\"/>"
+  },
+  {
+    "name": "beta-decay",
+    "body": "<circle  cx=\"8\" cy=\"15\" r=\"5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 11.5l5-5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"18.8\" cy=\"4.8\" r=\"1.6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M18 9.5h3\"/><path stroke-dasharray=\"2 2.6\" d=\"M13 16l7.5 2.5\"/>"
+  },
+  {
+    "name": "gamma-emission",
+    "body": "<circle  cx=\"6\" cy=\"12\" r=\"3.8\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M10.5 12q1 -4 2 0q1 4 2 0q1 -4 2 0q1 4 2 0\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M18.5 12H21M19 9.5l2.5 2.5-2.5 2.5\"/>"
+  },
+  {
+    "name": "fission",
+    "body": "<path  d=\"M9.5 6.5a7 7 0 0 0 0 14z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M14.5 3.5a7 7 0 0 1 0 14z\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"4\" cy=\"3.8\" r=\"1.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"20\" cy=\"20.2\" r=\"1.3\"/>"
+  },
+  {
+    "name": "fusion",
+    "body": "<circle  cx=\"5\" cy=\"7.5\" r=\"2.6\"/><circle  cx=\"5\" cy=\"16.5\" r=\"2.6\"/><path  d=\"M8 9l3 2.2M8 15l3-2.2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16.5\" cy=\"12\" r=\"4.8\"/>"
+  },
+  {
+    "name": "neutron-capture",
+    "body": "<circle  cx=\"15.5\" cy=\"12\" r=\"5.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"3.8\" cy=\"12\" r=\"1.8\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M6.8 12h2.4M8 10.3 9.7 12 8 13.7\"/>"
+  },
+  {
+    "name": "photodisintegration",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M2 15q1.5 -4 3 0q1.5 4 3 0\"/><circle  cx=\"13\" cy=\"15\" r=\"4.5\"/><path  d=\"M15.5 11l2.5-3.5\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"19.5\" cy=\"5.5\" r=\"1.8\"/>"
+  },
+  {
+    "name": "recombination",
+    "body": "<circle  cx=\"14\" cy=\"13.5\" r=\"6.5\"/><path  d=\"M14 11v5M11.5 13.5h5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"3.8\" cy=\"4.5\" r=\"1.6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M5.5 6.2l2.6 2.6M8.4 6.4v2.7H5.7\"/>"
+  },
+  {
+    "name": "ionization",
+    "body": "<circle  cx=\"9.5\" cy=\"14.5\" r=\"6.5\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"9.5\" cy=\"14.5\" r=\"1.4\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M15 9l5.5-5.5M16.5 3.5h4v4\"/>"
+  },
+  {
+    "name": "charge-radius",
+    "body": "<circle stroke-dasharray=\"2 2.6\" cx=\"12\" cy=\"12\" r=\"8.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 12h8.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"2.2\"/>"
+  },
+  {
+    "name": "bond-single",
+    "body": "<circle  cx=\"5\" cy=\"12\" r=\"2.5\"/><circle  cx=\"19\" cy=\"12\" r=\"2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M7.5 12h9\"/>"
+  },
+  {
+    "name": "bond-double",
+    "body": "<circle  cx=\"5\" cy=\"12\" r=\"2.5\"/><circle  cx=\"19\" cy=\"12\" r=\"2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M7.3 10.6h9.4M7.3 13.4h9.4\"/>"
+  },
+  {
+    "name": "bond-triple",
+    "body": "<circle  cx=\"4.5\" cy=\"12\" r=\"2.5\"/><circle  cx=\"19.5\" cy=\"12\" r=\"2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M7.5 9.6h9M7 12h10M7.5 14.4h9\"/>"
+  },
+  {
+    "name": "bond-length",
+    "body": "<circle  cx=\"5\" cy=\"8.5\" r=\"2.5\"/><circle  cx=\"19\" cy=\"8.5\" r=\"2.5\"/><path  d=\"M7.5 8.5h9\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M5 15.5v4M19 15.5v4M5 17.5h14\"/>"
+  },
+  {
+    "name": "bond-angle",
+    "body": "<circle  cx=\"12\" cy=\"17.5\" r=\"2\"/><circle  cx=\"5\" cy=\"6\" r=\"2\"/><circle  cx=\"19\" cy=\"6\" r=\"2\"/><path  d=\"M10.9 15.8 6.1 7.7M13.1 15.8l4.8-8.1\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M8.6 12.1a6 6 0 0 1 6.8 0\"/>"
+  },
+  {
+    "name": "bond-energy",
+    "body": "<circle  cx=\"4\" cy=\"12\" r=\"2.5\"/><circle  cx=\"20\" cy=\"12\" r=\"2.5\"/><path  d=\"M6.5 12h2.5M15 12h2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M13.5 5.5l-3 6.5h3.5l-3 6.5\"/>"
+  },
+  {
+    "name": "valence",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"4\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 3v4M12 17v4M3 12h4M17 12h4\"/>"
+  },
+  {
+    "name": "geometry-3d",
+    "body": "<circle  cx=\"12\" cy=\"11\" r=\"2.4\"/><circle  cx=\"12\" cy=\"3.2\" r=\"1.8\"/><circle  cx=\"4.2\" cy=\"15.5\" r=\"1.8\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"16.5\" cy=\"19.5\" r=\"1.8\"/><circle  cx=\"19.8\" cy=\"10.5\" r=\"1.8\"/><path  d=\"M12 8.6V5M9.92 12.2 5.76 14.6\"/><path style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" d=\"M13.12 13.12 14.51 18.52 16.81 17.3z\"/><path stroke-dasharray=\"2 2.6\" d=\"M14.4 10.85 18 10.6\"/>"
+  },
+  {
+    "name": "dipole-moment",
+    "body": "<circle  cx=\"6.5\" cy=\"8\" r=\"2.5\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"16.5\" cy=\"8\" r=\"4\"/><path  d=\"M9 8h3.5\"/><path  d=\"M4 17.5h15.5M16.5 14.5l3 3-3 3M7 15v5\"/>"
+  },
+  {
+    "name": "vibration",
+    "body": "<circle  cx=\"6\" cy=\"12\" r=\"2.5\"/><circle  cx=\"18\" cy=\"12\" r=\"2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M8.5 12l.9-2 1.3 4 1.3-4 1.3 4 1.3-4 .9 2\"/><path  d=\"M2 9v6M22 9v6\"/>"
+  },
+  {
+    "name": "rotation",
+    "body": "<circle  cx=\"8\" cy=\"16\" r=\"2\"/><circle  cx=\"16\" cy=\"8\" r=\"2\"/><path  d=\"M9.5 14.5l5-5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3.5 10a8.7 8.7 0 0 1 6.5-6.5M20.5 14a8.7 8.7 0 0 1-6.5 6.5M7 2.8l3 .7-.7 3M17 21.2l-3-.7.7-3\"/>"
+  },
+  {
+    "name": "dissociation",
+    "body": "<circle  cx=\"8\" cy=\"12\" r=\"3\"/><circle  cx=\"16\" cy=\"12\" r=\"3\"/><path stroke-dasharray=\"2 2.6\" d=\"M11 12h2\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M4.5 9.5 2 12l2.5 2.5M19.5 9.5 22 12l-2.5 2.5\"/>"
+  },
+  {
+    "name": "formula",
+    "body": "<path  d=\"M3.5 7v10M9.5 7v10M3.5 12h6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M11.5 14.8c.2-1.5 3-1.5 3 0 0 1-3 2.2-3 3.7h3\"/><circle  cx=\"18.5\" cy=\"12\" r=\"3\"/>"
+  },
+  {
+    "name": "molar-mass",
+    "body": "<path  d=\"M6 10h12l2.5 10.5h-17z\"/><circle  cx=\"12\" cy=\"6\" r=\"2.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9\" cy=\"17\" r=\"1.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"15\" cy=\"17\" r=\"1.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"14\" r=\"1.3\"/>"
+  },
+  {
+    "name": "add-atom",
+    "body": "<circle  cx=\"7\" cy=\"14.5\" r=\"4\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" stroke-dasharray=\"2 2.6\" cx=\"17\" cy=\"14.5\" r=\"4\"/><path  d=\"M11 14.5h2\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M17 12.5v4M15 14.5h4\"/>"
+  },
+  {
+    "name": "add-bond",
+    "body": "<circle  cx=\"5\" cy=\"15.5\" r=\"2.5\"/><circle  cx=\"19\" cy=\"15.5\" r=\"2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" stroke-dasharray=\"2 2.6\" d=\"M7.5 15.5h9\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 3v6M9 6h6\"/>"
+  },
+  {
+    "name": "remove-bond",
+    "body": "<circle  cx=\"4.5\" cy=\"12\" r=\"2.5\"/><circle  cx=\"19.5\" cy=\"12\" r=\"2.5\"/><path  d=\"M7 12h2.5M14.5 12H17\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M10.2 9.7l3.6 4.6M13.8 9.7l-3.6 4.6\"/>"
+  },
+  {
+    "name": "temperature",
+    "body": "<path  d=\"M10 13.5V5a2 2 0 1 1 4 0v8.5a4 4 0 1 1-4 0z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 8v8\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"17\" r=\"1.6\"/>"
+  },
+  {
+    "name": "heat",
+    "body": "<path  d=\"M12 2.5c1 3 5.5 5 5.5 10.5a5.5 5.5 0 0 1-11 0c0-3 2-4.5 2-6.5 1.5 1 2.2 2 2.2 3.2 1-1.6 1.3-4.2 1.3-7.2z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 21a2.5 2.5 0 0 1-2.5-2.5c0-1.5 1.5-2 2.5-3.5 1 1.5 2.5 2 2.5 3.5A2.5 2.5 0 0 1 12 21z\"/>"
+  },
+  {
+    "name": "cool",
+    "body": "<path  d=\"M12 2.5v19M3.8 7.25l16.4 9.5M3.8 16.75l16.4-9.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M9.5 3.5 12 6l2.5-2.5M9.5 20.5 12 18l2.5 2.5\"/>"
+  },
+  {
+    "name": "thermalize",
+    "body": "<path  d=\"M5.5 13.5V5a2 2 0 1 1 4 0v8.5a4 4 0 1 1-4 0z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M13.5 10q1.75-2 3.5 0t3.5 0M13.5 14.5q1.75-2 3.5 0t3.5 0\"/>"
+  },
+  {
+    "name": "randomize",
+    "body": "<path  d=\"M3 7h3.5c2 0 3 1 4.5 3.5l2 3c1.5 2.5 2.5 3.5 4.5 3.5H21M3 17h3.5c2 0 3-1 4.5-3.5M13 10.5c1.5-2.5 2.5-3.5 4.5-3.5H21\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M18.5 4.5 21 7l-2.5 2.5M18.5 14.5 21 17l-2.5 2.5\"/>"
+  },
+  {
+    "name": "magnetic-field",
+    "body": "<path  d=\"M6 4v8a6 6 0 0 0 12 0V4h-4v8a2 2 0 0 1-4 0V4z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M6 7.5h4M14 7.5h4\"/>"
+  },
+  {
+    "name": "remove-field",
+    "body": "<path  d=\"M6 4v8a6 6 0 0 0 12 0V4h-4v8a2 2 0 0 1-4 0V4z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 3l18 18\"/>"
+  },
+  {
+    "name": "electric-field",
+    "body": "<path  d=\"M4 4v16M20 4v16\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M7.5 8h9M7.5 16h9M14 6l2.5 2-2.5 2M14 14l2.5 2-2.5 2\"/><path  d=\"M7.5 12h9\"/>"
+  },
+  {
+    "name": "medium-gas",
+    "body": "<circle  cx=\"6.5\" cy=\"7.5\" r=\"2.2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"15\" cy=\"5.5\" r=\"1.5\"/><circle  cx=\"17.5\" cy=\"13\" r=\"2.6\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9\" cy=\"15.5\" r=\"1.5\"/><circle  cx=\"14\" cy=\"19.5\" r=\"1.5\"/><circle  cx=\"4.5\" cy=\"14\" r=\"1.1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"11.5\" cy=\"10.5\" r=\"1.1\"/>"
+  },
+  {
+    "name": "vacuum",
+    "body": "<path  d=\"M4 20h16M5.5 20v-8a6.5 6.5 0 0 1 13 0v8\"/><circle  cx=\"12\" cy=\"3.8\" r=\"1.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" stroke-dasharray=\"2 2.6\" d=\"M9 15h6\"/>"
+  },
+  {
+    "name": "boost",
+    "body": "<path  d=\"M4 6l6 6-6 6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 6l6 6-6 6\"/>"
+  },
+  {
+    "name": "rotate-spin",
+    "body": "<path  d=\"M10 19V5M7.5 7.5 10 5l2.5 2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M16 6.5a7.5 7.5 0 0 1 0 11M18.5 17.5H16V15\"/>"
+  },
+  {
+    "name": "travel",
+    "body": "<circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"4\" cy=\"12\" r=\"2\"/><path stroke-dasharray=\"2 2.6\" d=\"M7.5 12h9\"/><path  d=\"M17 8l4 4-4 4\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M4 18.5h17\"/>"
+  },
+  {
+    "name": "irradiate",
+    "body": "<rect  x=\"16\" y=\"4\" width=\"4.5\" height=\"16\" rx=\"1.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 6.5l10 3.5M3 12h10.5M3 17.5l10-3.5\"/>"
+  },
+  {
+    "name": "microwave",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 12q4.5 -10 9 0q4.5 10 9 0\"/>"
+  },
+  {
+    "name": "infrared",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 12q2.25 -9 4.5 0q2.25 9 4.5 0q2.25 -9 4.5 0q2.25 9 4.5 0\"/>"
+  },
+  {
+    "name": "visible-light",
+    "body": "<path  d=\"M12 4L4 19h16z\"/><path  d=\"M1.5 13.5h5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M14.5 11l7.5-3M15.5 13h7M14.5 15l7.5 3\"/>"
+  },
+  {
+    "name": "ultraviolet",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 12q1.5 -8 3 0q1.5 8 3 0q1.5 -8 3 0q1.5 8 3 0q1.5 -8 3 0q1.5 8 3 0\"/>"
+  },
+  {
+    "name": "x-ray",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 12q1.13 -6 2.25 0q1.13 6 2.25 0q1.13 -6 2.25 0q1.13 6 2.25 0q1.13 -6 2.25 0q1.13 6 2.25 0q1.13 -6 2.25 0q1.13 6 2.25 0\"/>"
+  },
+  {
+    "name": "gamma-ray",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 12q0.9 -4.4 1.8 0q0.9 4.4 1.8 0q0.9 -4.4 1.8 0q0.9 4.4 1.8 0q0.9 -4.4 1.8 0q0.9 4.4 1.8 0q0.9 -4.4 1.8 0q0.9 4.4 1.8 0q0.9 -4.4 1.8 0q0.9 4.4 1.8 0\"/>"
+  },
+  {
+    "name": "laser",
+    "body": "<rect  x=\"2\" y=\"9\" width=\"8\" height=\"6\" rx=\"1.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M10 12h11.5\"/><path  d=\"M6 9v6\"/>"
+  },
+  {
+    "name": "laser-cooling",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"3\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M2 12h5M17 12h5M12 2v5M12 17v5M5 10l2 2-2 2M19 10l-2 2 2 2\"/>"
+  },
+  {
+    "name": "frequency",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 10q1.5 -8 3 0q1.5 8 3 0q1.5 -8 3 0q1.5 8 3 0q1.5 -8 3 0q1.5 8 3 0\"/><path  d=\"M3 19h18M3 17v4M9 17v4M15 17v4M21 17v4\"/>"
+  },
+  {
+    "name": "wavelength",
+    "body": "<path  d=\"M3 14.5q2.25 -8 4.5 0q2.25 8 4.5 0q2.25 -8 4.5 0q2.25 8 4.5 0\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M5.25 4v3M14.25 4v3M5.25 5.5h9\"/>"
+  },
+  {
+    "name": "power",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"9\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M13 6.5l-4.5 6.5h4l-1 4.5 4.5-6.5h-4z\"/>"
+  },
+  {
+    "name": "intensity",
+    "body": "<circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"3.5\"/><path  d=\"M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8\"/>"
+  },
+  {
+    "name": "detuning",
+    "body": "<path  d=\"M3 19c4 0 5-11 9-11s5 11 9 11\"/><path stroke-dasharray=\"2 2.6\" d=\"M12 8v12\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M16.5 4v16\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 4.5h2.5M13.5 3l1.5 1.5-1.5 1.5\"/>"
+  },
+  {
+    "name": "pulse",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M2.5 18h2c1.5 0 1.5-11 3-11s1.5 11 3 11h3c1.5 0 1.5-11 3-11s1.5 11 3 11h2\"/>"
+  },
+  {
+    "name": "radiation-source",
+    "body": "<rect  x=\"2.5\" y=\"7.5\" width=\"9\" height=\"9\" rx=\"2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"7\" cy=\"12\" r=\"1.6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M14.5 8l6-3M14.5 12h7M14.5 16l6 3\"/>"
+  },
+  {
+    "name": "momentum",
+    "body": "<circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"6\" cy=\"12\" r=\"3\"/><path  d=\"M9.5 12h11M16.5 8l4 4-4 4\"/>"
+  },
+  {
+    "name": "energy",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M13 2.5L5 13.5h6.5l-1 8 8-11H12z\"/>"
+  },
+  {
+    "name": "velocity",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M10 12h11M17 8l4 4-4 4\"/><path  d=\"M3 8h4.5M2 12h5.5M3 16h4.5\"/>"
+  },
+  {
+    "name": "position",
+    "body": "<path  d=\"M4 3.5V20h16.5\"/><path stroke-dasharray=\"2 2.6\" d=\"M4 10h8v10\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"10\" r=\"2\"/>"
+  },
+  {
+    "name": "direction",
+    "body": "<path  d=\"M12 13V4M12 13l-8 5M12 13l8 5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M9.5 6.5 12 4l2.5 2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 13V4\"/>"
+  },
+  {
+    "name": "angle",
+    "body": "<path  d=\"M4 19h16M4 19L16 6\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M10 19A6 6 0 0 0 8.07 14.59\"/>"
+  },
+  {
+    "name": "beam",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 8h13M3 12h16M3 16h13\"/><path  d=\"M16 9l3 3-3 3\"/>"
+  },
+  {
+    "name": "collision-energy",
+    "body": "<path  d=\"M2.5 13l2-1 3 7.5 4-15.5h10\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M19.5 10.3c-.6-1-3.8-1-3.8.6s3.8 1 3.8 2.7-3.2 1.6-3.8.6\"/>"
+  },
+  {
+    "name": "cross-section",
+    "body": "<ellipse  cx=\"15\" cy=\"12\" rx=\"3.5\" ry=\"8\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M2 8h9.5M2 12h9.5M2 16h9.5\"/>"
+  },
+  {
+    "name": "jet",
+    "body": "<circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"4\" cy=\"19\" r=\"1.8\"/><path  d=\"M6 17L19 4M6.6 18 21.5 11.5M5 16 11.5 2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M18 5.5l2.5-2.5\"/>"
+  },
+  {
+    "name": "qcd-string",
+    "body": "<rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"2\" y=\"9\" width=\"5\" height=\"6\" rx=\"1.5\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"17\" y=\"9\" width=\"5\" height=\"6\" rx=\"1.5\"/><path  d=\"M7 10.5h10M7 13.5h10\"/>"
+  },
+  {
+    "name": "hadronization",
+    "body": "<rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"2\" y=\"10\" width=\"4\" height=\"4\" rx=\"1\"/><rect  x=\"7\" y=\"10\" width=\"4\" height=\"4\" rx=\"1\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"13\" y=\"4\" width=\"4\" height=\"4\" rx=\"1\"/><rect  x=\"18\" y=\"4\" width=\"4\" height=\"4\" rx=\"1\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"13\" y=\"16\" width=\"4\" height=\"4\" rx=\"1\"/><rect  x=\"18\" y=\"16\" width=\"4\" height=\"4\" rx=\"1\"/><path stroke-dasharray=\"2 2.6\" d=\"M11 12h1.5l1-2M12.5 12l1 2\"/>"
+  },
+  {
+    "name": "parton",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"9\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9\" cy=\"8.5\" r=\"1.8\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"15.5\" cy=\"10\" r=\"1.2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"10.5\" cy=\"15\" r=\"1.4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16\" cy=\"15.5\" r=\"0.9\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"7\" cy=\"12.5\" r=\"0.8\"/>"
+  },
+  {
+    "name": "feynman-diagram",
+    "body": "<path  d=\"M3 4l5 8-5 8M21 4l-5 8 5 8\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M8 12q1.33 -4 2.67 0q1.33 4 2.67 0q1.33 -4 2.67 0\"/>"
+  },
+  {
+    "name": "vertex",
+    "body": "<path  d=\"M4 4l8 8-8 8\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 12q1.13 -4.4 2.25 0q1.13 4.4 2.25 0q1.13 -4.4 2.25 0q1.13 4.4 2.25 0\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"2\"/>"
+  },
+  {
+    "name": "channel",
+    "body": "<path  d=\"M3 12h6M9 12c3 0 4-6 8-6h4M9 12h12\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M9 12c3 0 4 6 8 6h4\"/>"
+  },
+  {
+    "name": "branching",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"8.5\"/><path style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" d=\"M12 12V3.5a8.5 8.5 0 0 1 7.36 12.75z\"/>"
+  },
+  {
+    "name": "threshold",
+    "body": "<path stroke-dasharray=\"2 2.6\" style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M10 3v18\"/><path  d=\"M3 19h7c3 0 5-8 11-12\"/>"
+  },
+  {
+    "name": "detector",
+    "body": "<rect  x=\"15.5\" y=\"3\" width=\"5\" height=\"18\" rx=\"1.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 12h9M9 9l3 3-3 3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"18\" cy=\"8\" r=\"1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"18\" cy=\"12.5\" r=\"1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"18\" cy=\"16.5\" r=\"1\"/>"
+  },
+  {
+    "name": "double-slit",
+    "body": "<path  d=\"M12 3v5M12 10.5v3M12 16v5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M4 7v10M7.5 5.5v13\"/><path  d=\"M17 7.5v2M17 11v2M17 14.5v2\"/>"
+  },
+  {
+    "name": "wavepacket",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3.5 12q1.2 -1.6 2.4 0q1.2 4 2.4 0q1.2 -7.2 2.4 0q1.2 10 2.4 0q1.2 -7.2 2.4 0q1.2 4 2.4 0q1.2 -1.6 2.4 0\"/>"
+  },
+  {
+    "name": "potential",
+    "body": "<path  d=\"M4 3.5c0 10.5 3 16 8 16s8-5.5 8-16\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M6.8 13h10.4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"13\" r=\"1.4\"/>"
+  },
+  {
+    "name": "tunneling",
+    "body": "<rect  x=\"10\" y=\"3.5\" width=\"4\" height=\"17\" rx=\"1\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M2 12q1 -6 2 0q1 6 2 0\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M14 12q1 -2.2 2 0q1 2.2 2 0q1 -2.2 2 0q1 2.2 2 0\"/>"
+  },
+  {
+    "name": "space-cube",
+    "body": "<path  d=\"M12 3l8 4.5v9L12 21l-8-4.5v-9zM4 7.5L12 12l8-4.5M12 12v9\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16\" cy=\"15.5\" r=\"1.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"8\" cy=\"15.5\" r=\"1\"/>"
+  },
+  {
+    "name": "outcome-frequency",
+    "body": "<path  d=\"M3.5 20.5h17\"/><rect  x=\"5\" y=\"13\" width=\"3.5\" height=\"7.5\" rx=\"1\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"10.25\" y=\"5\" width=\"3.5\" height=\"15.5\" rx=\"1\"/><rect  x=\"15.5\" y=\"10\" width=\"3.5\" height=\"10.5\" rx=\"1\"/>"
+  },
+  {
+    "name": "mean",
+    "body": "<path  d=\"M3 19c4 0 5-11 9-11s5 11 9 11\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 4v16\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M9.5 4h5\"/>"
+  },
+  {
+    "name": "std-deviation",
+    "body": "<path  d=\"M3 19c4 0 5-11 9-11s5 11 9 11\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" stroke-dasharray=\"2 2.6\" d=\"M8 9v11M16 9v11\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M8 14.5h8\"/>"
+  },
+  {
+    "name": "correlation",
+    "body": "<path  d=\"M3.5 3.5v17h17\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"7\" cy=\"16.5\" r=\"1.2\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"9.5\" cy=\"14\" r=\"1.2\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"11\" cy=\"11\" r=\"1.2\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"14\" cy=\"11.5\" r=\"1.2\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"15.5\" cy=\"8\" r=\"1.2\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"18.5\" cy=\"7\" r=\"1.2\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M6 18L20 5\"/>"
+  },
+  {
+    "name": "chsh",
+    "body": "<path  d=\"M3.5 20.5h17\"/><rect  x=\"6\" y=\"12\" width=\"4.5\" height=\"8.5\" rx=\"1\"/><rect style=\"stroke:var(--icon-accent,#0E7C6B)\" x=\"13.5\" y=\"4\" width=\"4.5\" height=\"16.5\" rx=\"1\"/><path stroke-dasharray=\"2 2.6\" d=\"M3 9h18\"/>"
+  },
+  {
+    "name": "histogram",
+    "body": "<path  d=\"M3 20.5h18\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M4 20.5v-4h3v-5h3v-6h4v6h3v5h3v4\"/>"
+  },
+  {
+    "name": "same-sign",
+    "body": "<path  d=\"M7 19.5V5M4 8l3-3 3 3\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M17 19.5V5M14 8l3-3 3 3\"/>"
+  },
+  {
+    "name": "shots",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"9\"/><circle stroke-dasharray=\"2 2.6\" cx=\"12\" cy=\"12\" r=\"4.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9\" cy=\"9\" r=\"1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"14.5\" cy=\"10\" r=\"1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"11\" cy=\"14.5\" r=\"1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16\" cy=\"15\" r=\"1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"6.5\" cy=\"14.5\" r=\"1\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"13\" cy=\"5.8\" r=\"1\"/>"
+  },
+  {
+    "name": "seed",
+    "body": "<path  d=\"M12 21v-8.5M12 12.5c0-4.5 3-7 7.5-7 0 4.5-3 7-7.5 7z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 15.5c0-3.5-2.3-5.5-6.5-5.5 0 3.5 2.3 5.5 6.5 5.5z\"/>"
+  },
+  {
+    "name": "formula-latex",
+    "body": "<path  d=\"M16 4.5H6.5l5.5 7.5-5.5 7.5H16\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M15.5 14l5 5M20.5 14l-5 5\"/>"
+  },
+  {
+    "name": "timeline",
+    "body": "<rect  x=\"3\" y=\"5\" width=\"5\" height=\"11\" rx=\"1.5\"/><rect style=\"stroke:var(--icon-accent,#0E7C6B)\" x=\"9.5\" y=\"5\" width=\"5\" height=\"11\" rx=\"1.5\"/><rect  x=\"16\" y=\"5\" width=\"5\" height=\"11\" rx=\"1.5\"/><path  d=\"M3 20h18\"/>"
+  },
+  {
+    "name": "play",
+    "body": "<path  d=\"M7 4.5v15l12.5-7.5z\"/>"
+  },
+  {
+    "name": "pause",
+    "body": "<path  d=\"M8.5 5v14M15.5 5v14\"/>"
+  },
+  {
+    "name": "export",
+    "body": "<path  d=\"M4 13v5.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V13\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 15V3.5M7.5 8 12 3.5 16.5 8\"/>"
+  },
+  {
+    "name": "carry-over",
+    "body": "<rect  x=\"3\" y=\"3\" width=\"9\" height=\"9\" rx=\"2\"/><rect style=\"stroke:var(--icon-accent,#0E7C6B)\" x=\"12\" y=\"12\" width=\"9\" height=\"9\" rx=\"2\"/><path  d=\"M14.5 5.5h2a2 2 0 0 1 2 2v2.5M16.5 8.5l2 2 2-2\"/>"
+  },
+  {
+    "name": "cat-spin",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><path  d=\"M19.5 12a7.5 7.5 0 1 1-2.2-5.3\"/><path  d=\"M18 3v4h-4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"2.2\"/></g>"
+  },
+  {
+    "name": "cat-interference",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><path  d=\"M8 3v5M8 10.5v3M8 16v5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 8a5 5 0 0 1 0 8M15.5 5.5a9 9 0 0 1 0 13M3 9v6\"/></g>"
+  },
+  {
+    "name": "cat-decays",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><path  d=\"M3 12h6.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"11\" cy=\"12\" r=\"1.8\"/><path  d=\"M12.6 11l7.4-5.5M12.6 13l7.4 5.5\"/><path  d=\"M17 4.5l3 1-1 3M17 19.5l3-1-1-3\"/></g>"
+  },
+  {
+    "name": "cat-colliders",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><path  d=\"M2 12h5M17 12h5M4.5 9.5 7 12l-2.5 2.5M19.5 9.5 17 12l2.5 2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 6.5v2.5M12 15v2.5M8.6 8.6l1.6 1.6M13.8 13.8l1.6 1.6M15.4 8.6l-1.6 1.6M10.2 13.8l-1.6 1.6\"/></g>"
+  },
+  {
+    "name": "cat-confinement",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"2\" y=\"9\" width=\"5\" height=\"6\" rx=\"1.5\"/><rect style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" x=\"17\" y=\"9\" width=\"5\" height=\"6\" rx=\"1.5\"/><path  d=\"M7 10.5h10M7 13.5h10\"/></g>"
+  },
+  {
+    "name": "cat-protons",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><circle  cx=\"12\" cy=\"12\" r=\"9\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9\" cy=\"8.5\" r=\"1.8\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"15.5\" cy=\"10\" r=\"1.2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"10.5\" cy=\"15\" r=\"1.4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16\" cy=\"15.5\" r=\"0.9\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"7\" cy=\"12.5\" r=\"0.8\"/></g>"
+  },
+  {
+    "name": "cat-space",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><path  d=\"M12 3l8 4.5v9L12 21l-8-4.5v-9zM4 7.5L12 12l8-4.5M12 12v9\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16\" cy=\"15.5\" r=\"1.3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"8\" cy=\"15.5\" r=\"1\"/></g>"
+  },
+  {
+    "name": "cat-nuclear",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><circle  cx=\"5\" cy=\"7.5\" r=\"2.6\"/><circle  cx=\"5\" cy=\"16.5\" r=\"2.6\"/><path  d=\"M8 9l3 2.2M8 15l3-2.2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"16.5\" cy=\"12\" r=\"4.8\"/></g>"
+  },
+  {
+    "name": "cat-atoms",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><ellipse  cx=\"12\" cy=\"12\" rx=\"9\" ry=\"3.5\" transform=\"rotate(-30 12 12)\"/><ellipse  cx=\"12\" cy=\"12\" rx=\"9\" ry=\"3.5\" transform=\"rotate(30 12 12)\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"1.8\"/></g>"
+  },
+  {
+    "name": "cat-molecules",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><circle  cx=\"11\" cy=\"13\" r=\"3.2\"/><circle  cx=\"4.5\" cy=\"6.5\" r=\"2.2\"/><circle style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"19\" cy=\"8\" r=\"2.2\"/><circle  cx=\"15\" cy=\"19.5\" r=\"2.2\"/><path  d=\"M8.74 10.74 6.06 8.06M13.71 11.3l3.42-2.13M12.68 15.73l1.17 1.9\"/></g>"
+  },
+  {
+    "name": "cat-radiation",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><path  d=\"M7.5 4.21A9 9 0 0 1 16.5 4.21L13.75 8.97A3.5 3.5 0 0 0 10.25 8.97ZM21 12A9 9 0 0 1 16.5 19.79L13.75 15.03A3.5 3.5 0 0 0 15.5 12ZM7.5 19.79A9 9 0 0 1 3 12L8.5 12A3.5 3.5 0 0 0 10.25 15.03Z\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"1.6\"/></g>"
+  },
+  {
+    "name": "cat-cooling",
+    "body": "<rect  x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5.5\"/><g transform=\"translate(12 12) scale(.6) translate(-12 -12)\" stroke-width=\"2.92\"><path  d=\"M12 2.5v19M3.8 7.25l16.4 9.5M3.8 16.75l16.4-9.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M9.5 3.5 12 6l2.5-2.5M9.5 20.5 12 18l2.5 2.5\"/></g>"
+  },
+  {
+    "name": "templates",
+    "body": "<rect  x=\"7.5\" y=\"3\" width=\"13.5\" height=\"13.5\" rx=\"2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M3 7.5v11A2.5 2.5 0 0 0 5.5 21h11\"/>"
+  },
+  {
+    "name": "builder",
+    "body": "<rect  x=\"3\" y=\"4\" width=\"18\" height=\"4\" rx=\"1.5\"/><rect style=\"stroke:var(--icon-accent,#0E7C6B)\" x=\"3\" y=\"10\" width=\"12\" height=\"4\" rx=\"1.5\"/><rect  x=\"3\" y=\"16\" width=\"15\" height=\"4\" rx=\"1.5\"/>"
+  },
+  {
+    "name": "results",
+    "body": "<path  d=\"M3.5 3.5v17h17\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M7.5 15l4-5 3 3 5-6.5\"/>"
+  },
+  {
+    "name": "history",
+    "body": "<path  d=\"M3.5 12A8.5 8.5 0 1 0 6 6M6 2.5V6H2.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 8v4l3 2\"/>"
+  },
+  {
+    "name": "lagrangian",
+    "body": "<path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M16.5 5.5C16 4 15 3.5 14 3.5c-2 0-3 1.5-3 4v8.5c0 2-1 3.5-3 3.5-1.2 0-2-.6-2-1.4 0-1 1.5-1.4 3-.8 2 .8 3.5 2.2 6 2.2h4\"/>"
+  },
+  {
+    "name": "parameter",
+    "body": "<path  d=\"M3.5 7h17M3.5 17h17\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"9\" cy=\"7\" r=\"2.2\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"15\" cy=\"17\" r=\"2.2\"/>"
+  },
+  {
+    "name": "label",
+    "body": "<path  d=\"M3 11.5V4.5A1.5 1.5 0 0 1 4.5 3h7l9.5 9.5-8.5 8.5z\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"8\" cy=\"8\" r=\"1.6\"/>"
+  },
+  {
+    "name": "record",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"8.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"3.5\"/>"
+  },
+  {
+    "name": "drag-handle",
+    "body": "<circle fill=\"currentColor\" stroke=\"none\" cx=\"9\" cy=\"6\" r=\"1.3\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"9\" cy=\"12\" r=\"1.3\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"9\" cy=\"18\" r=\"1.3\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"15\" cy=\"6\" r=\"1.3\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"15\" cy=\"12\" r=\"1.3\"/><circle fill=\"currentColor\" stroke=\"none\" cx=\"15\" cy=\"18\" r=\"1.3\"/>"
+  },
+  {
+    "name": "expand",
+    "body": "<path  d=\"M6 9l6 6 6-6\"/>"
+  },
+  {
+    "name": "collapse-panel",
+    "body": "<path  d=\"M6 15l6-6 6 6\"/>"
+  },
+  {
+    "name": "delete",
+    "body": "<path  d=\"M4 7h16M10 3h4M6 7l1 13a1.5 1.5 0 0 0 1.5 1.5h7A1.5 1.5 0 0 0 17 20l1-13\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M10 11v6M14 11v6\"/>"
+  },
+  {
+    "name": "add-step",
+    "body": "<rect  x=\"3\" y=\"4\" width=\"13\" height=\"4\" rx=\"1.5\"/><rect  x=\"3\" y=\"10.5\" width=\"9\" height=\"4\" rx=\"1.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M18 14.5v6M15 17.5h6\"/>"
+  },
+  {
+    "name": "save-template",
+    "body": "<path  d=\"M6 3h12v18l-6-4.5L6 21z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 7v6M9 10h6\"/>"
+  },
+  {
+    "name": "search",
+    "body": "<circle  cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M15.5 15.5l5 5\"/>"
+  },
+  {
+    "name": "filter",
+    "body": "<path  d=\"M3.5 4.5h17l-6.5 8v6l-4 2v-8z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M7.5 8.5h9\"/>"
+  },
+  {
+    "name": "json-mode",
+    "body": "<path  d=\"M8 3.5c-2 0-3 1-3 3v2.5c0 1.5-1 3-2 3 1 0 2 1.5 2 3v2.5c0 2 1 3 3 3M16 3.5c2 0 3 1 3 3v2.5c0 1.5 1 3 2 3-1 0-2 1.5-2 3v2.5c0 2-1 3-3 3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"1.4\"/>"
+  },
+  {
+    "name": "validate",
+    "body": "<path  d=\"M4 6h11M4 11h11M4 16h5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12.5 16.5l3 3 5.5-6.5\"/>"
+  },
+  {
+    "name": "error",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"9\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M9 9l6 6M15 9l-6 6\"/>"
+  },
+  {
+    "name": "warning",
+    "body": "<path  d=\"M10.3 4.1L2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4.1a2 2 0 0 0-3.4 0z\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 9.5v4\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"16.8\" r=\"1.1\"/>"
+  },
+  {
+    "name": "info",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"9\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 11v5.5\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"7.8\" r=\"1.1\"/>"
+  },
+  {
+    "name": "success",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"9\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M8 12.5l2.7 2.7L16 9.5\"/>"
+  },
+  {
+    "name": "preset",
+    "body": "<rect  x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"4\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M12 7l1.5 3.2 3.5.4-2.6 2.4.7 3.5L12 14.8l-3.1 1.7.7-3.5L7 10.6l3.5-.4z\"/>"
+  },
+  {
+    "name": "unit",
+    "body": "<rect  x=\"2.5\" y=\"8\" width=\"19\" height=\"8\" rx=\"1.5\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M6.5 8v3M10 8v4.5M13.5 8v3M17 8v4.5\"/>"
+  },
+  {
+    "name": "data-source",
+    "body": "<ellipse style=\"stroke:var(--icon-accent,#0E7C6B)\" cx=\"12\" cy=\"6\" rx=\"7\" ry=\"3\"/><path  d=\"M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3\"/>"
+  },
+  {
+    "name": "duplicate",
+    "body": "<rect  x=\"8\" y=\"8\" width=\"12\" height=\"12\" rx=\"2\"/><path  d=\"M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2\"/><path style=\"stroke:var(--icon-accent,#0E7C6B)\" d=\"M14 11v6M11 14h6\"/>"
+  },
+  {
+    "name": "center-view",
+    "body": "<circle  cx=\"12\" cy=\"12\" r=\"6.5\"/><path  d=\"M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3\"/><circle style=\"fill:var(--icon-accent,#0E7C6B);stroke:none\" cx=\"12\" cy=\"12\" r=\"1.8\"/>"
+  }
+]

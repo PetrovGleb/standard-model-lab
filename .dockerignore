@@ -1,0 +1,8 @@
+node_modules
+.git
+release
+.desktop-build
+.idea
+.vscode
+.env
+*.log

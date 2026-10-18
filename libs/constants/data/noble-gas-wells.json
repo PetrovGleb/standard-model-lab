@@ -1,0 +1,10 @@
+{
+ "source": "Lennard-Jones parameters of the noble gases fitted to gas viscosity: J. O. Hirschfelder, C. F. Curtiss and R. B. Bird, Molecular Theory of Gases and Liquids (Wiley, 1954), Table I-A; these are the wells H. S. Johnston and C. Parr used for the bond-energy–bond-order method, J. Am. Chem. Soc. 85, 2544 (1963), each atom taking the noble gas that closes its period; σ in ångström, ε/k in kelvin, the well depth is ε and its distance 2^(1/6) σ",
+ "gases": [
+  { "protons": 2, "sigmaInAngstrom": 2.576, "wellDepthInKelvin": 10.22 },
+  { "protons": 10, "sigmaInAngstrom": 2.789, "wellDepthInKelvin": 35.7 },
+  { "protons": 18, "sigmaInAngstrom": 3.418, "wellDepthInKelvin": 124.0 },
+  { "protons": 36, "sigmaInAngstrom": 3.61, "wellDepthInKelvin": 190.0 },
+  { "protons": 54, "sigmaInAngstrom": 4.055, "wellDepthInKelvin": 229.0 }
+ ]
+}

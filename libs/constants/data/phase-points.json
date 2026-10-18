@@ -1,0 +1,1757 @@
+{
+ "source": "Normal melting, boiling and decomposition points at 101 325 Pa of the catalogue molecules the critical-point table lacks, in kelvin (sources in degrees Celsius converted by adding 273.15): the CRC Handbook of Chemistry and Physics (editions as quoted by PubChem from HSDB), the NIST Chemistry WebBook (SRD 69, averaged phase-change values), the Merck Index, Hawley's Condensed Chemical Dictionary and the PhysProp database as quoted by PubChem, and English Wikipedia chemboxes where none of these gives a value; each entry names its own source. A substance that sublimes at 1 atm has its sublimation point as the boiling temperature and its triple point as the melting temperature, as carbon dioxide in critical-points.json; amino acids and nucleobases, whose quoted melting points are melting with decomposition, are stored as decomposition points; null where the source gives no value at 1 atm. Borane, nitrous, sulfurous, carbonic, hypochlorous and thiocyanic acid and sodium hypochlorite exist only in the gas phase, in solution or as hydrates, and krypton difluoride has no quoted point, so they are left out",
+ "substances": [
+  {
+   "molecule": "fluorine",
+   "formula": "F₂",
+   "meltingTemperatureInKelvin": 53.48,
+   "boilingTemperatureInKelvin": 85.02,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "chlorine",
+   "formula": "Cl₂",
+   "meltingTemperatureInKelvin": 171.65,
+   "boilingTemperatureInKelvin": 239.11,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "bromine",
+   "formula": "Br₂",
+   "meltingTemperatureInKelvin": 265.95,
+   "boilingTemperatureInKelvin": 331.95,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "iodine",
+   "formula": "I₂",
+   "meltingTemperatureInKelvin": 386.85,
+   "boilingTemperatureInKelvin": 457.55,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 86th ed. (via PubChem)"
+  },
+  {
+   "molecule": "ozone",
+   "formula": "O₃",
+   "meltingTemperatureInKelvin": 80.45,
+   "boilingTemperatureInKelvin": 161.25,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 73rd ed. (via PubChem)"
+  },
+  {
+   "molecule": "whitePhosphorus",
+   "formula": "P₄",
+   "meltingTemperatureInKelvin": 317.25,
+   "boilingTemperatureInKelvin": 553.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "cyclooctasulfur",
+   "formula": "S₈",
+   "meltingTemperatureInKelvin": 392.0,
+   "boilingTemperatureInKelvin": 717.8,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox 'Octasulfur'"
+  },
+  {
+   "molecule": "hydrogenPeroxide",
+   "formula": "H₂O₂",
+   "meltingTemperatureInKelvin": 272.72,
+   "boilingTemperatureInKelvin": 423.35,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "carbonMonoxide",
+   "formula": "CO",
+   "meltingTemperatureInKelvin": 68.13,
+   "boilingTemperatureInKelvin": 81.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "nitricOxide",
+   "formula": "NO",
+   "meltingTemperatureInKelvin": 109.55,
+   "boilingTemperatureInKelvin": 121.41,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 76th ed. (via PubChem)"
+  },
+  {
+   "molecule": "nitrogenDioxide",
+   "formula": "NO₂",
+   "meltingTemperatureInKelvin": 263.85,
+   "boilingTemperatureInKelvin": 294.3,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "sulfurDioxide",
+   "formula": "SO₂",
+   "meltingTemperatureInKelvin": 197.65,
+   "boilingTemperatureInKelvin": 263.1,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "sulfurTrioxide",
+   "formula": "SO₃",
+   "meltingTemperatureInKelvin": 289.93,
+   "boilingTemperatureInKelvin": 318.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "EPA Extremely Hazardous Substances 1998, gamma form (via PubChem)"
+  },
+  {
+   "molecule": "dinitrogenTetroxide",
+   "formula": "N₂O₄",
+   "meltingTemperatureInKelvin": 263.85,
+   "boilingTemperatureInKelvin": 294.3,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "dichlorineMonoxide",
+   "formula": "Cl₂O",
+   "meltingTemperatureInKelvin": 152.55,
+   "boilingTemperatureInKelvin": 275.35,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "oxygenDifluoride",
+   "formula": "OF₂",
+   "meltingTemperatureInKelvin": 49.35,
+   "boilingTemperatureInKelvin": 128.4,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem); CRC Handbook 76th ed. (via PubChem)"
+  },
+  {
+   "molecule": "siliconDioxide",
+   "formula": "SiO₂",
+   "meltingTemperatureInKelvin": 1986.15,
+   "boilingTemperatureInKelvin": 3223.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox, citing the CRC Handbook p. 4-88"
+  },
+  {
+   "molecule": "carbonSuboxide",
+   "formula": "C₃O₂",
+   "meltingTemperatureInKelvin": 161.85,
+   "boilingTemperatureInKelvin": 279.95,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "hydrazine",
+   "formula": "N₂H₄",
+   "meltingTemperatureInKelvin": 274.69,
+   "boilingTemperatureInKelvin": 386.7,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "phosphine",
+   "formula": "PH₃",
+   "meltingTemperatureInKelvin": 139.35,
+   "boilingTemperatureInKelvin": 185.4,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "silane",
+   "formula": "SiH₄",
+   "meltingTemperatureInKelvin": 88.15,
+   "boilingTemperatureInKelvin": 161.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "germane",
+   "formula": "GeH₄",
+   "meltingTemperatureInKelvin": 108.15,
+   "boilingTemperatureInKelvin": 185.05,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "arsine",
+   "formula": "AsH₃",
+   "meltingTemperatureInKelvin": 157.15,
+   "boilingTemperatureInKelvin": 210.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "hydrogenSelenide",
+   "formula": "H₂Se",
+   "meltingTemperatureInKelvin": 207.42,
+   "boilingTemperatureInKelvin": 231.85,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "lithiumHydride",
+   "formula": "LiH",
+   "meltingTemperatureInKelvin": 961.85,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 86th ed. (via PubChem)"
+  },
+  {
+   "molecule": "sodiumHydride",
+   "formula": "NaH",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 698.15,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "berylliumHydride",
+   "formula": "BeH₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 523.15,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "boronTrifluoride",
+   "formula": "BF₃",
+   "meltingTemperatureInKelvin": 146.35,
+   "boilingTemperatureInKelvin": 173.25,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "boronTrichloride",
+   "formula": "BCl₃",
+   "meltingTemperatureInKelvin": 165.85,
+   "boilingTemperatureInKelvin": 285.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "aluminiumChloride",
+   "formula": "AlCl₃",
+   "meltingTemperatureInKelvin": 465.75,
+   "boilingTemperatureInKelvin": 455.85,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook 81st ed. (melting under pressure) and 69th ed. (sublimation at 752 mmHg) (via PubChem)"
+  },
+  {
+   "molecule": "siliconTetrachloride",
+   "formula": "SiCl₄",
+   "meltingTemperatureInKelvin": 203.15,
+   "boilingTemperatureInKelvin": 332.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "siliconTetrafluoride",
+   "formula": "SiF₄",
+   "meltingTemperatureInKelvin": 178.15,
+   "boilingTemperatureInKelvin": 182.85,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "phosphorusTrichloride",
+   "formula": "PCl₃",
+   "meltingTemperatureInKelvin": 179.55,
+   "boilingTemperatureInKelvin": 349.25,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 86th ed. (via PubChem)"
+  },
+  {
+   "molecule": "phosphorusPentachloride",
+   "formula": "PCl₅",
+   "meltingTemperatureInKelvin": 433.65,
+   "boilingTemperatureInKelvin": 432.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Ullmann's Encyclopedia of Industrial Chemistry, 5th ed., freezing and sublimation points (via PubChem)"
+  },
+  {
+   "molecule": "sulfurHexafluoride",
+   "formula": "SF₆",
+   "meltingTemperatureInKelvin": 222.35,
+   "boilingTemperatureInKelvin": 209.35,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem), triple point and sublimation point"
+  },
+  {
+   "molecule": "sulfurTetrafluoride",
+   "formula": "SF₄",
+   "meltingTemperatureInKelvin": 152.15,
+   "boilingTemperatureInKelvin": 235.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "nitrogenTrifluoride",
+   "formula": "NF₃",
+   "meltingTemperatureInKelvin": 64.36,
+   "boilingTemperatureInKelvin": 144.4,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "xenonDifluoride",
+   "formula": "XeF₂",
+   "meltingTemperatureInKelvin": 401.75,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "xenonTetrafluoride",
+   "formula": "XeF₄",
+   "meltingTemperatureInKelvin": 390.15,
+   "boilingTemperatureInKelvin": 390.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox, sublimes at its melting point"
+  },
+  {
+   "molecule": "titaniumTetrachloride",
+   "formula": "TiCl₄",
+   "meltingTemperatureInKelvin": 249.05,
+   "boilingTemperatureInKelvin": 409.55,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "uraniumTetrafluoride",
+   "formula": "UF₄",
+   "meltingTemperatureInKelvin": 1309.15,
+   "boilingTemperatureInKelvin": 1690.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "tungstenHexafluoride",
+   "formula": "WF₆",
+   "meltingTemperatureInKelvin": 275.05,
+   "boilingTemperatureInKelvin": 290.25,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "carbonDisulfide",
+   "formula": "CS₂",
+   "meltingTemperatureInKelvin": 161.45,
+   "boilingTemperatureInKelvin": 319.35,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "nitrousOxide",
+   "formula": "N₂O",
+   "meltingTemperatureInKelvin": 182.35,
+   "boilingTemperatureInKelvin": 184.67,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "carbonylSulfide",
+   "formula": "OCS",
+   "meltingTemperatureInKelvin": 134.35,
+   "boilingTemperatureInKelvin": 223.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "sulfurDichloride",
+   "formula": "SCl₂",
+   "meltingTemperatureInKelvin": 151.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 332.15,
+   "reference": "CRC Handbook 88th ed. (melting); Hawley's Condensed Chemical Dictionary (via PubChem) (decomposes at its boiling point)"
+  },
+  {
+   "molecule": "disulfurDichloride",
+   "formula": "S₂Cl₂",
+   "meltingTemperatureInKelvin": 196.15,
+   "boilingTemperatureInKelvin": 410.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem) (melting); CRC Handbook 88th ed. (boiling) (via PubChem)"
+  },
+  {
+   "molecule": "thionylChloride",
+   "formula": "SOCl₂",
+   "meltingTemperatureInKelvin": 168.65,
+   "boilingTemperatureInKelvin": 349.15,
+   "decompositionTemperatureInKelvin": 413.15,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "sulfurylChloride",
+   "formula": "SO₂Cl₂",
+   "meltingTemperatureInKelvin": 219.05,
+   "boilingTemperatureInKelvin": 342.45,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "phosgene",
+   "formula": "COCl₂",
+   "meltingTemperatureInKelvin": 155.15,
+   "boilingTemperatureInKelvin": 281.35,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "cyanogen",
+   "formula": "C₂N₂",
+   "meltingTemperatureInKelvin": 245.32,
+   "boilingTemperatureInKelvin": 252.05,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "hydrazoicAcid",
+   "formula": "HN₃",
+   "meltingTemperatureInKelvin": 193.15,
+   "boilingTemperatureInKelvin": 308.85,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "nitrosylChloride",
+   "formula": "NOCl",
+   "meltingTemperatureInKelvin": 208.65,
+   "boilingTemperatureInKelvin": 267.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 75th ed. (via PubChem)"
+  },
+  {
+   "molecule": "hydrogenFluoride",
+   "formula": "HF",
+   "meltingTemperatureInKelvin": 189.58,
+   "boilingTemperatureInKelvin": 292.66,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "hydrogenChloride",
+   "formula": "HCl",
+   "meltingTemperatureInKelvin": 158.93,
+   "boilingTemperatureInKelvin": 188.1,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "hydrogenBromide",
+   "formula": "HBr",
+   "meltingTemperatureInKelvin": 186.35,
+   "boilingTemperatureInKelvin": 206.77,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 99th ed. (via PubChem)"
+  },
+  {
+   "molecule": "hydrogenIodide",
+   "formula": "HI",
+   "meltingTemperatureInKelvin": 222.35,
+   "boilingTemperatureInKelvin": 238.05,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "hydrogenSulfide",
+   "formula": "H₂S",
+   "meltingTemperatureInKelvin": 187.66,
+   "boilingTemperatureInKelvin": 212.82,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "hydrogenCyanide",
+   "formula": "HCN",
+   "meltingTemperatureInKelvin": 259.87,
+   "boilingTemperatureInKelvin": 298.78,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "sulfuricAcid",
+   "formula": "H₂SO₄",
+   "meltingTemperatureInKelvin": 283.46,
+   "boilingTemperatureInKelvin": 610.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "phosphoricAcid",
+   "formula": "H₃PO₄",
+   "meltingTemperatureInKelvin": 315.55,
+   "boilingTemperatureInKelvin": 680.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "boricAcid",
+   "formula": "H₃BO₃",
+   "meltingTemperatureInKelvin": 444.05,
+   "boilingTemperatureInKelvin": 573.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook 91st ed. (melting, via PubChem); English Wikipedia chembox (boiling)"
+  },
+  {
+   "molecule": "phosphorousAcid",
+   "formula": "H₃PO₃",
+   "meltingTemperatureInKelvin": 346.75,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 473.15,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "formicAcid",
+   "formula": "HCOOH",
+   "meltingTemperatureInKelvin": 281.45,
+   "boilingTemperatureInKelvin": 374.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "aceticAcid",
+   "formula": "CH₃COOH",
+   "meltingTemperatureInKelvin": 289.6,
+   "boilingTemperatureInKelvin": 391.05,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook (melting); CRC Handbook 94th ed. (boiling, via PubChem)"
+  },
+  {
+   "molecule": "propionicAcid",
+   "formula": "C₂H₅COOH",
+   "meltingTemperatureInKelvin": 252.0,
+   "boilingTemperatureInKelvin": 414.0,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook"
+  },
+  {
+   "molecule": "butyricAcid",
+   "formula": "C₃H₇COOH",
+   "meltingTemperatureInKelvin": 265.25,
+   "boilingTemperatureInKelvin": 436.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "oxalicAcid",
+   "formula": "(COOH)₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 462.65,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "malonicAcid",
+   "formula": "CH₂(COOH)₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 408.15,
+   "reference": "PhysProp database (via PubChem)"
+  },
+  {
+   "molecule": "acrylicAcid",
+   "formula": "CH₂CHCOOH",
+   "meltingTemperatureInKelvin": 286.71,
+   "boilingTemperatureInKelvin": 415.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "benzoicAcid",
+   "formula": "C₆H₅COOH",
+   "meltingTemperatureInKelvin": 395.5,
+   "boilingTemperatureInKelvin": 522.35,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "trifluoroaceticAcid",
+   "formula": "CF₃COOH",
+   "meltingTemperatureInKelvin": 257.75,
+   "boilingTemperatureInKelvin": 345.55,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "sodiumHydroxide",
+   "formula": "NaOH",
+   "meltingTemperatureInKelvin": 596.15,
+   "boilingTemperatureInKelvin": 1661.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "potassiumHydroxide",
+   "formula": "KOH",
+   "meltingTemperatureInKelvin": 679.15,
+   "boilingTemperatureInKelvin": 1600.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "lithiumHydroxide",
+   "formula": "LiOH",
+   "meltingTemperatureInKelvin": 735.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 1197.15,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "caesiumHydroxide",
+   "formula": "CsOH",
+   "meltingTemperatureInKelvin": 615.45,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "calciumHydroxide",
+   "formula": "Ca(OH)₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 853.15,
+   "reference": "English Wikipedia chembox, loses water"
+  },
+  {
+   "molecule": "magnesiumHydroxide",
+   "formula": "Mg(OH)₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 623.15,
+   "reference": "Hawley's Condensed Chemical Dictionary (via PubChem)"
+  },
+  {
+   "molecule": "bariumHydroxide",
+   "formula": "Ba(OH)₂",
+   "meltingTemperatureInKelvin": 681.15,
+   "boilingTemperatureInKelvin": 1053.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook 88th ed. (melting, via PubChem); English Wikipedia chembox (boiling)"
+  },
+  {
+   "molecule": "hydroxylamine",
+   "formula": "NH₂OH",
+   "meltingTemperatureInKelvin": 306.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "sodiumChloride",
+   "formula": "NaCl",
+   "meltingTemperatureInKelvin": 1073.85,
+   "boilingTemperatureInKelvin": 1738.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "potassiumChloride",
+   "formula": "KCl",
+   "meltingTemperatureInKelvin": 1044.15,
+   "boilingTemperatureInKelvin": 1773.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook 95th ed. (melting); Sax, Dangerous Properties of Industrial Materials (sublimes) (via PubChem)"
+  },
+  {
+   "molecule": "lithiumFluoride",
+   "formula": "LiF",
+   "meltingTemperatureInKelvin": 1121.35,
+   "boilingTemperatureInKelvin": 1946.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 86th ed. (via PubChem)"
+  },
+  {
+   "molecule": "sodiumFluoride",
+   "formula": "NaF",
+   "meltingTemperatureInKelvin": 1266.15,
+   "boilingTemperatureInKelvin": 1977.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "sodiumBromide",
+   "formula": "NaBr",
+   "meltingTemperatureInKelvin": 1028.15,
+   "boilingTemperatureInKelvin": 1663.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem) (melting); Hawley's Condensed Chemical Dictionary (via PubChem) (boiling)"
+  },
+  {
+   "molecule": "potassiumBromide",
+   "formula": "KBr",
+   "meltingTemperatureInKelvin": 1003.15,
+   "boilingTemperatureInKelvin": 1708.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem) (melting); CRC Handbook 99th ed. (boiling, via PubChem)"
+  },
+  {
+   "molecule": "potassiumIodide",
+   "formula": "KI",
+   "meltingTemperatureInKelvin": 954.15,
+   "boilingTemperatureInKelvin": 1596.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 86th ed. (via PubChem)"
+  },
+  {
+   "molecule": "lithiumChloride",
+   "formula": "LiCl",
+   "meltingTemperatureInKelvin": 883.15,
+   "boilingTemperatureInKelvin": 1656.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 86th ed. (via PubChem)"
+  },
+  {
+   "molecule": "sodiumIodide",
+   "formula": "NaI",
+   "meltingTemperatureInKelvin": 924.15,
+   "boilingTemperatureInKelvin": 1577.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem) (melting); CRC Handbook 60th ed. (boiling, via PubChem)"
+  },
+  {
+   "molecule": "caesiumChloride",
+   "formula": "CsCl",
+   "meltingTemperatureInKelvin": 919.15,
+   "boilingTemperatureInKelvin": 1563.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem) (melting); Hawley's Condensed Chemical Dictionary (via PubChem) (sublimes)"
+  },
+  {
+   "molecule": "calciumFluoride",
+   "formula": "CaF₂",
+   "meltingTemperatureInKelvin": 1676.15,
+   "boilingTemperatureInKelvin": 2773.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "calciumChloride",
+   "formula": "CaCl₂",
+   "meltingTemperatureInKelvin": 1048.15,
+   "boilingTemperatureInKelvin": 2208.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "magnesiumChloride",
+   "formula": "MgCl₂",
+   "meltingTemperatureInKelvin": 985.15,
+   "boilingTemperatureInKelvin": 1685.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem) (melting); CRC Handbook 81st ed. (boiling, via PubChem)"
+  },
+  {
+   "molecule": "bariumChloride",
+   "formula": "BaCl₂",
+   "meltingTemperatureInKelvin": 1234.15,
+   "boilingTemperatureInKelvin": 1833.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "silverChloride",
+   "formula": "AgCl",
+   "meltingTemperatureInKelvin": 728.15,
+   "boilingTemperatureInKelvin": 1820.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "silverBromide",
+   "formula": "AgBr",
+   "meltingTemperatureInKelvin": 705.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 1775.15,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "zincChloride",
+   "formula": "ZnCl₂",
+   "meltingTemperatureInKelvin": 563.15,
+   "boilingTemperatureInKelvin": 1005.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "copperChloride",
+   "formula": "CuCl",
+   "meltingTemperatureInKelvin": 696.15,
+   "boilingTemperatureInKelvin": 1763.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox 'Copper(I) chloride'"
+  },
+  {
+   "molecule": "ironDichloride",
+   "formula": "FeCl₂",
+   "meltingTemperatureInKelvin": 947.15,
+   "boilingTemperatureInKelvin": 1296.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "sodiumCarbonate",
+   "formula": "Na₂CO₃",
+   "meltingTemperatureInKelvin": 1129.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "sodiumBicarbonate",
+   "formula": "NaHCO₃",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 323.15,
+   "reference": "CRC Handbook 95th ed. (via PubChem), decomposes from 50 °C"
+  },
+  {
+   "molecule": "potassiumCarbonate",
+   "formula": "K₂CO₃",
+   "meltingTemperatureInKelvin": 1172.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "calciumCarbonate",
+   "formula": "CaCO₃",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 1098.15,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "sodiumSulfate",
+   "formula": "Na₂SO₄",
+   "meltingTemperatureInKelvin": 1157.15,
+   "boilingTemperatureInKelvin": 1702.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook 95th ed. (melting, via PubChem); English Wikipedia chembox (boiling)"
+  },
+  {
+   "molecule": "potassiumSulfate",
+   "formula": "K₂SO₄",
+   "meltingTemperatureInKelvin": 1340.15,
+   "boilingTemperatureInKelvin": 1962.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem) (melting); CRC Handbook 60th ed. (boiling, via PubChem)"
+  },
+  {
+   "molecule": "magnesiumSulfate",
+   "formula": "MgSO₄",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 1397.15,
+   "reference": "Hawley's Condensed Chemical Dictionary (via PubChem)"
+  },
+  {
+   "molecule": "sodiumPhosphate",
+   "formula": "Na₃PO₄",
+   "meltingTemperatureInKelvin": 1856.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox (anhydrous)"
+  },
+  {
+   "molecule": "sodiumAcetate",
+   "formula": "CH₃COONa",
+   "meltingTemperatureInKelvin": 597.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 1154.55,
+   "reference": "English Wikipedia chembox (anhydrous)"
+  },
+  {
+   "molecule": "ethane",
+   "formula": "C₂H₆",
+   "meltingTemperatureInKelvin": 90.36,
+   "boilingTemperatureInKelvin": 184.55,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "propane",
+   "formula": "C₃H₈",
+   "meltingTemperatureInKelvin": 85.55,
+   "boilingTemperatureInKelvin": 231.05,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "butane",
+   "formula": "C₄H₁₀",
+   "meltingTemperatureInKelvin": 134.85,
+   "boilingTemperatureInKelvin": 272.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "isobutane",
+   "formula": "(CH₃)₃CH",
+   "meltingTemperatureInKelvin": 113.55,
+   "boilingTemperatureInKelvin": 261.45,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook (triple point); CRC Handbook 95th ed. (boiling, via PubChem)"
+  },
+  {
+   "molecule": "pentane",
+   "formula": "C₅H₁₂",
+   "meltingTemperatureInKelvin": 143.48,
+   "boilingTemperatureInKelvin": 309.21,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "neopentane",
+   "formula": "C(CH₃)₄",
+   "meltingTemperatureInKelvin": 256.78,
+   "boilingTemperatureInKelvin": 282.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "hexane",
+   "formula": "C₆H₁₄",
+   "meltingTemperatureInKelvin": 177.8,
+   "boilingTemperatureInKelvin": 341.88,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "heptane",
+   "formula": "C₇H₁₆",
+   "meltingTemperatureInKelvin": 182.6,
+   "boilingTemperatureInKelvin": 371.53,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "octane",
+   "formula": "C₈H₁₈",
+   "meltingTemperatureInKelvin": 216.42,
+   "boilingTemperatureInKelvin": 398.77,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "isooctane",
+   "formula": "C₈H₁₈",
+   "meltingTemperatureInKelvin": 165.77,
+   "boilingTemperatureInKelvin": 372.39,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook (melting); CRC Handbook 72nd ed. (boiling, via PubChem)"
+  },
+  {
+   "molecule": "cyclopropane",
+   "formula": "C₃H₆",
+   "meltingTemperatureInKelvin": 145.75,
+   "boilingTemperatureInKelvin": 240.35,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 76th ed. (via PubChem)"
+  },
+  {
+   "molecule": "cyclohexane",
+   "formula": "C₆H₁₂",
+   "meltingTemperatureInKelvin": 279.6,
+   "boilingTemperatureInKelvin": 353.9,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook"
+  },
+  {
+   "molecule": "ethylene",
+   "formula": "C₂H₄",
+   "meltingTemperatureInKelvin": 103.97,
+   "boilingTemperatureInKelvin": 169.35,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "acetylene",
+   "formula": "C₂H₂",
+   "meltingTemperatureInKelvin": 192.45,
+   "boilingTemperatureInKelvin": 188.45,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 86th, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "propylene",
+   "formula": "C₃H₆",
+   "meltingTemperatureInKelvin": 87.85,
+   "boilingTemperatureInKelvin": 225.47,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "butene",
+   "formula": "C₄H₈",
+   "meltingTemperatureInKelvin": 87.82,
+   "boilingTemperatureInKelvin": 266.8,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook 95th ed. (melting, via PubChem); NIST Chemistry WebBook (boiling)"
+  },
+  {
+   "molecule": "butadiene",
+   "formula": "C₄H₆",
+   "meltingTemperatureInKelvin": 164.18,
+   "boilingTemperatureInKelvin": 268.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "isoprene",
+   "formula": "C₅H₈",
+   "meltingTemperatureInKelvin": 131.0,
+   "boilingTemperatureInKelvin": 307.0,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook"
+  },
+  {
+   "molecule": "propyne",
+   "formula": "C₃H₄",
+   "meltingTemperatureInKelvin": 170.45,
+   "boilingTemperatureInKelvin": 249.95,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Data on Organic Compounds, 3rd ed. (via PubChem)"
+  },
+  {
+   "molecule": "ketene",
+   "formula": "CH₂CO",
+   "meltingTemperatureInKelvin": 123.15,
+   "boilingTemperatureInKelvin": 217.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "benzene",
+   "formula": "C₆H₆",
+   "meltingTemperatureInKelvin": 278.71,
+   "boilingTemperatureInKelvin": 353.23,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "toluene",
+   "formula": "C₆H₅CH₃",
+   "meltingTemperatureInKelvin": 178.25,
+   "boilingTemperatureInKelvin": 383.75,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "orthoXylene",
+   "formula": "C₆H₄(CH₃)₂",
+   "meltingTemperatureInKelvin": 247.99,
+   "boilingTemperatureInKelvin": 417.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "styrene",
+   "formula": "C₆H₅CHCH₂",
+   "meltingTemperatureInKelvin": 242.5,
+   "boilingTemperatureInKelvin": 418.45,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "naphthalene",
+   "formula": "C₁₀H₈",
+   "meltingTemperatureInKelvin": 353.2,
+   "boilingTemperatureInKelvin": 490.0,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook"
+  },
+  {
+   "molecule": "anthracene",
+   "formula": "C₁₄H₁₀",
+   "meltingTemperatureInKelvin": 489.15,
+   "boilingTemperatureInKelvin": 614.45,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "phenol",
+   "formula": "C₆H₅OH",
+   "meltingTemperatureInKelvin": 314.0,
+   "boilingTemperatureInKelvin": 455.0,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook"
+  },
+  {
+   "molecule": "aniline",
+   "formula": "C₆H₅NH₂",
+   "meltingTemperatureInKelvin": 267.15,
+   "boilingTemperatureInKelvin": 457.25,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "pyridine",
+   "formula": "C₅H₅N",
+   "meltingTemperatureInKelvin": 232.0,
+   "boilingTemperatureInKelvin": 388.5,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook"
+  },
+  {
+   "molecule": "pyrrole",
+   "formula": "C₄H₄NH",
+   "meltingTemperatureInKelvin": 249.75,
+   "boilingTemperatureInKelvin": 402.85,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 76th ed. (via PubChem)"
+  },
+  {
+   "molecule": "thiophene",
+   "formula": "C₄H₄S",
+   "meltingTemperatureInKelvin": 233.75,
+   "boilingTemperatureInKelvin": 357.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 76th ed. (via PubChem)"
+  },
+  {
+   "molecule": "methanol",
+   "formula": "CH₃OH",
+   "meltingTemperatureInKelvin": 176.0,
+   "boilingTemperatureInKelvin": 337.8,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook"
+  },
+  {
+   "molecule": "ethanol",
+   "formula": "C₂H₅OH",
+   "meltingTemperatureInKelvin": 159.01,
+   "boilingTemperatureInKelvin": 351.39,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "propanol",
+   "formula": "C₃H₇OH",
+   "meltingTemperatureInKelvin": 146.15,
+   "boilingTemperatureInKelvin": 370.3,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem) (melting); NIST Chemistry WebBook (boiling)"
+  },
+  {
+   "molecule": "isopropanol",
+   "formula": "(CH₃)₂CHOH",
+   "meltingTemperatureInKelvin": 185.25,
+   "boilingTemperatureInKelvin": 355.45,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "butanol",
+   "formula": "C₄H₉OH",
+   "meltingTemperatureInKelvin": 184.55,
+   "boilingTemperatureInKelvin": 390.75,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "ethyleneGlycol",
+   "formula": "C₂H₄(OH)₂",
+   "meltingTemperatureInKelvin": 260.46,
+   "boilingTemperatureInKelvin": 470.45,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "glycerol",
+   "formula": "C₃H₅(OH)₃",
+   "meltingTemperatureInKelvin": 291.25,
+   "boilingTemperatureInKelvin": 563.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook 88th ed. (melting, via PubChem); Merck Index (via PubChem) (boiling)"
+  },
+  {
+   "molecule": "dimethylEther",
+   "formula": "(CH₃)₂O",
+   "meltingTemperatureInKelvin": 131.65,
+   "boilingTemperatureInKelvin": 248.33,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "diethylEther",
+   "formula": "(C₂H₅)₂O",
+   "meltingTemperatureInKelvin": 154.0,
+   "boilingTemperatureInKelvin": 307.7,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook"
+  },
+  {
+   "molecule": "tetrahydrofuran",
+   "formula": "C₄H₈O",
+   "meltingTemperatureInKelvin": 164.71,
+   "boilingTemperatureInKelvin": 338.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "ethyleneOxide",
+   "formula": "C₂H₄O",
+   "meltingTemperatureInKelvin": 161.45,
+   "boilingTemperatureInKelvin": 283.75,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Data on Organic Compounds, 3rd ed. (melting); CRC Handbook of Chemistry and Physics, 86th ed. (boiling) (via PubChem)"
+  },
+  {
+   "molecule": "formaldehyde",
+   "formula": "CH₂O",
+   "meltingTemperatureInKelvin": 181.15,
+   "boilingTemperatureInKelvin": 253.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "acetone",
+   "formula": "(CH₃)₂CO",
+   "meltingTemperatureInKelvin": 178.25,
+   "boilingTemperatureInKelvin": 329.23,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "acetaldehyde",
+   "formula": "CH₃CHO",
+   "meltingTemperatureInKelvin": 149.75,
+   "boilingTemperatureInKelvin": 293.95,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "butanone",
+   "formula": "C₂H₅COCH₃",
+   "meltingTemperatureInKelvin": 186.48,
+   "boilingTemperatureInKelvin": 352.74,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "benzaldehyde",
+   "formula": "C₆H₅CHO",
+   "meltingTemperatureInKelvin": 216.03,
+   "boilingTemperatureInKelvin": 451.85,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "methylFormate",
+   "formula": "HCOOCH₃",
+   "meltingTemperatureInKelvin": 173.35,
+   "boilingTemperatureInKelvin": 304.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Sax, Dangerous Properties of Industrial Materials (melting); Merck Index (via PubChem) (boiling)"
+  },
+  {
+   "molecule": "ethylAcetate",
+   "formula": "CH₃COOC₂H₅",
+   "meltingTemperatureInKelvin": 189.35,
+   "boilingTemperatureInKelvin": 350.25,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "aceticAnhydride",
+   "formula": "(CH₃CO)₂O",
+   "meltingTemperatureInKelvin": 199.75,
+   "boilingTemperatureInKelvin": 412.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "methylamine",
+   "formula": "CH₃NH₂",
+   "meltingTemperatureInKelvin": 179.73,
+   "boilingTemperatureInKelvin": 266.75,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "dimethylamine",
+   "formula": "(CH₃)₂NH",
+   "meltingTemperatureInKelvin": 180.15,
+   "boilingTemperatureInKelvin": 280.45,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "trimethylamine",
+   "formula": "(CH₃)₃N",
+   "meltingTemperatureInKelvin": 156.07,
+   "boilingTemperatureInKelvin": 276.02,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "ethylamine",
+   "formula": "C₂H₅NH₂",
+   "meltingTemperatureInKelvin": 191.95,
+   "boilingTemperatureInKelvin": 289.75,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "acetonitrile",
+   "formula": "CH₃CN",
+   "meltingTemperatureInKelvin": 229.15,
+   "boilingTemperatureInKelvin": 354.8,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook 94th ed. (melting, via PubChem); NIST Chemistry WebBook (boiling)"
+  },
+  {
+   "molecule": "formamide",
+   "formula": "HCONH₂",
+   "meltingTemperatureInKelvin": 275.7,
+   "boilingTemperatureInKelvin": 483.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "acetamide",
+   "formula": "CH₃CONH₂",
+   "meltingTemperatureInKelvin": 354.31,
+   "boilingTemperatureInKelvin": 494.4,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook 95th ed. (melting, via PubChem); NIST Chemistry WebBook (boiling)"
+  },
+  {
+   "molecule": "methylIsocyanate",
+   "formula": "CH₃NCO",
+   "meltingTemperatureInKelvin": 228.15,
+   "boilingTemperatureInKelvin": 312.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 86th ed. (via PubChem)"
+  },
+  {
+   "molecule": "nitromethane",
+   "formula": "CH₃NO₂",
+   "meltingTemperatureInKelvin": 244.45,
+   "boilingTemperatureInKelvin": 374.25,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "methanethiol",
+   "formula": "CH₃SH",
+   "meltingTemperatureInKelvin": 150.15,
+   "boilingTemperatureInKelvin": 279.1,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "dimethylSulfide",
+   "formula": "(CH₃)₂S",
+   "meltingTemperatureInKelvin": 174.91,
+   "boilingTemperatureInKelvin": 310.45,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "dimethylSulfoxide",
+   "formula": "(CH₃)₂SO",
+   "meltingTemperatureInKelvin": 291.6,
+   "boilingTemperatureInKelvin": 462.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "chloromethane",
+   "formula": "CH₃Cl",
+   "meltingTemperatureInKelvin": 175.55,
+   "boilingTemperatureInKelvin": 249.45,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook 95th ed. (melting); Merck Index (via PubChem) (boiling)"
+  },
+  {
+   "molecule": "dichloromethane",
+   "formula": "CH₂Cl₂",
+   "meltingTemperatureInKelvin": 178.15,
+   "boilingTemperatureInKelvin": 312.9,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "chloroform",
+   "formula": "CHCl₃",
+   "meltingTemperatureInKelvin": 209.68,
+   "boilingTemperatureInKelvin": 334.27,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "carbonTetrachloride",
+   "formula": "CCl₄",
+   "meltingTemperatureInKelvin": 250.95,
+   "boilingTemperatureInKelvin": 349.85,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "tetrafluoromethane",
+   "formula": "CF₄",
+   "meltingTemperatureInKelvin": 89.57,
+   "boilingTemperatureInKelvin": 145.25,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "dichlorodifluoromethane",
+   "formula": "CCl₂F₂",
+   "meltingTemperatureInKelvin": 116.05,
+   "boilingTemperatureInKelvin": 243.35,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "trichlorofluoromethane",
+   "formula": "CCl₃F",
+   "meltingTemperatureInKelvin": 162.71,
+   "boilingTemperatureInKelvin": 296.85,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 91st ed. (via PubChem)"
+  },
+  {
+   "molecule": "tetrafluoroethane",
+   "formula": "CH₂FCF₃",
+   "meltingTemperatureInKelvin": 169.85,
+   "boilingTemperatureInKelvin": 246.85,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox '1,1,1,2-Tetrafluoroethane'"
+  },
+  {
+   "molecule": "vinylChloride",
+   "formula": "C₂H₃Cl",
+   "meltingTemperatureInKelvin": 119.31,
+   "boilingTemperatureInKelvin": 259.35,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "tetrafluoroethylene",
+   "formula": "C₂F₄",
+   "meltingTemperatureInKelvin": 142.0,
+   "boilingTemperatureInKelvin": 197.25,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "chlorobenzene",
+   "formula": "C₆H₅Cl",
+   "meltingTemperatureInKelvin": 227.95,
+   "boilingTemperatureInKelvin": 404.75,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "bromomethane",
+   "formula": "CH₃Br",
+   "meltingTemperatureInKelvin": 179.45,
+   "boilingTemperatureInKelvin": 276.55,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 99th ed. (via PubChem)"
+  },
+  {
+   "molecule": "iodomethane",
+   "formula": "CH₃I",
+   "meltingTemperatureInKelvin": 206.65,
+   "boilingTemperatureInKelvin": 315.65,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "glycine",
+   "formula": "NH₂CH₂COOH",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 563.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 79th ed. (via PubChem)"
+  },
+  {
+   "molecule": "alanine",
+   "formula": "C₃H₇NO₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 570.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 86th ed. (via PubChem)"
+  },
+  {
+   "molecule": "serine",
+   "formula": "C₃H₇NO₃",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 501.15,
+   "reference": "Kirk-Othmer Encyclopedia of Chemical Technology (via PubChem)"
+  },
+  {
+   "molecule": "cysteine",
+   "formula": "C₃H₇NO₂S",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 533.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 95th ed. (via PubChem)"
+  },
+  {
+   "molecule": "valine",
+   "formula": "C₅H₁₁NO₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 588.15,
+   "reference": "Merck Index (via PubChem), closed capillary"
+  },
+  {
+   "molecule": "leucine",
+   "formula": "C₆H₁₃NO₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 566.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "isoleucine",
+   "formula": "C₆H₁₃NO₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 557.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "threonine",
+   "formula": "C₄H₉NO₃",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 529.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "asparticAcid",
+   "formula": "C₄H₇NO₄",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 543.15,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "glutamicAcid",
+   "formula": "C₅H₉NO₄",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 497.15,
+   "reference": "PhysProp database (via PubChem)"
+  },
+  {
+   "molecule": "asparagine",
+   "formula": "C₄H₈N₂O₃",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 507.15,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "glutamine",
+   "formula": "C₅H₁₀N₂O₃",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 457.15,
+   "reference": "Hawley's Condensed Chemical Dictionary (via PubChem)"
+  },
+  {
+   "molecule": "lysine",
+   "formula": "C₆H₁₄N₂O₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 497.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "arginine",
+   "formula": "C₆H₁₄N₄O₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 517.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 81st ed. (via PubChem)"
+  },
+  {
+   "molecule": "methionine",
+   "formula": "C₅H₁₁NO₂S",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 553.15,
+   "reference": "Merck Index (via PubChem), sealed capillary"
+  },
+  {
+   "molecule": "phenylalanine",
+   "formula": "C₉H₁₁NO₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 556.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "tyrosine",
+   "formula": "C₉H₁₁NO₃",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 617.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 72nd ed. (via PubChem)"
+  },
+  {
+   "molecule": "proline",
+   "formula": "C₅H₉NO₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 493.15,
+   "reference": "Merck Index (via PubChem)"
+  },
+  {
+   "molecule": "histidine",
+   "formula": "C₆H₉N₃O₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 560.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 81st ed. (via PubChem)"
+  },
+  {
+   "molecule": "tryptophan",
+   "formula": "C₁₁H₁₂N₂O₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 555.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 88th ed. (via PubChem)"
+  },
+  {
+   "molecule": "glucose",
+   "formula": "C₆H₁₂O₆",
+   "meltingTemperatureInKelvin": 419.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Hawley's Condensed Chemical Dictionary (via PubChem), alpha-D-glucose"
+  },
+  {
+   "molecule": "fructose",
+   "formula": "C₆H₁₂O₆",
+   "meltingTemperatureInKelvin": 376.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "ribose",
+   "formula": "C₅H₁₀O₅",
+   "meltingTemperatureInKelvin": 368.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "deoxyribose",
+   "formula": "C₅H₁₀O₄",
+   "meltingTemperatureInKelvin": 364.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "glyceraldehyde",
+   "formula": "C₃H₆O₃",
+   "meltingTemperatureInKelvin": 418.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "adenine",
+   "formula": "C₅H₅N₅",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 633.15,
+   "reference": "PhysProp database (via PubChem)"
+  },
+  {
+   "molecule": "guanine",
+   "formula": "C₅H₅N₅O",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 633.15,
+   "reference": "CRC Handbook of Chemistry and Physics, 60th ed. (via PubChem)"
+  },
+  {
+   "molecule": "cytosine",
+   "formula": "C₄H₅N₃O",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 593.15,
+   "reference": "English Wikipedia chembox"
+  },
+  {
+   "molecule": "thymine",
+   "formula": "C₅H₆N₂O₂",
+   "meltingTemperatureInKelvin": 589.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 608.15,
+   "reference": "PhysProp database (via PubChem) (melting); English Wikipedia chembox (decomposition)"
+  },
+  {
+   "molecule": "uracil",
+   "formula": "C₄H₄N₂O₂",
+   "meltingTemperatureInKelvin": null,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 611.15,
+   "reference": "PhysProp database (via PubChem)"
+  },
+  {
+   "molecule": "urea",
+   "formula": "(NH₂)₂CO",
+   "meltingTemperatureInKelvin": 406.0,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook"
+  },
+  {
+   "molecule": "lacticAcid",
+   "formula": "CH₃CH(OH)COOH",
+   "meltingTemperatureInKelvin": 289.95,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "Merck Index (via PubChem), racemic"
+  },
+  {
+   "molecule": "pyruvicAcid",
+   "formula": "CH₃COCOOH",
+   "meltingTemperatureInKelvin": 286.95,
+   "boilingTemperatureInKelvin": 438.15,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "PhysProp database (via PubChem) (melting); English Wikipedia chembox (boiling)"
+  },
+  {
+   "molecule": "citricAcid",
+   "formula": "C₆H₈O₇",
+   "meltingTemperatureInKelvin": 426.15,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": 448.15,
+   "reference": "CRC Handbook 91st ed. (melting, via PubChem); English Wikipedia chembox (decomposes from 175 °C)"
+  },
+  {
+   "molecule": "caffeine",
+   "formula": "C₈H₁₀N₄O₂",
+   "meltingTemperatureInKelvin": 509.35,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "CRC Handbook of Chemistry and Physics, 94th ed. (via PubChem)"
+  },
+  {
+   "molecule": "aspirin",
+   "formula": "C₉H₈O₄",
+   "meltingTemperatureInKelvin": 405.0,
+   "boilingTemperatureInKelvin": null,
+   "decompositionTemperatureInKelvin": null,
+   "reference": "NIST Chemistry WebBook"
+  }
+ ]
+}
