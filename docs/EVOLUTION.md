@@ -542,3 +542,85 @@ how it was verified. Entries are appended at the bottom of the current day; days
   computes its evolution once in the first shot (4.6 s for the double well) and then reuses it, so
   a mean over a one-shot pilot forecast hours for 10 000 shots that take seconds. **Verification:**
   `run-progress.test.ts` (forecast identity), complexity regenerated with `pnpm measure:templates`.
+
+## 2026-10-19
+
+- `[modification]` Temperature influences reach the medium (`temperature-influences.ts`,
+  `mediumAtTemperature` in `medium-extent.ts`, `plan-compiler.ts`, `molecular-dynamics.ts`,
+  `experiment-runner.ts`, `glossary.ts`). **What:** `setTemperature`, `heat` and `cool` set the
+  `temperature` aspect and, when the same scope has a medium, the medium temperature too, moving an
+  ideal-gas pressure with it as absorbed heat already did (`heatedMedium` now calls
+  `mediumAtTemperature`); with targets the new medium lands in their region, so a heated spark sits
+  in a hot bubble of the shared gas and its products stay there. `heat` and `cool` start from the
+  medium temperature when no temperature was set, and the compiler accepts them after `setMedium`.
+  The molecule heat bath and the internal temperature of a created molecule fall back to the medium
+  temperature. **Why:** reaction rates read the medium temperature, so a plan that created the
+  particles, placed them in a gas and then heated all or some of them saw no effect: only the order
+  temperature, medium, particles worked. The old behaviour differed only for a temperature changed
+  after a medium, where it changed nothing in the chemistry. **Verification:**
+  `environment-regions.test.ts`: a temperature set after the medium gives the same outcome as one
+  set before it, sparks heated in a cold H₂ + O₂ mixture burn exactly as in a hot bubble and more
+  than in the cold gas; `influences.test.ts`: the medium takes the new temperature with the
+  ideal-gas pressure, `heat` starts from the medium; every template test unchanged.
+- `[modification]` Environment bands of the plan diagram wrap the particles created just above them
+  (`plan-diagram.ts`: `DiagramBand.topRow`, `wrappedTopRow`; `plan-diagram.tsx`). **What:** a band
+  still acts from its own row, but its frame reaches up through the creation and environment rows
+  directly above it, back to the first particle it covers, unless those particles already had that
+  aspect from an earlier band; the tooltip says it wraps the particles created above. **Why:** after
+  temperature influences reached the medium a plan may create particles first and then place them
+  in a gas, and the band left their creation outside the frame. **Verification:**
+  `plan-diagram.test.ts`: the old bands keep their rows, a medium after two creations wraps them,
+  a temperature after a system snapshot does not; browser check of `diamondUnderPressure`.
+- `[modification]` The default number of shots is 1000 instead of 10 000: the builder
+  (`experiment-builder.ts`, so every template that names no count), a new plan (`plan-edits.ts`),
+  carry-over (`carry-over.ts`), the templates view before a pick and the "Default" shots preset
+  (`presets.ts`). **Why:** the user asked for faster default runs. **Verification:** tests pass
+  explicit shot counts; `pnpm check`.
+- `[modification]` A system-wide environment influence reaches inside every region, and a
+  molecule exchanges heat with a gas whose cross sections are not given (`Influence.environmentOnly`
+  in `libs/contracts/src/influence.ts`, set on the temperature, field, coherence and medium
+  influences; `ShotContext.reshapeRegions` in `experiment-runner.ts`; `heatExchangeRatePerSecond`,
+  `collisionCrossSectionInSquareMeters` in `molecular-behaviour.ts`; `lennardJonesDiameterInMeters`
+  in `aggregate-state.ts`; `molecular-dynamics.ts`). **What:** an influence without targets that only
+  reshapes the environment is applied again to the environment each region's members see and
+  rewrites the region's aspect, so a later step overrides an earlier one where they differ: heating
+  the system heats a bubble with its own medium, and a hot spot stays hotter by the same amount.
+  The heat exchange of a molecule with the gas uses, for a component without a cross section, hard
+  spheres of the UFF Lennard-Jones diameters of the heaviest atoms, π((d₁ + d₂)/2)²; the line
+  widths of radiation absorption keep the given cross sections, because the Lorentzian tails of the
+  infrared lines would otherwise leak into X-ray absorption. **Why:** a molecule created before any
+  temperature was born at 0 K and, with the zero cross sections of every preset, never warmed up,
+  so heating after creation did nothing; and a system-wide temperature stopped at a region with its
+  own medium. **Verification:** `environment-regions.test.ts`: ethanol made before sea-level air
+  warms to 288.15 K, survives a microsecond cold and breaks when the system is heated to 2810 K,
+  also inside a medium set on it alone; a system-wide heat of 50 K lifts a 1000 K region to 1050 K;
+  `medium-extent.test.ts` keeps the X-ray absorption exact; all other tests unchanged.
+- `[modification]` Nested environment bands on the plan diagram (`DiagramBand.depth` in
+  `plan-diagram.ts`, `plan-diagram.tsx`). **What:** a band counts the earlier bands that overlap its
+  rows and hold all its lanes, and is drawn inset by 5 px per level inside them (top and bottom
+  capped so the frame never cuts a node); each caption stands at the row of its own step instead of
+  the top of the frame. **Why:** a medium and then a temperature after the creation both wrapped
+  the creation row, so the temperature frame covered the medium frame and the two captions overlapped
+  the creation note; the user asked for the inner environment to sit inside its parent.
+  **Verification:** `plan-diagram.test.ts` (depths 0, 1, 2, 1 for the old bands and 0, 1 for a
+  medium then a temperature); browser check of ethanol, sea-level air and 2810 K.
+- `[modification]` Diagram captions stand on the baselines of their rows (`plan-diagram.tsx`:
+  `bandEdges`, `noteX`). **What:** an environment caption sits on the baseline of its step row like
+  the node notes, and a node note starts after the coin stack of a group and, on the last lane a
+  frame covers, after the outermost frame, so notes and captions line up in one column outside the
+  frames. **Why:** the captions floated between rows and the frames and coins cut the "10 objects
+  created" note. **Verification:** browser check of the ethanol plan (notes and captions at x 268,
+  baselines of rows 1–3) and of `silverSternGerlach` (notes without frames unchanged); `pnpm check`.
+- `[addition]` Molecules are named by the catalogue (`catalogMoleculeOf` in
+  `libs/constants/src/phase-data.ts`, optional `ParticleView.catalogName`, `system-reporter.ts`,
+  `particle-text.ts`). **What:** a molecule is looked up by its bond-graph substance key (any atom
+  order, isomers apart, charge forms apart), and among isotopologues the one with the same isotopes
+  wins, else the first listed; the system report gives the catalogue name to its view and writes it
+  in the creation, phase and reaction events, where products that the catalogue does not know keep
+  their formula and are joined with "+". The stage and the particle card say the catalogue name, or
+  "unknown molecule", where they said "molecule". **Why:** the user asked for molecules to be named
+  like the catalogue, with unknown ones called so, also among the products of a breakup.
+  **Verification:** `molecule-catalog.test.ts`: ethanol in another atom order is ethanol, dimethyl
+  ether stays itself, H₂O is water and D₂O heavy water, CH₃ is unknown, the view and the creation
+  event of a built ethanol carry "этанол"; browser check of ethanol heated in air (stage "ethanol ·
+  at rest", fragments "unknown molecule", events "3 × ethanol" and "→ C2H5O + H").

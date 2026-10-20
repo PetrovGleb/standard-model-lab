@@ -128,11 +128,23 @@ function heaviestElement(name: ParticleName): number | null {
   return identity !== null && identity.kind === 'atom' ? identity.protons : null;
 }
 
-function curveFromLennardJones(protons: number): PhaseCurve | null {
+function uffTypeOf(protons: number) {
   const symbol = elementSymbol(protons);
-  const type = MATTER_DATA.uffAtomTypes.find(
+  return MATTER_DATA.uffAtomTypes.find(
     (candidate) => candidate.atomType.replace(/[_\d].*$/, '').replace(/\+.*$/, '') === symbol,
   );
+}
+
+export function lennardJonesDiameterInMeters(name: ParticleName): number | null {
+  const protons = heaviestElement(name);
+  const type = protons === null ? undefined : uffTypeOf(protons);
+  return type === undefined
+    ? null
+    : (type.nonbondDistanceInAngstrom * METERS_PER_ANGSTROM) / SIXTH_ROOT_OF_TWO;
+}
+
+function curveFromLennardJones(protons: number): PhaseCurve | null {
+  const type = uffTypeOf(protons);
   if (type === undefined) {
     return null;
   }

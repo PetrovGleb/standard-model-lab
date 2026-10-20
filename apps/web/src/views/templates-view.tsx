@@ -34,7 +34,7 @@ function forecastMilliseconds(complexity: TemplateComplexity, shots: number): nu
 export function TemplatesView({ onEdit, onRun }: Props) {
   const [templates, setTemplates] = useState<readonly TemplateSummary[]>([]);
   const [selected, setSelected] = useState<TemplateDetail | null>(null);
-  const [settings, setSettings] = useState<RunSettings>({ parameters: {}, shots: 10_000, seed: 1 });
+  const [settings, setSettings] = useState<RunSettings>({ parameters: {}, shots: 1000, seed: 1 });
   const [error, setError] = useState<string | null>(null);
   const [categories, setCategories] = useState<readonly TemplateCategory[]>([]);
   const [query, setQuery] = useState('');

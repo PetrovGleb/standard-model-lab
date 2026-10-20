@@ -1,5 +1,5 @@
-/* Text about a particle view shared by the system stage and the side panel: its kind, momentum, spin state, temperature, motion and aggregate state in words; events that say the same about
-   several particles folded into one line with a count. */
+/* Text about a particle view shared by the system stage and the side panel: its kind (a molecule by its catalogue name, or unknown), momentum, spin state, temperature, motion and aggregate
+   state in words; events that say the same about several particles folded into one line with a count. */
 import type { ParticleView, Phase, QuantumSlotView, SystemEvent } from '@standard-model/contracts';
 import { formatNumber } from './format';
 import { PARTICLE_GLOSSARY } from './glossary';
@@ -54,9 +54,18 @@ const KIND_WORDS = bilingual<string>({
   diquark: ['дикварк', 'diquark'],
 });
 
+export function moleculeTitle(view: ParticleView): string {
+  return view.catalogName === undefined
+    ? say('неизвестная молекула', 'unknown molecule')
+    : localize(view.catalogName);
+}
+
 export function kindWord(view: ParticleView): string {
   if (view.family === 'atom' && view.chargeInElementaryUnits !== 0) {
     return say('ион', 'ion');
+  }
+  if (view.family === 'molecule') {
+    return moleculeTitle(view);
   }
   return KIND_WORDS[view.family] ?? view.family;
 }
@@ -118,7 +127,7 @@ export function matterTitle(view: ParticleView): string {
     case 'atom':
       return `${charge === 0 ? say('атом', 'atom') : say('ион', 'ion')} ${view.symbol}`;
     case 'molecule':
-      return `${say('молекула', 'molecule')} ${view.symbol}`;
+      return `${moleculeTitle(view)} ${view.symbol}`;
     default:
       return PARTICLE_GLOSSARY[view.name] ?? view.name;
   }

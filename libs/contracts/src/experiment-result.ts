@@ -57,6 +57,7 @@ export interface ParticleView {
   readonly id: string;
   readonly name: ParticleName;
   readonly symbol: string;
+  readonly catalogName?: LocalizedText;
   readonly family: ParticleFamily;
   readonly status: ParticleStatus;
   readonly massInGev: number;

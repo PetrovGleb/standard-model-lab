@@ -188,6 +188,35 @@ describe('environmentBands', () => {
       ['medium', 4, 6, [lanes[1]?.column]],
       ['temperature', 5, 6, null],
     ]);
+    expect(bands.map((band) => band.topRow)).toEqual([0, 1, 4, 5]);
+    expect(bands.map((band) => band.depth)).toEqual([0, 1, 2, 1]);
+  });
+
+  it('wraps the particles created just above a medium that reaches them first', () => {
+    const later: ExperimentPlan = {
+      name: 'later',
+      parameters: {},
+      shots: 1,
+      seed: 1,
+      steps: [
+        { operation: 'createAtom', label: 'first', protons: 8 },
+        { operation: 'createAtom', label: 'second', protons: 8 },
+        { operation: 'influence', influence: 'setMedium', parameters: { components: [] } },
+        { operation: 'measureSystem', record: 'inGas' },
+        {
+          operation: 'influence',
+          influence: 'setTemperature',
+          parameters: { temperatureInKelvin: 900 },
+        },
+        { operation: 'evolve', durationInSeconds: 1 },
+      ],
+      report: [],
+    };
+    const { bands } = layoutPlan(later, [], () => 'O');
+    expect(bands.map((band) => [band.aspect, band.row, band.topRow, band.depth])).toEqual([
+      ['medium', 2, 0, 0],
+      ['temperature', 4, 4, 1],
+    ]);
   });
 });
 

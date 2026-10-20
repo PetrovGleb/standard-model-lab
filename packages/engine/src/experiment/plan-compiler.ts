@@ -84,6 +84,7 @@ const COLLISION_NUMERIC_SUFFIX =
   /^(sqrtSInGev|crossSectionInNanobarns|cosThetaStar|product\[\d+\]\.(energyInGev|kineticEnergyInKev)|firstMomentumFraction|secondMomentumFraction|hardEnergyInGev|transverseMomentumInGev|kineticEnergyInKev|partons)$/;
 const COLLIDING_COMPOSITE_FAMILIES = new Set(['nucleus', 'atom']);
 const TEMPERATURE_DEPENDENT_INFLUENCES = new Set(['cool', 'heat', 'thermalize']);
+const TEMPERATURE_CHANGES = new Set(['cool', 'heat']);
 const SPIN_INFLUENCES = new Set(['rotateSpin', 'randomize', 'thermalize']);
 const POSITION_SUFFIX = /^(x|y|z|r)$/;
 const SYSTEM_SUFFIX =
@@ -175,6 +176,7 @@ function checkReferences(
   };
   const consumed = new Map<string, string>();
   let temperatureSet = false;
+  let mediumSet = false;
   const atRest = new Set<string>();
   const confine = (durationInSeconds: number, stepIndex: number): void => {
     if (!(durationInSeconds >= HADRONIZATION_TIME_IN_SECONDS)) {
@@ -423,13 +425,20 @@ function checkReferences(
               stepIndex,
             );
           }
+          const changesTemperature = TEMPERATURE_CHANGES.has(step.influence);
           if (step.influence === 'setTemperature') {
             temperatureSet = true;
-          } else if (TEMPERATURE_DEPENDENT_INFLUENCES.has(step.influence) && !temperatureSet) {
+          } else if (step.influence === 'setMedium') {
+            mediumSet = true;
+          } else if (
+            TEMPERATURE_DEPENDENT_INFLUENCES.has(step.influence) &&
+            !temperatureSet &&
+            !(changesTemperature && mediumSet)
+          ) {
             throw new PlanCompilationError(
               localizedText(
-                `${step.influence} нужна температура: добавьте перед ним воздействие setTemperature`,
-                `${step.influence} needs a temperature: add influence setTemperature before it`,
+                `${step.influence} нужна температура: добавьте перед ним воздействие setTemperature${changesTemperature ? ' или setMedium' : ''}`,
+                `${step.influence} needs a temperature: add influence setTemperature${changesTemperature ? ' or setMedium' : ''} before it`,
               ),
               stepIndex,
             );

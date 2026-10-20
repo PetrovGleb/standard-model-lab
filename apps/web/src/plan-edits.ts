@@ -47,7 +47,7 @@ export function isCreation(
 }
 
 export function emptyPlan(name = 'newExperiment'): ExperimentPlan {
-  return { name, parameters: {}, shots: 10_000, seed: 1, steps: [], report: [] };
+  return { name, parameters: {}, shots: 1000, seed: 1, steps: [], report: [] };
 }
 
 export function defaultStep(operation: Operation, plan: ExperimentPlan): ExperimentStep {

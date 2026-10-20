@@ -1,4 +1,5 @@
-/* SystemReporter: shot observer that records a non-destructive snapshot of the whole system after every step: particles, kinematics, reduced quantum states, entanglement, environment, events and conserved totals. */
+/* SystemReporter: shot observer that records a non-destructive snapshot of the whole system after every step: particles, kinematics, reduced quantum states, entanglement, environment, events and conserved totals.
+   A molecule the catalogue knows by its bond graph carries its catalogue name, and events name it by that name. */
 import {
   ENTANGLED_STATES,
   localizedText,
@@ -16,6 +17,7 @@ import {
   type SystemFrame,
   type SystemReport,
 } from '@standard-model/contracts';
+import { catalogMoleculeOf } from '@standard-model/constants';
 import type { Engine } from '../index.js';
 import { objectReadings } from './object-measurements.js';
 import { DensityMatrix } from '../quantum/density-matrix.js';
@@ -35,6 +37,11 @@ import type { ShotContext, ShotObserver } from './experiment-runner.js';
 import type { CompiledStep } from './plan-compiler.js';
 
 const MATTER_FAMILIES: ReadonlySet<string> = new Set(['nucleus', 'atom', 'molecule']);
+
+function speciesTitle(particle: Particle | undefined, language: keyof LocalizedText): string {
+  const known = particle === undefined ? null : catalogMoleculeOf(particle.spec.name);
+  return known === null ? (particle?.spec.symbol ?? '') : known[language];
+}
 
 function groupRange(members: readonly string[]): string {
   return `${members[0] ?? ''}…${members[members.length - 1] ?? ''}`;
@@ -188,11 +195,13 @@ export class SystemReporter implements ShotObserver {
       medium !== undefined && particle.status === 'alive' && hasAggregateState(particle.spec.name)
         ? mediumPhase(particle.spec.name, medium)
         : null;
+    const known = catalogMoleculeOf(particle.spec.name);
     return {
       label,
       id: particle.id,
       name: particle.spec.name,
       symbol: particle.spec.symbol,
+      ...(known === null ? {} : { catalogName: localizedText(known.ru, known.en) }),
       family: particle.spec.family,
       status: particle.status,
       massInGev: mass,
@@ -402,8 +411,8 @@ export class SystemReporter implements ShotObserver {
           kind: 'phaseChanged',
           labels: [label],
           text: localizedText(
-            `${label}: ${particle.spec.symbol} ${textIn(conditions, 'ru')} — ${textIn(transition, 'ru')}${textIn(basis, 'ru')}`,
-            `${label}: ${particle.spec.symbol} ${textIn(conditions, 'en')} — ${textIn(transition, 'en')}${textIn(basis, 'en')}`,
+            `${label}: ${speciesTitle(particle, 'ru')} ${textIn(conditions, 'ru')} — ${textIn(transition, 'ru')}${textIn(basis, 'ru')}`,
+            `${label}: ${speciesTitle(particle, 'en')} ${textIn(conditions, 'en')} — ${textIn(transition, 'en')}${textIn(basis, 'en')}`,
           ),
         },
       ];
@@ -421,8 +430,8 @@ export class SystemReporter implements ShotObserver {
         labels: [label(reaction.parent.id), ...products],
         products,
         text: localizedText(
-          `${label(reaction.parent.id)}: ${textIn(reaction.label, 'ru')} → ${reaction.products.map((product) => product.spec.symbol).join(' ')}`,
-          `${label(reaction.parent.id)}: ${textIn(reaction.label, 'en')} → ${reaction.products.map((product) => product.spec.symbol).join(' ')}`,
+          `${label(reaction.parent.id)}: ${textIn(reaction.label, 'ru')} → ${reaction.products.map((product) => speciesTitle(product, 'ru')).join(' + ')}`,
+          `${label(reaction.parent.id)}: ${textIn(reaction.label, 'en')} → ${reaction.products.map((product) => speciesTitle(product, 'en')).join(' + ')}`,
         ),
       };
     });
@@ -598,7 +607,8 @@ export class SystemReporter implements ShotObserver {
       case 'createMolecule': {
         const members = step.members ?? [step.label];
         const particle = context.particles.get(members[0] ?? step.label);
-        const symbol = particle?.spec.symbol ?? '';
+        const russian = speciesTitle(particle, 'ru');
+        const english = speciesTitle(particle, 'en');
         return [
           {
             kind: 'created',
@@ -606,12 +616,12 @@ export class SystemReporter implements ShotObserver {
             text:
               members.length > 1
                 ? localizedText(
-                    `создана группа ${step.label}: ${String(members.length)} × ${symbol}, ${groupRange(members)}`,
-                    `created group ${step.label}: ${String(members.length)} × ${symbol}, ${groupRange(members)}`,
+                    `создана группа ${step.label}: ${String(members.length)} × ${russian}, ${groupRange(members)}`,
+                    `created group ${step.label}: ${String(members.length)} × ${english}, ${groupRange(members)}`,
                   )
                 : localizedText(
-                    `${CREATED_KIND[step.operation].ru} ${step.label}: ${symbol}`,
-                    `${CREATED_KIND[step.operation].en} ${step.label}: ${symbol}`,
+                    `${CREATED_KIND[step.operation].ru} ${step.label}: ${russian}`,
+                    `${CREATED_KIND[step.operation].en} ${step.label}: ${english}`,
                   ),
           },
         ];

@@ -1,6 +1,6 @@
 /* Plan diagram layout: turns plan steps into lanes (one column per particle, nucleus, atom or molecule) with nodes per step, links for entangle, combine, collide and decay, and
-   environment bands: a medium, temperature, field or coherence step spans the lanes it acts on (all of them when it names none) from its row until a later step replaces that aspect.
-   System-wide steps after a collision or decay with no named products land on a "record.*" products lane; a create step with a count is one lane for the whole group with a stacked node. */
+   environment bands: a medium, temperature, field or coherence step spans the lanes it acts on (all of them when it names none) from its row until a later step replaces that aspect, wraps
+   the creation rows just above it when those particles had no such environment yet, and nests inside the earlier bands that hold it. System-wide steps after a collision or decay with no named products land on a "record.*" products lane. */
 import type { ExperimentPlan, ExperimentStep, ParticleName } from '@standard-model/contracts';
 import type { OperationName } from './icons';
 import { moleculeChargeText, moleculeFormula } from './molecule-edits';
@@ -64,7 +64,9 @@ export interface DiagramLink {
 
 export interface DiagramBand {
   readonly row: number;
+  readonly topRow: number;
   readonly endRow: number;
+  readonly depth: number;
   readonly aspect: string;
   readonly influence: string;
   readonly columns: readonly number[] | null;
@@ -119,7 +121,7 @@ export function environmentBands(
           });
     return [{ row, aspect, influence: step.influence, columns, targets }];
   });
-  return starts.map((band) => {
+  const ended = starts.map((band) => {
     const replaced = starts.find(
       (later) =>
         later.row > band.row &&
@@ -130,6 +132,74 @@ export function environmentBands(
     );
     return { ...band, endRow: replaced === undefined ? plan.steps.length - 1 : replaced.row - 1 };
   });
+  const wrapped = ended.map((band) => ({
+    ...band,
+    topRow: wrappedTopRow(plan, layout, band, ended),
+  }));
+  return wrapped.map((band, index) => ({
+    ...band,
+    depth: wrapped
+      .slice(0, index)
+      .filter(
+        (outer) =>
+          outer.topRow <= band.endRow &&
+          outer.endRow >= band.topRow &&
+          containsColumns(outer.columns, band.columns),
+      ).length,
+  }));
+}
+
+const CREATION_OPERATIONS = new Set(['create', 'createNucleus', 'createAtom', 'createMolecule']);
+
+function sharesColumns(first: readonly number[] | null, second: readonly number[] | null): boolean {
+  return first === null || second === null || first.some((column) => second.includes(column));
+}
+
+function containsColumns(
+  outer: readonly number[] | null,
+  inner: readonly number[] | null,
+): boolean {
+  return outer === null || (inner !== null && inner.every((column) => outer.includes(column)));
+}
+
+function wrappedTopRow(
+  plan: ExperimentPlan,
+  layout: Omit<DiagramLayout, 'bands'>,
+  band: Omit<DiagramBand, 'topRow' | 'depth'>,
+  bands: readonly Omit<DiagramBand, 'topRow' | 'depth'>[],
+): number {
+  const inherited = bands.some(
+    (earlier) =>
+      earlier.row < band.row &&
+      earlier.aspect === band.aspect &&
+      earlier.endRow >= band.row - 1 &&
+      sharesColumns(earlier.columns, band.columns),
+  );
+  const created = layout.lanes
+    .filter(
+      (lane) =>
+        lane.startRow < band.row &&
+        (lane.endRow === null || lane.endRow >= band.row) &&
+        (band.columns === null || band.columns.includes(lane.column)),
+    )
+    .map((lane) => lane.startRow);
+  if (inherited || created.length === 0) {
+    return band.row;
+  }
+  const firstCreated = Math.min(...created);
+  let top = band.row;
+  while (top > firstCreated) {
+    const above = plan.steps[top - 1];
+    const setsUp =
+      above !== undefined &&
+      (CREATION_OPERATIONS.has(above.operation) ||
+        (above.operation === 'influence' && isEnvironmentInfluence(above.influence)));
+    if (!setsUp) {
+      break;
+    }
+    top -= 1;
+  }
+  return top;
 }
 
 interface MutableLane {

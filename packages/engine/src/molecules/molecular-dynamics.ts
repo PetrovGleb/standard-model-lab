@@ -21,7 +21,7 @@ import { atomTransferChannels } from './atom-transfer.js';
 import { associationChannels, bondingStructureOf } from './molecular-association.js';
 import {
   bondDissociationRatesPerSecond,
-  moleculeCollisionRatePerSecond,
+  heatExchangeRatePerSecond,
   fragmentsAfterBreaking,
   relaxedTemperature,
 } from './molecular-behaviour.js';
@@ -198,8 +198,8 @@ export class MolecularDynamics {
     environment: Environment,
     durationInSeconds: number,
   ): ChemicalOutcome | null {
-    const bath = environment.get('temperature')?.temperatureInKelvin;
     const medium = environment.get('medium');
+    const bath = environment.get('temperature')?.temperatureInKelvin ?? medium?.temperatureInKelvin;
     if (particle instanceof Molecule && bath !== undefined) {
       particle.internalTemperatureInKelvin =
         medium === undefined
@@ -207,7 +207,7 @@ export class MolecularDynamics {
           : relaxedTemperature(
               particle.internalTemperatureInKelvin,
               bath,
-              moleculeCollisionRatePerSecond(particle.structure, medium, bath),
+              heatExchangeRatePerSecond(particle.structure, medium, bath),
               durationInSeconds,
             );
     }

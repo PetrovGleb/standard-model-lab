@@ -15,7 +15,7 @@ import { moleculeFromSpecies } from './molecule-edits';
 
 const DEGREES_PER_RADIAN = 180 / Math.PI;
 const MINIMUM_CELLS_PER_PACKET_WIDTH = 1.5;
-const DEFAULT_SHOTS = 10_000;
+const DEFAULT_SHOTS = 1000;
 const DIRECTION_DIGITS = 9;
 const UNSAFE_LABEL_CHARACTER = /[^A-Za-z0-9_]/g;
 const GROUP_SUFFIX = 'Group';

@@ -20,7 +20,7 @@ import type {
   ReportCondition,
 } from '@standard-model/contracts';
 
-const DEFAULT_SHOTS = 10_000;
+const DEFAULT_SHOTS = 1000;
 
 export class ExperimentBuilder {
   private readonly parameters: Record<string, number> = {};

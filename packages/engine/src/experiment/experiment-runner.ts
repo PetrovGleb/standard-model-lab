@@ -1,5 +1,6 @@
 /* ExperimentRunner: executes a compiled plan shot by shot on one engine, with a fresh particle context per shot, hadronizes colour and lets hadrons decay inside every time window, and aggregates the records.
-   An environment influence aimed at some particles opens a region for them only; each particle sees the shared environment overlaid by its regions, and products inherit the regions of their parents. */
+   An environment influence aimed at some particles opens a region for them only; each particle sees the shared environment overlaid by its regions, and products inherit the regions of their parents.
+   One aimed at the whole system also reaches inside every region, applied to the environment its members see, so heating the system heats a bubble with its own medium too. */
 import {
   ELECTRON_VOLT,
   PARTICLE_CATALOG,
@@ -136,14 +137,33 @@ export class ShotContext {
   }
 
   environmentFor(particle: Particle): Environment {
+    return this.overlaid(particle.id, this.environment);
+  }
+
+  reshapeRegions(shared: Environment, transform: (environment: Environment) => Environment): void {
+    const reshaped = this.regions.map((region) => {
+      const [member] = region.members;
+      const inside = transform(
+        member === undefined
+          ? region.value === null
+            ? shared.without(region.aspect)
+            : shared.with(region.aspect, region.value as never)
+          : this.overlaid(member, shared),
+      );
+      return { ...region, value: inside.get(region.aspect) ?? null };
+    });
+    this.regions.splice(0, this.regions.length, ...reshaped);
+  }
+
+  private overlaid(id: string, shared: Environment): Environment {
     return this.regions.reduce<Environment>(
       (environment, region) =>
-        !region.members.has(particle.id)
+        !region.members.has(id)
           ? environment
           : region.value === null
             ? environment.without(region.aspect)
             : environment.with(region.aspect, region.value as never),
-      this.environment,
+      shared,
     );
   }
 
@@ -378,6 +398,14 @@ export class ExperimentRunner {
           this.engine.contextFor(before, [...context.particles.values()]),
         );
         if (step.targets === undefined) {
+          context.reshapeRegions(context.environment, (environment) =>
+            influence.environmentOnly === true
+              ? influence.apply(
+                  targets,
+                  this.engine.contextFor(environment, [...context.particles.values()]),
+                ).environment
+              : environment,
+          );
           context.environment = outcome.environment;
         } else {
           context.scope(targets, before, outcome.environment);
@@ -1146,7 +1174,9 @@ export class ExperimentRunner {
     context.particles.set(label, particle);
     if (particle instanceof Molecule) {
       particle.internalTemperatureInKelvin =
-        context.environment.get('temperature')?.temperatureInKelvin ?? 0;
+        context.environment.get('temperature')?.temperatureInKelvin ??
+        context.environment.get('medium')?.temperatureInKelvin ??
+        0;
     }
     if (step.operation === 'createAtom' && step.spin !== undefined) {
       const directional = directionalObservableOf(particle.spec);

@@ -381,14 +381,14 @@ describe('several components, Monte Carlo', () => {
       const expected = hypoexponentialProbability([first, deuteronTotal], CHAIN_WINDOW_IN_SECONDS);
       const chain = runExperiment(
         solarGasPlan(gas, 'allReactionsInStep', 'proton', CHAIN_WINDOW_IN_SECONDS),
-        { seed: SEED, includeSystemReport: false },
+        { seed: SEED, shots: SHOTS, includeSystemReport: false },
       ).reportValues;
       expect(
         Math.abs(fractionWith(chain, 'helion') + fractionWith(chain, 'alphaParticle') - expected),
       ).toBeLessThanOrEqual(statisticalTolerance(expected, SHOTS));
       const single = runExperiment(
         solarGasPlan(gas, 'oneReactionPerStep', 'proton', CHAIN_WINDOW_IN_SECONDS),
-        { seed: SEED, includeSystemReport: false },
+        { seed: SEED, shots: SHOTS, includeSystemReport: false },
       ).reportValues;
       const fused = 1 - Math.exp(-first * CHAIN_WINDOW_IN_SECONDS);
       expect(fractionWith(single, 'alphaParticle')).toBe(0);
@@ -424,7 +424,7 @@ describe('several components, Monte Carlo', () => {
         )[0]?.[1] ?? 0;
       const observed = runExperiment(
         solarGasPlan(gas, 'oneReactionPerStep', 'hydrogenAtom', BALANCE_WINDOW_IN_SECONDS),
-        { seed: SEED, includeSystemReport: false },
+        { seed: SEED, shots: SHOTS, includeSystemReport: false },
       ).reportValues['system[electron+proton]'];
       expect(expected).toBeGreaterThan(0.5);
       expect(Math.abs((observed ?? 0) - expected)).toBeLessThanOrEqual(
@@ -466,7 +466,7 @@ describe('several components, Monte Carlo', () => {
         );
       const values = runExperiment(
         { ...plan, report: [{ statistic: 'frequency', records: ['system'], label: 'system' }] },
-        { seed: SEED, includeSystemReport: false },
+        { seed: SEED, shots: SHOTS, includeSystemReport: false },
       ).reportValues;
       const observed = Object.entries(values)
         .filter(([key]) => key.includes('helion'))

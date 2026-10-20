@@ -519,8 +519,8 @@ export function buildPresets(): PresetCatalog {
       preset(['Световой год', 'Light year'], 9.461e12, ''),
     ],
     shots: [
-      preset('1 000', 1000, ''),
-      preset('10 000', 10_000, ['По умолчанию', 'Default']),
+      preset('1 000', 1000, ['По умолчанию', 'Default']),
+      preset('10 000', 10_000, ''),
       preset('100 000', 100_000, ''),
     ],
     slitSeparationInMeters: [

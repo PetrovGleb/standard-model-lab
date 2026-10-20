@@ -230,7 +230,7 @@ export function createDefaultInfluenceRegistry(): InfluenceRegistry {
     .register(
       {
         name: 'setTemperature',
-        description: 'Set the environment temperature',
+        description: 'Set the environment temperature; a medium in the same scope takes it too',
         parameters: [required('temperatureInKelvin')],
       },
       (parameters) => new SetTemperature(requireNumber(parameters, 'temperatureInKelvin')),
@@ -238,7 +238,7 @@ export function createDefaultInfluenceRegistry(): InfluenceRegistry {
     .register(
       {
         name: 'cool',
-        description: 'Lower the temperature by an amount',
+        description: 'Lower the temperature of the environment and its medium by an amount',
         parameters: [required('byKelvin')],
       },
       (parameters) => new ChangeTemperature(-requireNumber(parameters, 'byKelvin')),
@@ -246,7 +246,7 @@ export function createDefaultInfluenceRegistry(): InfluenceRegistry {
     .register(
       {
         name: 'heat',
-        description: 'Raise the temperature by an amount',
+        description: 'Raise the temperature of the environment and its medium by an amount',
         parameters: [required('byKelvin')],
       },
       (parameters) => new ChangeTemperature(requireNumber(parameters, 'byKelvin')),

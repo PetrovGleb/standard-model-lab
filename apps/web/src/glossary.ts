@@ -114,9 +114,18 @@ export const OPERATION_TITLES = bilingual<string>({
 });
 
 export const INFLUENCE_GLOSSARY = bilingual<string>({
-  setTemperature: ['Задать температуру окружения, К', 'Set the environment temperature, K'],
-  cool: ['Охладить окружение на величину, К', 'Cool the environment by an amount, K'],
-  heat: ['Нагреть окружение на величину, К', 'Heat the environment by an amount, K'],
+  setTemperature: [
+    'Задать температуру окружения и среды вокруг целей, К',
+    'Set the temperature of the environment and the medium around the targets, K',
+  ],
+  cool: [
+    'Охладить окружение и среду вокруг целей на величину, К',
+    'Cool the environment and the medium around the targets by an amount, K',
+  ],
+  heat: [
+    'Нагреть окружение и среду вокруг целей на величину, К: среда уже задана — можно нагреть только часть частиц',
+    'Heat the environment and the medium around the targets by an amount, K: with a medium set you can heat only some of the particles',
+  ],
   applyMagneticField: [
     'Приложить однородное магнитное поле, Тл',
     'Apply a uniform magnetic field, T',

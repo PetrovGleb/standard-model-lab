@@ -24,6 +24,7 @@ export interface InfluenceOutcome {
 
 export interface Influence<TContext extends InfluenceContext = InfluenceContext> {
   readonly name: string;
+  readonly environmentOnly?: boolean;
   apply(targets: readonly Particle[], context: TContext): InfluenceOutcome;
 }
 

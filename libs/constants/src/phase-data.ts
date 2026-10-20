@@ -1,11 +1,12 @@
 /* Typed access to data/critical-points.json and data/phase-points.json (critical, boiling, melting and decomposition points, looked up by a substance key that ignores isotopes and atom order
-   but tells isomers and charge forms apart by refining atom labels over the bond graph), data/joback1987.json (Joback group contributions) and data/allotropes.json (solid allotropes of an element). */
+   but tells isomers and charge forms apart by refining atom labels over the bond graph), data/joback1987.json (Joback group contributions), data/allotropes.json (solid allotropes of an element)
+   and the catalogue molecule a structure is, by the same key with the isotopologue of the same isotopes first. */
 import type { ParticleName } from '@standard-model/contracts';
 import allotropesJson from '../data/allotropes.json' with { type: 'json' };
 import criticalPointsJson from '../data/critical-points.json' with { type: 'json' };
 import jobackJson from '../data/joback1987.json' with { type: 'json' };
 import phasePointsJson from '../data/phase-points.json' with { type: 'json' };
-import { MOLECULE_CATALOG } from './molecule-catalog.js';
+import { MOLECULE_CATALOG, type MoleculeCatalogRecord } from './molecule-catalog.js';
 import {
   formalChargeOf,
   matterIdentity,
@@ -82,6 +83,30 @@ const byKey = new Map(
 
 export function criticalData(name: ParticleName): SubstanceCriticalData | null {
   return byKey.get(substanceKey(name)) ?? null;
+}
+
+function isotopesOf(name: ParticleName): string {
+  return moleculeStructureOf(name)
+    .atoms.map((atom) => `${String(atom.protons)}-${String(atom.massNumber)}`)
+    .sort()
+    .join(',');
+}
+
+const catalogByKey = MOLECULE_CATALOG.reduce((groups, molecule) => {
+  const key = substanceKey(molecule.name);
+  groups.set(key, [...(groups.get(key) ?? []), molecule]);
+  return groups;
+}, new Map<string, readonly MoleculeCatalogRecord[]>());
+
+export function catalogMoleculeOf(name: ParticleName): MoleculeCatalogRecord | null {
+  if (!name.startsWith('molecule:')) {
+    return null;
+  }
+  const candidates = catalogByKey.get(substanceKey(name)) ?? [];
+  const isotopes = isotopesOf(name);
+  return (
+    candidates.find((molecule) => isotopesOf(molecule.name) === isotopes) ?? candidates[0] ?? null
+  );
 }
 
 export interface SubstancePhasePoints {

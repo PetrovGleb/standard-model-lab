@@ -1,4 +1,4 @@
-/* Molecular behaviour in an environment: internal energy and heat capacity from rotations and Einstein vibrational modes, unimolecular thermal dissociation of each bond at its vibrational attempt rate times exp(−D/kT), collisional relaxation toward the gas temperature, Debye orientational and resonant infrared absorption of radiation, and the fragments left when a bond breaks. */
+/* Molecular behaviour in an environment: internal energy and heat capacity from rotations and Einstein vibrational modes, unimolecular thermal dissociation of each bond at its vibrational attempt rate times exp(−D/kT), collisional relaxation toward the gas temperature (hard spheres of the UFF Lennard-Jones diameters when a component names no cross section; the line widths of absorption keep the given cross sections), Debye orientational and resonant infrared absorption of radiation, and the fragments left when a bond breaks. */
 import {
   ATOMIC_MASS_CONSTANT,
   AVOGADRO_CONSTANT,
@@ -13,8 +13,9 @@ import {
   moleculeStructureOf,
   restMassInGev,
 } from '@standard-model/constants';
-import type { MediumAspect, ParticleName } from '@standard-model/contracts';
+import type { MediumAspect, MediumComponent, ParticleName } from '@standard-model/contracts';
 import { gevToAtomicMassUnits } from '@standard-model/utils';
+import { lennardJonesDiameterInMeters } from '../environment/aggregate-state.js';
 import type { MolecularStructure } from './molecular-structure.js';
 
 const JOULES_PER_KILOCALORIE = 4184;
@@ -198,10 +199,11 @@ export function partnerMassInKilograms(species: ParticleName): number {
   return gevToAtomicMassUnits(restMassInGev(species)) * ATOMIC_MASS_CONSTANT.value;
 }
 
-export function moleculeCollisionRatePerSecond(
+function collisionRatePerSecond(
   structure: MolecularStructure,
   medium: MediumAspect,
   temperatureInKelvin: number,
+  crossSectionOf: (component: MediumComponent) => number,
 ): number {
   const molecule = moleculeMassInKilograms(structure);
   return medium.components.reduce((sum, component) => {
@@ -210,11 +212,43 @@ export function moleculeCollisionRatePerSecond(
     const relativeSpeed = Math.sqrt(
       (8 * BOLTZMANN_CONSTANT.value * Math.max(temperatureInKelvin, 0)) / (Math.PI * reduced),
     );
-    return (
-      sum +
-      component.numberDensityPerCubicMeter * component.crossSectionInSquareMeters * relativeSpeed
-    );
+    return sum + component.numberDensityPerCubicMeter * crossSectionOf(component) * relativeSpeed;
   }, 0);
+}
+
+export function moleculeCollisionRatePerSecond(
+  structure: MolecularStructure,
+  medium: MediumAspect,
+  temperatureInKelvin: number,
+): number {
+  return collisionRatePerSecond(
+    structure,
+    medium,
+    temperatureInKelvin,
+    (component) => component.crossSectionInSquareMeters,
+  );
+}
+
+export function heatExchangeRatePerSecond(
+  structure: MolecularStructure,
+  medium: MediumAspect,
+  temperatureInKelvin: number,
+): number {
+  return collisionRatePerSecond(structure, medium, temperatureInKelvin, (component) =>
+    collisionCrossSectionInSquareMeters(structure.name, component),
+  );
+}
+
+export function collisionCrossSectionInSquareMeters(
+  species: ParticleName,
+  component: MediumComponent,
+): number {
+  if (component.crossSectionInSquareMeters > 0) {
+    return component.crossSectionInSquareMeters;
+  }
+  const own = lennardJonesDiameterInMeters(species);
+  const partner = lennardJonesDiameterInMeters(component.species);
+  return own === null || partner === null ? 0 : Math.PI * ((own + partner) * HALF) ** 2;
 }
 
 export interface RadiationHeating {

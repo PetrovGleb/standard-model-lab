@@ -1,4 +1,6 @@
-/* Checks the influence commands and their registry: temperature bounds, field aspects, boost, spin rotation, thermalize and evolve through the context. */
+/* Checks the influence commands and their registry: temperature bounds, a medium that takes the new temperature with its ideal-gas pressure, field aspects, boost, spin rotation, thermalize and
+   evolve through the context. */
+import type { MediumComponent } from '@standard-model/contracts';
 import { describe, expect, it } from 'vitest';
 import {
   ApplyMagneticField,
@@ -8,6 +10,7 @@ import {
   createEnvironment,
   Evolve,
   heat,
+  idealGasPressureInPascals,
   RotateSpin,
   SetTemperature,
   spinHalfStateAlong,
@@ -30,6 +33,31 @@ describe('temperature influences', () => {
     expect(() => cool(1).apply([], engine.contextFor(cooler, []))).toThrow(/absolute zero/);
     expect(() => new SetTemperature(-1)).toThrow(/absolute zero/);
     expect(() => cool(1).apply([], context)).toThrow(/Set a temperature/);
+  });
+
+  it('carries a medium to the new temperature and starts a change from it', () => {
+    const engine = createEngine({ seed: SEED });
+    const components: readonly MediumComponent[] = [
+      { species: 'hydrogenAtom', numberDensityPerCubicMeter: 1e24, crossSectionInSquareMeters: 0 },
+    ];
+    const cold = createEnvironment({
+      medium: {
+        components,
+        temperatureInKelvin: 300,
+        pressureInPascals: idealGasPressureInPascals(components, 300),
+        bulkVelocityInMetersPerSecond: { x: 0, y: 0, z: 0 },
+        reactionMode: 'oneReactionPerStep',
+      },
+    });
+    const hot = heat(900).apply([], engine.contextFor(cold, [])).environment;
+    expect(hot.get('temperature')?.temperatureInKelvin).toBe(1200);
+    expect(hot.get('medium')?.temperatureInKelvin).toBe(1200);
+    expect(hot.get('medium')?.pressureInPascals).toBeCloseTo(
+      idealGasPressureInPascals(components, 1200),
+      PRECISION,
+    );
+    const reset = new SetTemperature(600).apply([], engine.contextFor(hot, [])).environment;
+    expect(reset.get('medium')?.temperatureInKelvin).toBe(600);
   });
 });
 

@@ -11,6 +11,7 @@ import type { EngineInfluenceContext } from './context.js';
 
 export class ApplyMagneticField implements Influence<EngineInfluenceContext> {
   readonly name = 'applyMagneticField';
+  readonly environmentOnly = true;
 
   constructor(private readonly fieldInTesla: Vector3) {}
 
@@ -24,6 +25,7 @@ export class ApplyMagneticField implements Influence<EngineInfluenceContext> {
 
 export class RemoveMagneticField implements Influence<EngineInfluenceContext> {
   readonly name = 'removeMagneticField';
+  readonly environmentOnly = true;
 
   apply(targets: readonly Particle[], context: EngineInfluenceContext): InfluenceOutcome {
     return { environment: context.environment.without('magneticField'), notes: [] };
@@ -32,6 +34,7 @@ export class RemoveMagneticField implements Influence<EngineInfluenceContext> {
 
 export class ApplyElectricField implements Influence<EngineInfluenceContext> {
   readonly name = 'applyElectricField';
+  readonly environmentOnly = true;
 
   constructor(private readonly fieldInVoltsPerMeter: Vector3) {}
 
@@ -47,6 +50,7 @@ export class ApplyElectricField implements Influence<EngineInfluenceContext> {
 
 export class SetCoherenceTimes implements Influence<EngineInfluenceContext> {
   readonly name = 'setCoherenceTimes';
+  readonly environmentOnly = true;
 
   constructor(private readonly times: CoherenceTimesAspect) {}
 
@@ -57,6 +61,7 @@ export class SetCoherenceTimes implements Influence<EngineInfluenceContext> {
 
 export class SetMedium implements Influence<EngineInfluenceContext> {
   readonly name = 'setMedium';
+  readonly environmentOnly = true;
 
   constructor(private readonly medium: MediumAspect) {}
 

@@ -114,15 +114,15 @@ turn colour into hadrons after ħ/Λ_QCD.
 
 `EnvironmentAspects` is an open interface (`libs/contracts/src/environment.ts`):
 
-| Aspect           | Fields                                                                                                                                                  | Set by                                      | Read by                                                                                            |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `temperature`    | `temperatureInKelvin`                                                                                                                                   | `setTemperature`, `cool`, `heat`            | Boltzmann populations, molecule heat bath, chemistry                                               |
-| `magneticField`  | `fieldInTesla`                                                                                                                                          | `applyMagneticField`, `removeMagneticField` | `ZeemanContributor`                                                                                |
-| `electricField`  | `fieldInVoltsPerMeter`                                                                                                                                  | `applyElectricField`                        | electric kick in `Dynamics`                                                                        |
-| `medium`         | `components[{species, numberDensityPerCubicMeter, crossSectionInSquareMeters}]`, `temperatureInKelvin`, `bulkVelocityInMetersPerSecond`, `reactionMode` | `setMedium`                                 | `CollisionalDecoherenceContributor`, `MediumReactions`, `MolecularDynamics`, `MediumChargeBalance` |
-| `coherenceTimes` | `dephasingTimeInSeconds`, `relaxationTimeInSeconds`                                                                                                     | `setCoherenceTimes`                         | `PhenomenologicalDecoherenceContributor`                                                           |
-| `neutrinoMixing` | PMNS angles and mass splittings                                                                                                                         | plan JSON only                              | `NeutrinoFlavorContributor` (PDG default otherwise)                                                |
-| `neighbors`      | `particleIds`                                                                                                                                           | reserved                                    | hidden on the stage                                                                                |
+| Aspect           | Fields                                                                                                                                                  | Set by                                                                | Read by                                                                                            |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `temperature`    | `temperatureInKelvin`                                                                                                                                   | `setTemperature`, `cool`, `heat`                                      | Boltzmann populations, molecule heat bath, chemistry                                               |
+| `magneticField`  | `fieldInTesla`                                                                                                                                          | `applyMagneticField`, `removeMagneticField`                           | `ZeemanContributor`                                                                                |
+| `electricField`  | `fieldInVoltsPerMeter`                                                                                                                                  | `applyElectricField`                                                  | electric kick in `Dynamics`                                                                        |
+| `medium`         | `components[{species, numberDensityPerCubicMeter, crossSectionInSquareMeters}]`, `temperatureInKelvin`, `bulkVelocityInMetersPerSecond`, `reactionMode` | `setMedium`; its temperature also by `setTemperature`, `cool`, `heat` | `CollisionalDecoherenceContributor`, `MediumReactions`, `MolecularDynamics`, `MediumChargeBalance` |
+| `coherenceTimes` | `dephasingTimeInSeconds`, `relaxationTimeInSeconds`                                                                                                     | `setCoherenceTimes`                                                   | `PhenomenologicalDecoherenceContributor`                                                           |
+| `neutrinoMixing` | PMNS angles and mass splittings                                                                                                                         | plan JSON only                                                        | `NeutrinoFlavorContributor` (PDG default otherwise)                                                |
+| `neighbors`      | `particleIds`                                                                                                                                           | reserved                                                              | hidden on the stage                                                                                |
 
 Hamiltonian contributors (`ZeemanContributor`, `NeutrinoFlavorContributor`, plus
 `extraHamiltonianContributors` of `createEngine`) return terms in radians per second per
@@ -135,7 +135,10 @@ and proper time.
 
 `ShotContext` holds one shared `Environment` and a list of `EnvironmentRegion { aspect, value,
 members }`. An environment influence with targets calls `scope(targets, before, after)` and opens
-a region per changed aspect; one without targets replaces the shared environment.
+a region per changed aspect; one without targets replaces the shared environment and, when it only
+reshapes the environment (`Influence.environmentOnly`), is applied again inside every region to the
+environment its members see (`reshapeRegions`), so a later step overrides an earlier one where they
+differ.
 `environmentFor(particle)` overlays, in order, the regions the particle belongs to, so an inner
 aspect of the same kind replaces the shared one and aspects of different kinds add up.
 `add(label, particle, parents)` registers a product and copies its parents' regions. Every
@@ -239,8 +242,8 @@ definitions to the compiler and the UI (`GET /catalog`). A new influence is one 
 
 | Name                  | Parameters (unit in the name)                                                                                                                                                                        | Effect                                                                                                                                   |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `setTemperature`      | `temperatureInKelvin`                                                                                                                                                                                | sets the `temperature` aspect                                                                                                            |
-| `cool`, `heat`        | `byKelvin`                                                                                                                                                                                           | changes it, never below absolute zero                                                                                                    |
+| `setTemperature`      | `temperatureInKelvin`                                                                                                                                                                                | sets the `temperature` aspect and the temperature of a medium in the same scope (an ideal-gas pressure follows)                          |
+| `cool`, `heat`        | `byKelvin`                                                                                                                                                                                           | changes both, from the medium temperature when none was set, never below absolute zero                                                   |
 | `applyMagneticField`  | `xInTesla`, `yInTesla`, `zInTesla`                                                                                                                                                                   | sets `magneticField`                                                                                                                     |
 | `removeMagneticField` | —                                                                                                                                                                                                    | removes it                                                                                                                               |
 | `applyElectricField`  | `xInVoltsPerMeter`, …                                                                                                                                                                                | sets `electricField`                                                                                                                     |
@@ -257,7 +260,9 @@ definitions to the compiler and the UI (`GET /catalog`). A new influence is one 
 | `electrolyze`         | `voltageInVolts`, `currentInAmperes`, `durationInSeconds`                                                                                                                                            | Faraday's law: molecules above their decomposition voltage (bond energies per transferred electron) split into their elements            |
 
 Targets: an influence with named targets acts on them and, for environment influences, opens a
-region (§5); without targets it acts on every live particle or the shared environment.
+region (§5); without targets it acts on every live particle or the shared environment. The order of
+creation and environment steps is free: a plan may create particles, place them in a medium and
+then heat all of them or only some, and a heated part reacts in its own hot copy of the gas.
 
 ## 7. Interactions
 
@@ -345,7 +350,9 @@ continuum lowering, electrons freed on the way to fusion returned to the medium
   harmonic normal modes with infrared strengths from the QEq charges, moments of inertia,
   rotational constants, dipole moment, total binding from the bond energies.
 - Behaviour (`molecular-behaviour.ts`): internal energy and heat capacity from rotations and
-  Einstein modes, collisional relaxation toward the gas temperature, Debye orientational and
+  Einstein modes, collisional relaxation toward the gas temperature (a component without a cross
+  section collides as hard spheres of the UFF Lennard-Jones diameters of the heaviest atoms;
+  absorption line widths keep the given cross sections), Debye orientational and
   resonant infrared absorption, unimolecular dissociation of each bond at its vibrational attempt
   frequency times exp(−D/kT), fragments by connected components.
 - Association (`molecular-association.ts`): a neutral atom or molecule joins an atom of the medium
@@ -367,7 +374,10 @@ continuum lowering, electrons freed on the way to fusion returned to the medium
 - Catalogue (`libs/constants/data/molecules.json`, `MOLECULE_CATALOG`): 238 molecules in 21
   categories and 5 groups for the species picker, each checked by `validateMoleculeStructure`;
   `catalogMoleculeTraits` gives mass and linearity precomputed by `pnpm generate:molecules`,
-  `isRadical` the parity of the electrons.
+  `isRadical` the parity of the electrons. `catalogMoleculeOf` recognises any built molecule by its
+  bond-graph substance key (the isotopologue with the same isotopes first); the system report puts
+  the name in `ParticleView.catalogName` and in its events, and the web says "unknown molecule"
+  without it.
 
 ### 7.6 Radiation and laser cooling
 
@@ -504,7 +514,8 @@ React 19 on Vite; contracts as types only; vocabularies from `GET /catalog`. Vie
 validate, run, save), results (diagram beside a loader while running, then the experiment, the
 result, the system player and the formula panel), history, Lagrangian (terms, multiplets, vertices,
 process calculator). Pure modules with tests: `plan-edits.ts`, `plan-diagram.ts` (lanes, links,
-environment bands), `system-stage.ts` (layout, envelopes, camera), `environment-envelopes.ts`,
+environment bands that wrap the particles created just above them and nest by inset inside the
+earlier bands that hold them), `system-stage.ts` (layout, envelopes, camera), `environment-envelopes.ts`,
 `influence-visual.ts`, `experiment-formula.ts`, `carry-over.ts`, `molecule-edits.ts`,
 `space-scale.ts`, `format.ts`, `language.ts`. The stage draws every environment as an envelope
 around the particles it acts on, nested by inclusion, with gas dots that drift faster when hot and

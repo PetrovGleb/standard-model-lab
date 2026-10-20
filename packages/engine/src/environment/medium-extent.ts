@@ -1,5 +1,5 @@
 /* A medium of finite size fills a ball of diameter thicknessInMeters around the origin: its volume, its heat capacity (Dulong–Petit 3k per atom when condensed, 3/2 k plus rotations and Einstein
-   vibrations of each molecule in a gas or plasma), heating by absorbed energy, the photon attenuation coefficient from photoionization and Compton cross sections of its components, the Bethe
+   vibrations of each molecule in a gas or plasma), heating by absorbed energy or to a set temperature, the photon attenuation coefficient from photoionization and Compton cross sections of its components, the Bethe
    stopping power and range of charged particles with the Bloch mean excitation energy, and the distance from a point to the edge of the ball along a direction. */
 import {
   BOLTZMANN_CONSTANT,
@@ -113,24 +113,33 @@ export function heatedMedium(medium: MediumAspect, energyInJoules: number): Medi
   if (mediumVolumeInCubicMeters(medium) === null || !(energyInJoules > 0)) {
     return medium;
   }
-  const idealBefore = idealGasPressureInPascals(medium.components, medium.temperatureInKelvin);
-  const followsIdealGas =
-    medium.pressureInPascals === undefined ||
-    Math.abs(medium.pressureInPascals - idealBefore) <= RELATIVE_PRECISION * idealBefore;
   let temperature = medium.temperatureInKelvin;
   for (let step = 0; step < HEATING_SUBSTEPS; step += 1) {
     const capacity =
       mediumHeatCapacityInJoulesPerKelvin({ ...medium, temperatureInKelvin: temperature }) ?? 0;
     temperature += capacity > 0 ? energyInJoules / HEATING_SUBSTEPS / capacity : 0;
   }
-  const idealAfter = idealGasPressureInPascals(medium.components, temperature);
+  return {
+    ...mediumAtTemperature(medium, temperature),
+    absorbedEnergyInJoules: (medium.absorbedEnergyInJoules ?? 0) + energyInJoules,
+  };
+}
+
+export function mediumAtTemperature(
+  medium: MediumAspect,
+  temperatureInKelvin: number,
+): MediumAspect {
+  const idealBefore = idealGasPressureInPascals(medium.components, medium.temperatureInKelvin);
+  const followsIdealGas =
+    medium.pressureInPascals === undefined ||
+    Math.abs(medium.pressureInPascals - idealBefore) <= RELATIVE_PRECISION * idealBefore;
+  const idealAfter = idealGasPressureInPascals(medium.components, temperatureInKelvin);
   return {
     ...medium,
-    temperatureInKelvin: temperature,
-    ...(followsIdealGas
-      ? { pressureInPascals: idealAfter }
-      : { pressureInPascals: Math.max(medium.pressureInPascals ?? 0, idealAfter) }),
-    absorbedEnergyInJoules: (medium.absorbedEnergyInJoules ?? 0) + energyInJoules,
+    temperatureInKelvin,
+    pressureInPascals: followsIdealGas
+      ? idealAfter
+      : Math.max(medium.pressureInPascals ?? 0, idealAfter),
   };
 }
 

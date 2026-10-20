@@ -1,5 +1,5 @@
-/* PlanDiagram: the experiment as particle lanes running down through the steps, with entanglement links, combine merges, collisions, decay splits and environment bands; rows are clickable,
-   and the drawing either sizes itself or fills a pan-and-zoom canvas through a view box. */
+/* PlanDiagram: the experiment as particle lanes running down through the steps, with entanglement links, combine merges, collisions, decay splits and environment bands nested by inset with
+   their captions at their own rows; rows are clickable, and the drawing either sizes itself or fills a pan-and-zoom canvas through a view box. */
 import type { ElementEntry, ExperimentPlan, ParticleCatalogEntry } from '@standard-model/contracts';
 import { OPERATION_TITLES, PARTICLE_GLOSSARY } from '../glossary';
 import { OPERATION_ICONS, type OperationName } from '../icons';
@@ -16,6 +16,10 @@ const BAND_PADDING = 7;
 const BAND_LABEL_INSET = 8;
 const BAND_LABEL_WIDTH = 150;
 const BAND_LABEL_CHARACTERS = 22;
+const BAND_CORNER = 12;
+const TEXT_BASELINE = 4;
+const NOTE_GAP = 6;
+const NEST_INSET = 5;
 
 function shortened(caption: string): string {
   return caption.length <= BAND_LABEL_CHARACTERS
@@ -64,6 +68,32 @@ export function diagramSize(layout: DiagramLayout): {
       GUTTER + columns * COLUMN_WIDTH + PADDING + (layout.bands.length > 0 ? BAND_LABEL_WIDTH : 0),
     height: HEADER + Math.max(layout.rowCount, 1) * ROW_HEIGHT + PADDING,
   };
+}
+
+function bandEdges(
+  band: DiagramLayout['bands'][number],
+  layout: DiagramLayout,
+  width: number,
+): { readonly left: number; readonly right: number; readonly lastColumn: number } {
+  const columns = band.columns ?? layout.lanes.map((lane) => lane.column);
+  const spansAll = band.columns === null || columns.length === 0;
+  return {
+    left: spansAll ? GUTTER : laneX(Math.min(...columns)) - COLUMN_WIDTH / 2,
+    right: spansAll
+      ? width - PADDING - BAND_LABEL_WIDTH
+      : laneX(Math.max(...columns)) + COLUMN_WIDTH / 2,
+    lastColumn: Math.max(...columns),
+  };
+}
+
+function noteX(node: DiagramLayout['nodes'][number], layout: DiagramLayout, width: number): number {
+  const stack = node.stacked === true ? NODE_RADIUS * STACK_SHIFT * Math.max(...STACK_COINS) : 0;
+  const frames = layout.bands
+    .filter((band) => band.topRow <= node.row && node.row <= band.endRow)
+    .map((band) => bandEdges(band, layout, width))
+    .filter((edges) => edges.lastColumn === node.column)
+    .map((edges) => edges.right + BAND_LABEL_INSET);
+  return Math.max(laneX(node.column) + NODE_RADIUS + stack + NOTE_GAP, ...frames);
 }
 
 function laneX(column: number): number {
@@ -211,34 +241,31 @@ export function PlanDiagram({
           return null;
         }
         const visual = influenceVisual(step, null, symbolOf);
-        const columns = band.columns ?? layout.lanes.map((lane) => lane.column);
-        const spansAll = band.columns === null || columns.length === 0;
-        const left = spansAll ? GUTTER : laneX(Math.min(...columns)) - COLUMN_WIDTH / 2;
-        const right = spansAll
-          ? width - PADDING - BAND_LABEL_WIDTH
-          : laneX(Math.max(...columns)) + COLUMN_WIDTH / 2;
-        const top = rowY(band.row) - NODE_RADIUS - BAND_PADDING;
+        const { left, right } = bandEdges(band, layout, width);
+        const sideInset = band.depth * NEST_INSET;
+        const edgeInset = Math.min(band.depth * NEST_INSET, BAND_PADDING - 1);
+        const top = rowY(band.topRow) - NODE_RADIUS - BAND_PADDING;
         const bottom = rowY(band.endRow) + NODE_RADIUS + BAND_PADDING;
         return (
           <g
             key={`band-${String(index)}`}
             className={`diagram-band tone-${visual.tone}`}
             data-tooltip={say(
-              `${visual.caption}: действует на ${band.targets === null ? 'всю систему' : band.targets.join(', ')} с шага ${String(band.row + 1)}${band.endRow === plan.steps.length - 1 ? ' до конца' : ` по шаг ${String(band.endRow + 1)}`}`,
-              `${visual.caption}: acts on ${band.targets === null ? 'the whole system' : band.targets.join(', ')} from step ${String(band.row + 1)}${band.endRow === plan.steps.length - 1 ? ' to the end' : ` through step ${String(band.endRow + 1)}`}`,
+              `${visual.caption}: действует на ${band.targets === null ? 'всю систему' : band.targets.join(', ')} с шага ${String(band.row + 1)}${band.endRow === plan.steps.length - 1 ? ' до конца' : ` по шаг ${String(band.endRow + 1)}`}${band.topRow < band.row ? ' и охватывает частицы, созданные выше' : ''}`,
+              `${visual.caption}: acts on ${band.targets === null ? 'the whole system' : band.targets.join(', ')} from step ${String(band.row + 1)}${band.endRow === plan.steps.length - 1 ? ' to the end' : ` through step ${String(band.endRow + 1)}`}${band.topRow < band.row ? ' and wraps the particles created above' : ''}`,
             )}
           >
             <rect
-              x={left}
-              y={top}
-              width={Math.max(right - left, COLUMN_WIDTH)}
-              height={bottom - top}
-              rx={12}
+              x={left + sideInset}
+              y={top + edgeInset}
+              width={Math.max(right - left, COLUMN_WIDTH) - 2 * sideInset}
+              height={bottom - top - 2 * edgeInset}
+              rx={BAND_CORNER - edgeInset}
             />
             <text
               className="diagram-band-label"
               x={right + BAND_LABEL_INSET}
-              y={top + BAND_LABEL_INSET + 6}
+              y={rowY(band.row) + TEXT_BASELINE}
             >
               {shortened(visual.caption)}
             </text>
@@ -331,7 +358,7 @@ export function PlanDiagram({
               aria-hidden="true"
             />
             {node.note !== null && (
-              <text className="node-note" x={x + NODE_RADIUS + 6} y={y + 4}>
+              <text className="node-note" x={noteX(node, layout, width)} y={y + TEXT_BASELINE}>
                 {node.note}
               </text>
             )}
