@@ -1,10 +1,108 @@
 # Standard Model Lab
 
+**🌐 [English](#english) · [Русский](#русский)**
+
 A TypeScript engine that simulates Standard Model particles and their evolution from fundamental
 laws, with a NestJS API, a React lab in the browser and Postgres for run history. You build any
 medium and any influence, run real experiments and climb the levels from quarks to nuclei, atoms,
 molecules and chemistry. Data: NIST CODATA 2022 and PDG 2026 as transcribed in
 `docs/STANDARD_MODEL_REFERENCE.md`. Overview: `docs/overview/standard-model-lab-overview.pdf`.
+
+---
+
+## English
+
+_[Switch to Русский](#русский) · The interface language (Russian or English) is picked in the app header and remembered in the browser._
+
+### What it is
+
+Standard Model Lab turns the particle physics of the Standard Model into something you can run.
+The engine builds particles as classes with real properties, puts them in a quantum register
+(spin, polarization, flavor, entanglement, measurement and collapse), places them in a medium with
+temperature, fields and background matter, applies influences, and runs an experiment as a pipeline
+of steps. Every number traces back to NIST CODATA 2022 or PDG 2026 — nothing is hand-tuned.
+
+The web lab is the front door; the same engine also ships as a desktop app and behind the API.
+
+### How to use it
+
+The app has five tabs across the top:
+
+- **Templates** — the fastest way in. Pick a ready-made experiment — CHSH and the singlet
+  correlation, two-slit interference, Stern–Gerlach, Larmor precession, neutrino oscillation,
+  muon decay, collisions and hadron colliders, fusion, fission, radiation in matter, chemistry —
+  set its parameters, press run, read the result. Start here to see what the engine can do.
+- **Builder** — build your own experiment from nothing. On a pan-and-zoom canvas you define the
+  run settings, the parameters and their use, the space (medium, fields, background matter), the
+  steps, and the report. Edit each block as a form or as JSON against a sticky schema. A live
+  estimate shows the run cost before you commit. Drafts are kept in tabs so several experiments
+  stay open at once.
+- **Results** — while a run computes you see the step diagram and live progress (first the one
+  simulation being timed, then the remaining time and the simulation count); when it finishes, the
+  experiment, its parameters and steps sit above the result, with a way straight back to the
+  builder.
+- **Runs** — the history. Every run is stored in Postgres with its status; open any past run and
+  its full stored result comes back.
+- **Lagrangian** — the Standard Model Lagrangian exactly as the engine uses it: terms, multiplets,
+  parameters with their mass checks, the derived vertices, and a tree-level process calculator with
+  diagrams, dσ/dcosθ and a comparison against PDG.
+
+A typical path: run a couple of **Templates** to get a feel, open one in the **Builder** to change
+the medium or an influence, run it and watch **Results**, then find it later under **Runs**. Use
+**Lagrangian** when you want the theory behind a vertex rather than a simulation.
+
+The deterministic physics (particle properties, Born probabilities) is exact; everything stochastic
+runs as seeded Monte Carlo, so the same inputs always give the same result.
+
+---
+
+## Русский
+
+_[Switch to English](#english) · Язык интерфейса (русский или английский) выбирается в шапке приложения и запоминается в браузере._
+
+### Что это
+
+Standard Model Lab превращает физику элементарных частиц Стандартной модели в то, что можно
+запустить. Движок строит частицы как классы с реальными свойствами, помещает их в квантовый
+регистр (спин, поляризация, аромат, запутанность, измерение и коллапс), ставит в среду с
+температурой, полями и фоновым веществом, прикладывает воздействия и прогоняет эксперимент как
+конвейер шагов. Каждое число восходит к NIST CODATA 2022 или PDG 2026 — вручную ничего не
+подогнано.
+
+Веб-лаборатория — главный вход; тот же движок поставляется и как десктоп-приложение, и за API.
+
+### Как пользоваться
+
+Вверху приложения пять вкладок:
+
+- **Шаблоны** — самый быстрый вход. Выбираешь готовый эксперимент — CHSH и синглетная корреляция,
+  двухщелевая интерференция, Штерн–Герлах, ларморовская прецессия, осцилляции нейтрино, распад
+  мюона, столкновения и адронные коллайдеры, синтез, деление, прохождение излучения через
+  вещество, химия — задаёшь параметры, жмёшь запуск, читаешь результат. Начинать стоит отсюда,
+  чтобы увидеть, что движок умеет.
+- **Конструктор** — собираешь свой эксперимент с нуля. На холсте с панорамированием и зумом задаёшь
+  настройки запуска, параметры и их использование, пространство (среда, поля, фоновое вещество),
+  шаги и отчёт. Каждый блок правится формой или JSON по закреплённой схеме. Живая оценка показывает
+  стоимость прогона до запуска. Черновики держатся во вкладках — сразу открыто несколько
+  экспериментов.
+- **Результаты** — пока идёт расчёт, виден диаграмма шагов и прогресс в реальном времени (сначала
+  одна симуляция, по которой замеряется время, потом остаток времени и число симуляций); по
+  завершении сверху эксперимент, его параметры и шаги, под ними результат и кнопка обратно в
+  конструктор.
+- **Запуски** — история. Каждый прогон хранится в Postgres со своим статусом; открываешь любой
+  прошлый запуск — и возвращается его полный сохранённый результат.
+- **Лагранжиан** — лагранжиан Стандартной модели ровно в том виде, в каком его использует движок:
+  члены, мультиплеты, параметры с проверками масс, производные вершины и калькулятор процессов на
+  древесном уровне с диаграммами, dσ/dcosθ и сравнением с PDG.
+
+Типичный путь: запустить пару **Шаблонов**, чтобы освоиться, открыть один в **Конструкторе**,
+поменять среду или воздействие, запустить и смотреть **Результаты**, а позже найти его в
+**Запусках**. **Лагранжиан** — когда нужна теория за вершиной, а не симуляция.
+
+Детерминированная физика (свойства частиц, борновские вероятности) точна; всё случайное считается
+как Монте-Карло с зерном, поэтому одни и те же входные данные всегда дают один и тот же результат.
+
+---
 
 ## Quick start in Docker
 
