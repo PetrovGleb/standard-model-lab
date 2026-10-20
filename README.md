@@ -32,20 +32,31 @@ The app has five tabs across the top:
   correlation, two-slit interference, Stern–Gerlach, Larmor precession, neutrino oscillation,
   muon decay, collisions and hadron colliders, fusion, fission, radiation in matter, chemistry —
   set its parameters, press run, read the result. Start here to see what the engine can do.
+  <img width="1421" height="866" alt="image" src="https://github.com/user-attachments/assets/3851a69b-4e12-43be-9a50-262fd1a4038f" />
+
 - **Builder** — build your own experiment from nothing. On a pan-and-zoom canvas you define the
   run settings, the parameters and their use, the space (medium, fields, background matter), the
   steps, and the report. Edit each block as a form or as JSON against a sticky schema. A live
   estimate shows the run cost before you commit. Drafts are kept in tabs so several experiments
   stay open at once.
+  <img width="1425" height="866" alt="image" src="https://github.com/user-attachments/assets/b9258eb1-ae5f-45eb-99e4-8de595e49470" />
+
 - **Results** — while a run computes you see the step diagram and live progress (first the one
   simulation being timed, then the remaining time and the simulation count); when it finishes, the
   experiment, its parameters and steps sit above the result, with a way straight back to the
   builder.
+  <img width="1422" height="868" alt="image" src="https://github.com/user-attachments/assets/d832f949-5827-47c8-b393-1ffae507ad4b" />
+  <img width="1422" height="860" alt="image" src="https://github.com/user-attachments/assets/e26e15b8-8dc1-4585-b60c-881fb2322325" />
+
+
 - **Runs** — the history. Every run is stored in Postgres with its status; open any past run and
   its full stored result comes back.
 - **Lagrangian** — the Standard Model Lagrangian exactly as the engine uses it: terms, multiplets,
   parameters with their mass checks, the derived vertices, and a tree-level process calculator with
   diagrams, dσ/dcosθ and a comparison against PDG.
+  <img width="1425" height="868" alt="image" src="https://github.com/user-attachments/assets/8c1dff8f-efcd-4aa2-b707-4b8e254bb3be" />
+  
+
 
 A typical path: run a couple of **Templates** to get a feel, open one in the **Builder** to change
 the medium or an influence, run it and watch **Results**, then find it later under **Runs**. Use
