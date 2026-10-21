@@ -4,6 +4,7 @@ import type {
   ExperimentStep,
   ParameterDefinitions,
   PotentialKind,
+  SpaceWalls,
   StateAmplitudes,
 } from './experiment-plan.js';
 import type { ParticleFamily, ParticleName } from './particle-spec.js';
@@ -140,6 +141,7 @@ export interface SpaceSnapshot {
   readonly slitWidthInMeters?: number;
   readonly wellSeparationInMeters?: number;
   readonly boxSizeInMeters?: number;
+  readonly walls?: SpaceWalls;
   readonly clouds: readonly ProbabilityCloud[];
 }
 

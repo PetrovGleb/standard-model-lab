@@ -734,6 +734,7 @@ function resolveSpace(
     slitWidthInMeters: resolved.slitWidthInMeters ?? 0,
     wellSeparationInMeters: resolved.wellSeparationInMeters ?? 0,
     boxSizeInMeters: resolved.boxSizeInMeters ?? 0,
+    walls: resolved.walls ?? 'open',
   };
   try {
     validateSpace(result);

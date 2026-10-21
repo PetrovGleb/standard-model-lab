@@ -44,7 +44,7 @@ import {
   validateMoleculeStructure,
   VALID_GRID_SIZES,
 } from '@standard-model/engine';
-import { POTENTIAL_KINDS } from '@standard-model/contracts';
+import { POTENTIAL_KINDS, SPACE_WALLS } from '@standard-model/contracts';
 import { buildPresets } from './presets.js';
 
 const OPERATIONS = [
@@ -222,6 +222,7 @@ export class CatalogService {
     ],
     gridSizes: VALID_GRID_SIZES,
     potentials: POTENTIAL_KINDS,
+    spaceWalls: SPACE_WALLS,
     elements: elementEntries(),
     environments: ENVIRONMENT_PRESETS,
     environmentScales: ENVIRONMENT_SCALES,

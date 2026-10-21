@@ -1,5 +1,5 @@
 /* Temperature influences: set an absolute temperature or change it by a delta; cool and heat are the two signs. A medium in the same scope takes the new temperature too, so heating the
-   environment of some particles heats the gas they react with; a change starts from the medium temperature when no temperature was set. */
+   environment of some particles heats the gas they react with, and every body of a medium placed in space takes it too; a change starts from the medium temperature when no temperature was set. */
 import type { Environment, Influence, InfluenceOutcome, Particle } from '@standard-model/contracts';
 import type { EngineInfluenceContext } from './context.js';
 import { LocalizedError, localizedText } from '@standard-model/contracts';
@@ -7,10 +7,17 @@ import { mediumAtTemperature } from '../environment/medium-extent.js';
 
 function atTemperature(environment: Environment, temperatureInKelvin: number): Environment {
   const medium = environment.get('medium');
+  const bodies = environment.get('bodies')?.bodies;
   const withBath = environment.with('temperature', { temperatureInKelvin });
-  return medium === undefined
-    ? withBath
-    : withBath.with('medium', mediumAtTemperature(medium, temperatureInKelvin));
+  const withMedium =
+    medium === undefined
+      ? withBath
+      : withBath.with('medium', mediumAtTemperature(medium, temperatureInKelvin));
+  return bodies === undefined
+    ? withMedium
+    : withMedium.with('bodies', {
+        bodies: bodies.map((body) => mediumAtTemperature(body, temperatureInKelvin)),
+      });
 }
 
 export class SetTemperature implements Influence<EngineInfluenceContext> {

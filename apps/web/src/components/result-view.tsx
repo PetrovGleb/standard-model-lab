@@ -1,5 +1,5 @@
-/* ResultView: key numbers as tiles, how long the run took and the share of each step in a shot, outcome frequencies as bars, numeric records as histograms, the system report player and
-   a hand-off of the final system to a new experiment. */
+/* ResultView: key numbers as tiles, how long the run took and the share of each step in a shot, outcome frequencies as bars, numeric records as histograms (records about single particles
+   behind a toggle, since a chain reaction makes thousands), the system report player and a hand-off of the final system to a new experiment. */
 import type { ExperimentPlan, ExperimentResult } from '@standard-model/contracts';
 import { useState, type CSSProperties } from 'react';
 import { carryOverPlan } from '../carry-over';
@@ -14,6 +14,7 @@ import { say } from '../language';
 
 const FREQUENCY_KEY = /\[[^\]]*\]$/;
 const MINIMUM_SHARE_SHOWN = 0.01;
+const PARTICLE_RECORD = /^[^.]+\.(?!count\.|medium\.|body\d+\.)[^.]+\.[^.]+$/;
 const PERCENT = 100;
 
 interface Props {
@@ -74,6 +75,7 @@ export function ResultView({ result, plan, onCarryOver }: Props) {
         ? []
         : [result.systemReport];
   const [traceIndex, setTraceIndex] = useState(0);
+  const [showParticleRecords, setShowParticleRecords] = useState(false);
   const report = reports[Math.min(traceIndex, reports.length - 1)];
   const survivors =
     report?.frames[report.frames.length - 1]?.particles.filter(
@@ -82,8 +84,13 @@ export function ResultView({ result, plan, onCarryOver }: Props) {
   const scalars = Object.entries(result.reportValues).filter(
     ([label]) => !FREQUENCY_KEY.test(label) && result.distributions[label] === undefined,
   );
-  const records = Object.entries(result.outcomeCounts);
-  const distributions = Object.entries(result.distributions ?? {});
+  const allRecords = Object.entries(result.outcomeCounts);
+  const particleRecords = allRecords.filter(([record]) => PARTICLE_RECORD.test(record));
+  const records = allRecords.filter(([record]) => !PARTICLE_RECORD.test(record));
+  const allDistributions = Object.entries(result.distributions ?? {});
+  const particleDistributions = allDistributions.filter(([label]) => PARTICLE_RECORD.test(label));
+  const distributions = allDistributions.filter(([label]) => !PARTICLE_RECORD.test(label));
+  const particleCount = particleRecords.length + particleDistributions.length;
   return (
     <>
       <section className="card">
@@ -125,8 +132,34 @@ export function ResultView({ result, plan, onCarryOver }: Props) {
           {records.map(([record, counts]) => (
             <OutcomeBars key={record} title={record} counts={counts} shots={result.shots} />
           ))}
+          {showParticleRecords &&
+            particleDistributions.map(([label, distribution]) => (
+              <Histogram key={label} title={label} distribution={distribution} />
+            ))}
+          {showParticleRecords &&
+            particleRecords.map(([record, counts]) => (
+              <OutcomeBars key={record} title={record} counts={counts} shots={result.shots} />
+            ))}
         </div>
-        {scalars.length === 0 && distributions.length === 0 && records.length === 0 && (
+        {particleCount > 0 && (
+          <button
+            type="button"
+            className="secondary"
+            data-tooltip={say(
+              'Записи о каждой отдельной частице в каждом замере системы, например ее фаза',
+              'Records about every single particle in every system snapshot, such as its phase',
+            )}
+            onClick={() => setShowParticleRecords((current) => !current)}
+          >
+            {showParticleRecords
+              ? say('Скрыть записи по частицам', 'Hide the records by particle')
+              : say(
+                  `Показать записи по частицам (${String(particleCount)})`,
+                  `Show the records by particle (${String(particleCount)})`,
+                )}
+          </button>
+        )}
+        {scalars.length === 0 && allDistributions.length === 0 && allRecords.length === 0 && (
           <p className="muted">{say('В отчете нет статистик.', 'The report has no statistics.')}</p>
         )}
       </section>

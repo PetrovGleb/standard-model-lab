@@ -249,6 +249,7 @@ definitions to the compiler and the UI (`GET /catalog`). A new influence is one 
 | `applyElectricField`  | `xInVoltsPerMeter`, …                                                                                                                                                                                | sets `electricField`                                                                                                                     |
 | `setCoherenceTimes`   | `dephasingTimeInSeconds`, `relaxationTimeInSeconds`                                                                                                                                                  | sets `coherenceTimes`                                                                                                                    |
 | `setMedium`           | `components` (list of species, density, cross section, `densityLaw`), `temperatureInKelvin`, `pressureInPascals`, `radiationTemperatureInKelvin`, `thicknessInMeters`, `reactionMode`, bulk velocity | sets `medium`; species may be any catalog particle, nucleus, atom or molecule; a thickness makes it a finite ball that absorbs and heats |
+| `placeBody`           | `shape` (ball or box), `sizeInMeters`, `xCenterInMeters`…, then the medium parameters                                                                                                                | adds a body of that medium to the `bodies` aspect; a point sees the smallest body that holds it                                          |
 | `boost`               | `xFraction`, `yFraction`, `zFraction` of c                                                                                                                                                           | Lorentz boost of the kinematics                                                                                                          |
 | `rotateSpin`          | `polarAngleDegrees`, `azimuthDegrees`, `angleRadians`                                                                                                                                                | rotation on the spin slot                                                                                                                |
 | `thermalize`          | —                                                                                                                                                                                                    | Boltzmann sampling of a slot energy eigenstate (unentangled particles)                                                                   |
@@ -427,6 +428,17 @@ which-path detection or by decoherence over the flight. `PairAnnihilation`: elec
 clouds overlapping in the trap annihilate at `(π r_e² c)·∫ρ₋ρ₊ d³r` weighted by the singlet share,
 into two photons sharing the ψ⁻ state.
 
+The cube as a world (`space/geometry.ts`): `SpaceSpec.walls` is `open` (default) or `reflecting`;
+`BODY_SHAPE_LAWS` hold `ball` and `box`; `placeBody` (shape, `sizeInMeters`, centre, then every
+medium parameter of `setMedium` except the thickness) adds a body to the `bodies` aspect, a body
+with the same shape, centre and size replacing the old one; `environmentFor` gives a particle the
+medium of the smallest body that holds it; temperature influences take every body to the new
+temperature; `measureSystem` records `body<N>.temperatureInKelvin` and
+`body<N>.absorbedEnergyInJoules`. After every `evolve` the point particles not held as waves fold
+back into a mirror cube (position and momentum). `SpaceSnapshot.walls` and a snapshot for every
+frame of a plan with a cube (also without clouds) feed the web view. Potentials are
+`POTENTIAL_LAWS` (`space/potentials.ts`) with the mirror layer of `mirrorWallEnergyInJoules`.
+
 ## 8. Experiments
 
 ### Plan and compiler
@@ -515,9 +527,14 @@ validate, run, save), results (diagram beside a loader while running, then the e
 result, the system player and the formula panel), history, Lagrangian (terms, multiplets, vertices,
 process calculator). Pure modules with tests: `plan-edits.ts`, `plan-diagram.ts` (lanes, links,
 environment bands that wrap the particles created just above them and nest by inset inside the
-earlier bands that hold them), `system-stage.ts` (layout, envelopes, camera), `environment-envelopes.ts`,
+earlier bands that hold them), `cube-scene.ts` (bodies, points with trails and births, the body a particle lies in,
+orientation by rotation matrices), `system-stage.ts` (layout, envelopes, camera), `environment-envelopes.ts`,
 `influence-visual.ts`, `experiment-formula.ts`, `carry-over.ts`, `molecule-edits.ts`,
-`space-scale.ts`, `format.ts`, `language.ts`. The stage draws every environment as an envelope
+`space-scale.ts`, `format.ts`, `language.ts`. The cube view (`space-view.tsx`) draws the walls, the bodies, the clouds and every point particle with
+a trail; a drag moves the scene (with ⌘ or Ctrl it turns it), the wheel and buttons zoom, buttons rotate it by 10° about x, y and z
+with an eased animation, and it centres, shows a chip on hover and opens an inspector on a click (the
+cube with the particle highlighted, its card, the other particles); the player can put it above or
+below the stage. The stage draws every environment as an envelope
 around the particles it acts on, nested by inclusion, with gas dots that drift faster when hot and
 gas atoms flying into a particle that reacted; beside it, a scrollable panel tells the step in words, shows the conserved totals as tiles, the environment cards and the particles with their phase (`ParticleView.phase`) and grouped readings; a step bar above replaces the slider; the camera fits envelopes and particles, zooms by
 pinch only (1 %–300 %) and has a center button. Every visible string goes through `say(ru, en)`.

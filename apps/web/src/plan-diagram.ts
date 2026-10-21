@@ -83,6 +83,7 @@ export interface DiagramLayout {
 
 const ENVIRONMENT_ASPECTS: Readonly<Record<string, string>> = {
   setMedium: 'medium',
+  placeBody: 'bodies',
   setTemperature: 'temperature',
   changeTemperature: 'temperature',
   heat: 'temperature',

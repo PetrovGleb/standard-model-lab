@@ -624,3 +624,55 @@ how it was verified. Entries are appended at the bottom of the current day; days
   ether stays itself, H₂O is water and D₂O heavy water, CH₃ is unknown, the view and the creation
   event of a built ethanol carry "этанол"; browser check of ethanol heated in air (stage "ethanol ·
   at rest", fragments "unknown molecule", events "3 × ethanol" and "→ C2H5O + H").
+- `[modification]` The cube is the world of the experiment, with bodies of different media
+  (`space/geometry.ts`, `space/potentials.ts`, `SpaceSpec.walls`, `MediumAspect.geometry`, the
+  `bodies` aspect and `placeBody`, `ShotContext.environmentFor`/`worldFor`/`walls`,
+  `neutron-transport.ts`, `medium-extent.ts`, `system-reporter.ts`, `CatalogResponse.spaceWalls`).
+  **What:** potentials, walls and body shapes are registries (`POTENTIAL_LAWS`, `WALL_LAWS`,
+  `BODY_SHAPE_LAWS`) instead of branches in `SpaceLab`; mirror walls reflect point particles by the
+  exact fold of a straight flight and waves by a layer at the kinetic limit of a cell; `placeBody`
+  puts several media of a shape, centre and size in space and a particle sees the smallest body
+  that holds it; neutron transport walks the world segment by segment (body surfaces and walls),
+  so a neutron crosses from the core into a tamper and back; volume, heat capacity, stopping and
+  absorption take the body's shape and a body heats from what it absorbs; `measureSystem` records
+  `body<N>.temperatureInKelvin` and `body<N>.absorbedEnergyInJoules`; a plan with a cube has a
+  snapshot in every frame. A legacy medium with a thickness is a ball at the centre, and in vacuum
+  the transport draws no random numbers, so every existing template keeps its numbers.
+  **Why:** the user asked for a chain reaction in the cube with walls of a super-material, for an
+  architecture that hard-codes nothing in the cube, and for several bodies of different media at
+  once. **Verification:** all space, fission, medium and template tests unchanged; a probe of a
+  13 cm uranium-235 core: 39 particles after 160 ns bare with open walls, 104 inside a 20 cm
+  uranium-238 tamper, 155 with mirror walls as well.
+- `[addition]` Template `chainReactionInCube` (`fission.ts`, categories cube and nuclear): a 32 cm
+  mirror cube, a 20 cm uranium-238 tamper box and a 13 cm uranium-235 core, four 2 MeV neutrons,
+  16 frames of 10 ns; parameters core diameter, tamper edge and tamper density; complexity
+  regenerated with `pnpm measure:templates`. **Verification:** `template-languages.test.ts` and the
+  template tests; browser run.
+- `[addition]` The cube view draws the world (`cube-scene.ts`, `space-view.tsx`,
+  `system-player.tsx`, `result-view.tsx`, `format.ts`): mirror or open walls, the bodies, every
+  point particle with a trail and a birth ring, a legend of particles and bodies; zoom by wheel and
+  buttons, centre, default view, quarter turns about x, y, z, and a drag that turns the near side
+  the way the pointer goes (orientation as a rotation matrix); a hover chip, a click that opens an
+  inspector (the cube with the particle highlighted, its card as in the system state, the other
+  particles by kind with a search); a switch of the order of the stage and the cube, remembered in
+  the browser; records about single particles behind a toggle (a chain reaction made 9686); lengths
+  in metres, centimetres and millimetres. **Why:** the user asked for each of them while trying the
+  chain reaction. **Verification:** `cube-scene.test.ts` (bodies, points, the body a particle lies
+  in, four quarter turns, drag direction), `format.test.ts`; browser check of zoom, turns, chip,
+  inspector, order switch and the page height (546 000 → 35 000 px).
+- `[modification]` The Z cascade test (`meson-hadronization.test.ts`) and the Higgs to W W test
+  (`decay-exact.test.ts`) take an explicit 60 s timeout. **Why:** in the parallel run with the
+  new cube tests they passed the default 5 s; alone they take about a second. **Verification:**
+  `pnpm check`: 73 files, 735 tests.
+- `[modification]` The cube view moves on a drag and rotates on buttons (`space-view.tsx`,
+  `cube-scene.ts`). **What:** dragging pans the scene; per axis a ↺ and a ↻ button turn it by 10°,
+  eased over 220 ms by `requestAnimationFrame` (presses add up, reduced motion turns at once); the
+  turn buttons sit at the bottom of the canvas, the zoom bar at the top; the drag rotation
+  (`dragged`) is gone. **Why:** the user asked for a drag that moves the scene and for animated
+  10° turns by buttons. **Verification:** `cube-scene.test.ts` (thirty-six turns of 10° return to
+  the start); browser check with the pane in view: five distinct frames within 300 ms of a press.
+- `[modification]` A drag with ⌘ (or Ctrl) turns the cube (`dragged` in `cube-scene.ts`,
+  `space-view.tsx`): the near side follows the pointer; a plain drag still moves the scene.
+  **Why:** the user asked to turn the cube by dragging with Command held. **Verification:**
+  `cube-scene.test.ts` (the near side moves right on a drag right and down on a drag down);
+  browser check of a ⌘-drag.

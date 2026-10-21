@@ -11,6 +11,7 @@ import type {
   Particle,
   PotentialKind,
   ProbabilityCloud,
+  SpaceWalls,
   RandomSource,
   Vector3,
   WavepacketShape,
@@ -18,6 +19,8 @@ import type {
 import { EV_PER_GEV, gevToKilograms, vectorMagnitude } from '@standard-model/utils';
 import { fft3d } from './fft.js';
 import { LocalizedError, localizedText } from '@standard-model/contracts';
+import { WALL_LAWS } from './geometry.js';
+import { POTENTIAL_LAWS, mirrorWallEnergyInJoules } from './potentials.js';
 
 export interface ResolvedSpace {
   readonly gridPointsPerAxis: number;
@@ -30,6 +33,7 @@ export interface ResolvedSpace {
   readonly slitWidthInMeters?: number;
   readonly wellSeparationInMeters?: number;
   readonly boxSizeInMeters?: number;
+  readonly walls?: SpaceWalls;
 }
 
 export interface SpatialState {
@@ -53,8 +57,6 @@ const QUANTIZATION_LEVELS = 255;
 const HBAR = REDUCED_PLANCK_CONSTANT.value;
 const JOULES_PER_EV = ELEMENTARY_CHARGE.value;
 const COULOMB_CONSTANT = 1 / (4 * Math.PI * VACUUM_ELECTRIC_PERMITTIVITY.value);
-const WELL_CEILING_IN_BARRIERS = 8;
-const WELL_TRANSVERSE_STIFFNESS = 4;
 const SECOND_SHELL = 2;
 const THIRD_SHELL = 3;
 const THREE_D_ANGULAR_FACTOR = 3;
@@ -87,6 +89,7 @@ function spaceKey(space: ResolvedSpace): string {
     space.slitWidthInMeters ?? 0,
     space.wellSeparationInMeters ?? 0,
     space.boxSizeInMeters ?? 0,
+    space.walls ?? 'open',
   ]
     .map(String)
     .join('|');
@@ -94,6 +97,10 @@ function spaceKey(space: ResolvedSpace): string {
 
 function coordinate(index: number, space: ResolvedSpace): number {
   return (index - space.gridPointsPerAxis / 2 + 0.5) * space.cellSizeInMeters;
+}
+
+function absorbingWidth(space: ResolvedSpace): number {
+  return Math.max(2, Math.round(space.gridPointsPerAxis * ABSORBING_FRACTION));
 }
 
 function waveNumber(index: number, space: ResolvedSpace): number {
@@ -438,14 +445,14 @@ export class SpaceLab {
         }
       }
     }
-    const mask = this.absorbingMask(space);
+    const mask = WALL_LAWS[space.walls ?? 'open'].reflectsWaves ? null : this.absorbingMask(space);
     for (let step = 0; step < steps; step += 1) {
       rotate(real, imaginary, halfPotentialCosine, halfPotentialSine);
       fft3d(real, imaginary, size, false);
       rotate(real, imaginary, kineticCosine, kineticSine);
       fft3d(real, imaginary, size, true);
       rotate(real, imaginary, halfPotentialCosine, halfPotentialSine);
-      for (let index = 0; index < real.length; index += 1) {
+      for (let index = 0; mask !== null && index < real.length; index += 1) {
         const damping = mask[index] ?? 1;
         real[index] = (real[index] ?? 0) * damping;
         imaginary[index] = (imaginary[index] ?? 0) * damping;
@@ -675,12 +682,6 @@ export class SpaceLab {
   }
 
   private potential(space: ResolvedSpace, mass: number, charge: number): Float64Array {
-    const {
-      slitSeparationInMeters = 0,
-      slitWidthInMeters = 0,
-      wellSeparationInMeters = 0,
-      boxSizeInMeters = 0,
-    } = space;
     const key = `${spaceKey(space)}|${String(mass)}|${String(charge)}`;
     const cached = this.potentials.get(key);
     if (cached !== undefined) {
@@ -688,8 +689,13 @@ export class SpaceLab {
     }
     const size = space.gridPointsPerAxis;
     const values = new Float64Array(size * size * size);
-    const softening = space.cellSizeInMeters / 2;
-    const angularFrequency = (space.potentialEnergyInEv * JOULES_PER_EV) / HBAR;
+    const particle = { massInKilograms: mass, chargeInElementaryUnits: charge };
+    const law = POTENTIAL_LAWS[space.potential];
+    const wall = WALL_LAWS[space.walls ?? 'open'].reflectsWaves
+      ? mirrorWallEnergyInJoules(space, particle)
+      : 0;
+    const layer = absorbingWidth(space);
+    const inWall = (index: number): boolean => Math.min(index, size - 1 - index) < layer;
     for (let zIndex = 0; zIndex < size; zIndex += 1) {
       const z = coordinate(zIndex, space);
       for (let yIndex = 0; yIndex < size; yIndex += 1) {
@@ -697,37 +703,11 @@ export class SpaceLab {
         for (let xIndex = 0; xIndex < size; xIndex += 1) {
           const x = coordinate(xIndex, space);
           const index = xIndex + size * (yIndex + size * zIndex);
-          if (space.potential === 'harmonic') {
-            values[index] =
-              0.5 * mass * angularFrequency * angularFrequency * (x * x + y * y + z * z);
-          } else if (space.potential === 'barrier') {
-            values[index] =
-              Math.abs(x) <= space.barrierThicknessInMeters / 2
-                ? space.potentialEnergyInEv * JOULES_PER_EV
-                : 0;
-          } else if (space.potential === 'coulomb') {
-            values[index] =
-              (COULOMB_CONSTANT * space.nuclearCharge * charge * JOULES_PER_EV * JOULES_PER_EV) /
-              Math.sqrt(x * x + y * y + z * z + softening * softening);
-          } else if (space.potential === 'doubleSlit') {
-            const inWall = Math.abs(x) <= space.barrierThicknessInMeters / 2;
-            const inSlit =
-              Math.abs(Math.abs(y) - slitSeparationInMeters / 2) <= slitWidthInMeters / 2;
-            values[index] = inWall && !inSlit ? space.potentialEnergyInEv * JOULES_PER_EV : 0;
-          } else if (space.potential === 'doubleWell') {
-            const halfSeparation = wellSeparationInMeters / 2;
-            const along = (x / halfSeparation) ** 2 - 1;
-            const across = (WELL_TRANSVERSE_STIFFNESS * (y * y + z * z)) / halfSeparation ** 2;
-            values[index] =
-              Math.min(along * along + across, WELL_CEILING_IN_BARRIERS) *
-              space.potentialEnergyInEv *
-              JOULES_PER_EV;
-          } else if (space.potential === 'box') {
-            values[index] =
-              Math.max(Math.abs(x), Math.abs(y), Math.abs(z)) > boxSizeInMeters / 2
-                ? space.potentialEnergyInEv * JOULES_PER_EV
-                : 0;
-          }
+          const value = law(x, y, z, space, particle);
+          values[index] =
+            wall > 0 && (inWall(xIndex) || inWall(yIndex) || inWall(zIndex))
+              ? Math.max(value, wall)
+              : value;
         }
       }
     }
@@ -742,7 +722,7 @@ export class SpaceLab {
       return cached;
     }
     const size = space.gridPointsPerAxis;
-    const width = Math.max(2, Math.round(size * ABSORBING_FRACTION));
+    const width = absorbingWidth(space);
     const edge = (index: number): number => {
       const distance = Math.min(index, size - 1 - index);
       return distance >= width

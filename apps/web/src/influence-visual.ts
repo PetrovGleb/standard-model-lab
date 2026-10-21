@@ -1,7 +1,7 @@
 /* Influence visuals for the system stage: which picture an influence step gets (a photon beam by spectral band, a field, a heat bath, a gas, a kick), its icon and a short caption,
    and the same tone, icon and caption for an environment aspect read back from a frame. */
 import type { InfluenceStep, NumberOrParameter } from '@standard-model/contracts';
-import { formatNumber } from './format';
+import { formatLength, formatNumber } from './format';
 import { say } from './language';
 import { influenceParameters, isInfluenceScalar } from './plan-edits';
 
@@ -115,6 +115,13 @@ function mediumText(step: InfluenceStep, symbolOf: SymbolOf): string {
     ...(pressure === undefined ? [] : [`P = ${text(pressure, say(' Па', ' Pa'))}`]),
     ...(radiation === undefined ? [] : [`T_γ = ${text(radiation, say(' К', ' K'))}`]),
   ].join(' · ');
+}
+
+function bodyText(shape: string, size: NumberOrParameter | string | boolean | undefined): string {
+  const length = typeof size === 'number' ? formatLength(size) : text(size);
+  return shape === 'box'
+    ? say(`тело: куб ${length}`, `body: box ${length}`)
+    : say(`тело: шар ⌀${length}`, `body: ball ⌀${length}`);
 }
 
 function text(entry: NumberOrParameter | string | boolean | undefined, unit = ''): string {
@@ -236,6 +243,14 @@ export function influenceVisual(
         caption: `${say('среда', 'medium')}: ${mediumText(step, symbolOf)}`,
         waveLength: 0,
       };
+    case 'placeBody':
+      return {
+        kind: 'gas',
+        tone: 'gas',
+        icon: 'medium-gas',
+        caption: `${bodyText(String(value(step, 'shape') ?? 'ball'), value(step, 'sizeInMeters'))}: ${mediumText(step, symbolOf)}`,
+        waveLength: 0,
+      };
     case 'boost':
       return plain('boost', `${say('буст', 'boost')} ${vectorText(step, 'Fraction')}c`);
     case 'rotateSpin':
@@ -299,6 +314,7 @@ function vectorMagnitude(vector: unknown): number {
 
 const ASPECT_TITLES: Readonly<Record<string, readonly [string, string]>> = {
   medium: ['среда', 'medium'],
+  bodies: ['тела', 'bodies'],
   temperature: ['температура', 'temperature'],
   magneticField: ['поле B', 'field B'],
   electricField: ['поле E', 'field E'],
@@ -352,6 +368,26 @@ export function environmentVisual(
         icon: 'medium-gas',
         caption: `${say('среда', 'medium')}: ${names.join(', ') || '—'} · ${temperature}${pressure}`,
         detail: `${say('среда', 'medium')}: ${parts.join(' + ') || '—'} · ${temperature}${pressure}${radiation}`,
+      };
+    }
+    case 'bodies': {
+      const bodies = (value as { bodies?: readonly MediumValue[] }).bodies ?? [];
+      const parts = bodies.map((body) => {
+        const geometry = (body as { geometry?: { shape?: string; sizeInMeters?: number } })
+          .geometry;
+        const names = (body.components ?? []).map((component) =>
+          symbolOf(component.species ?? '—'),
+        );
+        return `${bodyText(geometry?.shape ?? 'ball', geometry?.sizeInMeters)} ${names.join(', ')} · ${text(body.temperatureInKelvin, say(' К', ' K'))}`;
+      });
+      return {
+        tone: 'gas',
+        icon: 'medium-gas',
+        caption: say(
+          `тела в кубе: ${String(bodies.length)}`,
+          `bodies in the cube: ${String(bodies.length)}`,
+        ),
+        detail: parts.join('; ') || '—',
       };
     }
     case 'temperature':

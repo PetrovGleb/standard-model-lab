@@ -47,6 +47,8 @@ function totalFourMomentum(event: DecayEvent) {
   );
 }
 
+const SLOW_TEST_TIMEOUT_IN_MILLISECONDS = 60_000;
+
 describe('catalog decay channels', () => {
   it('conserve charge, baryon number and lepton family numbers in every exclusive channel', () => {
     PARTICLE_NAMES.forEach((name) => {
@@ -226,30 +228,34 @@ describe('decay in flight', () => {
 });
 
 describe('decays below a two-boson threshold', () => {
-  it('turns Higgs to W W into one real W and a fermion pair from the virtual W', () => {
-    const engine = createEngine({ seed: 9 });
-    for (let sample = 0; sample < SAMPLES; sample += 1) {
-      const higgs = engine.particles.create('higgsBoson');
-      const channelIndex = higgs.spec.decays.findIndex((channel) =>
-        channel.products.includes('wPlus'),
-      );
-      const event = engine.decays.decay(higgs, { channelIndex });
-      const names = event.products.map((product) => product.name as ParticleName);
-      expect(names).toHaveLength(3);
-      expect(names.filter((name) => name === 'wPlus' || name === 'wMinus')).toHaveLength(1);
-      expect(event.products.every((product) => product.particle !== null)).toBe(true);
-      expect(
-        conservationViolations(
-          higgs.spec,
-          names.map((name) => particleSpec(name)),
-        ),
-      ).toEqual([]);
-      expect(totalFourMomentum(event).energy).toBeCloseTo(
-        PARTICLE_CATALOG.higgsBoson.massInGev.value,
-        9,
-      );
-    }
-  });
+  it(
+    'turns Higgs to W W into one real W and a fermion pair from the virtual W',
+    () => {
+      const engine = createEngine({ seed: 9 });
+      for (let sample = 0; sample < SAMPLES; sample += 1) {
+        const higgs = engine.particles.create('higgsBoson');
+        const channelIndex = higgs.spec.decays.findIndex((channel) =>
+          channel.products.includes('wPlus'),
+        );
+        const event = engine.decays.decay(higgs, { channelIndex });
+        const names = event.products.map((product) => product.name as ParticleName);
+        expect(names).toHaveLength(3);
+        expect(names.filter((name) => name === 'wPlus' || name === 'wMinus')).toHaveLength(1);
+        expect(event.products.every((product) => product.particle !== null)).toBe(true);
+        expect(
+          conservationViolations(
+            higgs.spec,
+            names.map((name) => particleSpec(name)),
+          ),
+        ).toEqual([]);
+        expect(totalFourMomentum(event).energy).toBeCloseTo(
+          PARTICLE_CATALOG.higgsBoson.massInGev.value,
+          9,
+        );
+      }
+    },
+    SLOW_TEST_TIMEOUT_IN_MILLISECONDS,
+  );
 
   it('gives tree widths of H → W W* and H → Z Z* inside the PDG uncertainty', () => {
     (

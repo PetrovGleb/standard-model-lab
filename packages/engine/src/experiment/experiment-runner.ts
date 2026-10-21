@@ -50,6 +50,15 @@ import { labelBaseOf, matterStepName, type MatterStep } from './matter-steps.js'
 import { objectReadings } from './object-measurements.js';
 import type { ResolvedSpace, SpatialState } from '../space/space-lab.js';
 import {
+  WALL_LAWS,
+  geometryOf,
+  innermostBody,
+  withBodyMedium,
+  worldOf,
+  type CubeWalls,
+  type World,
+} from '../space/geometry.js';
+import {
   EV_PER_GEV,
   addVectors,
   scaleVector,
@@ -71,6 +80,12 @@ const JET_TOKEN = 'jet';
 const KEV_PER_GEV = 1e6;
 const MEDIUM_REACTIONS_PER_STEP_LIMIT = 1000;
 const SHARED_MEDIUM = -1;
+const FIRST_BODY_KEY = -2;
+const METERS_PER_FEMTOMETER = 1e-15;
+
+function metersOf(particle: Particle): Vector3 {
+  return scaleVector(particle.kinematics.positionInFemtometers, METERS_PER_FEMTOMETER);
+}
 
 interface AnnihilationPair {
   readonly electron: string;
@@ -136,8 +151,26 @@ export class ShotContext {
     });
   }
 
-  environmentFor(particle: Particle): Environment {
+  baseEnvironmentFor(particle: Particle): Environment {
     return this.overlaid(particle.id, this.environment);
+  }
+
+  environmentFor(particle: Particle): Environment {
+    return withBodyMedium(this.baseEnvironmentFor(particle), metersOf(particle));
+  }
+
+  walls(): CubeWalls | null {
+    const space = this.space;
+    return space === null
+      ? null
+      : {
+          law: WALL_LAWS[space.walls ?? 'open'],
+          halfEdgeInMeters: HALF * space.gridPointsPerAxis * space.cellSizeInMeters,
+        };
+  }
+
+  worldFor(particle: Particle): World {
+    return worldOf(this.baseEnvironmentFor(particle), this.walls());
   }
 
   reshapeRegions(shared: Environment, transform: (environment: Environment) => Environment): void {
@@ -168,6 +201,16 @@ export class ShotContext {
   }
 
   heatMedium(particle: Particle, energyInJoules: number): void {
+    const bodies = this.environment.get('bodies')?.bodies ?? [];
+    const body = innermostBody(bodies, metersOf(particle));
+    const ownBodies = this.regions.some(
+      (region) => region.aspect === 'bodies' && region.members.has(particle.id),
+    );
+    if (body !== undefined && !ownBodies) {
+      const key = FIRST_BODY_KEY - bodies.indexOf(body);
+      this.pendingHeat.set(key, (this.pendingHeat.get(key) ?? 0) + energyInJoules);
+      return;
+    }
     const regionIndex = this.regions.reduce(
       (found, region, index) =>
         region.aspect === 'medium' && region.members.has(particle.id) ? index : found,
@@ -179,6 +222,15 @@ export class ShotContext {
 
   applyHeat(): void {
     this.pendingHeat.forEach((energyInJoules, key) => {
+      if (key <= FIRST_BODY_KEY) {
+        const bodies = this.environment.get('bodies')?.bodies ?? [];
+        this.environment = this.environment.with('bodies', {
+          bodies: bodies.map((body, index) =>
+            FIRST_BODY_KEY - index === key ? heatedMedium(body, energyInJoules) : body,
+          ),
+        });
+        return;
+      }
       if (key === SHARED_MEDIUM) {
         const medium = this.environment.get('medium');
         if (medium !== undefined) {
@@ -443,6 +495,7 @@ export class ExperimentRunner {
         this.evolveMolecules(context, step.targets, step.durationInSeconds);
         this.confine(context, step.durationInSeconds, starts);
         this.absorbInMedia(context, starts, step.durationInSeconds);
+        this.reflectOffWalls(context);
         break;
       }
       case 'measure': {
@@ -624,7 +677,7 @@ export class ExperimentRunner {
       .filter((particle) => particle.status === 'alive' && particle.spec.family !== 'neutrino')
       .forEach((particle) => {
         const medium = context.environmentFor(particle).get('medium');
-        if (medium?.thicknessInMeters === undefined) {
+        if (medium === undefined || geometryOf(medium) === null) {
           return;
         }
         const momentum = particle.kinematics.fourMomentumInGev;
@@ -822,21 +875,18 @@ export class ExperimentRunner {
     [...context.particles.values()]
       .filter((particle) => particle.status === 'alive' && particle.spec.name === 'neutron')
       .forEach((neutron) => {
-        const medium = context.environmentFor(neutron).get('medium');
+        const world = context.worldFor(neutron);
         const moved = neutron.kinematics.positionInFemtometers;
         const start = starts.get(neutron.id) ?? moved;
-        if (medium === undefined) {
-          return;
-        }
         neutron.setPosition(start);
-        if (!this.engine.neutronTransport.applies(neutron, medium)) {
+        if (!this.engine.neutronTransport.applies(neutron, world)) {
           neutron.setPosition(moved);
           return;
         }
         handled.add(neutron.id);
         const outcome = this.engine.neutronTransport.transport(
           neutron,
-          medium,
+          world,
           durationInSeconds,
           start,
         );
@@ -854,6 +904,24 @@ export class ExperimentRunner {
         });
       });
     return handled;
+  }
+
+  private reflectOffWalls(context: ShotContext): void {
+    const walls = context.walls();
+    if (walls === null) {
+      return;
+    }
+    [...context.particles.entries()]
+      .filter(([label, particle]) => particle.status === 'alive' && !context.spatial.has(label))
+      .forEach(([, particle]) => {
+        const folded = walls.law.fold(
+          metersOf(particle),
+          particle.kinematics.fourMomentumInGev.momentum,
+          walls.halfEdgeInMeters,
+        );
+        particle.setPosition(scaleVector(folded.positionInMeters, FEMTOMETERS_PER_METER));
+        particle.setMomentum(folded.momentum);
+      });
   }
 
   private confine(
@@ -993,6 +1061,11 @@ export class ExperimentRunner {
         sharedMedium.absorbedEnergyInJoules ?? 0,
       );
     }
+    (context.environment.get('bodies')?.bodies ?? []).forEach((body, index) => {
+      const name = `${record}.body${String(index + 1)}`;
+      context.numeric.set(`${name}.temperatureInKelvin`, body.temperatureInKelvin);
+      context.numeric.set(`${name}.absorbedEnergyInJoules`, body.absorbedEnergyInJoules ?? 0);
+    });
     context.categorical.set(
       `${record}.phase`,
       heaviest === null ? 'empty' : (heaviestVerdict?.phase ?? VACUUM_PHASE),

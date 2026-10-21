@@ -2,12 +2,15 @@
 import { particleSpec } from '@standard-model/constants';
 import { idealGasPressureInPascals } from '../environment/aggregate-state.js';
 import {
+  BODY_SHAPES,
   MEDIUM_REACTION_MODES,
   PARTICLE_NAMES,
+  type BodyShape,
   type Influence,
   type InfluenceDefinition,
   type InfluenceParameters,
   type InfluenceParameterSpec,
+  type MediumAspect,
   type MediumComponent,
   type MediumReactionMode,
   type ParticleName,
@@ -19,6 +22,7 @@ import {
   ApplyElectricField,
   ApplyMagneticField,
   RemoveMagneticField,
+  PlaceBody,
   SetCoherenceTimes,
   SetMedium,
 } from './field-influences.js';
@@ -180,6 +184,87 @@ function vectorSpecs(suffix: string): readonly InfluenceParameterSpec[] {
   return [optional(`x${suffix}`, 0), optional(`y${suffix}`, 0), optional(`z${suffix}`, 0)];
 }
 
+const MEDIUM_PARAMETERS: readonly InfluenceParameterSpec[] = [
+  {
+    name: 'components',
+    kind: 'list',
+    required: true,
+    fields: [
+      { name: 'species', kind: 'particleName', required: true },
+      required('numberDensityPerCubicMeter'),
+      optional('crossSectionInSquareMeters', 0),
+      {
+        name: 'densityLaw',
+        kind: 'choice',
+        required: false,
+        defaultValue: 'given',
+        choices: DENSITY_LAWS,
+      },
+    ],
+  },
+  required('temperatureInKelvin'),
+  optionalWithoutDefault('pressureInPascals'),
+  optionalWithoutDefault('radiationTemperatureInKelvin'),
+  optionalWithoutDefault('thicknessInMeters'),
+  {
+    name: 'reactionMode',
+    kind: 'choice',
+    required: false,
+    defaultValue: 'oneReactionPerStep',
+    choices: MEDIUM_REACTION_MODES,
+  },
+  ...vectorSpecs('VelocityInMetersPerSecond'),
+];
+
+function mediumFrom(parameters: InfluenceParameters): MediumAspect {
+  const components = mediumComponents(parameters, () =>
+    requireNumber(parameters, 'temperatureInKelvin'),
+  );
+  const temperatureInKelvin = requireNumber(parameters, 'temperatureInKelvin');
+  const radiation = optionalNumber(parameters, 'radiationTemperatureInKelvin', Number.NaN);
+  const thickness = optionalNumber(parameters, 'thicknessInMeters', Number.NaN);
+  return {
+    components,
+    temperatureInKelvin,
+    bulkVelocityInMetersPerSecond: vectorFrom(parameters, 'VelocityInMetersPerSecond'),
+    reactionMode: requireReactionMode(parameters),
+    pressureInPascals: optionalNumber(
+      parameters,
+      'pressureInPascals',
+      idealGasPressureInPascals(components, temperatureInKelvin),
+    ),
+    ...(Number.isNaN(radiation) ? {} : { radiationTemperatureInKelvin: radiation }),
+    ...(Number.isNaN(thickness) ? {} : { thicknessInMeters: thickness }),
+  };
+}
+
+function requireBodyShape(parameters: InfluenceParameters): BodyShape {
+  const value = parameters.shape ?? 'ball';
+  const match = BODY_SHAPES.find((shape) => shape === value);
+  if (match === undefined) {
+    throw new LocalizedError(
+      localizedText(
+        `параметр воздействия shape должен быть ${BODY_SHAPES.join(' или ')}`,
+        `Influence parameter shape must be ${BODY_SHAPES.join(' or ')}`,
+      ),
+    );
+  }
+  return match;
+}
+
+function requirePositive(parameters: InfluenceParameters, name: string): number {
+  const value = requireNumber(parameters, name);
+  if (!(value > 0)) {
+    throw new LocalizedError(
+      localizedText(
+        `параметр воздействия ${name} должен быть больше нуля`,
+        `Influence parameter ${name} must be greater than zero`,
+      ),
+    );
+  }
+  return value;
+}
+
 export class InfluenceRegistry {
   private readonly factories = new Map<string, InfluenceFactory>();
   private readonly definitionsByName = new Map<string, InfluenceDefinition>();
@@ -297,59 +382,37 @@ export function createDefaultInfluenceRegistry(): InfluenceRegistry {
         name: 'setMedium',
         description:
           'Fill space with a statistical medium of one or more particle species sharing one temperature and flow',
+        parameters: MEDIUM_PARAMETERS,
+      },
+      (parameters) => new SetMedium(mediumFrom(parameters)),
+    )
+    .register(
+      {
+        name: 'placeBody',
+        description:
+          'Place a body of a medium in space: a ball of a diameter or a box of an edge around a centre; a point sees the medium of the smallest body that holds it',
         parameters: [
           {
-            name: 'components',
-            kind: 'list',
-            required: true,
-            fields: [
-              { name: 'species', kind: 'particleName', required: true },
-              required('numberDensityPerCubicMeter'),
-              optional('crossSectionInSquareMeters', 0),
-              {
-                name: 'densityLaw',
-                kind: 'choice',
-                required: false,
-                defaultValue: 'given',
-                choices: DENSITY_LAWS,
-              },
-            ],
-          },
-          required('temperatureInKelvin'),
-          optionalWithoutDefault('pressureInPascals'),
-          optionalWithoutDefault('radiationTemperatureInKelvin'),
-          optionalWithoutDefault('thicknessInMeters'),
-          {
-            name: 'reactionMode',
+            name: 'shape',
             kind: 'choice',
             required: false,
-            defaultValue: 'oneReactionPerStep',
-            choices: MEDIUM_REACTION_MODES,
+            defaultValue: 'ball',
+            choices: BODY_SHAPES,
           },
-          ...vectorSpecs('VelocityInMetersPerSecond'),
+          required('sizeInMeters'),
+          ...vectorSpecs('CenterInMeters'),
+          ...MEDIUM_PARAMETERS.filter((spec) => spec.name !== 'thicknessInMeters'),
         ],
       },
-      (parameters) => {
-        const components = mediumComponents(parameters, () =>
-          requireNumber(parameters, 'temperatureInKelvin'),
-        );
-        const temperatureInKelvin = requireNumber(parameters, 'temperatureInKelvin');
-        const radiation = optionalNumber(parameters, 'radiationTemperatureInKelvin', Number.NaN);
-        const thickness = optionalNumber(parameters, 'thicknessInMeters', Number.NaN);
-        return new SetMedium({
-          components,
-          temperatureInKelvin,
-          bulkVelocityInMetersPerSecond: vectorFrom(parameters, 'VelocityInMetersPerSecond'),
-          reactionMode: requireReactionMode(parameters),
-          pressureInPascals: optionalNumber(
-            parameters,
-            'pressureInPascals',
-            idealGasPressureInPascals(components, temperatureInKelvin),
-          ),
-          ...(Number.isNaN(radiation) ? {} : { radiationTemperatureInKelvin: radiation }),
-          ...(Number.isNaN(thickness) ? {} : { thicknessInMeters: thickness }),
-        });
-      },
+      (parameters) =>
+        new PlaceBody({
+          ...mediumFrom(parameters),
+          geometry: {
+            shape: requireBodyShape(parameters),
+            centerInMeters: vectorFrom(parameters, 'CenterInMeters'),
+            sizeInMeters: requirePositive(parameters, 'sizeInMeters'),
+          },
+        }),
     )
     .register(
       {

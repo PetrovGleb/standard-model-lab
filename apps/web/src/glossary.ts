@@ -160,6 +160,10 @@ export const INFLUENCE_GLOSSARY = bilingual<string>({
     'Лазерное доплеровское охлаждение атома или иона на его линии из NIST',
     'Laser Doppler cooling of an atom or ion on its NIST line',
   ],
+  placeBody: [
+    'Поместить в куб тело со средой: шар или куб заданного размера вокруг центра; точка видит среду самого маленького тела, в котором лежит',
+    'Place a body of a medium in the cube: a ball or a box of a given size around a centre; a point sees the medium of the smallest body that holds it',
+  ],
   electrolyze: [
     'Электролиз: электроды под напряжением, ток и время по закону Фарадея; молекула распадается на элементы выше своего напряжения разложения',
     'Electrolysis: electrodes at a voltage, current and time by Faraday law; a molecule splits into its elements above its decomposition voltage',
@@ -232,6 +236,30 @@ export const PARAMETER_GLOSSARY = bilingual<string>({
   voltageInVolts: ['Напряжение, В', 'Voltage, V'],
   currentInAmperes: ['Ток, А', 'Current, A'],
   densityLaw: ['Плотность компонента', 'Component density'],
+  shape: ['Форма тела', 'Body shape'],
+  sizeInMeters: [
+    'Размер тела, м: диаметр шара или ребро куба',
+    'Body size, m: ball diameter or box edge',
+  ],
+  xCenterInMeters: ['Центр тела x, м', 'Body centre x, m'],
+  yCenterInMeters: ['Центр тела y, м', 'Body centre y, m'],
+  zCenterInMeters: ['Центр тела z, м', 'Body centre z, m'],
+});
+
+export const BODY_SHAPE_LABELS = bilingual<'ball' | 'box'>({
+  ball: ['шар', 'ball'],
+  box: ['куб', 'box'],
+});
+
+export const SPACE_WALL_LABELS = bilingual<'open' | 'reflecting'>({
+  open: [
+    'открытые: частицы улетают, волна гаснет у края',
+    'open: particles fly out, a wave fades at the edge',
+  ],
+  reflecting: [
+    'зеркальные из сверхвещества: частицы и волны отражаются без потерь',
+    'mirrors of a super-material: particles and waves bounce back without loss',
+  ],
 });
 
 export const DENSITY_LAW_LABELS = bilingual<'given' | 'thermalEquilibrium'>({
@@ -262,6 +290,7 @@ export const VECTOR_GROUP_TITLES = bilingual<string>({
   InTesla: ['Магнитное поле, Тл', 'Magnetic field, T'],
   InVoltsPerMeter: ['Электрическое поле, В/м', 'Electric field, V/m'],
   VelocityInMetersPerSecond: ['Поток среды, м/с', 'Medium flow, m/s'],
+  CenterInMeters: ['Центр тела, м', 'Body centre, m'],
   Fraction: ['Скорость, доли c', 'Velocity, fractions of c'],
 });
 
@@ -294,7 +323,11 @@ function group(russian: string, english: string, names: readonly string[]): Name
 export const INFLUENCE_CATEGORIES: readonly NamedGroup[] = [
   group('Температура', 'Temperature', ['setTemperature', 'cool', 'heat']),
   group('Поля', 'Fields', ['applyMagneticField', 'removeMagneticField', 'applyElectricField']),
-  group('Среда и когерентность', 'Medium and coherence', ['setMedium', 'setCoherenceTimes']),
+  group('Среда и когерентность', 'Medium and coherence', [
+    'setMedium',
+    'placeBody',
+    'setCoherenceTimes',
+  ]),
   group('Движение и время', 'Motion and time', ['boost', 'travel', 'evolve']),
   group('Спин', 'Spin', ['rotateSpin', 'thermalize', 'randomize']),
   group('Излучение и лазеры', 'Radiation and lasers', ['irradiate', 'laserCool']),

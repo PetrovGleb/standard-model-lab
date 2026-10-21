@@ -1,5 +1,6 @@
-/* Templates of nuclear fission chains: neutrons in a ball of uranium-235 metal multiply generation after generation once the ball is larger than its critical size, and the same neutrons in
-   natural uranium die out; every collision, fission and escape comes from the ENDF/B-VIII.0 data and the size of the medium, nothing in the templates says when a chain grows. */
+/* Templates of nuclear fission chains: neutrons in a ball of uranium-235 metal multiply generation after generation once the ball is larger than its critical size, the same neutrons in natural
+   uranium die out, and in the cube a subcritical core inside a uranium-238 tamper behind mirror walls runs away; every collision, fission, crossing and escape comes from the ENDF/B-VIII.0 data and
+   the geometry, nothing in the templates says when a chain grows. */
 import { elementRecord } from '@standard-model/constants';
 import { experiment, type ExperimentBuilder } from '../experiment/experiment-builder.js';
 
@@ -15,6 +16,14 @@ const GENERATION_IN_SECONDS = 1e-8;
 const GENERATIONS = 8;
 const FISSION_SHOTS = 200;
 const NANOSECONDS_PER_SECOND = 1e9;
+const CUBE_CELLS = 32;
+const CUBE_CELL_IN_METERS = 0.01;
+const CUBE_CORE_DIAMETER_IN_METERS = 0.13;
+const TAMPER_EDGE_IN_METERS = 0.2;
+const CUBE_FRAME_IN_SECONDS = 1e-8;
+const CUBE_FRAMES = 16;
+const CUBE_REPORT_EVERY = 4;
+const CUBE_SHOTS = 100;
 
 const naturalAbundance =
   elementRecord(URANIUM)?.isotopes.find((isotope) => isotope.massNumber === FISSILE_MASS_NUMBER)
@@ -112,4 +121,80 @@ export const NATURAL_URANIUM_TEMPLATE = generations(
   )
   .build();
 
-export const FISSION_TEMPLATES = [URANIUM_CHAIN_REACTION_TEMPLATE, NATURAL_URANIUM_TEMPLATE];
+function cubeFrames(builder: ExperimentBuilder): ExperimentBuilder {
+  return Array.from({ length: CUBE_FRAMES }, (unused, index) => index + 1).reduce(
+    (chain, frame) => {
+      const measured = chain.evolve(CUBE_FRAME_IN_SECONDS).measureSystem(`frame${String(frame)}`);
+      return frame % CUBE_REPORT_EVERY === 0
+        ? measured.report(
+            'mean',
+            [`frame${String(frame)}.count.neutron`],
+            `Нейтронов через ${String(Math.round(frame * CUBE_FRAME_IN_SECONDS * NANOSECONDS_PER_SECOND))} нс`,
+          )
+        : measured;
+    },
+    builder,
+  );
+}
+
+export const CHAIN_REACTION_IN_CUBE_TEMPLATE = cubeFrames(
+  seeded(
+    experiment('chainReactionInCube')
+      .describe(
+        'Цепная реакция в кубе с ребром 32 см, стенки которого — зеркало из сверхвещества: любая частица отражается от них без потерь. В кубе два тела с разными средами: куб урана-238 с ребром 20 см, а в его центре шар урана-235 диаметром 13 см. Точка видит среду самого маленького тела, в котором лежит, поэтому в шаре — уран-235, а вокруг — оболочка из урана-238. Сам шар меньше критического размера (около 17 см): без оболочки и с открытыми стенками цепь из четырех нейтронов по 2 МэВ почти гаснет. Оболочка-тампер возвращает нейтроны рассеянием на тяжелых ядрах и сама делится быстрыми нейтронами, а нейтрон, пролетевший все, отражается от стенки и снова влетает в уран. В плеере видно, как нейтроны (синие) разлетаются, отскакивают от стенок, делят ядра, и на месте деления вспыхивают осколки (оранжевые). Каждое столкновение, деление и пересечение границы тела — из данных ENDF/B-VIII.0 и геометрии. Сделайте стенки открытыми в карточке куба, обнулите плотность оболочки или увеличьте шар до 17 см и сравните, сколько нейтронов через 160 нс',
+      )
+      .categorize('space', 'nuclear')
+      .shots(CUBE_SHOTS)
+      .parameter('coreDiameterInMeters', CUBE_CORE_DIAMETER_IN_METERS)
+      .parameter('tamperEdgeInMeters', TAMPER_EDGE_IN_METERS)
+      .parameter('tamperDensityPerCubicMeter', URANIUM_METAL_ATOMS_PER_CUBIC_METER)
+      .space({
+        gridPointsPerAxis: CUBE_CELLS,
+        cellSizeInMeters: CUBE_CELL_IN_METERS,
+        potential: 'free',
+        walls: 'reflecting',
+      })
+      .influence('placeBody', {
+        shape: 'box',
+        sizeInMeters: '{{tamperEdgeInMeters}}',
+        components: [
+          {
+            species: `atom:${String(URANIUM)}:${String(FERTILE_MASS_NUMBER)}:0`,
+            numberDensityPerCubicMeter: '{{tamperDensityPerCubicMeter}}',
+          },
+        ],
+        temperatureInKelvin: ROOM_TEMPERATURE_IN_KELVIN,
+        pressureInPascals: STANDARD_ATMOSPHERE_IN_PASCALS,
+      })
+      .influence('placeBody', {
+        shape: 'ball',
+        sizeInMeters: '{{coreDiameterInMeters}}',
+        components: [
+          {
+            species: `atom:${String(URANIUM)}:${String(FISSILE_MASS_NUMBER)}:0`,
+            numberDensityPerCubicMeter: URANIUM_METAL_ATOMS_PER_CUBIC_METER,
+          },
+        ],
+        temperatureInKelvin: ROOM_TEMPERATURE_IN_KELVIN,
+        pressureInPascals: STANDARD_ATMOSPHERE_IN_PASCALS,
+      }),
+  ),
+)
+  .report('mean', [`frame${String(CUBE_FRAMES)}.particleCount`], 'Частиц в конце')
+  .report(
+    'mean',
+    [`frame${String(CUBE_FRAMES)}.body2.absorbedEnergyInJoules`],
+    'Выделилось в уране-235, Дж',
+  )
+  .report(
+    'mean',
+    [`frame${String(CUBE_FRAMES)}.body1.absorbedEnergyInJoules`],
+    'Выделилось в оболочке, Дж',
+  )
+  .build();
+
+export const FISSION_TEMPLATES = [
+  URANIUM_CHAIN_REACTION_TEMPLATE,
+  NATURAL_URANIUM_TEMPLATE,
+  CHAIN_REACTION_IN_CUBE_TEMPLATE,
+];

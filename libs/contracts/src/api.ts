@@ -244,6 +244,7 @@ export interface CatalogResponse {
   readonly scaleReferences: readonly ScaleReference[];
   readonly gridSizes: readonly number[];
   readonly potentials: readonly string[];
+  readonly spaceWalls: readonly string[];
   readonly elements: readonly ElementEntry[];
   readonly environments: readonly EnvironmentPreset[];
   readonly environmentScales: EnvironmentScales;

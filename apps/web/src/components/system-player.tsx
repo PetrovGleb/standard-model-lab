@@ -21,6 +21,7 @@ import { EnvironmentLayer, legendExtent } from './environment-layer';
 import { InfluenceZone } from './influence-zone';
 import { environmentBadges } from '../environment-envelopes';
 import { SpaceView } from './space-view';
+import { bodyAt } from '../cube-scene';
 import { ParticleCard } from './particle-card';
 import { ConservedTiles, StepCard } from './step-card';
 import { EnvironmentSummary } from './environment-summary';
@@ -318,6 +319,16 @@ function stageTemperature(view: ParticleView): string | null {
   return kinetic === undefined || kinetic <= 0 ? null : `T ${temperatureText(kinetic)}`;
 }
 
+const CUBE_FIRST_KEY = 'standard-model.cube-first';
+
+function readCubeFirst(): boolean {
+  try {
+    return window.localStorage.getItem(CUBE_FIRST_KEY) === 'true';
+  } catch {
+    return false;
+  }
+}
+
 function conditionsOf(
   frame: SystemFrame,
   label: string,
@@ -325,7 +336,9 @@ function conditionsOf(
   const region = frame.regions?.find(
     (candidate) => candidate.aspect === 'medium' && candidate.members.includes(label),
   );
-  const medium = (region === undefined ? frame.environment.medium : region.value) as
+  const view = frame.particles.find((particle) => particle.label === label);
+  const body = view === undefined ? undefined : bodyAt(frame, view);
+  const medium = (body ?? (region === undefined ? frame.environment.medium : region.value)) as
     | { readonly temperatureInKelvin?: number; readonly pressureInPascals?: number }
     | null
     | undefined;
@@ -527,17 +540,76 @@ export function SystemPlayer({
   };
   const alive = frame.particles.filter((particle) => particle.status === 'alive');
   const previousFrame = frames[index - 1];
+  const [cubeFirst, setCubeFirst] = useState(readCubeFirst);
+  const chooseCubeFirst = (next: boolean): void => {
+    setCubeFirst(next);
+    try {
+      window.localStorage.setItem(CUBE_FIRST_KEY, String(next));
+    } catch {
+      return;
+    }
+  };
   const title =
     frame.step === null
       ? say('Начало: пустая система', 'Start: empty system')
       : `${OPERATION_TITLES[frame.step.operation] ?? frame.step.operation}: ${describeStep(frame.step)}`;
   const environmentChanged = environmentSignature(frame) !== environmentSignature(previousFrame);
+  const hasCube = frames.some((candidate) => candidate.space !== null);
+  const cubeView =
+    frame.space === null ? null : (
+      <SpaceView
+        space={frame.space}
+        frame={frame}
+        previous={previousFrame}
+        symbolOf={symbolOf}
+        renderCard={(view) => (
+          <ParticleCard
+            view={view}
+            open
+            conditions={conditionsOf(frame, view.label)}
+            previous={previousFrame?.particles.find((particle) => particle.id === view.id)}
+          />
+        )}
+      />
+    );
 
   return (
     <section className="card system-player">
       <div className="section-head">
         <h3 data-tooltip={localize(report.note)}>{say('Состояние системы', 'System state')}</h3>
         <span className="section-actions">
+          {hasCube && (
+            <span
+              className="segmented order-switch"
+              role="group"
+              aria-label={say('Что показывать сначала', 'What to show first')}
+            >
+              <button
+                type="button"
+                className={cubeFirst ? '' : 'active'}
+                aria-pressed={!cubeFirst}
+                data-tooltip={say(
+                  'Сначала сцена системы, под ней куб',
+                  'The system stage first, the cube below it',
+                )}
+                onClick={() => chooseCubeFirst(false)}
+              >
+                {say('сцена → куб', 'stage → cube')}
+              </button>
+              <button
+                type="button"
+                className={cubeFirst ? 'active' : ''}
+                aria-pressed={cubeFirst}
+                data-tooltip={say(
+                  'Сначала куб, под ним сцена системы',
+                  'The cube first, the system stage below it',
+                )}
+                onClick={() => chooseCubeFirst(true)}
+              >
+                {say('куб → сцена', 'cube → stage')}
+              </button>
+            </span>
+          )}
           <span className="kicker" data-tooltip={HINTS.shotKicker}>
             {say('выстрел', 'shot')} · seed {report.seed}
           </span>
@@ -654,6 +726,7 @@ export function SystemPlayer({
           {index} / {frames.length - 1}
         </span>
       </div>
+      {cubeFirst && cubeView}
       <div className="player-body">
         <div className="stage-frame">
           <ZoomToolbar
@@ -779,7 +852,7 @@ export function SystemPlayer({
           </div>
         </aside>
       </div>
-      {frame.space !== null && <SpaceView space={frame.space} />}
+      {!cubeFirst && cubeView}
     </section>
   );
 }

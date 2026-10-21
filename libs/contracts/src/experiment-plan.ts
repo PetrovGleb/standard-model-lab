@@ -176,6 +176,9 @@ export const POTENTIAL_KINDS = [
 ] as const;
 export type PotentialKind = (typeof POTENTIAL_KINDS)[number];
 
+export const SPACE_WALLS = ['open', 'reflecting'] as const;
+export type SpaceWalls = (typeof SPACE_WALLS)[number];
+
 export interface SpaceSpec {
   readonly gridPointsPerAxis: number;
   readonly cellSizeInMeters: NumberOrParameter;
@@ -187,6 +190,7 @@ export interface SpaceSpec {
   readonly slitWidthInMeters?: NumberOrParameter;
   readonly wellSeparationInMeters?: NumberOrParameter;
   readonly boxSizeInMeters?: NumberOrParameter;
+  readonly walls?: SpaceWalls;
 }
 
 export interface CombineStep {

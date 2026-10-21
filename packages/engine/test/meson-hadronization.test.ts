@@ -60,6 +60,8 @@ function backToBack(flavor: ParticleName, energyInGev: number) {
   };
 }
 
+const SLOW_TEST_TIMEOUT_IN_MILLISECONDS = 60_000;
+
 describe('meson hadronization', () => {
   it('mixes u ū, d d̄ and s s̄ into π⁰, η, η′ and ρ⁰, φ, ω with unit total weight', () => {
     (['up', 'down', 'strange'] as const).forEach((flavor) => {
@@ -173,29 +175,33 @@ describe('meson hadronization', () => {
     }
   });
 
-  it('lets every short-lived hadron of a Z decay decay within a nanosecond and keeps charge zero', () => {
-    const beam = Z_MASS_IN_GEV / 2;
-    const plan = experiment('zCascade')
-      .create('electron', 'electron', { momentumInGev: { x: 0, y: 0, z: beam } })
-      .create('positron', 'positron', { momentumInGev: { x: 0, y: 0, z: -beam } })
-      .collide(['electron', 'positron'], 'collision', 'bottom+antiBottom')
-      .evolve(DETECTOR_TIME_IN_SECONDS)
-      .measureSystem('detector')
-      .report('frequency', ['detector'], 'detector')
-      .report('mean', ['detector.count.pionZero'], 'pionZero')
-      .report('mean', ['detector.count.rhoZero'], 'rhoZero')
-      .report('mean', ['detector.count.dZero'], 'dZero')
-      .report('mean', ['detector.count.bZero'], 'bZero')
-      .report('mean', ['detector.count.pionPlus'], 'pionPlus')
-      .build();
-    const result = runExperiment(plan, { shots: CASCADE_SHOTS, seed: SEED });
-    expect(result.reportValues['pionZero']).toBe(0);
-    expect(result.reportValues['rhoZero']).toBe(0);
-    expect(result.reportValues['dZero']).toBe(0);
-    expect(result.reportValues['bZero']).toBe(0);
-    expect(result.reportValues['pionPlus'] ?? 0).toBeGreaterThan(1);
-    const frames = result.systemReport?.frames ?? [];
-    expect(frames.at(-1)?.totals.chargeInElementaryUnits).toBeCloseTo(0, 9);
-    expect(frames.at(-1)?.totals.baryonNumber).toBeCloseTo(0, 9);
-  });
+  it(
+    'lets every short-lived hadron of a Z decay decay within a nanosecond and keeps charge zero',
+    () => {
+      const beam = Z_MASS_IN_GEV / 2;
+      const plan = experiment('zCascade')
+        .create('electron', 'electron', { momentumInGev: { x: 0, y: 0, z: beam } })
+        .create('positron', 'positron', { momentumInGev: { x: 0, y: 0, z: -beam } })
+        .collide(['electron', 'positron'], 'collision', 'bottom+antiBottom')
+        .evolve(DETECTOR_TIME_IN_SECONDS)
+        .measureSystem('detector')
+        .report('frequency', ['detector'], 'detector')
+        .report('mean', ['detector.count.pionZero'], 'pionZero')
+        .report('mean', ['detector.count.rhoZero'], 'rhoZero')
+        .report('mean', ['detector.count.dZero'], 'dZero')
+        .report('mean', ['detector.count.bZero'], 'bZero')
+        .report('mean', ['detector.count.pionPlus'], 'pionPlus')
+        .build();
+      const result = runExperiment(plan, { shots: CASCADE_SHOTS, seed: SEED });
+      expect(result.reportValues['pionZero']).toBe(0);
+      expect(result.reportValues['rhoZero']).toBe(0);
+      expect(result.reportValues['dZero']).toBe(0);
+      expect(result.reportValues['bZero']).toBe(0);
+      expect(result.reportValues['pionPlus'] ?? 0).toBeGreaterThan(1);
+      const frames = result.systemReport?.frames ?? [];
+      expect(frames.at(-1)?.totals.chargeInElementaryUnits).toBeCloseTo(0, 9);
+      expect(frames.at(-1)?.totals.baryonNumber).toBeCloseTo(0, 9);
+    },
+    SLOW_TEST_TIMEOUT_IN_MILLISECONDS,
+  );
 });

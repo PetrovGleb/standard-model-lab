@@ -1,5 +1,5 @@
-/* Neutron transport through a finite medium (one with a thickness) with ENDF/B-VIII.0 data: a free neutron flies exponential free paths of 1/Σ_t, Σ = Σ n_i σ_i(E), until the window ends, it leaves the ball of the medium or it
-   hits a nucleus; elastic scattering by two-body kinematics with a centre-of-mass angle of the ENDF mean cosine, inelastic scattering to a Weisskopf evaporation energy, capture with a photon,
+/* Neutron transport through the bodies of the world with ENDF/B-VIII.0 data: a free neutron flies exponential free paths of 1/Σ_t, Σ = Σ n_i σ_i(E) of the medium it is in, crosses into the next body,
+   bounces off mirror walls of the cube or leaves through open ones, until the window ends or it hits a nucleus; elastic scattering by two-body kinematics with a centre-of-mass angle of the ENDF mean cosine, inelastic scattering to a Weisskopf evaporation energy, capture with a photon,
    (n,2n), (n,p), (n,α), and fission into a fragment pair drawn from the independent yields with prompt neutrons from the fission spectrum, the energy release coming from the AME masses. */
 import {
   SPEED_OF_LIGHT_IN_VACUUM,
@@ -33,11 +33,21 @@ import {
   vectorMagnitude,
 } from '@standard-model/utils';
 import { boostToLab, twoBodyRestFrame } from '../decay/phase-space.js';
-import { distanceToEdgeInMeters } from '../environment/medium-extent.js';
+import {
+  finiteMedia,
+  insideCube,
+  mediumAt,
+  mediumHolds,
+  surfaceDistanceInMeters,
+  wallHit,
+  type World,
+} from '../space/geometry.js';
 import type { ParticleFactory } from '../particles/particle-factory.js';
 
 const SQUARE_METERS_PER_BARN = 1e-28;
 const FEMTOMETERS_PER_METER = 1e15;
+const METERS_PER_FEMTOMETER = 1e-15;
+const SURFACE_NUDGE_IN_METERS = 1e-9;
 const MAXIMUM_COLLISIONS = 2000;
 const MAXIMUM_FRAGMENT_TRIES = 64;
 const EVAPORATION_LEVEL_DENSITY_PER_MEV_PER_NUCLEON = 1 / 8;
@@ -115,6 +125,18 @@ function nuclidesOf(species: ParticleName): readonly { protons: number; massNumb
   }
   const identity = matterIdentity(species);
   return identity === null ? [] : [{ protons: identity.protons, massNumber: identity.massNumber }];
+}
+
+const targetCache = new WeakMap<MediumAspect, readonly Target[]>();
+
+function targetsOf(medium: MediumAspect): readonly Target[] {
+  const cached = targetCache.get(medium);
+  if (cached !== undefined) {
+    return cached;
+  }
+  const targets = neutronTargets(medium);
+  targetCache.set(medium, targets);
+  return targets;
 }
 
 export function neutronTargets(medium: MediumAspect): readonly Target[] {
@@ -242,34 +264,35 @@ export class NeutronTransport {
     private readonly random: RandomSource,
   ) {}
 
-  applies(particle: Particle, medium: MediumAspect): boolean {
-    const thickness = medium.thicknessInMeters;
-    if (
-      particle.spec.name !== 'neutron' ||
-      thickness === undefined ||
-      neutronTargets(medium).length === 0
-    ) {
+  applies(particle: Particle, world: World): boolean {
+    if (particle.spec.name !== 'neutron') {
       return false;
     }
-    const position = particle.kinematics.positionInFemtometers;
-    return (
-      Math.hypot(position.x, position.y, position.z) / FEMTOMETERS_PER_METER < HALF * thickness
-    );
+    const media = finiteMedia(world);
+    if (!media.some((medium) => targetsOf(medium).length > 0)) {
+      return false;
+    }
+    const position = scaleVector(particle.kinematics.positionInFemtometers, METERS_PER_FEMTOMETER);
+    return world.walls === null
+      ? media.some((medium) => mediumHolds(medium, position))
+      : insideCube(world.walls, position);
   }
 
   transport(
     neutron: Particle,
-    medium: MediumAspect,
+    world: World,
     durationInSeconds: number,
     startInFemtometers: Vector3,
   ): TransportOutcome | null {
-    const targets = neutronTargets(medium);
     const mass = neutron.spec.massInGev.value;
     let energyInEv = kineticEnergyInEv(neutron.kinematics.fourMomentumInGev, mass);
     let direction = normalized(neutron.kinematics.fourMomentumInGev.momentum);
     let position = startInFemtometers;
     let timeLeft = durationInSeconds;
     for (let collision = 0; collision < MAXIMUM_COLLISIONS; collision += 1) {
+      const here = scaleVector(position, METERS_PER_FEMTOMETER);
+      const medium = mediumAt(world, here);
+      const targets = medium === undefined ? [] : targetsOf(medium);
       const speed =
         (momentumForEnergy(mass, energyInEv) / (mass + energyInEv / EV_PER_GEV)) *
         SPEED_OF_LIGHT_IN_VACUUM.value;
@@ -284,14 +307,32 @@ export class NeutronTransport {
         macroscopic > 0
           ? -Math.log(1 - this.random.nextUnit()) / macroscopic
           : Number.POSITIVE_INFINITY;
-      const edge = distanceToEdgeInMeters(medium, position, direction);
+      const surface = surfaceDistanceInMeters(world, here, direction);
+      const wall = world.walls === null ? null : wallHit(world.walls, here, direction);
+      const wallDistance = wall?.distanceInMeters ?? Number.POSITIVE_INFINITY;
       const reach = speed * timeLeft;
-      const travel = Math.min(flight, edge, reach);
+      const travel = Math.min(flight, surface, wallDistance, reach);
       position = addVectors(position, scaleVector(direction, travel * FEMTOMETERS_PER_METER));
       timeLeft -= speed > 0 ? travel / speed : timeLeft;
-      if (travel < flight) {
+      if (travel >= reach) {
         this.update(neutron, mass, energyInEv, direction, position);
         return null;
+      }
+      if (wall !== null && world.walls !== null && travel >= wallDistance) {
+        const bounced = world.walls.law.bounce(direction, wall.axis);
+        if (bounced === null) {
+          this.update(neutron, mass, energyInEv, direction, position);
+          return null;
+        }
+        direction = bounced;
+        continue;
+      }
+      if (travel < flight) {
+        position = addVectors(
+          position,
+          scaleVector(direction, SURFACE_NUDGE_IN_METERS * FEMTOMETERS_PER_METER),
+        );
+        continue;
       }
       let pick = this.random.nextUnit() * macroscopic;
       const target =

@@ -427,6 +427,26 @@ smaller than ten reduced Compton wavelengths, speeds above 0.1 c, packets narrow
 1.5 cells and step counts beyond the grid's limit. The system report carries a `SpaceSnapshot`
 per frame with a 16³ density, three projections and ⟨r⟩, σ and energy for each cloud.
 
+The cube is also the world of the experiment, centred on the origin, and nothing in it is
+hard-coded (`space/geometry.ts`, `space/potentials.ts`):
+
+- Potentials are entries of `POTENTIAL_LAWS`, one function of the point, the settings and the
+  particle; a new potential is one entry.
+- Walls are entries of `WALL_LAWS`: `open` (particles fly out, a wave fades in the absorbing
+  mask) and `reflecting` (a super-material mirror: a point particle folds back exactly by the
+  unfolding of a straight flight, a transported neutron bounces at the wall, a wave meets a layer
+  as high as the largest kinetic energy one cell holds, so the time step does not shrink).
+- Shapes are entries of `BODY_SHAPE_LAWS` (`ball`, `box`): whether they hold a point, the
+  distance along a ray to their surface, their volume. A medium may carry a geometry; the
+  `placeBody` influence puts several such media in space at once (the `bodies` aspect), and a
+  particle sees the medium of the smallest body that holds its position (`withBodyMedium` in
+  `ShotContext.environmentFor`). A legacy medium with only a thickness is a ball at the centre.
+- `World` is what one particle sees: the ambient medium, the bodies and the walls. Neutron
+  transport walks it segment by segment (free path in the current medium, the nearest body
+  surface, the nearest wall), so a neutron leaves the core, crosses a tamper, bounces off a
+  mirror wall and comes back within one window; volume, heat capacity, stopping and
+  absorption take the body's shape, and the energy a body absorbs heats that body.
+
 An electron and a positron that are both in the cube can annihilate. `PairAnnihilation` uses
 the contact rate Γ = 4·P_singlet·(π r_e² c)·∫ρ₋ρ₊ d³r, which is spin-averaged π r_e² c ∫ρ₋ρ₊
 when the spins are not prepared. The probability 1 − exp(−∫Γ dt) is integrated over cube

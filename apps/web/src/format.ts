@@ -103,6 +103,9 @@ export function formatLength(meters: number): string {
     return '0';
   }
   const units: ReadonlyArray<readonly [number, string]> = [
+    [1, say('м', 'm')],
+    [1e-2, say('см', 'cm')],
+    [1e-3, say('мм', 'mm')],
     [1e-6, say('мкм', 'µm')],
     [1e-9, say('нм', 'nm')],
     [1e-12, say('пм', 'pm')],

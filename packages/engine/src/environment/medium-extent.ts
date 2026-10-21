@@ -1,6 +1,6 @@
-/* A medium of finite size fills a ball of diameter thicknessInMeters around the origin: its volume, its heat capacity (Dulong–Petit 3k per atom when condensed, 3/2 k plus rotations and Einstein
+/* A medium of finite size fills a body (a ball of diameter thicknessInMeters around the origin, or any shape of space/geometry.ts): its volume, its heat capacity (Dulong–Petit 3k per atom when condensed, 3/2 k plus rotations and Einstein
    vibrations of each molecule in a gas or plasma), heating by absorbed energy or to a set temperature, the photon attenuation coefficient from photoionization and Compton cross sections of its components, the Bethe
-   stopping power and range of charged particles with the Bloch mean excitation energy, and the distance from a point to the edge of the ball along a direction. */
+   stopping power and range of charged particles with the Bloch mean excitation energy, and the distance from a point inside to the edge of the body along a direction. */
 import {
   BOLTZMANN_CONSTANT,
   CLASSICAL_ELECTRON_RADIUS,
@@ -16,16 +16,20 @@ import type {
   ParticleName,
   Vector3,
 } from '@standard-model/contracts';
-import { EV_PER_GEV } from '@standard-model/utils';
+import { EV_PER_GEV, scaleVector } from '@standard-model/utils';
 import { internalEnergyInJoules } from '../molecules/molecular-behaviour.js';
 import { molecularStructure } from '../molecules/molecular-structure.js';
 import {
   comptonCrossSectionInSquareMeters,
   photoionizationCrossSectionInSquareMeters,
 } from '../radiation/photon-absorption.js';
+import {
+  geometryVolumeInCubicMeters,
+  mediumHolds,
+  mediumSurfaceDistanceInMeters,
+} from '../space/geometry.js';
 import { aggregateState, idealGasPressureInPascals } from './aggregate-state.js';
 
-const BALL_VOLUME_FACTOR = Math.PI / 6;
 const HALF = 0.5;
 const CONDENSED_DEGREES_PER_ATOM = 3;
 const TRANSLATIONAL_DEGREES = 1.5;
@@ -38,8 +42,7 @@ const RANGE_STEPS = 200;
 const RELATIVE_PRECISION = 1e-9;
 
 export function mediumVolumeInCubicMeters(medium: MediumAspect): number | null {
-  const thickness = medium.thicknessInMeters;
-  return thickness === undefined || !(thickness > 0) ? null : BALL_VOLUME_FACTOR * thickness ** 3;
+  return geometryVolumeInCubicMeters(medium);
 }
 
 interface Composition {
@@ -273,23 +276,8 @@ export function distanceToEdgeInMeters(
   positionInFemtometers: Vector3,
   direction: Vector3,
 ): number {
-  const thickness = medium.thicknessInMeters;
-  if (thickness === undefined) {
-    return Number.POSITIVE_INFINITY;
-  }
-  const radius = HALF * thickness;
-  const position = {
-    x: positionInFemtometers.x * METERS_PER_FEMTOMETER,
-    y: positionInFemtometers.y * METERS_PER_FEMTOMETER,
-    z: positionInFemtometers.z * METERS_PER_FEMTOMETER,
-  };
-  const length = Math.hypot(direction.x, direction.y, direction.z);
-  const unit =
-    length > 0
-      ? { x: direction.x / length, y: direction.y / length, z: direction.z / length }
-      : { x: 0, y: 0, z: 1 };
-  const along = position.x * unit.x + position.y * unit.y + position.z * unit.z;
-  const squared = position.x ** 2 + position.y ** 2 + position.z ** 2;
-  const discriminant = along ** 2 - (squared - radius ** 2);
-  return discriminant < 0 ? 0 : Math.max(0, -along + Math.sqrt(discriminant));
+  const position = scaleVector(positionInFemtometers, METERS_PER_FEMTOMETER);
+  return mediumHolds(medium, position)
+    ? mediumSurfaceDistanceInMeters(medium, position, direction)
+    : 0;
 }

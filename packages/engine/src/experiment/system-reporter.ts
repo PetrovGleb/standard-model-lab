@@ -295,7 +295,7 @@ export class SystemReporter implements ShotObserver {
 
   private space(context: ShotContext): SpaceSnapshot | null {
     const space = context.space;
-    if (space === null || context.spatial.size === 0) {
+    if (space === null) {
       return null;
     }
     return {
@@ -310,6 +310,7 @@ export class SystemReporter implements ShotObserver {
       slitWidthInMeters: space.slitWidthInMeters,
       wellSeparationInMeters: space.wellSeparationInMeters,
       boxSizeInMeters: space.boxSizeInMeters,
+      walls: space.walls ?? 'open',
       clouds: [...context.spatial.entries()].map(([label, state]) =>
         this.engine.space.cloud(space, state, label),
       ),

@@ -24,6 +24,9 @@ describe('format', () => {
 
   it('writes lengths in the largest fitting unit and noise as zero', () => {
     expect(formatLength(1.6e-9)).toContain('нм');
+    expect(formatLength(0.13)).toContain('см');
+    expect(formatLength(0.32)).toContain('см');
+    expect(formatLength(2)).toContain('м');
     expect(formatLength(-3.98e-10)).toContain('пм');
     expect(formatLength(-9.5e-27)).toBe('0');
   });

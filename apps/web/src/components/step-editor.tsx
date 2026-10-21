@@ -25,6 +25,7 @@ import {
   INFLUENCE_GLOSSARY,
   MEDIUM_COMPONENT_ACTIONS,
   MEDIUM_REACTION_MODES,
+  BODY_SHAPE_LABELS,
   DENSITY_LAW_LABELS,
   OBSERVABLE_GLOSSARY,
   OPERATION_TITLES,
@@ -75,6 +76,11 @@ import { say } from '../language';
 const SPIN_DIRECTION = 'direction';
 const DENSITY_FIELD = 'numberDensityPerCubicMeter';
 const NO_PATH_MARKER = 'none';
+const CHOICE_LABELS: Readonly<Record<string, Readonly<Record<string, string>>>> = {
+  densityLaw: DENSITY_LAW_LABELS,
+  reactionMode: MEDIUM_REACTION_MODES,
+  shape: BODY_SHAPE_LABELS,
+};
 
 function withoutAmplitudes(step: EntangleStep): EntangleStep {
   const { amplitudes, ...rest } = step;
@@ -271,8 +277,8 @@ function InfluenceParameterField({
       <Select
         value={String(current ?? spec.defaultValue ?? '')}
         options={spec.choices ?? []}
-        labels={spec.name === 'densityLaw' ? DENSITY_LAW_LABELS : MEDIUM_REACTION_MODES}
-        titles={spec.name === 'densityLaw' ? DENSITY_LAW_LABELS : MEDIUM_REACTION_MODES}
+        labels={CHOICE_LABELS[spec.name] ?? MEDIUM_REACTION_MODES}
+        titles={CHOICE_LABELS[spec.name] ?? MEDIUM_REACTION_MODES}
         onChange={set}
       />,
     );
@@ -486,9 +492,10 @@ function InfluenceFields({
   const picked = step.targets?.length ?? 0;
   return (
     <>
-      {step.influence === 'setMedium' && catalog.environments.length > 0 && (
-        <EnvironmentPresetPicker step={step} presets={catalog.environments} onChange={onChange} />
-      )}
+      {(step.influence === 'setMedium' || step.influence === 'placeBody') &&
+        catalog.environments.length > 0 && (
+          <EnvironmentPresetPicker step={step} presets={catalog.environments} onChange={onChange} />
+        )}
       {groups.lists.map(field)}
       {groups.scalars.length > 0 && (
         <Subsection

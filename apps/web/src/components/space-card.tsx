@@ -1,17 +1,18 @@
-/* SpaceCard: the plan's spatial cube; grid, cell size and potential, a ruler of working scales with reference objects where the cube band is dragged or resized, and a preview of the cube with the placed clouds. */
+/* SpaceCard: the plan's spatial cube; grid, cell size, potential and walls, a ruler of working scales with reference objects where the cube band is dragged or resized, and a preview of the cube with the placed clouds. */
 import type {
   CatalogResponse,
   ExperimentPlan,
   NumberOrParameter,
   PotentialKind,
   SpaceSpec,
+  SpaceWalls,
 } from '@standard-model/contracts';
 import { sml } from './sml-icon';
 
 const SPACE_ICON = sml('space-cube');
 import { useRef, type PointerEvent } from 'react';
 import { formatLength } from '../format';
-import { POTENTIAL_GLOSSARY } from '../glossary';
+import { POTENTIAL_GLOSSARY, SPACE_WALL_LABELS } from '../glossary';
 import { FieldLabel, parameterIcon } from '../icons';
 import { DEFAULT_SPACE } from '../plan-edits';
 import { presetsForParameter } from '../presets';
@@ -543,6 +544,15 @@ export function SpaceCard({ plan, catalog, onChange }: Props) {
               options={catalog.potentials}
               labels={POTENTIAL_GLOSSARY}
               onChange={(value) => set({ potential: value as PotentialKind })}
+            />
+          </label>
+          <label data-tooltip={SPACE_WALL_LABELS[space.walls ?? 'open'] ?? ''}>
+            <FieldLabel icon={SPACE_ICON}>{say('Стенки куба', 'Cube walls')}</FieldLabel>
+            <Select
+              value={space.walls ?? 'open'}
+              options={catalog.spaceWalls}
+              labels={SPACE_WALL_LABELS}
+              onChange={(value) => set({ walls: value as SpaceWalls })}
             />
           </label>
           {space.potential === 'barrier' &&

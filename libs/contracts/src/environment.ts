@@ -1,4 +1,5 @@
-/* Environment contracts: an open set of named aspects, each bringing Hamiltonian and decoherence contributions; extend by module augmentation of EnvironmentAspects. */
+/* Environment contracts: an open set of named aspects, each bringing Hamiltonian and decoherence contributions; extend by module augmentation of EnvironmentAspects. A medium may fill a body
+   of a given shape, centre and size, and the bodies aspect holds several such media placed in space at once. */
 import type { ParticleName } from './particle-spec.js';
 import type { Particle } from './particle.js';
 import type { ObservableName } from './quantum.js';
@@ -26,6 +27,16 @@ export interface MediumComponent {
   readonly crossSectionInSquareMeters: number;
 }
 
+export const BODY_SHAPES = ['ball', 'box'] as const;
+
+export type BodyShape = (typeof BODY_SHAPES)[number];
+
+export interface BodyGeometry {
+  readonly shape: BodyShape;
+  readonly centerInMeters: Vector3;
+  readonly sizeInMeters: number;
+}
+
 export interface MediumAspect {
   readonly components: readonly MediumComponent[];
   readonly temperatureInKelvin: number;
@@ -34,7 +45,12 @@ export interface MediumAspect {
   readonly pressureInPascals?: number;
   readonly radiationTemperatureInKelvin?: number;
   readonly thicknessInMeters?: number;
+  readonly geometry?: BodyGeometry;
   readonly absorbedEnergyInJoules?: number;
+}
+
+export interface BodiesAspect {
+  readonly bodies: readonly MediumAspect[];
 }
 
 export const PHASES = [
@@ -74,6 +90,7 @@ export interface EnvironmentAspects {
   magneticField: MagneticFieldAspect;
   electricField: ElectricFieldAspect;
   medium: MediumAspect;
+  bodies: BodiesAspect;
   neighbors: NeighborAspect;
   coherenceTimes: CoherenceTimesAspect;
   neutrinoMixing: NeutrinoMixingAspect;
