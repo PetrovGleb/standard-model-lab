@@ -1,4 +1,4 @@
-/* Sequelize model: aggregated output of a run, the report statistics, per-record outcome counts, traced system reports and the mean time each step took per shot. */
+/* Sequelize model: aggregated output of a run, the report statistics, per-record outcome counts, traced system reports, the keyframe summary and the mean time each step took per shot. */
 import {
   AllowNull,
   BelongsTo,
@@ -13,6 +13,7 @@ import {
 } from 'sequelize-typescript';
 import type {
   Distributions,
+  KeyframeSummary,
   OutcomeCounts,
   ReportValues,
   SystemReport,
@@ -60,4 +61,7 @@ export class RunResult extends Model {
   @Default([])
   @Column(DataType.JSONB)
   stepMeanMilliseconds!: number[];
+
+  @Column(DataType.JSONB)
+  keyframes!: KeyframeSummary | null;
 }

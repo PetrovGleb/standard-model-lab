@@ -1,10 +1,11 @@
 /* Generates data/endf.generated.json from the ENDF/B-VIII.0 neutron and fission-yield sublibraries kept verbatim as the NNDC zip archives in data/endf: for every target nucleus the cross sections
-   of total, elastic, inelastic, (n,2n), fission, capture, (n,p) and (n,α) above the resonance parameters, the mean cosine of elastic scattering, the prompt neutrons per fission and the prompt
-   fission spectrum as quantiles, and for every fissioning nucleus its independent fission-product yields; tables are thinned to 0.5% under linear interpolation. */
+   of total, elastic, inelastic, (n,2n), fission, capture, (n,p) and (n,α) (actinides with their Reich–Moore resolved resonances reconstructed down to 10⁻⁵ eV, others above the resonance
+   parameters), elastic mean cosine, prompt and delayed neutrons per fission with the delayed groups and spectra, the prompt fission spectrum and the independent fission-product yields. */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inflateRawSync } from 'node:zlib';
+import { parseResolvedRange, reconstruct, resonanceGrid } from './resonances.js';
 
 const dataRoot = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
 const NEUTRON_ARCHIVE = 'endf/ENDF-B-VIII.0_neutrons.zip';
@@ -36,6 +37,13 @@ const REACTIONS: Readonly<Record<number, string>> = {
   107: 'alphaEmission',
 };
 const TOTAL_NU = 452;
+const DELAYED_NU = 455;
+const RECONSTRUCTED_PROTONS = 90;
+const STRONG_ABSORBER_IN_BARNS = 1000;
+const THERMAL_ENERGY_IN_EV = 0.0253;
+const RECONSTRUCTED_REACTIONS = ['elastic', 'capture', 'fission'] as const;
+const EVAPORATION_LAW = 5;
+const TABULATED_LAW = 1;
 const PROMPT_NU = 456;
 const ELASTIC = 2;
 const FISSION = 18;
@@ -238,6 +246,107 @@ function firstPositiveAfterZeros(table: Table): number {
   return firstPositive < 0 ? 0 : (energies[firstPositive] ?? 0);
 }
 
+function interpolatedAt(table: Table, energy: number): number {
+  const [energies, values] = table;
+  const upper = energies.findIndex((candidate) => candidate >= energy);
+  if (upper <= 0) {
+    return upper === 0 ? (values[0] ?? 0) : 0;
+  }
+  const low = energies[upper - 1] ?? 0;
+  const high = energies[upper] ?? low;
+  const share = high === low ? 0 : (energy - low) / (high - low);
+  return (values[upper - 1] ?? 0) + share * ((values[upper] ?? 0) - (values[upper - 1] ?? 0));
+}
+
+function withResonances(
+  all: Map<string, string[]>,
+  protons: number,
+  raw: Map<string, Table>,
+): Map<string, Table> | null {
+  const lines = all.get('2/151');
+  if (lines === undefined) {
+    return null;
+  }
+  const range = parseResolvedRange(lines, fields);
+  if (
+    range === null ||
+    (protons < RECONSTRUCTED_PROTONS &&
+      (reconstruct(range, [THERMAL_ENERGY_IN_EV]).capture[0] ?? 0) < STRONG_ABSORBER_IN_BARNS)
+  ) {
+    return null;
+  }
+  const grid = resonanceGrid(range);
+  const resonant = reconstruct(range, grid);
+  const merged = new Map(raw);
+  RECONSTRUCTED_REACTIONS.forEach((name) => {
+    const background = raw.get(name);
+    const own = resonant[name];
+    if (background === undefined && own.every((value) => value === 0)) {
+      return;
+    }
+    const below = grid.map(
+      (energy, index) =>
+        (own[index] ?? 0) + (background === undefined ? 0 : interpolatedAt(background, energy)),
+    );
+    const [energies, values] = background ?? [[], []];
+    const above = energies.flatMap((energy, index) =>
+      energy >= range.highInEv ? [[energy, values[index] ?? 0] as const] : [],
+    );
+    merged.set(name, [
+      [...grid, ...above.map(([energy]) => energy)],
+      [...below, ...above.map(([, value]) => value)],
+    ]);
+  });
+  return merged;
+}
+
+function delayedNeutrons(all: Map<string, string[]>) {
+  const multiplicity = all.get(`1/${String(DELAYED_NU)}`);
+  const spectra = all.get(`5/${String(DELAYED_NU)}`);
+  if (multiplicity === undefined || spectra === undefined) {
+    return null;
+  }
+  const reader = new Reader(multiplicity);
+  const head = reader.record();
+  if ((head[2] ?? 0) !== 0) {
+    return null;
+  }
+  const decayConstants = reader.list().items;
+  const perFission = (head[3] ?? 0) === 2 ? thinned(reader.tab1().table, 0) : null;
+  if (perFission === null) {
+    return null;
+  }
+  const spectrumReader = new Reader(spectra);
+  const groupCount = spectrumReader.record()[4] ?? 0;
+  const groups = [];
+  for (let group = 0; group < groupCount; group += 1) {
+    const probability = spectrumReader.tab1();
+    const law = probability.head[3] ?? 0;
+    let spectrum: Table | null = null;
+    if (law === EVAPORATION_LAW) {
+      const temperature = spectrumReader.tab1().table[1][0] ?? 1;
+      const shape = spectrumReader.tab1().table;
+      spectrum = [shape[0].map((ratio) => ratio * temperature), shape[1]];
+    } else if (law === TABULATED_LAW) {
+      const incident = spectrumReader.tab2();
+      const entries = incident[5] ?? 0;
+      for (let index = 0; index < entries; index += 1) {
+        const { table } = spectrumReader.tab1();
+        spectrum ??= table;
+      }
+    }
+    if (spectrum === null) {
+      return null;
+    }
+    groups.push({
+      decayConstantPerSecond: rounded(decayConstants[group] ?? 0),
+      abundance: rounded(probability.table[1][0] ?? 0),
+      spectrumQuantilesInEv: quantiles(spectrum),
+    });
+  }
+  return { perFission, groups };
+}
+
 function neutronsPerFission(lines: readonly string[] | undefined): Table | null {
   if (lines === undefined) {
     return null;
@@ -353,13 +462,24 @@ function nuclideEntry(text: string) {
     }
   });
   const total = raw.get('total');
-  const boundary = Math.max(
-    resonanceBoundary(all.get('2/151')),
-    total === undefined ? 0 : firstPositiveAfterZeros(total),
-  );
+  const resonant = withResonances(all, Math.floor(identity / ZA_PROTON_FACTOR), raw);
+  const boundary =
+    resonant === null
+      ? Math.max(
+          resonanceBoundary(all.get('2/151')),
+          total === undefined ? 0 : firstPositiveAfterZeros(total),
+        )
+      : 0;
   const crossSections = Object.fromEntries(
-    [...raw.entries()].map(([name, table]) => [name, thinned(table, boundary)]),
+    [...(resonant ?? raw).entries()].map(([name, table]) => [
+      name,
+      thinned(
+        table,
+        resonant !== null && name === 'total' ? resonanceBoundary(all.get('2/151')) : boundary,
+      ),
+    ]),
   );
+  const delayed = raw.get('fission') === undefined ? null : delayedNeutrons(all);
   const prompt = neutronsPerFission(
     all.get(`1/${String(PROMPT_NU)}`) ?? all.get(`1/${String(TOTAL_NU)}`),
   );
@@ -378,6 +498,7 @@ function nuclideEntry(text: string) {
       ...(spectrum === null || raw.get('fission') === undefined
         ? {}
         : { fissionSpectrum: spectrum }),
+      ...(delayed === null ? {} : { delayedNeutrons: delayed }),
     },
   };
 }
@@ -439,7 +560,7 @@ writeFileSync(
   join(dataRoot, OUTPUT),
   `${JSON.stringify({
     source:
-      'ENDF/B-VIII.0 (D. A. Brown et al., Nucl. Data Sheets 148, 1 (2018)), neutron and neutron fission yield sublibraries from the NNDC archives in data/endf, parsed by libs/constants/scripts/generate-endf.ts: MF3 cross sections in barns above the resolved-resonance boundary (resonances are not reconstructed), MF4 Legendre mean cosine of elastic scattering in the centre of mass, MF1 prompt neutrons per fission, MF5 tabulated prompt fission spectra as 64 quantiles, MF8 independent fission-product yields per incident energy; energies in eV, thinned to 0.5% under linear interpolation up to 20 MeV',
+      'ENDF/B-VIII.0 (D. A. Brown et al., Nucl. Data Sheets 148, 1 (2018)), neutron and neutron fission yield sublibraries from the NNDC archives in data/endf, parsed by libs/constants/scripts/generate-endf.ts: MF3 cross sections in barns above the resolved-resonance boundary, with the MF2 Reich–Moore resolved resonances of the actinides (Z ≥ 90) reconstructed down to 1e-5 eV and added to the MF3 background, MF4 Legendre mean cosine of elastic scattering in the centre of mass, MF1 prompt neutrons per fission, MF1/MF5 MT455 delayed neutrons per fission with the decay constants, abundances and spectra (64 quantiles) of their precursor groups, MF5 tabulated prompt fission spectra as 64 quantiles, MF8 independent fission-product yields per incident energy; energies in eV, thinned to 0.5% under linear interpolation up to 20 MeV',
     nuclides,
     fissionYields,
   })}\n`,

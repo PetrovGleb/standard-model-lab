@@ -1,4 +1,6 @@
-/* Checks the pure plan editing helpers used by the pipeline builder, including the medium component list, its defaults, the upgrade of a single-species setMedium and particle groups. */
+/* Checks the pure plan editing helpers used by the pipeline builder, including the medium component list, its defaults, the upgrade of a single-species setMedium, particle groups, a
+   medium switched between all space and a body, a medium that replaces another one flagged and nested as bodies, keyframe targets and quantities, a second keyframe that watches
+   what the first one did, and the particle weight. */
 import type { EnvironmentPreset, ExperimentPlan, InfluenceStep } from '@standard-model/contracts';
 import { describe, expect, it } from 'vitest';
 import {
@@ -28,6 +30,13 @@ import {
   removeStep,
   resizeRecords,
   setParameter,
+  mediumReplacements,
+  nestedAsBodies,
+  placedAsBody,
+  keyframeQuantities,
+  keyframeTargets,
+  numericRecords,
+  withParticleWeight,
 } from '../src/plan-edits';
 
 describe('plan edits', () => {
@@ -362,5 +371,131 @@ describe('particle groups in the builder', () => {
   it('keeps a create step without a count a single label', () => {
     expect(createdLabels(plan, 1).length).toBe(8);
     expect(labelGroups({ ...plan, steps: plan.steps.slice(1) }, 2).size).toBe(0);
+  });
+});
+
+describe('media as bodies', () => {
+  const water: InfluenceStep = {
+    operation: 'influence',
+    influence: 'setMedium',
+    parameters: {
+      components: [
+        { species: 'molecule:8-16,1-1,1-1;0-1-1,0-2-1', numberDensityPerCubicMeter: 3.34e28 },
+      ],
+      temperatureInKelvin: 293,
+    },
+  };
+  const uranium: InfluenceStep = {
+    operation: 'influence',
+    influence: 'setMedium',
+    parameters: {
+      components: [{ species: 'atom:92:235:0', numberDensityPerCubicMeter: 4.83e28 }],
+      temperatureInKelvin: 293,
+      thicknessInMeters: 0.3,
+    },
+  };
+  const plan: ExperimentPlan = {
+    name: 'nested',
+    parameters: {},
+    shots: 1,
+    seed: 1,
+    steps: [water, uranium, { operation: 'evolve', durationInSeconds: 1 }],
+    report: [],
+  };
+
+  it('switches a medium between all space and a body and back', () => {
+    const body = placedAsBody(uranium, true);
+    expect(body.influence).toBe('placeBody');
+    expect(body.parameters?.shape).toBe('ball');
+    expect(body.parameters?.sizeInMeters).toBe(0.3);
+    expect(body.parameters?.thicknessInMeters).toBeUndefined();
+    const back = placedAsBody(body, false);
+    expect(back.influence).toBe('setMedium');
+    expect(back.parameters?.thicknessInMeters).toBe(0.3);
+    expect(back.parameters?.shape).toBeUndefined();
+  });
+
+  it('flags a medium for all space that replaces another one and nests them as bodies', () => {
+    const [replacement] = mediumReplacements(plan);
+    expect(replacement).toEqual({ row: 1, replacedRow: 0 });
+    expect(mediumReplacements({ ...plan, steps: [uranium, uranium] })).toEqual([]);
+    if (replacement === undefined) {
+      return;
+    }
+    const nested = nestedAsBodies(plan, replacement);
+    const [outer, inner] = nested.steps;
+    expect(outer?.operation === 'influence' && outer.influence).toBe('placeBody');
+    expect(inner?.operation === 'influence' && inner.influence).toBe('placeBody');
+    const outerSize = outer?.operation === 'influence' ? outer.parameters?.sizeInMeters : undefined;
+    const innerSize = inner?.operation === 'influence' ? inner.parameters?.sizeInMeters : undefined;
+    expect(innerSize).toBe(0.3);
+    expect(Number(outerSize)).toBeGreaterThan(Number(innerSize));
+    expect(mediumReplacements(nested)).toEqual([]);
+  });
+});
+
+describe('keyframes', () => {
+  const water = {
+    operation: 'influence',
+    influence: 'setMedium',
+    parameters: {
+      name: 'pool',
+      components: [
+        { species: 'molecule:8-16,1-1,1-1;0-1-1,0-2-1', numberDensityPerCubicMeter: 3.34e28 },
+      ],
+      temperatureInKelvin: 293,
+    },
+  } as const;
+  const plan: ExperimentPlan = {
+    ...emptyPlan(),
+    steps: [
+      water,
+      {
+        operation: 'influence',
+        influence: 'placeBody',
+        parameters: { shape: 'ball', sizeInMeters: 1 },
+      },
+      { operation: 'create', label: 'n', particle: 'neutron' },
+    ],
+  };
+
+  it('offers the system, the media by name and the particles as targets', () => {
+    expect(keyframeTargets(plan, plan.steps.length)).toEqual([
+      { target: 'system', kind: 'system' },
+      { target: 'pool', kind: 'medium' },
+      { target: 'body1', kind: 'medium' },
+      { target: 'n', kind: 'particle' },
+    ]);
+    expect(keyframeQuantities(plan, 'system')).toEqual([
+      'particleCount',
+      'pendingNeutrons',
+      'count.neutron',
+    ]);
+    expect(keyframeQuantities(plan, 'medium')).toContain('absorbedEnergyInJoules');
+  });
+
+  it('watches a medium first and then what the previous keyframe watched', () => {
+    const first = addStep(plan, 'keyframe');
+    const firstStep = first.steps[first.steps.length - 1];
+    expect(firstStep).toEqual({
+      operation: 'keyframe',
+      name: 'key1',
+      watch: [
+        { target: 'pool', quantity: 'temperatureInKelvin' },
+        { target: 'pool', quantity: 'absorbedEnergyInJoules' },
+      ],
+    });
+    const second = addStep(first, 'keyframe');
+    const secondStep = second.steps[second.steps.length - 1];
+    expect(secondStep?.operation === 'keyframe' ? secondStep.name : '').toBe('key2');
+    expect(secondStep?.operation === 'keyframe' ? secondStep.watch : []).toEqual(
+      firstStep?.operation === 'keyframe' ? firstStep.watch : [],
+    );
+    expect(numericRecords(second)).toContain('key2.pool.absorbedEnergyInJoules');
+  });
+
+  it('keeps a particle weight other than one and drops it at one', () => {
+    expect(withParticleWeight(plan, 5e12).particleWeight).toBe(5e12);
+    expect('particleWeight' in withParticleWeight(withParticleWeight(plan, 5e12), 1)).toBe(false);
   });
 });

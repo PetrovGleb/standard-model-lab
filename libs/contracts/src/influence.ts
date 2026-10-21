@@ -36,7 +36,7 @@ export type InfluenceParameterValue = InfluenceScalar | readonly InfluenceRecord
 
 export type InfluenceParameters = Readonly<Record<string, InfluenceParameterValue>>;
 
-export type InfluenceParameterKind = 'number' | 'particleName' | 'choice' | 'list';
+export type InfluenceParameterKind = 'number' | 'particleName' | 'choice' | 'list' | 'text';
 
 export interface InfluenceParameterSpec {
   readonly name: string;

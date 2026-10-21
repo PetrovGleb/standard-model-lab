@@ -39,7 +39,7 @@ operations. Formatting is secondary; correctness and traceability are primary.
 | Carbon allotropes | C. S. Kennedy and G. C. Kennedy, J. Geophys. Res. 81, 2467 (1976) (graphite–diamond line); L. M. Ghiringhelli et al., Mol. Phys. 106, 2011 (2008), arXiv:0804.1671 (melting curves) | `libs/constants/data/allotropes.json` |
 | Noble-gas Lennard-Jones wells for BEBO | J. O. Hirschfelder, C. F. Curtiss and R. B. Bird, Molecular Theory of Gases and Liquids (1954), Table I-A; H. S. Johnston and C. Parr, J. Am. Chem. Soc. 85, 2544 (1963) | `libs/constants/data/noble-gas-wells.json` |
 | Aqueous solutions | CRC Handbook 97th ed. electron affinities; Y. Marcus, J. Chem. Soc. Faraday Trans. 87, 2995 (1991), Table 1; C. G. Malmberg and A. A. Maryott, J. Res. NBS 56, 1 (1956); IAPWS R11-24 (2024) ionization constant of water | `libs/constants/data/solutions.json`, `marcus1991/`, `iapws/` |
-| Neutron cross sections, fission spectra and yields | ENDF/B-VIII.0, D. A. Brown et al., Nucl. Data Sheets 148, 1 (2018), NNDC neutron and fission-yield sublibraries | `libs/constants/data/endf/` → `endf.generated.json` |
+| Neutron cross sections (resolved resonances reconstructed), fission spectra, delayed neutrons and yields | ENDF/B-VIII.0, D. A. Brown et al., Nucl. Data Sheets 148, 1 (2018), NNDC neutron and fission-yield sublibraries | `libs/constants/data/endf/` → `endf.generated.json` |
 | Molecule catalogue for the species picker | structures written from standard Lewis formulas (later entries from SMILES with implicit hydrogens), checked by the configurator rules; masses and linearity from the engine's structure law | `libs/constants/data/molecules.json` |
 | Russian element names | Russian chemical nomenclature for the IUPAC names | `libs/constants/data/element-names.json` |
 
@@ -393,7 +393,7 @@ Effective leptonic weak mixing angle (Z-pole): sin²θ_eff = 0.23148 ± 0.00012 
 
 **Z decays**: e⁺e⁻ (3.3632 ± 0.0042)%; μ⁺μ⁻ (3.3662 ± 0.0066)%; τ⁺τ⁻ (3.3696 ± 0.0083)%; invisible (ν ν̄, all flavors) (20.000 ± 0.055)%; hadrons (69.911 ± 0.056)%; c c̄ (12.03 ± 0.21)%; b b̄ (15.12 ± 0.05)%.
 
-**Higgs decays**: b b̄ (53 ± 8)%; W W* (25.7 ± 2.5)%; τ⁺τ⁻ (6.0 +0.8/−0.7)%; Z Z* (2.80 ± 0.30)%; γγ (2.50 ± 0.20) e-3; Zγ (3.4 ± 1.1) e-3; μ⁺μ⁻ (3.0 ± 0.9) e-4; e⁺e⁻ < 3.0 e-4 (95% CL); invisible < 10.7% (95% CL). (SM prediction for the remainder: gg ≈ 8.2%, c c̄ ≈ 2.9% — theoretical, not measured.)
+**Higgs decays**: b b̄ (53 ± 8)%; W W* (25.7 ± 2.5)%; τ⁺τ⁻ (6.0 +0.8/−0.7)%; Z Z* (2.80 ± 0.30)%; γγ (2.50 ± 0.20) e-3; Zγ (3.4 ± 1.1) e-3; μ⁺μ⁻ (3.0 ± 0.9) e-4; e⁺e⁻ < 3.0 e-4 (95% CL); invisible < 10.7% (95% CL). These measured values do not add up to one (gg and c c̄ are not measured), so the engine samples the Higgs from the Standard Model prediction quoted in the PDG review "Status of Higgs Boson Physics" (LHC Higgs Cross Section WG, Yellow Report 4, m_H = 125.09 GeV), which is what `pdg2026.json` holds: b b̄ (58.09 ± 0.76)%; W W* (21.52 ± 0.33)%; gg (8.18 ± 0.42)%; τ⁺τ⁻ (6.256 ± 0.10)%; c c̄ (2.884 ± 0.16)%; Z Z* (2.641 ± 0.04)%; γγ (2.270 ± 0.048) e-3; Zγ (1.541 ± 0.09) e-3; μ⁺μ⁻ (2.171 ± 0.037) e-4.
 
 **Graviton** (not part of the SM; listed by PDG for completeness): J = 2, mass < 1.76 e-23 eV.
 

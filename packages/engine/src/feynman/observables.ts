@@ -657,9 +657,14 @@ export function measuredPartialWidth(
   if (channel === undefined) {
     return null;
   }
-  const relative = channel.branchingFraction.uncertainty;
+  const fraction = channel.branchingFraction;
+  const totalUncertainty =
+    spec.widthInGev?.value === undefined ? 0 : (spec.widthInGev.uncertainty ?? 0);
   return {
-    value: total * channel.branchingFraction.value,
-    uncertainty: relative === null ? null : total * relative,
+    value: total * fraction.value,
+    uncertainty:
+      fraction.uncertainty === null
+        ? null
+        : Math.hypot(total * fraction.uncertainty, fraction.value * totalUncertainty),
   };
 }

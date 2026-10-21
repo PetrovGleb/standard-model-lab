@@ -1,5 +1,5 @@
-/* Checks the cube scene: bodies from the bodies aspect and a legacy ball, particles in units of the half edge with their trail and birth, the body a particle lies in, quarter turns that come
-   back after four, ten-degree turns that come back after thirty-six, and a drag with Command that moves the near side the way the pointer goes. */
+/* Checks the cube scene: bodies from the bodies aspect and a legacy ball, particles in units of the half edge with their trail and birth, the body a particle lies in, bodies nested by
+   containment with the path of a particle, a cylinder along z, quarter turns that come back after four, ten-degree turns that come back after thirty-six, and a drag with Command that moves the near side the way the pointer goes. */
 import type {
   ParticleName,
   ParticleView,
@@ -10,6 +10,9 @@ import { describe, expect, it } from 'vitest';
 import {
   IDENTITY_ORIENTATION,
   bodyAt,
+  bodyTree,
+  mediumPath,
+  placedBodies,
   cubeBodies,
   cubePoints,
   dragged,
@@ -22,6 +25,8 @@ import {
 const FEMTOMETERS_PER_METER = 1e15;
 const PRECISION = 12;
 const SMALL_DRAG = 0.1;
+const CYLINDER_DIAMETER_IN_METERS = 0.1;
+const CYLINDER_HEIGHT_IN_METERS = 0.4;
 const TEN_DEGREE_TURNS_PER_CIRCLE = 36;
 const TEN_DEGREES_IN_RADIANS = (2 * Math.PI) / TEN_DEGREE_TURNS_PER_CIRCLE;
 
@@ -104,6 +109,41 @@ describe('cube scene', () => {
     expect(bodyAt(now, view('a', 'neutron', 'baryon', 0.02))?.geometry?.shape).toBe('ball');
     expect(bodyAt(now, view('b', 'neutron', 'baryon', 0.08))?.geometry?.shape).toBe('box');
     expect(bodyAt(now, view('c', 'neutron', 'baryon', 0.15))).toBeUndefined();
+  });
+
+  it('nests bodies by containment and names the path of a particle from inside out', () => {
+    const now = frame([]);
+    const tree = bodyTree(placedBodies(now));
+    expect(tree.map((node) => [node.geometry.shape, node.depth, node.parent])).toEqual([
+      ['box', 0, null],
+      ['ball', 1, 0],
+    ]);
+    expect(
+      mediumPath(now, view('a', 'neutron', 'baryon', 0.02)).map((medium) => medium.geometry?.shape),
+    ).toEqual(['ball', 'box']);
+  });
+
+  it('finds a particle inside a cylinder along z by its radius and height', () => {
+    const cylinder = {
+      ...medium('box', CYLINDER_DIAMETER_IN_METERS, 'atom:6:12:0'),
+      geometry: {
+        shape: 'cylinder' as const,
+        centerInMeters: { x: 0, y: 0, z: 0 },
+        sizeInMeters: CYLINDER_DIAMETER_IN_METERS,
+        heightInMeters: CYLINDER_HEIGHT_IN_METERS,
+      },
+    };
+    const now = {
+      ...frame([]),
+      environment: { bodies: { bodies: [cylinder] } },
+    } as unknown as SystemFrame;
+    const along = (zInMeters: number) => ({
+      ...view('p', 'neutron', 'baryon', 0),
+      positionInFemtometers: { x: 0, y: 0, z: zInMeters * FEMTOMETERS_PER_METER },
+    });
+    expect(bodyAt(now, along(0.15))?.geometry?.shape).toBe('cylinder');
+    expect(bodyAt(now, along(0.25))).toBeUndefined();
+    expect(bodyAt(now, view('q', 'neutron', 'baryon', 0.06))).toBeUndefined();
   });
 
   it('comes back after four quarter turns about any axis', () => {

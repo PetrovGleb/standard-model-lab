@@ -118,6 +118,27 @@ export function formatLength(meters: number): string {
   return `${formatNumber(meters / unit[0])} ${unit[1]}`;
 }
 
+export function formatTimeInSeconds(seconds: number): string {
+  if (!Number.isFinite(seconds)) {
+    return '—';
+  }
+  if (seconds === 0) {
+    return say('0 с', '0 s');
+  }
+  const units: ReadonlyArray<readonly [number, string]> = [
+    [1, say('с', 's')],
+    [1e-3, say('мс', 'ms')],
+    [1e-6, say('мкс', 'µs')],
+    [1e-9, say('нс', 'ns')],
+    [1e-12, say('пс', 'ps')],
+    [1e-15, say('фс', 'fs')],
+  ];
+  const unit = units.find(([scale]) => Math.abs(seconds) >= scale) ?? units[units.length - 1];
+  return unit === undefined
+    ? `${formatNumber(seconds)} ${say('с', 's')}`
+    : `${formatNumber(seconds / unit[0])} ${unit[1]}`;
+}
+
 const SYMBOL_GLYPHS: ReadonlyArray<readonly [RegExp, string]> = [
   [/Meson$/, ''],
   [/gamma/g, 'γ'],

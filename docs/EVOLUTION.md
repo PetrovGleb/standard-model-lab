@@ -676,3 +676,141 @@ how it was verified. Entries are appended at the bottom of the current day; days
   **Why:** the user asked to turn the cube by dragging with Command held. **Verification:**
   `cube-scene.test.ts` (the near side moves right on a drag right and down on a drag down);
   browser check of a ⌘-drag.
+- `[modification]` The cube sits in the left column of the system player next to the stage
+  (`system-player.tsx`, `.player-main`), and the side panel with the step, totals, environment and
+  particles runs the full height of both. **Why:** the user asked for the sidebar to span the
+  whole system block and the cube to stay on the left like the particle graph. **Verification:**
+  browser check at 1440 px: the cube ends at 918 px, the sidebar starts at 934 px, both 1281 px
+  tall; the order switch still puts the cube above or below the stage.
+- `[fix]` The plan schema no longer snaps back to the active step (`use-element-size.ts`).
+  **What:** the hook read `getBoundingClientRect` on attach and `contentRect` in its
+  `ResizeObserver`; the schema re-attaches its inline ref on every render, so each wheel pan
+  flipped the height by a fraction of a pixel and re-ran the effect that keeps the active step in
+  view. Now both measures read the bounding box. **Verification:** browser check on a 19-step plan
+  with step 12 active: four wheel moves pan the schema to its top and it stays there.
+- `[modification]` Each medium component has its own density scale under its row
+  (`step-editor.tsx`, `.list-row-scale`) instead of one shared scale where the labels of close
+  densities overlapped. **Why:** the user asked for a scale under each component.
+  **Verification:** browser check of sea-level air: four rows, four scales.
+- `[addition]` Named and nested media (`MediumAspect.name`, `MEDIUM_NAME_PATTERN`, influence
+  parameter kind `text`, `mediumRecordKeys` in `experiment-runner.ts`, `bodyTree` and `mediumPath`
+  in `cube-scene.ts`, `environment-summary.tsx`, `particle-card.tsx`, `influence-visual.ts`).
+  **What:** `setMedium` and `placeBody` take an optional one-word name; `measureSystem` records
+  `<name>.temperatureInKelvin` and `<name>.absorbedEnergyInJoules` for a named shared medium and
+  every body (unnamed bodies stay `body<N>`); report fields accept letters of any script; the
+  environment panel shows the bodies as a tree by containment, the particle card says in which
+  body a particle lies and what holds that body, and captions start with the name.
+  **Why:** a second medium for all space silently replaced the water in a user's plan, and media
+  had no names to find them by. **Verification:** `fission.test.ts` (records under the names, a
+  name of two words refused), `cube-scene.test.ts` (tree and path); browser check.
+- `[modification]` Neutron scattering heats the medium where it happens (`neutron-transport.ts`
+  `transport(…, deposit)`, `ShotContext.heatAt`). **What:** the energy a neutron loses in an elastic
+  or inelastic collision goes to the body at the point of the collision (a legacy ball or a
+  region medium otherwise). **Why:** a moderator around a core never warmed: only stopping and
+  absorbed photons heated media. **Verification:** `fission.test.ts`: water around a 15 cm core
+  receives energy, a pool of zero density none; existing tests unchanged.
+- `[addition]` A medium step chooses where the medium is (`placedAsBody`, `isMediumStep`,
+  `mediumReplacements`, `nestedAsBodies` in `plan-edits.ts`, `step-editor.tsx`,
+  `builder-view.tsx`): a switch "all space / a body" keeps the components, the builder warns when
+  a medium for all space replaces one of other species and turns both into nested bodies on one
+  click (the later inside, the earlier outside and at least twice as large); the name field comes
+  first. **Verification:** `plan-edits.test.ts`; browser check.
+- `[fix]` A density or any scalar given by a plan `{{parameter}}` has its scale again
+  (`scaleBinding`, `PlanParameterSetterContext` in `number-or-parameter-input.tsx`): the scale
+  shows the parameter's value and moves the parameter. **Why:** the uranium of the chain reaction
+  templates had no density slider. **Verification:** browser check of `uraniumChainReaction`.
+- `[addition]` Template `uraniumInWater` (a 15 cm uranium-235 core in a 60 cm water pool in the
+  cube, named `uranium` and `water`), and the bodies of `chainReactionInCube` are named `tamper`
+  and `core`. **Verification:** template tests; complexity regenerated.
+- `[modification]` Each body of a medium is a card of its own in the environment panel
+  (`environment-summary.tsx`): "Medium «name»" with the shape, the centre when it is off the
+  origin and, for a body inside another one, the parent medium; the tree with indents is gone.
+  **Why:** the user found the nested tree ugly and asked for separate cards with a parent field.
+  **Verification:** browser check of `uraniumInWater`: two cards, the uranium one names water as
+  its parent.
+- `[fix]` Heating a medium with a given pressure scales that pressure by T′/T
+  (`mediumAtTemperature` in `medium-extent.ts`); before it jumped to the ideal-gas pressure of all
+  its atoms (1.35·10⁸ Pa for water warmed by a few picojoules). A medium that follows the ideal gas
+  still takes Σ n k T. **Verification:** `influences.test.ts` (water at 1 atm warmed from 300 to
+  330 K is at 1.1 atm); `medium-extent.test.ts` unchanged.
+- `[addition]` Resolved resonances reconstructed in the ENDF generator
+  (`libs/constants/scripts/resonances.ts`, `withResonances` in `generate-endf.ts`): Reich–Moore for
+  the actinides and Breit–Wigner for the strong thermal absorbers, added to the MF3 background
+  below the resonance boundary; `endf.generated.json` grows from 6.4 to 13 MB. **Why:** below the
+  boundary the data were 1/v, so uranium-238 had no 6.67 eV resonance and xenon-135 absorbed
+  nothing, and no reactor lattice could come out right. **Verification:** `reactor-physics.test.ts`
+  (σ_f of U-235 and Pu-239, σ_γ of U-238, Xe-135 and Sm-149 at 0.0253 eV within 1% of the
+  evaluation, the U-238 resonance above 10⁴ b); `fission.test.ts` unchanged.
+- `[addition]` Delayed neutrons (`DelayedNeutrons` in `src/endf.ts` from MF1/MF5 MT455,
+  `TransportOutcome.precursors`, `PendingNeutron` and `releaseDelayedNeutrons` in
+  `experiment-runner.ts`, `SystemFrame.pendingNeutrons`, a legend row in `space-view.tsx`).
+  **Why:** a reactor is controllable only through them. **Verification:** `reactor-physics.test.ts`
+  (precursors at the evaluated share of fissions within 5σ, recorded and released after 300 s).
+- `[modification]` Free-gas thermal scattering below 400 kT (`freeGasScattering` in
+  `neutron-transport.ts`). **What:** an elastic collision of a slow neutron takes a moving target
+  from the medium temperature; before targets were at rest and a neutron could only lose energy.
+  **Verification:** `reactor-physics.test.ts` (a 1 meV neutron in 900 K graphite ends between ½kT
+  and 4kT); `fission.test.ts` unchanged.
+- `[addition]` Cylinder bodies along z (`BODY_SHAPES` and `BodyGeometry.heightInMeters` in
+  contracts, `CYLINDER` in `space/geometry.ts`, `heightInMeters` of `placeBody`, `SHAPE_VIEWS` in
+  `cube-scene.ts`, rings in `space-view.tsx`, labels in `glossary.ts`). **Verification:**
+  `reactor-physics.test.ts` (holds, ray distances, volume), `cube-scene.test.ts`.
+- `[modification]` Memoised pure lookups on the per-particle path: `compositionOf` in
+  `medium-extent.ts`, the Lennard-Jones phase curve in `aggregate-state.ts` and the REACLIB
+  candidates per nucleus and medium species in `reaclib-rates.ts`. **Why:** a reactor cell with
+  hundreds of fission fragments spent most of its time re-parsing medium species. **Verification:**
+  identical report values before and after on a seeded run; a shot 40% faster; all tests.
+- `[addition]` Templates `chernobylStable` and `chernobylDisaster` (`templates/chernobyl.ts`): a
+  75 cm mirror cube as one RBMK cell with eight homogenised channels of burnt fuel (1.1% U-235,
+  0.3% Pu-239, 0.08% Pu-240, equilibrium Xe-135 and Sm-149) and boiling water around a rod
+  channel in graphite; the stable cell holds a boron carbide rod 30 cm into the layer, the
+  disaster cell has a graphite displacer, 1.5 times the xenon and steam after 4 ms. The builder's
+  `create` takes a position. **Verification:** `reactor-physics.test.ts` (the stable cell keeps its
+  32 neutrons within ±50%, the disaster cell ends with more than 1.5 times as many); on 64 seeded
+  shots the stable cell held 31 ± 1 neutrons over 12 ms, the disaster one grew from 34 to 92, and
+  65 without boiling; complexity regenerated.
+- `[fix]` Higgs decay table (`branchingFractions.higgsBoson` in `pdg2026.json`): the Standard Model
+  prediction quoted by the PDG review (LHC Higgs WG YR4, m_H = 125.09 GeV) replaces the seven
+  measured channels, adding g g and c c̄. **Why:** the measured fractions add up to 0.88, so the
+  sampler renormalised them to b b̄ 60% and W W* 29% and never drew g g or c c̄; a user caught the
+  6σ excess of W W*. `measuredPartialWidth` in `feynman/observables.ts` now adds the uncertainty of
+  the total width to that of the fraction. **Verification:** `higgs-decays.test.ts` (fractions add
+  up to one; b b̄, W W*, g g, τ τ, c c̄, Z Z* drawn within 5σ; every quark or gluon pair ends as
+  hadrons); `decay-exact.test.ts` (tree W W* and Z Z* widths within the PDG uncertainty) and
+  `feynman.test.ts` unchanged.
+- `[addition]` Keyframes (`KeyframeStep`, `KeyframeWatch` and the quantity vocabularies in
+  `experiment-plan.ts`, `KeyframeSummary` in `experiment-result.ts`, `experiment/keyframes.ts`,
+  `recordKeyframe` in `experiment-runner.ts`, the `keyframe` case of the compiler and the reporter,
+  `RunResult.keyframes`, `keyframe-editor.tsx`, `keyframe-table.tsx`, the player's step bar).
+  **What:** a step that records chosen quantities of the system, a medium or a particle under its
+  name; the result carries every quantity at each keyframe with its time and the paired change
+  between keyframes, the web shows it as a table with power and heating rate. **Why:** the user
+  wanted to pin a medium at one step and again later and see how much it warmed and absorbed.
+  **Verification:** `keyframes.test.ts` (values, times, an alpha's kinetic energy handed to the
+  drop to 1e-9, refusals), `plan-edits.test.ts` (targets, quantities, a second keyframe copying the
+  first).
+- `[addition]` Particle weight (`ExperimentPlan.particleWeight`, `ShotContext.particleWeight` in
+  `heatAt`, `weigh` in the builder, `withParticleWeight` and a field in the builder view). **What:**
+  each simulated particle stands for that many real ones in the heat it hands to media; default 1
+  leaves every existing plan unchanged. **Why:** a hundred neutrons cannot visibly warm 700 kg of
+  graphite; shrinking the media would change the physics. **Verification:** `keyframes.test.ts`
+  (a weight of a thousand gives a thousand times the heat, to 1e-9).
+- `[modification]` A body placed again with the same name and the same shape, centre and size
+  keeps its temperature and absorbed energy (`PlaceBody` in `field-influences.ts`); one with another
+  name still starts afresh. **Why:** water boiling into steam reset the channel to 558 K and zero
+  energy, so the change across the boiling was wrong. **Verification:** `keyframes.test.ts` (same
+  name kept, another name replaced); `fission.test.ts` and `environment-regions.test.ts` unchanged.
+- `[fix]` Stopping and photon absorption take the medium at the point where the particle's step
+  began (`ShotContext.environmentAt`, `absorbInMedia`). **Why:** a charged particle that crossed out
+  of a `placeBody` body within one step was looked up at its end point, outside, and was never
+  stopped: a 5 MeV alpha flew through a water body with its full momentum. Shared media and
+  particles born in the step are unchanged. **Verification:** `keyframes.test.ts` (the alpha heats
+  a water body); `medium-extent.test.ts`, `fission.test.ts`, `influences.test.ts` unchanged.
+- `[modification]` Chernobyl templates weigh each neutron as 4.9·10¹² real ones (the stable cell
+  then gives a fuel channel its 206 kW share of 3200 MW) and carry keyframes `start`,
+  `early`/`boiling` and `end` on channel1, the graphite and the neutrons. **Verification:** 12
+  seeded shots: the stable channel takes about 200 kW and heats at about 20 K/s, the disaster one
+  rises from about 230 to 350 kW and from 27 to 110 K/s after boiling. `reactor-physics.test.ts` now
+  reads the neutrons at the last keyframe with their standard error (16 shots each): the stable cell
+  within 5σ of its 32 seeds, the disaster cell above it by more than 3σ; the fixed ±50% window it
+  had before failed on a 2.5σ fluctuation of the branching chain.

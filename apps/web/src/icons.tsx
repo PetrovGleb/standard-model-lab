@@ -1,7 +1,7 @@
 /* Icon vocabulary of the builder: one SML icon per operation, field kind, influence parameter and template category, plus a label component that shows them. */
 import type { ExperimentStep, TemplateCategory } from '@standard-model/contracts';
 import type { ReactNode } from 'react';
-import { FlaskConical, Swords, type LucideIcon } from 'lucide-react';
+import { Diamond, FlaskConical, Swords, type LucideIcon } from 'lucide-react';
 import { sml, type IconComponent } from './components/sml-icon';
 
 const OPERATION_ICON_SIZE = 22;
@@ -48,6 +48,7 @@ export const OPERATION_ICONS: Readonly<Record<OperationName, IconComponent>> = {
   propagate: sml('propagate'),
   measurePosition: sml('measure-position'),
   measureSystem: sml('measure-system'),
+  keyframe: fromLucide(Diamond),
   decay: sml('decay'),
 };
 

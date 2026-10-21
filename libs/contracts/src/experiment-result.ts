@@ -1,4 +1,5 @@
-/* ExperimentResult: what a run produces, report values, outcome counts, histograms and the system report, in the shape the RunResult model stores. */
+/* ExperimentResult: what a run produces, report values, outcome counts, histograms, the system report and the keyframe summary (every watched quantity at each keyframe and its change
+   between them), in the shape the RunResult model stores. */
 import type {
   EntangledState,
   ExperimentStep,
@@ -93,7 +94,8 @@ export type SystemEventKind =
   | 'systemMeasured'
   | 'decayed'
   | 'reacted'
-  | 'phaseChanged';
+  | 'phaseChanged'
+  | 'keyframe';
 
 export interface SystemEvent {
   readonly kind: SystemEventKind;
@@ -154,6 +156,7 @@ export interface EnvironmentRegionView {
 
 export interface SystemFrame {
   readonly stepIndex: number;
+  readonly pendingNeutrons?: number;
   readonly step: ExperimentStep | null;
   readonly particles: readonly ParticleView[];
   readonly environment: Readonly<Record<string, unknown>>;
@@ -170,6 +173,30 @@ export interface SystemReport {
   readonly frames: readonly SystemFrame[];
 }
 
+export interface KeyframeEstimate {
+  readonly mean: number;
+  readonly standardError: number;
+}
+
+export interface KeyframeChange extends KeyframeEstimate {
+  readonly from: number;
+  readonly to: number;
+}
+
+export interface KeyframeTrack {
+  readonly target: string;
+  readonly quantity: string;
+  readonly values: readonly (KeyframeEstimate | null)[];
+  readonly changes: readonly KeyframeChange[];
+}
+
+export interface KeyframeSummary {
+  readonly names: readonly string[];
+  readonly stepIndices: readonly number[];
+  readonly timesInSeconds: readonly number[];
+  readonly tracks: readonly KeyframeTrack[];
+}
+
 export interface ExperimentResult {
   readonly planName: string;
   readonly shots: number;
@@ -180,6 +207,7 @@ export interface ExperimentResult {
   readonly distributions: Distributions;
   readonly systemReport: SystemReport | null;
   readonly systemReports?: readonly SystemReport[];
+  readonly keyframes?: KeyframeSummary;
   readonly elapsedMilliseconds: number;
   readonly stepMeanMilliseconds?: readonly number[];
   readonly stopped?: boolean;

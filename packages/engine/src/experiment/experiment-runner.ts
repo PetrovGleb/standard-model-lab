@@ -8,9 +8,12 @@ import {
   particleSpec,
 } from '@standard-model/constants';
 import {
+  KEYFRAME_COUNT_PREFIX,
   LocalizedError,
   PARTICLE_NAMES,
+  keyframeRecord,
   localizedText,
+  type KeyframeWatch,
   type DiagramView,
   type Environment,
   type EnvironmentAspectKey,
@@ -60,6 +63,7 @@ import {
 } from '../space/geometry.js';
 import {
   EV_PER_GEV,
+  sampleIsotropicDirection,
   addVectors,
   scaleVector,
   updatedRunningMean,
@@ -67,6 +71,7 @@ import {
 } from '@standard-model/utils';
 import type { CompiledPlan, CompiledStep } from './plan-compiler.js';
 import { ResultAggregator, type ShotRecords } from './result-aggregator.js';
+import { KeyframeAggregator, targetKind } from './keyframes.js';
 
 const ANNIHILATION_INTEGRATION_CHUNKS = 8;
 const EQUATOR_DEGREES = 90;
@@ -82,6 +87,19 @@ const MEDIUM_REACTIONS_PER_STEP_LIMIT = 1000;
 const SHARED_MEDIUM = -1;
 const FIRST_BODY_KEY = -2;
 const METERS_PER_FEMTOMETER = 1e-15;
+
+export function mediumRecordKeys(media: readonly MediumAspect[]): readonly string[] {
+  let bodyNumber = 0;
+  const keys = media.map((medium) => {
+    if (medium.geometry !== undefined) {
+      bodyNumber += 1;
+    }
+    return medium.name ?? `body${String(bodyNumber)}`;
+  });
+  return keys.map((key, index) =>
+    keys.indexOf(key) === index ? key : `${key}${String(index + 1)}`,
+  );
+}
 
 function metersOf(particle: Particle): Vector3 {
   return scaleVector(particle.kinematics.positionInFemtometers, METERS_PER_FEMTOMETER);
@@ -118,6 +136,12 @@ export interface MediumReaction {
   readonly label: LocalizedText | string;
 }
 
+export interface PendingNeutron {
+  readonly remainingInSeconds: number;
+  readonly positionInFemtometers: Vector3;
+  readonly kineticEnergyInEv: number;
+}
+
 export interface EnvironmentRegion {
   readonly id: number;
   readonly aspect: EnvironmentAspectKey;
@@ -141,6 +165,8 @@ export class ShotContext {
   readonly regions: EnvironmentRegion[] = [];
   reportedRecords: ReadonlySet<string> = new Set();
   readonly pendingHeat = new Map<number, number>();
+  precursors: PendingNeutron[] = [];
+  particleWeight = 1;
 
   add(label: string, particle: Particle, parents: readonly Particle[]): void {
     this.particles.set(label, particle);
@@ -156,7 +182,11 @@ export class ShotContext {
   }
 
   environmentFor(particle: Particle): Environment {
-    return withBodyMedium(this.baseEnvironmentFor(particle), metersOf(particle));
+    return this.environmentAt(particle, metersOf(particle));
+  }
+
+  environmentAt(particle: Particle, pointInMeters: Vector3): Environment {
+    return withBodyMedium(this.baseEnvironmentFor(particle), pointInMeters);
   }
 
   walls(): CubeWalls | null {
@@ -201,8 +231,13 @@ export class ShotContext {
   }
 
   heatMedium(particle: Particle, energyInJoules: number): void {
+    this.heatAt(particle, metersOf(particle), energyInJoules);
+  }
+
+  heatAt(particle: Particle, pointInMeters: Vector3, sampledEnergyInJoules: number): void {
+    const energyInJoules = sampledEnergyInJoules * this.particleWeight;
     const bodies = this.environment.get('bodies')?.bodies ?? [];
-    const body = innermostBody(bodies, metersOf(particle));
+    const body = innermostBody(bodies, pointInMeters);
     const ownBodies = this.regions.some(
       (region) => region.aspect === 'bodies' && region.members.has(particle.id),
     );
@@ -316,10 +351,13 @@ export class ExperimentRunner {
   run(plan: CompiledPlan, options: RunOptions = {}): ExperimentResult {
     const started = Date.now();
     const aggregator = new ResultAggregator(plan.report);
+    const keyframes = new KeyframeAggregator(plan.steps);
     const every =
       options.progressEveryShots ?? Math.max(1, Math.floor(plan.shots / PROGRESS_STEPS));
     for (let shot = 0; shot < plan.shots; shot += 1) {
-      aggregator.addShot(this.runShot(plan));
+      const records = this.runShot(plan);
+      aggregator.addShot(records);
+      keyframes.addShot(records);
       if (
         options.onProgress !== undefined &&
         ((shot + 1) % every === 0 || shot + 1 === plan.shots)
@@ -327,12 +365,13 @@ export class ExperimentRunner {
         options.onProgress({ completedShots: shot + 1, totalShots: plan.shots });
       }
     }
-    return this.result(plan, aggregator, started);
+    return this.result(plan, aggregator, keyframes, started);
   }
 
   async runAsync(plan: CompiledPlan, options: RunOptions = {}): Promise<ExperimentResult> {
     const started = Date.now();
     const aggregator = new ResultAggregator(plan.report);
+    const keyframes = new KeyframeAggregator(plan.steps);
     let meanShotMilliseconds = 0;
     let lastYield = Number.NEGATIVE_INFINITY;
     let completedShots = 0;
@@ -344,14 +383,16 @@ export class ExperimentRunner {
       }
       if (options.shouldStop?.() === true) {
         return {
-          ...this.result(plan, aggregator, started),
+          ...this.result(plan, aggregator, keyframes, started),
           shots: completedShots,
           stopped: true,
           requestedShots: plan.shots,
         };
       }
       const shotStarted = performance.now();
-      aggregator.addShot(this.runShot(plan));
+      const records = this.runShot(plan);
+      aggregator.addShot(records);
+      keyframes.addShot(records);
       completedShots = shot + 1;
       meanShotMilliseconds = updatedRunningMean(
         meanShotMilliseconds,
@@ -366,14 +407,16 @@ export class ExperimentRunner {
         remainingMilliseconds: meanShotMilliseconds * (plan.shots - shot - 1),
       });
     }
-    return this.result(plan, aggregator, started);
+    return this.result(plan, aggregator, keyframes, started);
   }
 
   private result(
     plan: CompiledPlan,
     aggregator: ResultAggregator,
+    keyframes: KeyframeAggregator,
     started: number,
   ): ExperimentResult {
+    const summary = keyframes.summary();
     return {
       planName: plan.name,
       shots: plan.shots,
@@ -385,12 +428,14 @@ export class ExperimentRunner {
       systemReport: null,
       elapsedMilliseconds: Date.now() - started,
       stepMeanMilliseconds: this.stepMeanMilliseconds,
+      ...(summary === undefined ? {} : { keyframes: summary }),
     };
   }
 
   runShot(plan: CompiledPlan, observer?: ShotObserver): ShotRecords {
     const context = new ShotContext();
     context.space = plan.space;
+    context.particleWeight = plan.particleWeight;
     context.reportedRecords = new Set(plan.report.flatMap((spec) => spec.records));
     try {
       plan.steps.forEach((step, stepIndex) => {
@@ -466,6 +511,7 @@ export class ExperimentRunner {
         break;
       }
       case 'evolve': {
+        this.releaseDelayedNeutrons(context, step.durationInSeconds);
         const starts = new Map(
           [...context.particles.values()].map((particle) => [
             particle.id,
@@ -591,6 +637,9 @@ export class ExperimentRunner {
       case 'measureSystem':
         this.measureSystem(step.record, context);
         break;
+      case 'keyframe':
+        this.recordKeyframe(step.name, step.watch, context);
+        break;
       case 'measurePosition': {
         const space = this.requireSpace(context);
         const state = context.spatial.get(step.target);
@@ -676,7 +725,9 @@ export class ExperimentRunner {
     [...context.particles.values()]
       .filter((particle) => particle.status === 'alive' && particle.spec.family !== 'neutrino')
       .forEach((particle) => {
-        const medium = context.environmentFor(particle).get('medium');
+        const start = starts.get(particle.id) ?? particle.kinematics.positionInFemtometers;
+        const startInMeters = scaleVector(start, METERS_PER_FEMTOMETER);
+        const medium = context.environmentAt(particle, startInMeters).get('medium');
         if (medium === undefined || geometryOf(medium) === null) {
           return;
         }
@@ -685,7 +736,6 @@ export class ExperimentRunner {
         if (!(speed > 0)) {
           return;
         }
-        const start = starts.get(particle.id) ?? particle.kinematics.positionInFemtometers;
         const path = Math.min(
           speed * SPEED_OF_LIGHT_IN_VACUUM.value * durationInSeconds,
           distanceToEdgeInMeters(medium, start, momentum.momentum),
@@ -695,7 +745,7 @@ export class ExperimentRunner {
           const attenuation = photonAttenuationPerMeter(medium, energyInEv);
           if (this.engine.random.nextUnit() < -Math.expm1(-attenuation * path)) {
             particle.markCollided();
-            context.heatMedium(particle, energyInEv * ELECTRON_VOLT.value);
+            context.heatAt(particle, startInMeters, energyInEv * ELECTRON_VOLT.value);
             absorbed.push({
               parent: particle,
               products: [],
@@ -714,7 +764,7 @@ export class ExperimentRunner {
         if (remaining >= kineticInEv) {
           return;
         }
-        context.heatMedium(particle, (kineticInEv - remaining) * ELECTRON_VOLT.value);
+        context.heatAt(particle, startInMeters, (kineticInEv - remaining) * ELECTRON_VOLT.value);
         const travelled = Math.min(path, rangeInMeters(medium, charge, mass, kineticInEv));
         const length = vectorMagnitude(momentum.momentum);
         const totalEnergy = mass + remaining / EV_PER_GEV;
@@ -889,6 +939,12 @@ export class ExperimentRunner {
           world,
           durationInSeconds,
           start,
+          (positionInFemtometers, energyInEv) =>
+            context.heatAt(
+              neutron,
+              scaleVector(positionInFemtometers, METERS_PER_FEMTOMETER),
+              energyInEv * ELECTRON_VOLT.value,
+            ),
         );
         if (outcome === null) {
           return;
@@ -897,6 +953,13 @@ export class ExperimentRunner {
         outcome.products.forEach((product) =>
           context.add(context.freshLabel(product.spec.name), product, [neutron]),
         );
+        (outcome.precursors ?? []).forEach((precursor) =>
+          context.precursors.push({
+            remainingInSeconds: precursor.delayInSeconds,
+            positionInFemtometers: neutron.kinematics.positionInFemtometers,
+            kineticEnergyInEv: precursor.kineticEnergyInEv,
+          }),
+        );
         context.reactions.push({
           parent: neutron,
           products: outcome.products,
@@ -904,6 +967,29 @@ export class ExperimentRunner {
         });
       });
     return handled;
+  }
+
+  private releaseDelayedNeutrons(context: ShotContext, durationInSeconds: number): void {
+    const due = context.precursors.filter(
+      (precursor) => precursor.remainingInSeconds <= durationInSeconds,
+    );
+    context.precursors = context.precursors
+      .filter((precursor) => precursor.remainingInSeconds > durationInSeconds)
+      .map((precursor) => ({
+        ...precursor,
+        remainingInSeconds: precursor.remainingInSeconds - durationInSeconds,
+      }));
+    const mass = particleSpec('neutron').massInGev.value;
+    due.forEach((precursor) => {
+      const neutron = this.engine.particles.create('neutron', {
+        momentumInGev: scaleVector(
+          sampleIsotropicDirection(this.engine.random),
+          Math.sqrt((mass + precursor.kineticEnergyInEv / EV_PER_GEV) ** 2 - mass * mass),
+        ),
+        positionInFemtometers: precursor.positionInFemtometers,
+      });
+      context.add(context.freshLabel('neutron'), neutron, []);
+    });
   }
 
   private reflectOffWalls(context: ShotContext): void {
@@ -1013,6 +1099,60 @@ export class ExperimentRunner {
     context.cascades.push(...decays);
   }
 
+  private recordKeyframe(
+    name: string,
+    watch: readonly KeyframeWatch[],
+    context: ShotContext,
+  ): void {
+    const alive = [...context.particles.values()].filter((particle) => particle.status === 'alive');
+    const sharedMedium = context.environment.get('medium');
+    const named = [
+      ...(sharedMedium?.name === undefined ? [] : [sharedMedium]),
+      ...(context.environment.get('bodies')?.bodies ?? []),
+    ];
+    const keys = mediumRecordKeys(named);
+    const labels = new Set(context.particles.keys());
+    watch.forEach((entry) => {
+      const value = ((): number | undefined => {
+        const kind = targetKind(entry.target, labels);
+        if (kind === 'system') {
+          if (entry.quantity === 'particleCount') {
+            return alive.length;
+          }
+          if (entry.quantity === 'pendingNeutrons') {
+            return context.precursors.length;
+          }
+          const species = entry.quantity.slice(KEYFRAME_COUNT_PREFIX.length);
+          return alive.filter((particle) => particle.spec.name === species).length;
+        }
+        if (kind === 'particle') {
+          const particle = context.particles.get(entry.target);
+          if (particle === undefined || particle.status !== 'alive') {
+            return undefined;
+          }
+          const energy = particle.kinematics.fourMomentumInGev.energy;
+          return entry.quantity === 'energyInGev' ? energy : energy - particle.spec.massInGev.value;
+        }
+        const medium =
+          entry.target === 'medium' && sharedMedium?.name === undefined
+            ? sharedMedium
+            : named[keys.indexOf(entry.target)];
+        if (medium === undefined) {
+          return undefined;
+        }
+        if (entry.quantity === 'temperatureInKelvin') {
+          return medium.temperatureInKelvin;
+        }
+        return entry.quantity === 'absorbedEnergyInJoules'
+          ? (medium.absorbedEnergyInJoules ?? 0)
+          : medium.pressureInPascals;
+      })();
+      if (value !== undefined) {
+        context.numeric.set(keyframeRecord(name, entry), value);
+      }
+    });
+  }
+
   private measureSystem(record: string, context: ShotContext): void {
     const alive = [...context.particles.values()].filter((particle) => particle.status === 'alive');
     const jets = Array.from({ length: context.jetCount }, () => JET_TOKEN);
@@ -1061,10 +1201,20 @@ export class ExperimentRunner {
         sharedMedium.absorbedEnergyInJoules ?? 0,
       );
     }
-    (context.environment.get('bodies')?.bodies ?? []).forEach((body, index) => {
-      const name = `${record}.body${String(index + 1)}`;
-      context.numeric.set(`${name}.temperatureInKelvin`, body.temperatureInKelvin);
-      context.numeric.set(`${name}.absorbedEnergyInJoules`, body.absorbedEnergyInJoules ?? 0);
+    const media = [
+      ...(sharedMedium?.name === undefined ? [] : [sharedMedium]),
+      ...(context.environment.get('bodies')?.bodies ?? []),
+    ];
+    mediumRecordKeys(media).forEach((key, index) => {
+      const medium = media[index];
+      if (medium === undefined) {
+        return;
+      }
+      context.numeric.set(`${record}.${key}.temperatureInKelvin`, medium.temperatureInKelvin);
+      context.numeric.set(
+        `${record}.${key}.absorbedEnergyInJoules`,
+        medium.absorbedEnergyInJoules ?? 0,
+      );
     });
     context.categorical.set(
       `${record}.phase`,
@@ -1088,6 +1238,7 @@ export class ExperimentRunner {
     );
     const countWhere = (test: (particle: Particle) => boolean): number => alive.filter(test).length;
     context.numeric.set(`${record}.particleCount`, alive.length);
+    context.numeric.set(`${record}.pendingNeutrons`, context.precursors.length);
     context.numeric.set(
       `${record}.chargedCount`,
       countWhere((particle) => particle.spec.electricChargeInElementaryUnits !== 0),

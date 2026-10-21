@@ -1,4 +1,4 @@
-/* ResultView: key numbers as tiles, how long the run took and the share of each step in a shot, outcome frequencies as bars, numeric records as histograms (records about single particles
+/* ResultView: key numbers as tiles, how long the run took and the share of each step in a shot, the keyframe table, outcome frequencies as bars, numeric records as histograms (records about single particles
    behind a toggle, since a chain reaction makes thousands), the system report player and a hand-off of the final system to a new experiment. */
 import type { ExperimentPlan, ExperimentResult } from '@standard-model/contracts';
 import { useState, type CSSProperties } from 'react';
@@ -9,6 +9,7 @@ import { HINTS } from '../hints';
 import { stepShares } from './run-forecast';
 import { Histogram, OutcomeBars } from './charts';
 import { FormulaPanel } from './formula-panel';
+import { KeyframeTable } from './keyframe-table';
 import { SystemPlayer } from './system-player';
 import { say } from '../language';
 
@@ -115,6 +116,7 @@ export function ResultView({ result, plan, onCarryOver }: Props) {
           </p>
         )}
         <TimeBreakdown result={result} plan={plan} />
+        {result.keyframes !== undefined && <KeyframeTable keyframes={result.keyframes} />}
         {scalars.length > 0 && (
           <div className="tiles">
             {scalars.map(([label, value]) => (

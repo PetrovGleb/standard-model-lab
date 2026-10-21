@@ -3,6 +3,7 @@ import { particleSpec } from '@standard-model/constants';
 import { idealGasPressureInPascals } from '../environment/aggregate-state.js';
 import {
   BODY_SHAPES,
+  MEDIUM_NAME_PATTERN,
   MEDIUM_REACTION_MODES,
   PARTICLE_NAMES,
   type BodyShape,
@@ -202,6 +203,7 @@ const MEDIUM_PARAMETERS: readonly InfluenceParameterSpec[] = [
       },
     ],
   },
+  { name: 'name', kind: 'text', required: false },
   required('temperatureInKelvin'),
   optionalWithoutDefault('pressureInPascals'),
   optionalWithoutDefault('radiationTemperatureInKelvin'),
@@ -216,6 +218,22 @@ const MEDIUM_PARAMETERS: readonly InfluenceParameterSpec[] = [
   ...vectorSpecs('VelocityInMetersPerSecond'),
 ];
 
+function optionalMediumName(parameters: InfluenceParameters): string | undefined {
+  const value = parameters.name;
+  if (value === undefined || value === '') {
+    return undefined;
+  }
+  if (typeof value !== 'string' || !MEDIUM_NAME_PATTERN.test(value)) {
+    throw new LocalizedError(
+      localizedText(
+        'название среды — одно слово из букв, цифр, _ и -, например вода или uranium_core',
+        'A medium name is one word of letters, digits, _ and -, such as water or uranium_core',
+      ),
+    );
+  }
+  return value;
+}
+
 function mediumFrom(parameters: InfluenceParameters): MediumAspect {
   const components = mediumComponents(parameters, () =>
     requireNumber(parameters, 'temperatureInKelvin'),
@@ -223,7 +241,9 @@ function mediumFrom(parameters: InfluenceParameters): MediumAspect {
   const temperatureInKelvin = requireNumber(parameters, 'temperatureInKelvin');
   const radiation = optionalNumber(parameters, 'radiationTemperatureInKelvin', Number.NaN);
   const thickness = optionalNumber(parameters, 'thicknessInMeters', Number.NaN);
+  const name = optionalMediumName(parameters);
   return {
+    ...(name === undefined ? {} : { name }),
     components,
     temperatureInKelvin,
     bulkVelocityInMetersPerSecond: vectorFrom(parameters, 'VelocityInMetersPerSecond'),
@@ -390,7 +410,7 @@ export function createDefaultInfluenceRegistry(): InfluenceRegistry {
       {
         name: 'placeBody',
         description:
-          'Place a body of a medium in space: a ball of a diameter or a box of an edge around a centre; a point sees the medium of the smallest body that holds it',
+          'Place a body of a medium in space: a ball of a diameter, a box of an edge or a cylinder along z of a diameter and a height around a centre; a point sees the medium of the smallest body that holds it',
         parameters: [
           {
             name: 'shape',
@@ -400,6 +420,7 @@ export function createDefaultInfluenceRegistry(): InfluenceRegistry {
             choices: BODY_SHAPES,
           },
           required('sizeInMeters'),
+          optionalWithoutDefault('heightInMeters'),
           ...vectorSpecs('CenterInMeters'),
           ...MEDIUM_PARAMETERS.filter((spec) => spec.name !== 'thicknessInMeters'),
         ],
@@ -411,6 +432,9 @@ export function createDefaultInfluenceRegistry(): InfluenceRegistry {
             shape: requireBodyShape(parameters),
             centerInMeters: vectorFrom(parameters, 'CenterInMeters'),
             sizeInMeters: requirePositive(parameters, 'sizeInMeters'),
+            ...(parameters.heightInMeters === undefined
+              ? {}
+              : { heightInMeters: requirePositive(parameters, 'heightInMeters') }),
           },
         }),
     )

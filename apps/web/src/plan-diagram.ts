@@ -415,6 +415,11 @@ export function layoutPlan(
           nodes.push({ row, column: lane.column, operation: 'measureSystem', note: null }),
         );
         break;
+      case 'keyframe':
+        systemWide(row).forEach((lane) =>
+          nodes.push({ row, column: lane.column, operation: 'keyframe', note: step.name }),
+        );
+        break;
       case 'propagate': {
         const placed = new Set(
           plan.steps

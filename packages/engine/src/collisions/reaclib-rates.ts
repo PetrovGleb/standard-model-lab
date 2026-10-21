@@ -173,6 +173,27 @@ function perMoleDensity(numberDensityPerCubicMeter: number): number {
   return (numberDensityPerCubicMeter * CUBIC_METERS_PER_CUBIC_CENTIMETER) / AVOGADRO_CONSTANT.value;
 }
 
+const candidatesByReactants = new Map<string, readonly ReaclibReaction[]>();
+
+function mediumCandidates(
+  nucleus: ParticleName,
+  species: readonly ParticleName[],
+): readonly ReaclibReaction[] {
+  const key = [nucleus, ...species].join('|');
+  const known = candidatesByReactants.get(key);
+  if (known !== undefined) {
+    return known;
+  }
+  const { byReactants } = index();
+  const found = Array.from({ length: MOST_PARTNERS }, (unused, size) => size + 1).flatMap((size) =>
+    partnerCombinations(species, size).flatMap(
+      (partners) => byReactants.get(reactantKey([nucleus, ...partners])) ?? [],
+    ),
+  );
+  candidatesByReactants.set(key, found);
+  return found;
+}
+
 export function reaclibMediumChannels(
   nucleus: ParticleName,
   components: readonly MediumComponent[],
@@ -190,13 +211,7 @@ export function reaclibMediumChannels(
         particleSpec(component.species).family !== 'neutrino',
     )
     .map((component) => component.species);
-  const { byReactants } = index();
-  const candidates = Array.from({ length: MOST_PARTNERS }, (unused, size) => size + 1).flatMap(
-    (size) =>
-      partnerCombinations(species, size).flatMap(
-        (partners) => byReactants.get(reactantKey([nucleus, ...partners])) ?? [],
-      ),
-  );
+  const candidates = mediumCandidates(nucleus, species);
   return candidates.flatMap((reaction) => {
     if (!MEDIUM_CHAPTERS.has(reaction.chapter)) {
       return [];

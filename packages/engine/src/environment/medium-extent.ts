@@ -50,15 +50,19 @@ interface Composition {
   readonly molecule: boolean;
 }
 
+const compositions = new Map<ParticleName, Composition>();
+
 function compositionOf(species: ParticleName): Composition {
-  if (species.startsWith('molecule:')) {
-    return {
-      atoms: moleculeStructureOf(species).atoms.map((atom) => atom.protons),
-      molecule: true,
-    };
+  const known = compositions.get(species);
+  if (known !== undefined) {
+    return known;
   }
-  const identity = matterIdentity(species);
-  return { atoms: identity === null ? [] : [identity.protons], molecule: false };
+  const identity = species.startsWith('molecule:') ? null : matterIdentity(species);
+  const composition = species.startsWith('molecule:')
+    ? { atoms: moleculeStructureOf(species).atoms.map((atom) => atom.protons), molecule: true }
+    : { atoms: identity === null ? [] : [identity.protons], molecule: false };
+  compositions.set(species, composition);
+  return composition;
 }
 
 function electronsOf(species: ParticleName): number {
@@ -140,9 +144,12 @@ export function mediumAtTemperature(
   return {
     ...medium,
     temperatureInKelvin,
-    pressureInPascals: followsIdealGas
-      ? idealAfter
-      : Math.max(medium.pressureInPascals ?? 0, idealAfter),
+    pressureInPascals:
+      followsIdealGas || medium.pressureInPascals === undefined
+        ? idealAfter
+        : medium.temperatureInKelvin > 0
+          ? (medium.pressureInPascals * temperatureInKelvin) / medium.temperatureInKelvin
+          : medium.pressureInPascals,
   };
 }
 

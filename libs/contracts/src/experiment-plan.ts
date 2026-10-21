@@ -1,4 +1,5 @@
-/* ExperimentPlan: the declarative JSON pipeline the runner executes; templates are plans with {{parameter}} placeholders; a create step with a count makes a group of particles labelled label1…labelN. */
+/* ExperimentPlan: the declarative JSON pipeline the runner executes; templates are plans with {{parameter}} placeholders; a create step with a count makes a group of particles labelled label1…labelN;
+   a keyframe step records chosen quantities of a medium, the system or a particle under its name, and particleWeight says how many real particles each simulated one stands for. */
 import type { CatalogParticleName } from './particle-spec.js';
 import type { MeasurementDirection, ObservableName } from './quantum.js';
 
@@ -257,6 +258,31 @@ export interface DecayStep {
   readonly record?: string;
 }
 
+export const KEYFRAME_SYSTEM_TARGET = 'system';
+export const MEDIUM_KEYFRAME_QUANTITIES = [
+  'temperatureInKelvin',
+  'absorbedEnergyInJoules',
+  'pressureInPascals',
+] as const;
+export const SYSTEM_KEYFRAME_QUANTITIES = ['particleCount', 'pendingNeutrons'] as const;
+export const PARTICLE_KEYFRAME_QUANTITIES = ['energyInGev', 'kineticEnergyInGev'] as const;
+export const KEYFRAME_COUNT_PREFIX = 'count.';
+
+export interface KeyframeWatch {
+  readonly target: string;
+  readonly quantity: string;
+}
+
+export interface KeyframeStep {
+  readonly operation: 'keyframe';
+  readonly name: string;
+  readonly watch: readonly KeyframeWatch[];
+}
+
+export function keyframeRecord(name: string, watch: KeyframeWatch): string {
+  return `${name}.${watch.target}.${watch.quantity}`;
+}
+
 export type ExperimentStep =
   | CreateStep
   | CreateNucleusStep
@@ -273,6 +299,7 @@ export type ExperimentStep =
   | PropagateStep
   | MeasurePositionStep
   | MeasureSystemStep
+  | KeyframeStep
   | DecayStep;
 
 export interface ReportCondition {
@@ -314,6 +341,7 @@ export interface ExperimentPlan {
   readonly shots: number;
   readonly seed?: number;
   readonly space?: SpaceSpec;
+  readonly particleWeight?: number;
   readonly steps: readonly ExperimentStep[];
   readonly report: readonly ReportSpec[];
 }

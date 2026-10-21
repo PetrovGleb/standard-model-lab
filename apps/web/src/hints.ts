@@ -31,6 +31,20 @@ export const HINTS = bilingual({
     'Диаметр шара, который заполняет среда: вылетевшая за край частица её покидает, поглощённая энергия нагревает шар',
     'Diameter of the ball the medium fills: a particle that crosses the edge leaves it, absorbed energy heats the ball',
   ],
+  bodySize: [
+    'Размер тела: диаметр шара или цилиндра, ребро куба',
+    'Size of the body: the ball or cylinder diameter, the box edge',
+  ],
+  bodyHeight: ['Высота цилиндра вдоль оси z', 'Height of the cylinder along the z axis'],
+  mediumPath: [
+    'Тело среды, в котором лежит частица, и тела вокруг него, от внутреннего к внешнему',
+    'The body of a medium the particle lies in and the bodies around it, from the inner to the outer one',
+  ],
+  bodyParent: [
+    'Тело, внутри которого лежит это тело: снаружи от него частица видит среду родителя',
+    'The body this body lies in: outside it a particle sees the parent medium',
+  ],
+  bodyCenter: ['Центр тела в пространстве', 'Centre of the body in space'],
   absorbedEnergy: [
     'Энергия излучения и частиц, которую среда поглотила за опыт; от неё выросла температура шара',
     'Energy of radiation and particles the medium has absorbed so far; it raised the temperature of the ball',
@@ -211,6 +225,10 @@ export const HINTS = bilingual({
   categoryChip: [
     'Показать шаблоны этой категории; число — сколько их',
     'Show the templates of this category; the number is how many there are',
+  ],
+  particleWeight: [
+    'Сколько настоящих частиц стоит за каждой смоделированной: энергия, которую частицы отдают средам, и нагрев умножаются на этот вес. Так сотня нейтронов может греть реактор, как 10¹⁴ настоящих',
+    'How many real particles each simulated one stands for: the energy particles hand to media and the heating are multiplied by this weight. This way a hundred neutrons can heat a reactor like 10¹⁴ real ones',
   ],
   shots: [
     'Сколько раз прогнать эксперимент; статистическая погрешность падает как 1/√N',

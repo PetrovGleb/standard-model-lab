@@ -4,6 +4,7 @@ import { CHSH_TEMPLATE } from './chsh.js';
 import { CHEMISTRY_TEMPLATES } from './chemistry.js';
 import { RADIATION_IN_MATTER_TEMPLATES } from './radiation-in-matter.js';
 import { FISSION_TEMPLATES } from './fission.js';
+import { CHERNOBYL_TEMPLATES } from './chernobyl.js';
 import { QUARK_MATTER_TEMPLATES } from './quark-matter.js';
 import {
   DEUTERON_PHOTODISINTEGRATION_TEMPLATE,
@@ -215,5 +216,6 @@ export const EXPERIMENT_TEMPLATES: Readonly<Record<string, ExperimentPlan>> = Ob
   ...CHEMISTRY_TEMPLATES.map((plan) => [plan.name, plan]),
   ...RADIATION_IN_MATTER_TEMPLATES.map((plan) => [plan.name, plan]),
   ...FISSION_TEMPLATES.map((plan) => [plan.name, plan]),
+  ...CHERNOBYL_TEMPLATES.map((plan) => [plan.name, plan]),
   ...QUARK_MATTER_TEMPLATES.map((plan) => [plan.name, plan]),
 ]);

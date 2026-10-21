@@ -7,6 +7,7 @@ import type {
   ExperimentPlan,
   ExperimentStep,
   InfluenceStep,
+  KeyframeWatch,
   MeasurementAxis,
   NumberOrParameter,
   ObservableName,
@@ -31,6 +32,7 @@ export class ExperimentBuilder {
   private descriptionText: string | undefined;
   private categoryList: readonly TemplateCategory[] = [];
   private spaceSpec: SpaceSpec | undefined;
+  private weight: number | undefined;
 
   constructor(private readonly name: string) {}
 
@@ -65,6 +67,7 @@ export class ExperimentBuilder {
     options: {
       spin?: SpinPreparation;
       momentumInGev?: ParameterizableVector3;
+      positionInFemtometers?: ParameterizableVector3;
       count?: NumberOrParameter;
     } = {},
   ): this {
@@ -211,6 +214,16 @@ export class ExperimentBuilder {
     return this;
   }
 
+  keyframe(name: string, watch: readonly KeyframeWatch[]): this {
+    this.steps.push({ operation: 'keyframe', name, watch });
+    return this;
+  }
+
+  weigh(particleWeight: number): this {
+    this.weight = particleWeight;
+    return this;
+  }
+
   decay(target: string, record?: string): this {
     this.steps.push({ operation: 'decay', target, ...(record === undefined ? {} : { record }) });
     return this;
@@ -257,6 +270,7 @@ export class ExperimentBuilder {
       shots: this.shotCount,
       ...(this.seedValue === undefined ? {} : { seed: this.seedValue }),
       ...(this.spaceSpec === undefined ? {} : { space: this.spaceSpec }),
+      ...(this.weight === undefined ? {} : { particleWeight: this.weight }),
       steps: [...this.steps],
       report: [...this.reports],
     };

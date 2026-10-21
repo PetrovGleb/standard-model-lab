@@ -1,4 +1,5 @@
-/* useElementSize: the live pixel size of an element, so SVG drawings keep text at real pixel size and canvases know their viewport. */
+/* useElementSize: the live pixel size of an element, so SVG drawings keep text at real pixel size and canvases know their viewport; every measure reads the same bounding box, so
+   re-attaching on a render never flips the size by a sub-pixel and never moves a camera that follows it. */
 import { useCallback, useState } from 'react';
 
 export interface ElementSize {
@@ -21,13 +22,12 @@ export function useElementSize(
         );
       }
     };
-    const box = element.getBoundingClientRect();
-    measure(box.width, box.height);
-    const observer = new ResizeObserver(([entry]) => {
-      if (entry !== undefined) {
-        measure(entry.contentRect.width, entry.contentRect.height);
-      }
-    });
+    const measureElement = (): void => {
+      const box = element.getBoundingClientRect();
+      measure(box.width, box.height);
+    };
+    measureElement();
+    const observer = new ResizeObserver(measureElement);
     observer.observe(element);
     return () => observer.disconnect();
   }, []);

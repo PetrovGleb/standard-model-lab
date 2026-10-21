@@ -14,7 +14,17 @@ import type {
   SpaceSpec,
   TemplateCategory,
 } from '@standard-model/contracts';
-import { MAXIMUM_GROUP_SIZE, groupMemberLabels } from '@standard-model/contracts';
+import {
+  KEYFRAME_COUNT_PREFIX,
+  KEYFRAME_SYSTEM_TARGET,
+  MAXIMUM_GROUP_SIZE,
+  MEDIUM_KEYFRAME_QUANTITIES,
+  PARTICLE_KEYFRAME_QUANTITIES,
+  SYSTEM_KEYFRAME_QUANTITIES,
+  groupMemberLabels,
+  keyframeRecord,
+  type KeyframeWatch,
+} from '@standard-model/contracts';
 import { WAVEPACKET_SHAPE_LABELS } from './glossary';
 import { say } from './language';
 
@@ -126,6 +136,8 @@ export function defaultStep(operation: Operation, plan: ExperimentPlan): Experim
       return { operation, target: first, record: `position${String(plan.steps.length + 1)}` };
     case 'measureSystem':
       return { operation, record: `system${String(plan.steps.length + 1)}` };
+    case 'keyframe':
+      return defaultKeyframe(plan);
     case 'decay':
       return { operation, target: first, record: `decay${String(plan.steps.length + 1)}` };
   }
@@ -270,6 +282,9 @@ export function numericRecords(plan: ExperimentPlan): readonly string[] {
     }
     if (step.operation === 'measurePosition') {
       return ['x', 'y', 'z', 'r'].map((axis) => `${step.record}.${axis}`);
+    }
+    if (step.operation === 'keyframe') {
+      return step.watch.map((watch) => keyframeRecord(step.name, watch));
     }
     if (step.operation === 'measureSystem') {
       return [
@@ -698,6 +713,132 @@ export function formatValue(value: InfluenceStepValue): string {
   return typeof value === 'number' ? Number(value.toPrecision(6)).toString() : String(value);
 }
 
+const BODY_PARAMETERS: ReadonlySet<string> = new Set([
+  'shape',
+  'sizeInMeters',
+  'heightInMeters',
+  'xCenterInMeters',
+  'yCenterInMeters',
+  'zCenterInMeters',
+]);
+const DEFAULT_BODY_SIZE_IN_METERS = 1;
+const DEFAULT_INNER_BODY_SIZE_IN_METERS = 0.3;
+const OUTER_TO_INNER_SIZE = 2;
+
+export function isMediumStep(step: ExperimentStep): step is InfluenceStep {
+  return (
+    step.operation === 'influence' &&
+    (step.influence === 'setMedium' || step.influence === 'placeBody')
+  );
+}
+
+export function placedAsBody(step: InfluenceStep, asBody: boolean): InfluenceStep {
+  const parameters = influenceParameters(step);
+  if (asBody) {
+    if (step.influence === 'placeBody') {
+      return step;
+    }
+    const { thicknessInMeters, ...rest } = parameters;
+    return {
+      ...step,
+      influence: 'placeBody',
+      parameters: {
+        shape: 'ball',
+        sizeInMeters: thicknessInMeters ?? DEFAULT_BODY_SIZE_IN_METERS,
+        ...rest,
+      },
+    };
+  }
+  if (step.influence === 'setMedium') {
+    return step;
+  }
+  const size = parameters.sizeInMeters;
+  const rest = Object.fromEntries(
+    Object.entries(parameters).filter(([key]) => !BODY_PARAMETERS.has(key)),
+  );
+  return {
+    ...step,
+    influence: 'setMedium',
+    parameters: {
+      ...rest,
+      ...(size !== undefined && parameters.shape !== 'box' ? { thicknessInMeters: size } : {}),
+    },
+  };
+}
+
+export interface MediumReplacement {
+  readonly row: number;
+  readonly replacedRow: number;
+}
+
+function mediumSpecies(step: InfluenceStep): string {
+  const components = influenceParameters(step).components;
+  return (isInfluenceScalar(components) ? [] : (components ?? []))
+    .map((component) => String(component.species ?? ''))
+    .sort()
+    .join(',');
+}
+
+export function mediumReplacements(plan: ExperimentPlan): readonly MediumReplacement[] {
+  const shared = plan.steps.flatMap((step, row) =>
+    step.operation === 'influence' && step.influence === 'setMedium' && step.targets === undefined
+      ? [{ step, row }]
+      : [],
+  );
+  return shared.flatMap((current, index) => {
+    const previous = shared[index - 1];
+    return previous !== undefined && mediumSpecies(previous.step) !== mediumSpecies(current.step)
+      ? [{ row: current.row, replacedRow: previous.row }]
+      : [];
+  });
+}
+
+function sizeOf(step: InfluenceStep): number | undefined {
+  const size = influenceParameters(step).sizeInMeters;
+  return typeof size === 'number' ? size : undefined;
+}
+
+export function nestedAsBodies(
+  plan: ExperimentPlan,
+  replacement: MediumReplacement,
+): ExperimentPlan {
+  const outerStep = plan.steps[replacement.replacedRow];
+  const innerStep = plan.steps[replacement.row];
+  if (
+    outerStep === undefined ||
+    innerStep === undefined ||
+    !isMediumStep(outerStep) ||
+    !isMediumStep(innerStep)
+  ) {
+    return plan;
+  }
+  const inner = placedAsBody(innerStep, true);
+  const innerSize = sizeOf(inner) ?? DEFAULT_INNER_BODY_SIZE_IN_METERS;
+  const outer = placedAsBody(outerStep, true);
+  const outerSize = Math.max(
+    sizeOf(outer) ?? DEFAULT_BODY_SIZE_IN_METERS,
+    innerSize * OUTER_TO_INNER_SIZE,
+  );
+  const named = (step: InfluenceStep, name: string, size: number): InfluenceStep => ({
+    ...step,
+    parameters: {
+      ...influenceParameters(step),
+      name: influenceParameters(step).name ?? name,
+      sizeInMeters: size,
+    },
+  });
+  return {
+    ...plan,
+    steps: plan.steps.map((step, row) =>
+      row === replacement.replacedRow
+        ? named(outer, say('внешняя', 'outer'), outerSize)
+        : row === replacement.row
+          ? named(inner, say('внутренняя', 'inner'), innerSize)
+          : step,
+    ),
+  };
+}
+
 export function planWarnings(plan: ExperimentPlan): readonly string[] {
   const warnings: string[] = [];
   const hasObservation = plan.steps.some(
@@ -707,7 +848,8 @@ export function planWarnings(plan: ExperimentPlan): readonly string[] {
       step.operation === 'diffract' ||
       step.operation === 'collide' ||
       step.operation === 'measurePosition' ||
-      step.operation === 'measureSystem',
+      step.operation === 'measureSystem' ||
+      step.operation === 'keyframe',
   );
   if (!hasObservation) {
     warnings.push(
@@ -826,6 +968,11 @@ export function describeStep(step: ExperimentStep): string {
         `замер системы: какие частицы есть → запись ${step.record}`,
         `system snapshot: which particles are present → record ${step.record}`,
       );
+    case 'keyframe':
+      return say(
+        `ключевой кадр ${step.name}: ${step.watch.map((watch) => `${watch.target}.${watch.quantity}`).join(', ')}`,
+        `keyframe ${step.name}: ${step.watch.map((watch) => `${watch.target}.${watch.quantity}`).join(', ')}`,
+      );
     case 'decay':
       return say(
         `распад ${step.target} → запись ${step.record ?? `${step.target}.decay`}`,
@@ -933,4 +1080,80 @@ export function groupInfluenceParameters(
     })),
     scalars: specs.filter((spec) => spec.kind !== 'list' && suffixOf(spec) === null),
   };
+}
+
+export type KeyframeTargetKind = 'system' | 'particle' | 'medium';
+
+export interface KeyframeTarget {
+  readonly target: string;
+  readonly kind: KeyframeTargetKind;
+}
+
+export function keyframeTargets(
+  plan: ExperimentPlan,
+  beforeIndex: number,
+): readonly KeyframeTarget[] {
+  let unnamedBodies = 0;
+  const media = plan.steps.slice(0, beforeIndex).flatMap((step) => {
+    if (!isMediumStep(step)) {
+      return [];
+    }
+    const name = influenceParameters(step).name;
+    if (typeof name === 'string' && name !== '') {
+      return [name];
+    }
+    if (step.influence === 'placeBody') {
+      unnamedBodies += 1;
+      return [`body${String(unnamedBodies)}`];
+    }
+    return ['medium'];
+  });
+  return [
+    { target: KEYFRAME_SYSTEM_TARGET, kind: 'system' },
+    ...[...new Set(media)].map((target) => ({ target, kind: 'medium' as const })),
+    ...createdLabels(plan, beforeIndex).map((target) => ({ target, kind: 'particle' as const })),
+  ];
+}
+
+export function keyframeQuantities(
+  plan: ExperimentPlan,
+  kind: KeyframeTargetKind,
+): readonly string[] {
+  if (kind === 'medium') {
+    return MEDIUM_KEYFRAME_QUANTITIES;
+  }
+  if (kind === 'particle') {
+    return PARTICLE_KEYFRAME_QUANTITIES;
+  }
+  const species = new Set(
+    plan.steps.flatMap((step) => (step.operation === 'create' ? [String(step.particle)] : [])),
+  );
+  return [
+    ...SYSTEM_KEYFRAME_QUANTITIES,
+    ...[...species].map((name) => `${KEYFRAME_COUNT_PREFIX}${name}`),
+  ];
+}
+
+function defaultKeyframe(plan: ExperimentPlan): ExperimentStep {
+  const earlier = plan.steps.filter((step) => step.operation === 'keyframe');
+  const previous = earlier[earlier.length - 1];
+  const targets = keyframeTargets(plan, plan.steps.length);
+  const medium = targets.find((target) => target.kind === 'medium');
+  const watch: readonly KeyframeWatch[] =
+    previous?.operation === 'keyframe'
+      ? previous.watch
+      : medium === undefined
+        ? [{ target: KEYFRAME_SYSTEM_TARGET, quantity: 'particleCount' }]
+        : [
+            { target: medium.target, quantity: 'temperatureInKelvin' },
+            { target: medium.target, quantity: 'absorbedEnergyInJoules' },
+          ];
+  return { operation: 'keyframe', name: `key${String(earlier.length + 1)}`, watch };
+}
+
+export function withParticleWeight(plan: ExperimentPlan, weight: number): ExperimentPlan {
+  const rest = Object.fromEntries(
+    Object.entries(plan).filter(([key]) => key !== 'particleWeight'),
+  ) as unknown as ExperimentPlan;
+  return weight > 0 && weight !== 1 ? { ...rest, particleWeight: weight } : rest;
 }

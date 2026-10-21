@@ -17,6 +17,7 @@ import {
   type CombineStep,
   type MeasurePositionStep,
   type MeasureSystemStep,
+  type KeyframeStep,
   type PlaceStep,
   type PropagateStep,
   type SpaceSpec,
@@ -346,6 +347,29 @@ const measureSystemStepSchema: JSONSchemaType<MeasureSystemStep> = {
   additionalProperties: false,
 };
 
+const keyframeStepSchema: JSONSchemaType<KeyframeStep> = {
+  type: 'object',
+  properties: {
+    operation: { type: 'string', const: 'keyframe' },
+    name: { type: 'string', minLength: 1 },
+    watch: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          target: { type: 'string', minLength: 1 },
+          quantity: { type: 'string', minLength: 1 },
+        },
+        required: ['target', 'quantity'],
+        additionalProperties: false,
+      },
+      minItems: 1,
+    },
+  },
+  required: ['operation', 'name', 'watch'],
+  additionalProperties: false,
+};
+
 const spaceSchema: JSONSchemaType<SpaceSpec> = {
   type: 'object',
   properties: {
@@ -396,6 +420,7 @@ const experimentStepSchema: JSONSchemaType<ExperimentStep> = {
     propagateStepSchema,
     measurePositionStepSchema,
     measureSystemStepSchema,
+    keyframeStepSchema,
     decayStepSchema,
   ],
 };
@@ -437,6 +462,7 @@ export const experimentPlanSchema: JSONSchemaType<ExperimentPlan> = {
     shots: { type: 'integer', minimum: 1 },
     seed: { type: 'integer', nullable: true },
     space: { ...spaceSchema, nullable: true },
+    particleWeight: { type: 'number', exclusiveMinimum: 0, nullable: true },
     steps: { type: 'array', items: experimentStepSchema, minItems: 1 },
     report: { type: 'array', items: reportSpecSchema },
   },

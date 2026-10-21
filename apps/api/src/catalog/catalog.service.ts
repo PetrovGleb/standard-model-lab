@@ -63,6 +63,7 @@ const OPERATIONS = [
   'propagate',
   'measurePosition',
   'measureSystem',
+  'keyframe',
   'decay',
 ] as const;
 const CATALOG_SEED = 0;

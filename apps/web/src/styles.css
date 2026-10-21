@@ -1224,12 +1224,9 @@ td.numeric {
   color: var(--accent-hover);
 }
 
-.list-scale {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-top: 8px;
-  border-top: 1px solid var(--hairline-soft);
+.list-row-scale {
+  padding: 0 48px 6px 36px;
+  border-bottom: 1px solid var(--hairline-soft);
 }
 
 .axis-rows {
@@ -2905,6 +2902,12 @@ aside.card > .category-chips {
   align-items: stretch;
 }
 
+.player-main {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+}
+
 .player-side {
   position: relative;
   min-height: 320px;
@@ -3718,6 +3721,25 @@ main > * {
   display: grid;
   gap: 14px;
   min-width: 0;
+}
+
+.medium-place {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+}
+
+.medium-replacement {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.medium-path {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 12px;
 }
 
 .cube-chip {
@@ -6058,4 +6080,45 @@ button.species-crumb:hover {
   color: var(--warning);
   font-size: 13px;
   font-weight: 600;
+}
+
+.keyframe-table {
+  margin: 16px 0;
+}
+
+.keyframe-table h4 {
+  margin: 0 0 8px;
+}
+
+.keyframe-scroll {
+  overflow-x: auto;
+}
+
+.keyframe-time {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.keyframe-change {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.keyframe-rate {
+  white-space: nowrap;
+}
+
+.keyframe-watch {
+  --fields: 2;
+}
+
+.step-segment.op-keyframe .segment-bar {
+  background: var(--warning);
+  height: 6px;
+}
+
+.step-segment.op-keyframe .segment-label {
+  font-weight: 700;
 }

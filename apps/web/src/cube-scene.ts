@@ -1,7 +1,9 @@
 /* Cube scene of a system frame: the bodies of media placed in space (from the bodies aspect and a legacy medium ball at the centre) and every point particle in units of the half edge, with
-   where it was a frame ago and whether it was just born, and the body a particle lies in; particles held as waves in the cube are left to their clouds. */
+   where it was a frame ago and whether it was just born, the body a particle lies in and the bodies around it, and the bodies as a tree by containment; particles held as waves in the
+   cube are left to their clouds. */
 import type {
   BodyGeometry,
+  BodyShape,
   MediumAspect,
   ParticleView,
   SpaceSnapshot,
@@ -109,15 +111,11 @@ export function insideUnitCube(point: UnitPoint): boolean {
 }
 
 function holds(geometry: BodyGeometry, view: ParticleView): boolean {
-  const point = {
-    x: view.positionInFemtometers.x * METERS_PER_FEMTOMETER - geometry.centerInMeters.x,
-    y: view.positionInFemtometers.y * METERS_PER_FEMTOMETER - geometry.centerInMeters.y,
-    z: view.positionInFemtometers.z * METERS_PER_FEMTOMETER - geometry.centerInMeters.z,
-  };
-  const half = HALF * geometry.sizeInMeters;
-  return geometry.shape === 'ball'
-    ? Math.hypot(point.x, point.y, point.z) <= half
-    : Math.max(Math.abs(point.x), Math.abs(point.y), Math.abs(point.z)) <= half;
+  return holdsPoint(geometry, {
+    x: view.positionInFemtometers.x * METERS_PER_FEMTOMETER,
+    y: view.positionInFemtometers.y * METERS_PER_FEMTOMETER,
+    z: view.positionInFemtometers.z * METERS_PER_FEMTOMETER,
+  });
 }
 
 export function bodyAt(frame: SystemFrame, view: ParticleView): MediumAspect | undefined {
@@ -131,8 +129,7 @@ export function bodyAt(frame: SystemFrame, view: ParticleView): MediumAspect | u
         ? [
             {
               medium,
-              size:
-                geometry.sizeInMeters ** 3 * (geometry.shape === 'ball' ? BALL_VOLUME_FACTOR : 1),
+              size: volumeOf(geometry),
             },
           ]
         : [];
@@ -204,4 +201,112 @@ export function dragged(
     rotationAbout('x', -downInRadians),
     multiplied(rotationAbout('y', -rightInRadians), orientation),
   );
+}
+
+export interface BodyNode {
+  readonly index: number;
+  readonly medium: MediumAspect;
+  readonly geometry: BodyGeometry;
+  readonly depth: number;
+  readonly parent: number | null;
+}
+
+export function heightOf(geometry: BodyGeometry): number {
+  return geometry.heightInMeters ?? geometry.sizeInMeters;
+}
+
+const SHAPE_VIEWS: Readonly<
+  Record<
+    BodyShape,
+    {
+      readonly holds: (offset: UnitPoint, geometry: BodyGeometry) => boolean;
+      readonly volume: (geometry: BodyGeometry) => number;
+    }
+  >
+> = {
+  ball: {
+    holds: (offset, geometry) =>
+      Math.hypot(offset.x, offset.y, offset.z) <= HALF * geometry.sizeInMeters,
+    volume: (geometry) => BALL_VOLUME_FACTOR * geometry.sizeInMeters ** 3,
+  },
+  box: {
+    holds: (offset, geometry) =>
+      Math.max(Math.abs(offset.x), Math.abs(offset.y), Math.abs(offset.z)) <=
+      HALF * geometry.sizeInMeters,
+    volume: (geometry) => geometry.sizeInMeters ** 3,
+  },
+  cylinder: {
+    holds: (offset, geometry) =>
+      Math.hypot(offset.x, offset.y) <= HALF * geometry.sizeInMeters &&
+      Math.abs(offset.z) <= HALF * heightOf(geometry),
+    volume: (geometry) => Math.PI * (HALF * geometry.sizeInMeters) ** 2 * heightOf(geometry),
+  },
+};
+
+function volumeOf(geometry: BodyGeometry): number {
+  return SHAPE_VIEWS[geometry.shape].volume(geometry);
+}
+
+function holdsPoint(geometry: BodyGeometry, point: UnitPoint): boolean {
+  return SHAPE_VIEWS[geometry.shape].holds(
+    {
+      x: point.x - geometry.centerInMeters.x,
+      y: point.y - geometry.centerInMeters.y,
+      z: point.z - geometry.centerInMeters.z,
+    },
+    geometry,
+  );
+}
+
+export function bodyTree(bodies: readonly MediumAspect[]): readonly BodyNode[] {
+  const placed = bodies.flatMap((medium, index) => {
+    const geometry = geometryOf(medium);
+    return geometry === null ? [] : [{ index, medium, geometry }];
+  });
+  const parentOf = new Map(
+    placed.map((body) => {
+      const holders = placed.filter(
+        (other) =>
+          other.index !== body.index &&
+          volumeOf(other.geometry) > volumeOf(body.geometry) &&
+          holdsPoint(other.geometry, body.geometry.centerInMeters),
+      );
+      const parent = holders.sort(
+        (first, second) => volumeOf(first.geometry) - volumeOf(second.geometry),
+      )[0];
+      return [body.index, parent?.index ?? null] as const;
+    }),
+  );
+  const depthOf = (index: number): number => {
+    const parent = parentOf.get(index) ?? null;
+    return parent === null ? 0 : depthOf(parent) + 1;
+  };
+  const visit = (parent: number | null): readonly BodyNode[] =>
+    placed
+      .filter((body) => (parentOf.get(body.index) ?? null) === parent)
+      .flatMap((body) => [{ ...body, depth: depthOf(body.index), parent }, ...visit(body.index)]);
+  return visit(null);
+}
+
+export function placedBodies(frame: SystemFrame): readonly MediumAspect[] {
+  return (
+    (frame.environment.bodies as { readonly bodies?: readonly MediumAspect[] } | undefined)
+      ?.bodies ?? []
+  );
+}
+
+export function mediumPath(frame: SystemFrame, view: ParticleView): readonly MediumAspect[] {
+  const body = bodyAt(frame, view);
+  if (body === undefined) {
+    return [];
+  }
+  const tree = bodyTree(placedBodies(frame));
+  const chain: MediumAspect[] = [];
+  let node = tree.find((candidate) => candidate.medium === body);
+  while (node !== undefined) {
+    chain.push(node.medium);
+    const parent = node.parent;
+    node = parent === null ? undefined : tree.find((candidate) => candidate.index === parent);
+  }
+  return chain;
 }

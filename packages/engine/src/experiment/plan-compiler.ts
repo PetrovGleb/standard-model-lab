@@ -8,6 +8,7 @@ import {
 } from '@standard-model/constants';
 import { partonStructureOf } from '../collisions/parton-distributions.js';
 import { matterStepName, matterStepProblem } from './matter-steps.js';
+import { quantityFits, targetKind } from './keyframes.js';
 import { heavyConstituents } from '../decay/spectator.js';
 import { directionalObservableOf, observableNamesForSpec } from '../particles/capabilities.js';
 import { compositeFor } from '../particles/combinations.js';
@@ -49,6 +50,7 @@ export interface CompiledPlan {
   readonly parameters: ParameterDefinitions;
   readonly steps: readonly CompiledStep[];
   readonly report: readonly ReportSpec[];
+  readonly particleWeight: number;
 }
 
 export interface CompileOptions {
@@ -88,7 +90,12 @@ const TEMPERATURE_CHANGES = new Set(['cool', 'heat']);
 const SPIN_INFLUENCES = new Set(['rotateSpin', 'randomize', 'thermalize']);
 const POSITION_SUFFIX = /^(x|y|z|r)$/;
 const SYSTEM_SUFFIX =
-  /^(particleCount|chargedCount|hadronCount|photonCount|hadronic|heaviest|heaviestMassNumber|phase|allotrope|pH|count\.[^.]+|[A-Za-z][A-Za-z0-9]*\.[A-Za-z]+)$/;
+  /^(particleCount|pendingNeutrons|chargedCount|hadronCount|photonCount|hadronic|heaviest|heaviestMassNumber|phase|allotrope|pH|count\.[^.]+|[\p{L}_][\p{L}\p{N}_#-]*\.[A-Za-z]+)$/u;
+const MEDIUM_PLACING_INFLUENCES = new Set(['setMedium', 'placeBody']);
+const SHARED_MEDIUM_KEY = 'medium';
+const UNNAMED_BODY = /^body\d+$/;
+const REGEX_SPECIAL = /[.*+?^${}()|[\]\\]/g;
+const DEFAULT_PARTICLE_WEIGHT = 1;
 const DECAY_NUMERIC_SUFFIX =
   /^(properTimeInSeconds|labTimeInSeconds|decayLengthInMeters|product\[\d+\]\.energyInGev)$/;
 export const DECAY_NUMERIC_FIELDS = [
@@ -175,6 +182,7 @@ function checkReferences(
     }
   };
   const consumed = new Map<string, string>();
+  const mediumKeys = new Set<string>();
   let temperatureSet = false;
   let mediumSet = false;
   const atRest = new Set<string>();
@@ -377,6 +385,10 @@ function checkReferences(
       case 'influence':
       case 'evolve':
         step.targets?.forEach((target) => requireLabel(target, stepIndex));
+        if (step.operation === 'influence' && MEDIUM_PLACING_INFLUENCES.has(step.influence)) {
+          const name = step.parameters?.name;
+          mediumKeys.add(typeof name === 'string' && name !== '' ? name : SHARED_MEDIUM_KEY);
+        }
         if (step.operation === 'influence') {
           if (step.influence === 'boost') {
             step.targets?.forEach((target) => atRest.delete(target));
@@ -609,6 +621,64 @@ function checkReferences(
         addRecord(step.record, stepIndex);
         derivedFields.set(step.record, SYSTEM_SUFFIX);
         break;
+      case 'keyframe': {
+        if (step.name.includes('.')) {
+          throw new PlanCompilationError(
+            localizedText(
+              `имя ключевого кадра ${step.name} не должно содержать точку`,
+              `the keyframe name ${step.name} must not contain a dot`,
+            ),
+            stepIndex,
+          );
+        }
+        addRecord(step.name, stepIndex);
+        step.watch.forEach((watch) => {
+          const kind = targetKind(watch.target, labels);
+          if (kind === 'particle') {
+            requireLabel(watch.target, stepIndex);
+          }
+          if (
+            kind === 'medium' &&
+            !mediumKeys.has(watch.target) &&
+            !UNNAMED_BODY.test(watch.target)
+          ) {
+            throw new PlanCompilationError(
+              localizedText(
+                `ключевой кадр следит за ${watch.target}, но это не система, не метка частицы и не имя среды, заданной раньше`,
+                `the keyframe watches ${watch.target}, which is neither the system, a particle label nor the name of a medium set before it`,
+              ),
+              stepIndex,
+            );
+          }
+          if (!quantityFits(kind, watch.quantity)) {
+            throw new PlanCompilationError(
+              localizedText(
+                `у ${watch.target} нет величины ${watch.quantity} для ключевого кадра`,
+                `${watch.target} has no keyframe quantity ${watch.quantity}`,
+              ),
+              stepIndex,
+            );
+          }
+        });
+        const watched = new Set(step.watch.map((watch) => `${watch.target}.${watch.quantity}`));
+        if (watched.size < step.watch.length) {
+          throw new PlanCompilationError(
+            localizedText(
+              'ключевой кадр следит за одной величиной дважды',
+              'the keyframe watches the same quantity twice',
+            ),
+            stepIndex,
+          );
+        }
+        derivedFields.set(
+          step.name,
+          new RegExp(
+            `^(${[...watched].map((field) => field.replace(REGEX_SPECIAL, '\\$&')).join('|')})$`,
+            'u',
+          ),
+        );
+        break;
+      }
       case 'decay': {
         requireLabel(step.target, stepIndex);
         const particle = createdParticles.get(step.target);
@@ -808,5 +878,6 @@ export function compilePlan(plan: unknown, options: CompileOptions = {}): Compil
     parameters,
     steps,
     report: plan.report,
+    particleWeight: plan.particleWeight ?? DEFAULT_PARTICLE_WEIGHT,
   };
 }

@@ -1,5 +1,6 @@
 /* Field and medium influences: apply or remove magnetic and electric fields, set coherence times, set the statistical medium of one or more components, place a body of a medium in space
-   (a body with the same shape, centre and size replaces the old one, others stay). */
+   (a body with the same shape, centre and size replaces the old one, others stay; one with the same name too is the same body with a new makeup and keeps its temperature and absorbed
+   energy). */
 import type {
   CoherenceTimesAspect,
   Influence,
@@ -80,14 +81,28 @@ export class PlaceBody implements Influence<EngineInfluenceContext> {
 
   apply(targets: readonly Particle[], context: EngineInfluenceContext): InfluenceOutcome {
     const geometry = this.body.geometry;
-    const kept = (context.environment.get('bodies')?.bodies ?? []).filter(
-      (body) =>
-        geometry === undefined ||
-        body.geometry === undefined ||
-        !sameGeometry(body.geometry, geometry),
+    const bodies = context.environment.get('bodies')?.bodies ?? [];
+    const replaces = (body: MediumAspect): boolean =>
+      geometry !== undefined &&
+      body.geometry !== undefined &&
+      sameGeometry(body.geometry, geometry);
+    const same = bodies.find(
+      (body) => replaces(body) && body.name !== undefined && body.name === this.body.name,
     );
+    const placed =
+      same === undefined
+        ? this.body
+        : {
+            ...this.body,
+            temperatureInKelvin: same.temperatureInKelvin,
+            ...(same.absorbedEnergyInJoules === undefined
+              ? {}
+              : { absorbedEnergyInJoules: same.absorbedEnergyInJoules }),
+          };
     return {
-      environment: context.environment.with('bodies', { bodies: [...kept, this.body] }),
+      environment: context.environment.with('bodies', {
+        bodies: [...bodies.filter((body) => !replaces(body)), placed],
+      }),
       notes: [],
     };
   }

@@ -2,6 +2,7 @@
    and the same tone, icon and caption for an environment aspect read back from a frame. */
 import type { InfluenceStep, NumberOrParameter } from '@standard-model/contracts';
 import { formatLength, formatNumber } from './format';
+import { bodyShapeText } from './glossary';
 import { say } from './language';
 import { influenceParameters, isInfluenceScalar } from './plan-edits';
 
@@ -117,11 +118,21 @@ function mediumText(step: InfluenceStep, symbolOf: SymbolOf): string {
   ].join(' · ');
 }
 
-function bodyText(shape: string, size: NumberOrParameter | string | boolean | undefined): string {
-  const length = typeof size === 'number' ? formatLength(size) : text(size);
-  return shape === 'box'
-    ? say(`тело: куб ${length}`, `body: box ${length}`)
-    : say(`тело: шар ⌀${length}`, `body: ball ⌀${length}`);
+function nameOf(step: InfluenceStep): string | undefined {
+  const name = value(step, 'name');
+  return typeof name === 'string' && name !== '' ? name : undefined;
+}
+
+function lengthText(size: NumberOrParameter | string | boolean | undefined): string {
+  return typeof size === 'number' ? formatLength(size) : text(size);
+}
+
+function bodyText(
+  shape: string,
+  size: NumberOrParameter | string | boolean | undefined,
+  height?: NumberOrParameter | string | boolean,
+): string {
+  return `${say('тело', 'body')}: ${bodyShapeText(shape, lengthText(size), height === undefined ? undefined : lengthText(height))}`;
 }
 
 function text(entry: NumberOrParameter | string | boolean | undefined, unit = ''): string {
@@ -240,7 +251,7 @@ export function influenceVisual(
         kind: 'gas',
         tone: 'gas',
         icon: 'medium-gas',
-        caption: `${say('среда', 'medium')}: ${mediumText(step, symbolOf)}`,
+        caption: `${nameOf(step) ?? say('среда', 'medium')}: ${mediumText(step, symbolOf)}`,
         waveLength: 0,
       };
     case 'placeBody':
@@ -248,7 +259,7 @@ export function influenceVisual(
         kind: 'gas',
         tone: 'gas',
         icon: 'medium-gas',
-        caption: `${bodyText(String(value(step, 'shape') ?? 'ball'), value(step, 'sizeInMeters'))}: ${mediumText(step, symbolOf)}`,
+        caption: `${[nameOf(step), bodyText(String(value(step, 'shape') ?? 'ball'), value(step, 'sizeInMeters'), value(step, 'heightInMeters'))].filter((part) => part !== undefined).join(' · ')}: ${mediumText(step, symbolOf)}`,
         waveLength: 0,
       };
     case 'boost':
@@ -298,6 +309,7 @@ export interface EnvironmentVisual {
 export type SymbolOf = (name: string) => string;
 
 interface MediumValue {
+  readonly name?: string;
   readonly components?: readonly {
     readonly species?: string;
     readonly numberDensityPerCubicMeter?: number;
@@ -366,19 +378,20 @@ export function environmentVisual(
       return {
         tone: 'gas',
         icon: 'medium-gas',
-        caption: `${say('среда', 'medium')}: ${names.join(', ') || '—'} · ${temperature}${pressure}`,
-        detail: `${say('среда', 'medium')}: ${parts.join(' + ') || '—'} · ${temperature}${pressure}${radiation}`,
+        caption: `${medium.name ?? say('среда', 'medium')}: ${names.join(', ') || '—'} · ${temperature}${pressure}`,
+        detail: `${medium.name ?? say('среда', 'medium')}: ${parts.join(' + ') || '—'} · ${temperature}${pressure}${radiation}`,
       };
     }
     case 'bodies': {
       const bodies = (value as { bodies?: readonly MediumValue[] }).bodies ?? [];
       const parts = bodies.map((body) => {
-        const geometry = (body as { geometry?: { shape?: string; sizeInMeters?: number } })
-          .geometry;
+        const geometry = (
+          body as { geometry?: { shape?: string; sizeInMeters?: number; heightInMeters?: number } }
+        ).geometry;
         const names = (body.components ?? []).map((component) =>
           symbolOf(component.species ?? '—'),
         );
-        return `${bodyText(geometry?.shape ?? 'ball', geometry?.sizeInMeters)} ${names.join(', ')} · ${text(body.temperatureInKelvin, say(' К', ' K'))}`;
+        return `${body.name === undefined ? '' : `${body.name} · `}${bodyText(geometry?.shape ?? 'ball', geometry?.sizeInMeters, geometry?.heightInMeters)} ${names.join(', ')} · ${text(body.temperatureInKelvin, say(' К', ' K'))}`;
       });
       return {
         tone: 'gas',

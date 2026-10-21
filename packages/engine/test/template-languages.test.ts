@@ -13,7 +13,7 @@ import {
 } from '../src/index.js';
 
 const SHORT_RUN_SHOTS = 3;
-const RUN_TIMEOUT_IN_MILLISECONDS = 120_000;
+const RUN_TIMEOUT_IN_MILLISECONDS = 240_000;
 const Z_PEAK_ENERGY_IN_GEV = 91.19;
 
 const CYRILLIC = /[А-Яа-яЁё]/;

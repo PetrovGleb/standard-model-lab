@@ -436,7 +436,7 @@ hard-coded (`space/geometry.ts`, `space/potentials.ts`):
   mask) and `reflecting` (a super-material mirror: a point particle folds back exactly by the
   unfolding of a straight flight, a transported neutron bounces at the wall, a wave meets a layer
   as high as the largest kinetic energy one cell holds, so the time step does not shrink).
-- Shapes are entries of `BODY_SHAPE_LAWS` (`ball`, `box`): whether they hold a point, the
+- Shapes are entries of `BODY_SHAPE_LAWS` (`ball`, `box`, `cylinder`): whether they hold a point, the
   distance along a ray to their surface, their volume. A medium may carry a geometry; the
   `placeBody` influence puts several such media in space at once (the `bodies` aspect), and a
   particle sees the medium of the smallest body that holds its position (`withBodyMedium` in
@@ -467,7 +467,7 @@ placeholders; `ExperimentBuilder` produces the same JSON from a fluent TypeScrip
 plan JSON → ajv validation → parameter merge and {{placeholder}} substitution
           → static checks (labels, records, report references) → CompiledPlan
           → ExperimentRunner: one seeded engine, a fresh ShotContext per shot
-          → ShotRecords (numeric + categorical) → ResultAggregator → ExperimentResult
+          → ShotRecords (numeric + categorical) → ResultAggregator, KeyframeAggregator → ExperimentResult
 ```
 
 `compilePlan` throws `PlanCompilationError` naming the step. `ExperimentRunner.runShot` executes

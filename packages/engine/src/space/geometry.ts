@@ -1,4 +1,4 @@
-/* Geometry of the cube and the bodies in it: ball and box shapes in a registry (whether they hold a point, the distance along a ray to their surface, their volume), the body a point lies in (the
+/* Geometry of the cube and the bodies in it: ball, box and cylinder (along z) shapes in a registry (whether they hold a point, the distance along a ray to their surface, their volume), the body a point lies in (the
    smallest one that holds it), the walls of the cube as open or mirror laws (a ray to the nearest wall, the bounce, the exact fold of a straight flight between mirrors) and the world one
    particle sees: the media around it by position and the walls. A legacy medium with only a thickness is a ball of that diameter at the centre; a medium without either fills all space. */
 import type {
@@ -78,7 +78,64 @@ const BOX: ShapeLaw = {
   volumeInCubicMeters: (geometry) => geometry.sizeInMeters ** 3,
 };
 
-export const BODY_SHAPE_LAWS: Readonly<Record<BodyShape, ShapeLaw>> = { ball: BALL, box: BOX };
+function heightOf(geometry: BodyGeometry): number {
+  return geometry.heightInMeters ?? geometry.sizeInMeters;
+}
+
+const CYLINDER: ShapeLaw = {
+  contains: (geometry, point) => {
+    const offset = subtractVectors(point, geometry.centerInMeters);
+    return (
+      Math.hypot(offset.x, offset.y) <= HALF * geometry.sizeInMeters &&
+      Math.abs(offset.z) <= HALF * heightOf(geometry)
+    );
+  },
+  surfaceDistanceInMeters: (geometry, point, direction) => {
+    const radius = HALF * geometry.sizeInMeters;
+    const halfHeight = HALF * heightOf(geometry);
+    const offset = subtractVectors(point, geometry.centerInMeters);
+    const planar = direction.x * direction.x + direction.y * direction.y;
+    let entry = Number.NEGATIVE_INFINITY;
+    let exit = Number.POSITIVE_INFINITY;
+    if (planar === 0) {
+      if (Math.hypot(offset.x, offset.y) > radius) {
+        return Number.POSITIVE_INFINITY;
+      }
+    } else {
+      const along = offset.x * direction.x + offset.y * direction.y;
+      const discriminant =
+        along * along - planar * (offset.x * offset.x + offset.y * offset.y - radius * radius);
+      if (discriminant < 0) {
+        return Number.POSITIVE_INFINITY;
+      }
+      const root = Math.sqrt(discriminant);
+      entry = (-along - root) / planar;
+      exit = (-along + root) / planar;
+    }
+    if (direction.z === 0) {
+      if (Math.abs(offset.z) > halfHeight) {
+        return Number.POSITIVE_INFINITY;
+      }
+    } else {
+      const first = (-halfHeight - offset.z) / direction.z;
+      const second = (halfHeight - offset.z) / direction.z;
+      entry = Math.max(entry, Math.min(first, second));
+      exit = Math.min(exit, Math.max(first, second));
+    }
+    if (entry > exit) {
+      return Number.POSITIVE_INFINITY;
+    }
+    return entry > 0 ? entry : exit > 0 ? exit : Number.POSITIVE_INFINITY;
+  },
+  volumeInCubicMeters: (geometry) =>
+    Math.PI * (HALF * geometry.sizeInMeters) ** 2 * heightOf(geometry),
+};
+
+export const BODY_SHAPE_LAWS: Readonly<Record<BodyShape, ShapeLaw>> = {
+  ball: BALL,
+  box: BOX,
+  cylinder: CYLINDER,
+};
 
 export function unitDirection(direction: Vector3): Vector3 {
   const length = vectorMagnitude(direction);
@@ -145,6 +202,7 @@ export function sameGeometry(first: BodyGeometry, second: BodyGeometry): boolean
   return (
     first.shape === second.shape &&
     first.sizeInMeters === second.sizeInMeters &&
+    first.heightInMeters === second.heightInMeters &&
     AXES.every((axis) => first.centerInMeters[axis] === second.centerInMeters[axis])
   );
 }

@@ -208,7 +208,7 @@ frame; the web groups them into envelopes (`apps/web/src/environment-envelopes.t
   photoionization and Klein–Nishina Compton per component, Bethe stopping with the Bloch mean
   excitation 10 eV·Z and the range, the distance to the edge along a direction. Energy absorbed in
   the ball (`absorbedEnergyInJoules`) raises the temperature by ∫dE/C and moves an ideal-gas
-  pressure with it. Without a thickness the medium is infinite: nothing leaves and nothing heats.
+  pressure with it (a given pressure scales by T′/T). Without a thickness the medium is infinite: nothing leaves and nothing heats.
 - Solutions (`molecules/solution-chemistry.ts`): in liquid water a salt or acid dissociates when
   the Born–Haber cycle (bond energy, ionization, minus electron affinity, plus the Marcus hydration
   Gibbs energies rescaled by the Born factor of the Malmberg–Maryott permittivity at the medium
@@ -327,12 +327,23 @@ against looping data.
 
 Neutrons in a finite medium (`collisions/neutron-transport.ts`, ENDF/B-VIII.0 through
 `src/endf.ts`): free paths from the summed macroscopic cross section, elastic scattering with the
-evaluated mean cosine in the centre of mass, capture, (n,2n), (n,p), (n,α) and fission; cross
-sections are taken above the resolved-resonance boundary and continued as 1/v below it. Fission
-emits ν̄ prompt neutrons from the evaluated multiplicity with energies from the prompt fission
-spectrum quantiles and two fragments from the independent yields, the energy release from AME
-masses. A neutron that reaches the edge of the ball leaves. The chain of generations gives the
-multiplication.
+evaluated mean cosine in the centre of mass, capture, (n,2n), (n,p), (n,α) and fission. Below
+the resolved-resonance boundary the generator (`scripts/resonances.ts`) reconstructs the MF2
+resonances at 0 K and adds them to the MF3 background: Reich–Moore (LRF=3) through the matrix K of
+the neutron and two fission channels per spin group, single- and multi-level Breit–Wigner
+(LRF=1, 2) through level sums with shift and penetrability; it does so for every actinide (Z ≥ 90)
+and for every other nuclide whose reconstructed thermal capture exceeds 1000 b (xenon-135,
+samarium-149, gadolinium, cadmium-113, europium and others); the rest keep the MF3 values (1/v
+below the boundary). Below 400 kT an elastic collision takes a target from the free gas at the
+medium temperature (target speed sampled with the relative-speed weight, scattering in the centre
+of mass), so slow neutrons thermalize and gain energy from hot media. Fission emits ν̄ prompt
+neutrons from the evaluated multiplicity with energies from the prompt fission spectrum quantiles
+and two fragments from the independent yields, the energy release from AME masses; with the
+probability ν_d(E) it also leaves delayed neutron precursors (MF1/MF5 MT455: group by abundance,
+delay from the group decay constant, energy from the group spectrum). The runner keeps them per
+shot with the fission point, records their number as `<record>.pendingNeutrons` and releases each
+as an isotropic neutron at the start of the `evolve` step in which its delay runs out. A neutron
+that reaches the edge of the medium leaves. The chain of generations gives the multiplication.
 
 ### 7.4 Atomic processes
 
@@ -429,12 +440,17 @@ clouds overlapping in the trap annihilate at `(π r_e² c)·∫ρ₋ρ₊ d³r` 
 into two photons sharing the ψ⁻ state.
 
 The cube as a world (`space/geometry.ts`): `SpaceSpec.walls` is `open` (default) or `reflecting`;
-`BODY_SHAPE_LAWS` hold `ball` and `box`; `placeBody` (shape, `sizeInMeters`, centre, then every
+`BODY_SHAPE_LAWS` hold `ball`, `box` and `cylinder` (along z, `sizeInMeters` the diameter and an optional
+`heightInMeters`); `placeBody` (shape, `sizeInMeters`, height, centre, then every
 medium parameter of `setMedium` except the thickness) adds a body to the `bodies` aspect, a body
-with the same shape, centre and size replacing the old one; `environmentFor` gives a particle the
+with the same shape, centre and size replacing the old one (and keeping its temperature and absorbed
+energy when it also has the same name: the same body with a new makeup, such as water boiling into
+steam); `environmentFor` gives a particle the
 medium of the smallest body that holds it; temperature influences take every body to the new
-temperature; `measureSystem` records `body<N>.temperatureInKelvin` and
-`body<N>.absorbedEnergyInJoules`. After every `evolve` the point particles not held as waves fold
+temperature; a medium may carry a one-word `name`; `measureSystem` records `<name>.temperatureInKelvin` and
+`<name>.absorbedEnergyInJoules` for a named shared medium and every body (`body<N>` without a
+name); the energy a neutron loses in a collision heats the body where it collides, and a charged
+particle or photon is stopped or absorbed by the medium at the point where its step began. After every `evolve` the point particles not held as waves fold
 back into a mirror cube (position and momentum). `SpaceSnapshot.walls` and a snapshot for every
 frame of a plan with a cube (also without clouds) feed the web view. Potentials are
 `POTENTIAL_LAWS` (`space/potentials.ts`) with the mirror layer of `mirrorWallEnergyInJoules`.
@@ -444,10 +460,16 @@ frame of a plan with a cube (also without clouds) feed the web view. Potentials 
 ### Plan and compiler
 
 `ExperimentPlan` (`libs/contracts/src/experiment-plan.ts`): name, description, categories,
-parameters, shots, seed, optional `space`, steps and report. Operations: `create`,
-`createNucleus`, `createAtom`, `createMolecule`, `entangle`, `influence`, `evolve`, `measure`,
-`combine`, `diffract`, `collide`, `place`, `propagate`, `measurePosition`, `measureSystem`,
-`decay`. `createMolecule` takes atoms, bonds and an optional `charges` list of formal charges
+parameters, shots, seed, optional `space`, optional `particleWeight`, steps and report. Operations:
+`create`, `createNucleus`, `createAtom`, `createMolecule`, `entangle`, `influence`, `evolve`,
+`measure`, `combine`, `diffract`, `collide`, `place`, `propagate`, `measurePosition`,
+`measureSystem`, `keyframe`, `decay`. A `keyframe` has a name and a `watch` list of
+`{ target, quantity }`: the system (`particleCount`, `pendingNeutrons`, `count.<species>`), a medium by
+its record name (`temperatureInKelvin`, `absorbedEnergyInJoules`, `pressureInPascals`) or a particle
+by label (`energyInGev`, `kineticEnergyInGev`); the compiler checks that the target exists before
+the step and has that quantity, and the values are records `<name>.<target>.<quantity>`.
+`particleWeight` (default 1) is how many real particles each simulated one stands for: every
+energy a particle hands to a medium (`ShotContext.heatAt`) is multiplied by it. `createMolecule` takes atoms, bonds and an optional `charges` list of formal charges
 (`{ atom, charge }`, zero entries ignored) that makes the molecule an ion (`moleculeStructureOfStep`);
 without it a plan creates the neutral molecule as before. Creation steps take an optional `count` up to `MAXIMUM_GROUP_SIZE` (10 000): the compiler
 expands the group into members `label#1…` (`withGroups`, `groupMemberLabels`) that are separate
@@ -469,7 +491,11 @@ hadronization after ħ/Λ_QCD, the meson cascade. `measureSystem` records the co
 nucleon, separation energies, half-life; atoms their electrons, ionization energy, g, μ,
 temperature; molecules bonds, dipole, rotational constant, modes, internal temperature).
 `ResultAggregator` computes `frequency`, `mean`, `standardDeviation`, `histogram`,
-`probabilitySameSign`, `correlation` and `chsh`. The runner keeps the mean time of every step in a
+`probabilitySameSign`, `correlation` and `chsh`. `KeyframeAggregator` (`experiment/keyframes.ts`)
+builds `ExperimentResult.keyframes`: the names, step indices and simulated times of the keyframes
+(the sum of the `evolve` and `propagate` durations before each), and per watched quantity its mean
+and standard error at every keyframe and the paired change between consecutive keyframes that
+watch it (Welford moments); the API stores it in `RunResult.keyframes`. The runner keeps the mean time of every step in a
 shot (`stepMeanMilliseconds`); `runExperimentAsync` yields between shots and reports
 `RunProgress` (`firstShot`, then `shots` with the running mean shot time and the remaining time,
 then `tracing`) and checks `shouldStop` before every shot, returning the finished shots as a
@@ -515,7 +541,7 @@ are `{ statusCode, message, text }` with `LocalizedText`. Runs execute in proces
 Postgres through sequelize-typescript with `sync()`, no migrations; models in
 `libs/contracts/src/db`: `experiment_templates` (name, description, plan), `experiment_runs`
 (template, plan, parameters, shots, seed, status, timings, error), `run_results` (report values,
-outcome counts, distributions, system reports, step times), all JSONB where structured. The desktop app
+outcome counts, distributions, system reports, step times, keyframe summary), all JSONB where structured. The desktop app
 (`apps/desktop`) runs the same API on 127.0.0.1 against an embedded Postgres started by the
 Electron main process; `pnpm package` builds `.app` and `.exe` into `release/`.
 
@@ -523,9 +549,15 @@ Electron main process; `pnpm package` builds `.app` and `.exe` into `release/`.
 
 React 19 on Vite; contracts as types only; vocabularies from `GET /catalog`. Views: templates
 (pick, parameters, run), builder (step forms per operation, parameters, reports, JSON mode,
-validate, run, save), results (diagram beside a loader while running, then the experiment, the
-result, the system player and the formula panel), history, Lagrangian (terms, multiplets, vertices,
-process calculator). Pure modules with tests: `plan-edits.ts`, `plan-diagram.ts` (lanes, links,
+validate, run, save, the particle weight beside shots and seed), results (diagram beside a loader
+while running, then the experiment, the result with the keyframe table, the system player and the
+formula panel), history, Lagrangian (terms, multiplets, vertices,
+process calculator). The keyframe step (`keyframe-editor.tsx`) offers the targets known before it
+(`keyframeTargets`: the system, media by name or `body<N>`, particle labels) and their quantities
+(`keyframeQuantities`); a new keyframe watches what the previous one did, so two of them give a
+change at once. `keyframe-table.tsx` shows each watched quantity per keyframe with its time, the
+change from the keyframe before and its rate per second (power for absorbed energy, heating rate
+for temperature); the player names keyframes on its step bar. Pure modules with tests: `plan-edits.ts`, `plan-diagram.ts` (lanes, links,
 environment bands that wrap the particles created just above them and nest by inset inside the
 earlier bands that hold them), `cube-scene.ts` (bodies, points with trails and births, the body a particle lies in,
 orientation by rotation matrices), `system-stage.ts` (layout, envelopes, camera), `environment-envelopes.ts`,
@@ -533,8 +565,8 @@ orientation by rotation matrices), `system-stage.ts` (layout, envelopes, camera)
 `space-scale.ts`, `format.ts`, `language.ts`. The cube view (`space-view.tsx`) draws the walls, the bodies, the clouds and every point particle with
 a trail; a drag moves the scene (with ⌘ or Ctrl it turns it), the wheel and buttons zoom, buttons rotate it by 10° about x, y and z
 with an eased animation, and it centres, shows a chip on hover and opens an inspector on a click (the
-cube with the particle highlighted, its card, the other particles); the player can put it above or
-below the stage. The stage draws every environment as an envelope
+cube with the particle highlighted, its card, the other particles); the player puts it above or below
+the stage in the left column, and the side panel runs the full height of both. The stage draws every environment as an envelope
 around the particles it acts on, nested by inclusion, with gas dots that drift faster when hot and
 gas atoms flying into a particle that reacted; beside it, a scrollable panel tells the step in words, shows the conserved totals as tiles, the environment cards and the particles with their phase (`ParticleView.phase`) and grouped readings; a step bar above replaces the slider; the camera fits envelopes and particles, zooms by
 pinch only (1 %–300 %) and has a center button. Every visible string goes through `say(ru, en)`.
@@ -627,6 +659,7 @@ schema row opens the step.
 | Charged molecules, proton transfer, acid–base data                   | `proton-transfer`, `acid-base` (constants)                         |
 | Finite media: heat capacity, stopping, attenuation, heating          | `medium-extent`                                                    |
 | ENDF data, neutron transport, fission chains                         | `fission`                                                          |
+| Resonances, poisons, cylinder, free gas, delayed neutrons, Chernobyl | `reactor-physics`, `cube-scene` (web)                              |
 | Deconfinement, quantum gas densities                                 | `deconfinement`                                                    |
 | Run progress, step times, pilot forecast                             | `run-progress`                                                     |
 | Molecule catalogue and its generated traits                          | `molecule-catalog`                                                 |
@@ -662,8 +695,10 @@ schema row opens the step.
 - Finite media: the geometry is honoured by neutron transport and photon absorption only; Compton
   scattering counts as absorption; the inner-shell photoeffect of heavy elements is missing beyond
   the Verner fits; electrons are slowed by the heavy-particle Bethe formula.
-- Neutron data: resolved resonances are not reconstructed (1/v below the boundary); no delayed
-  neutrons, no thermal scattering law.
+- Neutron data: resonances are reconstructed at 0 K (no Doppler broadening), only for actinides
+  and strong thermal absorbers; R-matrix-limited (LRF=7) and unresolved ranges keep the MF3
+  values; thermal scattering is the free gas (no S(α,β) of graphite or bound hydrogen); delayed
+  neutrons are released isotropically at the fission point; densities do not follow heating.
 - Molecule dipoles come from charge equilibration and run high (water 2.9 D against 1.85 D); the
   picker does not show them.
 - Thermal radiation ionizes from the ground state only and does not excite; photodissociation of

@@ -1,5 +1,5 @@
-/* Typed access to data/endf.generated.json: ENDF/B-VIII.0 neutron data per target nucleus (channel cross sections above the resonance parameters, elastic mean cosine, prompt neutrons per
-   fission, prompt fission spectrum quantiles) and independent fission-product yields per fissioning nucleus, looked up by proton and mass numbers. */
+/* Typed access to data/endf.generated.json: ENDF/B-VIII.0 neutron data per target nucleus (channel cross sections, with the resolved resonances of the actinides reconstructed, elastic mean
+   cosine, prompt neutrons per fission, prompt fission spectrum quantiles, delayed neutrons per fission with their precursor groups) and independent fission-product yields, by Z and A. */
 import endfJson from '../data/endf.generated.json' with { type: 'json' };
 
 export const NEUTRON_REACTIONS = [
@@ -22,6 +22,17 @@ export interface FissionSpectrum {
   readonly quantilesInEv: readonly (readonly number[])[];
 }
 
+export interface DelayedNeutronGroup {
+  readonly decayConstantPerSecond: number;
+  readonly abundance: number;
+  readonly spectrumQuantilesInEv: readonly number[];
+}
+
+export interface DelayedNeutrons {
+  readonly perFission: EnergyTable;
+  readonly groups: readonly DelayedNeutronGroup[];
+}
+
 export interface NeutronData {
   readonly protons: number;
   readonly massNumber: number;
@@ -31,6 +42,7 @@ export interface NeutronData {
   readonly elasticMeanCosine?: EnergyTable;
   readonly promptNeutrons?: EnergyTable;
   readonly fissionSpectrum?: FissionSpectrum;
+  readonly delayedNeutrons?: DelayedNeutrons;
 }
 
 export interface FissionYields {

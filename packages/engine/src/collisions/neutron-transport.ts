@@ -1,7 +1,8 @@
-/* Neutron transport through the bodies of the world with ENDF/B-VIII.0 data: a free neutron flies exponential free paths of 1/Σ_t, Σ = Σ n_i σ_i(E) of the medium it is in, crosses into the next body,
-   bounces off mirror walls of the cube or leaves through open ones, until the window ends or it hits a nucleus; elastic scattering by two-body kinematics with a centre-of-mass angle of the ENDF mean cosine, inelastic scattering to a Weisskopf evaporation energy, capture with a photon,
-   (n,2n), (n,p), (n,α), and fission into a fragment pair drawn from the independent yields with prompt neutrons from the fission spectrum, the energy release coming from the AME masses. */
+/* Neutron transport through the bodies of the world with ENDF/B-VIII.0 data: free paths of 1/Σ_t in the medium it is in, crossings into the next body, mirror bounces or escape, the energy each scattering takes handed to the medium there;
+   elastic scattering on a nucleus at rest above 400 kT and on a free-gas nucleus moving with the medium temperature below it, inelastic scattering to an evaporation energy, capture, (n,2n), (n,p), (n,α),
+   and fission into fragments from the independent yields, prompt neutrons from the fission spectrum and delayed-neutron precursors of the ENDF groups, the energy release from the AME masses. */
 import {
+  BOLTZMANN_CONSTANT_IN_EV_PER_KELVIN,
   SPEED_OF_LIGHT_IN_VACUUM,
   fissionYields,
   matterIdentity,
@@ -48,6 +49,8 @@ const SQUARE_METERS_PER_BARN = 1e-28;
 const FEMTOMETERS_PER_METER = 1e15;
 const METERS_PER_FEMTOMETER = 1e-15;
 const SURFACE_NUDGE_IN_METERS = 1e-9;
+const FREE_GAS_THRESHOLD_IN_TEMPERATURES = 400;
+const MAXIMUM_TARGET_TRIES = 64;
 const MAXIMUM_COLLISIONS = 2000;
 const MAXIMUM_FRAGMENT_TRIES = 64;
 const EVAPORATION_LEVEL_DENSITY_PER_MEV_PER_NUCLEON = 1 / 8;
@@ -71,10 +74,16 @@ interface Target {
   readonly numberDensityPerCubicMeter: number;
 }
 
+export interface DelayedNeutronPrecursor {
+  readonly delayInSeconds: number;
+  readonly kineticEnergyInEv: number;
+}
+
 export interface TransportOutcome {
   readonly kind: 'fission' | 'capture' | 'reaction';
   readonly products: readonly Particle[];
   readonly label: LocalizedText;
+  readonly precursors?: readonly DelayedNeutronPrecursor[];
 }
 
 function interpolated(table: EnergyTable, energyInEv: number): number {
@@ -224,6 +233,66 @@ function evaporationEnergyInEv(
   return Math.min(sampled, energyInEv);
 }
 
+function quantileEnergyInEv(quantiles: readonly number[], random: RandomSource): number {
+  const position = random.nextUnit() * (quantiles.length - 1);
+  const low = Math.floor(position);
+  return (
+    (quantiles[low] ?? 0) +
+    (position - low) * ((quantiles[low + 1] ?? quantiles[low] ?? 0) - (quantiles[low] ?? 0))
+  );
+}
+
+function freeGasScattering(
+  direction: Vector3,
+  energyInEv: number,
+  massRatio: number,
+  thermalEnergyInEv: number,
+  meanCosine: number,
+  random: RandomSource,
+): { readonly direction: Vector3; readonly energyInEv: number } {
+  const neutronSpeed = Math.sqrt(massRatio * (energyInEv / thermalEnergyInEv));
+  const sumWeight = 1 / (1 + (Math.sqrt(Math.PI) / 2) * neutronSpeed);
+  let targetSpeedSquared = 0;
+  let cosine = 1;
+  for (let attempt = 0; attempt < MAXIMUM_TARGET_TRIES; attempt += 1) {
+    const first = Math.max(random.nextUnit(), Number.MIN_VALUE);
+    const second = Math.max(random.nextUnit(), Number.MIN_VALUE);
+    if (random.nextUnit() < sumWeight) {
+      targetSpeedSquared = -Math.log(first * second);
+    } else {
+      const spread = Math.cos((Math.PI / 2) * random.nextUnit());
+      targetSpeedSquared = -Math.log(first) - Math.log(second) * spread * spread;
+    }
+    const targetSpeed = Math.sqrt(targetSpeedSquared);
+    cosine = 2 * random.nextUnit() - 1;
+    const relative = Math.sqrt(
+      Math.max(
+        neutronSpeed * neutronSpeed + targetSpeedSquared - 2 * neutronSpeed * targetSpeed * cosine,
+        0,
+      ),
+    );
+    if (random.nextUnit() < relative / (neutronSpeed + targetSpeed)) {
+      break;
+    }
+  }
+  const neutronVelocity = scaleVector(direction, Math.sqrt(energyInEv));
+  const targetVelocity = scaleVector(
+    rotated(direction, cosine, random),
+    Math.sqrt((targetSpeedSquared * thermalEnergyInEv) / massRatio),
+  );
+  const centre = scaleVector(
+    addVectors(neutronVelocity, scaleVector(targetVelocity, massRatio)),
+    1 / (massRatio + 1),
+  );
+  const relativeVelocity = addVectors(neutronVelocity, scaleVector(centre, -1));
+  const turned = scaleVector(
+    rotated(normalized(relativeVelocity), henyeyGreensteinCosine(meanCosine, random), random),
+    vectorMagnitude(relativeVelocity),
+  );
+  const outgoing = addVectors(turned, centre);
+  return { direction: normalized(outgoing), energyInEv: vectorMagnitude(outgoing) ** 2 };
+}
+
 function spectrumEnergyInEv(
   spectrum: FissionSpectrum | undefined,
   incidentInEv: number,
@@ -283,6 +352,7 @@ export class NeutronTransport {
     world: World,
     durationInSeconds: number,
     startInFemtometers: Vector3,
+    deposit: (positionInFemtometers: Vector3, energyInEv: number) => void = () => undefined,
   ): TransportOutcome | null {
     const mass = neutron.spec.massInGev.value;
     let energyInEv = kineticEnergyInEv(neutron.kinematics.fourMomentumInGev, mass);
@@ -346,19 +416,38 @@ export class NeutronTransport {
       const reaction = this.channel(target.data, energyInEv);
       if (reaction === 'elastic') {
         const ratio = target.data.atomicWeightRatio;
-        const cosine = henyeyGreensteinCosine(
+        const meanCosine =
           target.data.elasticMeanCosine === undefined
             ? 0
-            : interpolated(target.data.elasticMeanCosine, energyInEv),
-          this.random,
-        );
+            : interpolated(target.data.elasticMeanCosine, energyInEv);
+        const thermalInEv =
+          BOLTZMANN_CONSTANT_IN_EV_PER_KELVIN.value * (medium?.temperatureInKelvin ?? 0);
+        const beforeInEv = energyInEv;
+        if (thermalInEv > 0 && energyInEv < FREE_GAS_THRESHOLD_IN_TEMPERATURES * thermalInEv) {
+          const scattered = freeGasScattering(
+            direction,
+            energyInEv,
+            ratio,
+            thermalInEv,
+            meanCosine,
+            this.random,
+          );
+          direction = scattered.direction;
+          energyInEv = scattered.energyInEv;
+          deposit(position, beforeInEv - energyInEv);
+          continue;
+        }
+        const cosine = henyeyGreensteinCosine(meanCosine, this.random);
         const scale = ratio ** 2 + 2 * ratio * cosine + 1;
         energyInEv *= scale / (ratio + 1) ** 2;
+        deposit(position, beforeInEv - energyInEv);
         direction = rotated(direction, (1 + ratio * cosine) / Math.sqrt(scale), this.random);
         continue;
       }
       if (reaction === 'inelastic') {
+        const beforeInEv = energyInEv;
         energyInEv = evaporationEnergyInEv(energyInEv, target.data.massNumber, this.random);
+        deposit(position, beforeInEv - energyInEv);
         direction = sampleIsotropicDirection(this.random);
         continue;
       }
@@ -500,6 +589,33 @@ export class NeutronTransport {
     ];
   }
 
+  private precursors(data: NeutronData, energyInEv: number): readonly DelayedNeutronPrecursor[] {
+    const delayed = data.delayedNeutrons;
+    if (delayed === undefined) {
+      return [];
+    }
+    const expected = interpolated(delayed.perFission, energyInEv);
+    const count =
+      Math.floor(expected) + (this.random.nextUnit() < expected - Math.floor(expected) ? 1 : 0);
+    const totalAbundance = delayed.groups.reduce((sum, group) => sum + group.abundance, 0);
+    return Array.from({ length: count }, () => {
+      let pick = this.random.nextUnit() * totalAbundance;
+      const group =
+        delayed.groups.find((candidate) => {
+          pick -= candidate.abundance;
+          return pick <= 0;
+        }) ?? delayed.groups[delayed.groups.length - 1];
+      return {
+        delayInSeconds:
+          group === undefined
+            ? 0
+            : -Math.log(1 - this.random.nextUnit()) / group.decayConstantPerSecond,
+        kineticEnergyInEv:
+          group === undefined ? 0 : quantileEnergyInEv(group.spectrumQuantilesInEv, this.random),
+      };
+    });
+  }
+
   private fission(
     neutron: Particle,
     data: NeutronData,
@@ -571,6 +687,7 @@ export class NeutronTransport {
           ...pair,
           ...neutrons.map((momentum) => this.create('neutron', momentum, position)),
         ],
+        precursors: this.precursors(data, energyInEv),
         label: localizedText(
           `деление ${particleSpec(nucleusName(data.protons, data.massNumber)).symbol}: ${String(count)} нейтрона`,
           `fission of ${particleSpec(nucleusName(data.protons, data.massNumber)).symbol}: ${String(count)} neutrons`,

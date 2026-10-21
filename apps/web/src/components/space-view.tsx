@@ -2,6 +2,7 @@
    a flash where it was born, the probability cloud of each particle held as a wave with three projections and statistics, a legend of particles and bodies; hovering a particle shows a
    chip, a click opens an inspector with the cube (the particle highlighted), its card as in the system state and the other particles to switch to. */
 import type {
+  BodyGeometry,
   ParticleView,
   ProbabilityCloud,
   SpaceSnapshot,
@@ -11,6 +12,7 @@ import {
   cubeBodies,
   cubePoints,
   dragged,
+  heightOf,
   insideUnitCube,
   multiplied,
   oriented,
@@ -34,7 +36,7 @@ import {
   type ReactNode,
 } from 'react';
 import { formatLength, formatNumber, formatSymbol } from '../format';
-import { POTENTIAL_GLOSSARY } from '../glossary';
+import { POTENTIAL_GLOSSARY, bodyShapeText } from '../glossary';
 import { say } from '../language';
 
 const WALL_STYLE = 'rgba(251, 146, 60, 0.45)';
@@ -70,6 +72,8 @@ const CUBE_AXES: readonly CubeAxis[] = ['x', 'y', 'z'];
 const MAXIMUM_TRAIL_IN_HALF_EDGES = 1;
 const BODY_FILL_ALPHA = 0.14;
 const BODY_EDGE_ALPHA = 0.7;
+const CYLINDER_SEGMENTS = 32;
+const CYLINDER_SIDE_EVERY = 8;
 const SCENE_SCALE = 0.24;
 const POINT_STYLES: Readonly<
   Record<PointTone, { readonly color: string; readonly radius: number }>
@@ -310,6 +314,14 @@ function drawCube(context: CanvasRenderingContext2D, space: SpaceSnapshot, camer
   });
 }
 
+function shapeText(geometry: BodyGeometry): string {
+  return bodyShapeText(
+    geometry.shape,
+    formatLength(geometry.sizeInMeters),
+    geometry.shape === 'cylinder' ? formatLength(heightOf(geometry)) : undefined,
+  );
+}
+
 function drawBodies(
   context: CanvasRenderingContext2D,
   bodies: readonly CubeBody[],
@@ -346,6 +358,41 @@ function drawBodies(
       context.arc(projected.x, projected.y, radius, 0, Math.PI * 2);
       context.fill();
       context.stroke();
+      return;
+    }
+    if (body.geometry.shape === 'cylinder') {
+      const halfHeight = heightOf(body.geometry) / 2 / halfEdgeInMeters;
+      const ring = (level: number) =>
+        Array.from({ length: CYLINDER_SEGMENTS }, (unused, index) => {
+          const angle = (2 * Math.PI * index) / CYLINDER_SEGMENTS;
+          return projectPoint(
+            middle.x + half * Math.cos(angle),
+            middle.y + half * Math.sin(angle),
+            middle.z + level,
+            camera,
+          );
+        });
+      const bottom = ring(-halfHeight);
+      const top = ring(halfHeight);
+      fillPolygon(context, bottom, rgba(color, BODY_FILL_ALPHA));
+      fillPolygon(context, top, rgba(color, BODY_FILL_ALPHA / 2));
+      [bottom, top].forEach((points) => {
+        context.beginPath();
+        points.forEach((point, index) =>
+          index === 0 ? context.moveTo(point.x, point.y) : context.lineTo(point.x, point.y),
+        );
+        context.closePath();
+        context.stroke();
+      });
+      bottom.forEach((point, index) => {
+        const upper = top[index];
+        if (index % CYLINDER_SIDE_EVERY === 0 && upper !== undefined) {
+          context.beginPath();
+          context.moveTo(point.x, point.y);
+          context.lineTo(upper.x, upper.y);
+          context.stroke();
+        }
+      });
       return;
     }
     cubeEdges().forEach(([first, second]) => {
@@ -563,10 +610,12 @@ const TONE_NAMES: Readonly<Record<PointTone, readonly [string, string]>> = {
 function SceneLegend({
   points,
   bodies,
+  pendingNeutrons,
   symbolOf,
 }: {
   readonly points: readonly CubePoint[];
   readonly bodies: readonly CubeBody[];
+  readonly pendingNeutrons: number;
   readonly symbolOf: (name: string) => string;
 }) {
   const inside = points.filter((point) => insideUnitCube(point.at));
@@ -592,6 +641,17 @@ function SceneLegend({
           {say('вылетели из куба', 'left the cube')} <b>{points.length - inside.length}</b>
         </span>
       )}
+      {pendingNeutrons > 0 && (
+        <span
+          className="cube-legend-row muted"
+          data-tooltip={say(
+            'Осколки деления, которые еще не распались: каждый испустит запаздывающий нейтрон через секунды. Эти нейтроны делают реактор управляемым',
+            'Fission fragments that have not decayed yet: each will emit a delayed neutron seconds later. These neutrons make a reactor controllable',
+          )}
+        >
+          {say('ждут запаздывающие нейтроны', 'delayed neutrons pending')} <b>{pendingNeutrons}</b>
+        </span>
+      )}
       {bodies.map((body, order) => (
         <span
           key={body.index}
@@ -605,8 +665,8 @@ function SceneLegend({
             className="cube-legend-body"
             style={{ background: rgba(BODY_COLORS[order % BODY_COLORS.length] ?? [0, 0, 0], 0.8) }}
           />
-          {body.geometry.shape === 'ball' ? say('шар ⌀', 'ball ⌀') : say('куб ', 'box ')}
-          {formatLength(body.geometry.sizeInMeters)} ·{' '}
+          {body.medium.name === undefined ? '' : `${body.medium.name} · `}
+          {shapeText(body.geometry)} ·{' '}
           {body.medium.components.map((component) => symbolOf(component.species)).join(' + ')} ·{' '}
           {formatNumber(body.medium.temperatureInKelvin)} {say('К', 'K')}
           {(body.medium.absorbedEnergyInJoules ?? 0) > 0 &&
@@ -1049,7 +1109,12 @@ export function SpaceView({
           />
           <div className="space-side">
             {(points.length > 0 || bodies.length > 0) && (
-              <SceneLegend points={points} bodies={bodies} symbolOf={symbolOf} />
+              <SceneLegend
+                points={points}
+                bodies={bodies}
+                pendingNeutrons={frame.pendingNeutrons ?? 0}
+                symbolOf={symbolOf}
+              />
             )}
             {space.clouds.length > 1 && (
               <div className="cloud-tabs">

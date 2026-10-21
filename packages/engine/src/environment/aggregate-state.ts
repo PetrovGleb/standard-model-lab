@@ -143,7 +143,16 @@ export function lennardJonesDiameterInMeters(name: ParticleName): number | null 
     : (type.nonbondDistanceInAngstrom * METERS_PER_ANGSTROM) / SIXTH_ROOT_OF_TWO;
 }
 
+const lennardJonesCurves = new Map<number, PhaseCurve | null>();
+
 function curveFromLennardJones(protons: number): PhaseCurve | null {
+  if (!lennardJonesCurves.has(protons)) {
+    lennardJonesCurves.set(protons, lennardJonesCurve(protons));
+  }
+  return lennardJonesCurves.get(protons) ?? null;
+}
+
+function lennardJonesCurve(protons: number): PhaseCurve | null {
   const type = uffTypeOf(protons);
   if (type === undefined) {
     return null;

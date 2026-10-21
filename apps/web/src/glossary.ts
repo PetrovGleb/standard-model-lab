@@ -1,5 +1,5 @@
 /* Bilingual glossary for the English identifiers the engine uses: template categories, operations, influences, parameters, statistics, observables, states, particles; each record reads the active interface language. */
-import type { TemplateCategory } from '@standard-model/contracts';
+import { KEYFRAME_COUNT_PREFIX, type TemplateCategory } from '@standard-model/contracts';
 import { bilingual, say } from './language';
 
 export const TEMPLATE_CATEGORY_LABELS = bilingual<TemplateCategory>({
@@ -91,6 +91,10 @@ export const OPERATION_GLOSSARY = bilingual<string>({
     'Записать, какие частицы сейчас есть в системе: так видно аннигиляцию, распад или слияние',
     'Record which particles are in the system now: shows annihilation, decay or fusion',
   ],
+  keyframe: [
+    'Ключевой кадр: запомнить выбранные величины среды, системы или частицы; два кадра с одной величиной дают ее изменение, мощность и скорость нагрева',
+    'Keyframe: record chosen quantities of a medium, the system or a particle; two keyframes with the same quantity give its change, power and heating rate',
+  ],
   decay: ['Распад частицы', 'Particle decay'],
 });
 
@@ -110,6 +114,7 @@ export const OPERATION_TITLES = bilingual<string>({
   propagate: ['Эволюция в кубе', 'Evolve in cube'],
   measurePosition: ['Найти положение', 'Find position'],
   measureSystem: ['Замер системы', 'System snapshot'],
+  keyframe: ['Ключевой кадр', 'Keyframe'],
   decay: ['Распад', 'Decay'],
 });
 
@@ -162,7 +167,7 @@ export const INFLUENCE_GLOSSARY = bilingual<string>({
   ],
   placeBody: [
     'Поместить в куб тело со средой: шар или куб заданного размера вокруг центра; точка видит среду самого маленького тела, в котором лежит',
-    'Place a body of a medium in the cube: a ball or a box of a given size around a centre; a point sees the medium of the smallest body that holds it',
+    'Place a body of a medium in the cube: a ball, a box or a cylinder along z of a given size around a centre; a point sees the medium of the smallest body that holds it',
   ],
   electrolyze: [
     'Электролиз: электроды под напряжением, ток и время по закону Фарадея; молекула распадается на элементы выше своего напряжения разложения',
@@ -236,20 +241,37 @@ export const PARAMETER_GLOSSARY = bilingual<string>({
   voltageInVolts: ['Напряжение, В', 'Voltage, V'],
   currentInAmperes: ['Ток, А', 'Current, A'],
   densityLaw: ['Плотность компонента', 'Component density'],
+  name: ['Название среды', 'Medium name'],
   shape: ['Форма тела', 'Body shape'],
   sizeInMeters: [
-    'Размер тела, м: диаметр шара или ребро куба',
-    'Body size, m: ball diameter or box edge',
+    'Размер тела, м: диаметр шара или цилиндра, ребро куба',
+    'Body size, m: ball or cylinder diameter, box edge',
+  ],
+  heightInMeters: [
+    'Высота цилиндра вдоль z, м (по умолчанию равна диаметру)',
+    'Cylinder height along z, m (the diameter by default)',
   ],
   xCenterInMeters: ['Центр тела x, м', 'Body centre x, m'],
   yCenterInMeters: ['Центр тела y, м', 'Body centre y, m'],
   zCenterInMeters: ['Центр тела z, м', 'Body centre z, m'],
 });
 
-export const BODY_SHAPE_LABELS = bilingual<'ball' | 'box'>({
+export const BODY_SHAPE_LABELS = bilingual<'ball' | 'box' | 'cylinder'>({
   ball: ['шар', 'ball'],
   box: ['куб', 'box'],
+  cylinder: ['цилиндр', 'cylinder'],
 });
+
+export function bodyShapeText(shape: string, sizeText: string, heightText?: string): string {
+  if (shape === 'box') {
+    return say(`куб ${sizeText}`, `box ${sizeText}`);
+  }
+  if (shape === 'cylinder') {
+    const height = heightText ?? sizeText;
+    return say(`цилиндр ⌀${sizeText} × ${height}`, `cylinder ⌀${sizeText} × ${height}`);
+  }
+  return say(`шар ⌀${sizeText}`, `ball ⌀${sizeText}`);
+}
 
 export const SPACE_WALL_LABELS = bilingual<'open' | 'reflecting'>({
   open: [
@@ -652,4 +674,47 @@ export function describe(
   fallback = '',
 ): string {
   return glossary[key] ?? fallback;
+}
+
+export const KEYFRAME_SYSTEM_TARGET_LABELS = bilingual<'system'>({
+  system: ['вся система', 'the whole system'],
+});
+
+export const KEYFRAME_QUANTITY_LABELS = bilingual<string>({
+  temperatureInKelvin: ['температура, К', 'temperature, K'],
+  absorbedEnergyInJoules: ['поглощенная энергия, Дж', 'absorbed energy, J'],
+  pressureInPascals: ['давление, Па', 'pressure, Pa'],
+  particleCount: ['число частиц', 'particle count'],
+  pendingNeutrons: ['ждут запаздывающие нейтроны', 'delayed neutrons pending'],
+  energyInGev: ['энергия, ГэВ', 'energy, GeV'],
+  kineticEnergyInGev: ['кинетическая энергия, ГэВ', 'kinetic energy, GeV'],
+});
+
+export const KEYFRAME_RATE_LABELS = bilingual<string>({
+  temperatureInKelvin: ['скорость нагрева, К/с', 'heating rate, K/s'],
+  absorbedEnergyInJoules: ['мощность, Вт', 'power, W'],
+  pressureInPascals: ['скорость роста давления, Па/с', 'pressure rise, Pa/s'],
+});
+
+export function keyframeQuantityLabel(
+  quantity: string,
+  symbolOf: (name: string) => string,
+): string {
+  if (quantity.startsWith(KEYFRAME_COUNT_PREFIX)) {
+    return say(
+      `число ${symbolOf(quantity.slice(KEYFRAME_COUNT_PREFIX.length))}`,
+      `${symbolOf(quantity.slice(KEYFRAME_COUNT_PREFIX.length))} count`,
+    );
+  }
+  return KEYFRAME_QUANTITY_LABELS[quantity] ?? quantity;
+}
+
+export function keyframeRateLabel(quantity: string, symbolOf: (name: string) => string): string {
+  return (
+    KEYFRAME_RATE_LABELS[quantity] ??
+    say(
+      `${keyframeQuantityLabel(quantity, symbolOf)} в секунду`,
+      `${keyframeQuantityLabel(quantity, symbolOf)} per second`,
+    )
+  );
 }

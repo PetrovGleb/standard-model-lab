@@ -19,6 +19,7 @@ import { SmlIcon } from './sml-icon';
 interface Conditions {
   readonly temperatureInKelvin: number | null;
   readonly pressureInPascals: number | null;
+  readonly mediumPath?: readonly string[];
 }
 
 const COMPOSITION = ['protons', 'neutrons', 'electrons', 'atomCount', 'bondCount'] as const;
@@ -215,6 +216,11 @@ export function ParticleCard({
         <SmlIcon name="expand" className="chevron" size={16} aria-hidden="true" />
       </summary>
       <div className="particle-card-body">
+        {conditions.mediumPath !== undefined && conditions.mediumPath.length > 0 && (
+          <p className="medium-path" data-tooltip={HINTS.mediumPath}>
+            {say('в среде', 'in the medium')}: {conditions.mediumPath.join(' ← ')}
+          </p>
+        )}
         {note !== null && <p className="phase-note">{note}</p>}
         {composition.length > 0 && (
           <Group

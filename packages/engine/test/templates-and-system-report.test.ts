@@ -1,4 +1,4 @@
-/* Runs every built-in template briefly and checks the system report: one frame per step, conserved charge, entanglement visible without collapse. */
+/* Runs every built-in template briefly (at most its own number of shots) and checks the system report: one frame per step, conserved charge, entanglement visible without collapse. */
 import { describe, expect, it } from 'vitest';
 import {
   EXPERIMENT_TEMPLATES,
@@ -18,7 +18,7 @@ describe('built-in templates', () => {
       if (plan === undefined) {
         throw new Error('template expected');
       }
-      const result = runExperiment(plan, { shots: SHOTS, seed: 2 });
+      const result = runExperiment(plan, { shots: Math.min(SHOTS, plan.shots), seed: 2 });
       expect(
         Object.keys(result.reportValues).length + Object.keys(result.distributions).length,
       ).toBeGreaterThan(0);

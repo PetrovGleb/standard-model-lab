@@ -44,6 +44,7 @@ function toResult(
   if (result === null || result === undefined) {
     return null;
   }
+  const keyframes = result.keyframes ?? null;
   return {
     planName: run.plan.name,
     shots: run.shots,
@@ -56,6 +57,7 @@ function toResult(
     systemReports: result.systemReports,
     elapsedMilliseconds: run.elapsedMilliseconds ?? 0,
     stepMeanMilliseconds: result.stepMeanMilliseconds,
+    ...(keyframes === null ? {} : { keyframes }),
     ...(run.status === 'stopped' ? { stopped: true } : {}),
   };
 }
@@ -116,6 +118,7 @@ export class RunsService {
         systemReport: result.systemReport,
         systemReports: [...(result.systemReports ?? [])],
         stepMeanMilliseconds: [...(result.stepMeanMilliseconds ?? [])],
+        keyframes: result.keyframes ?? null,
       });
       await run.update({
         status: result.stopped === true ? 'stopped' : 'finished',

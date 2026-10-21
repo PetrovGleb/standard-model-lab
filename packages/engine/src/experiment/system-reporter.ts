@@ -1,6 +1,8 @@
 /* SystemReporter: shot observer that records a non-destructive snapshot of the whole system after every step: particles, kinematics, reduced quantum states, entanglement, environment, events and conserved totals.
    A molecule the catalogue knows by its bond graph carries its catalogue name, and events name it by that name. */
 import {
+  keyframeRecord,
+  type KeyframeWatch,
   ENTANGLED_STATES,
   localizedText,
   textIn,
@@ -62,6 +64,7 @@ const PRODUCT_LABEL = /^(.+)\.(\d+)$/;
 const ANNIHILATION_PRODUCT = /^annihilation\d*\.\d+$/;
 const COMPOSITION_SEPARATOR = /\+(?!\+|$)/;
 const LISTED_CASCADE_DECAYS = 12;
+const KEYFRAME_DIGITS = 6;
 const SYSTEM_TOKEN_NAMES: Readonly<Record<string, LocalizedText>> = {
   hadrons: localizedText('адроны', 'hadrons'),
   jet: localizedText('струя', 'jet'),
@@ -89,6 +92,11 @@ function crossSectionText(crossSection: number | undefined): LocalizedText {
     `σ = ${formatNumber(crossSection)} нб`,
     `σ = ${formatNumber(crossSection)} nb`,
   );
+}
+
+function keyframeReading(name: string, watch: KeyframeWatch, context: ShotContext): string {
+  const value = context.numeric.get(keyframeRecord(name, watch));
+  return `${watch.target}.${watch.quantity} = ${value === undefined ? '—' : value.toPrecision(KEYFRAME_DIGITS)}`;
 }
 
 export class SystemReporter implements ShotObserver {
@@ -172,6 +180,7 @@ export class SystemReporter implements ShotObserver {
       events: this.events(step, context),
       totals: this.totals(particles, context),
       space: this.space(context),
+      ...(context.precursors.length === 0 ? {} : { pendingNeutrons: context.precursors.length }),
     });
     this.knownLabels = new Set(context.particles.keys());
   }
@@ -569,6 +578,23 @@ export class SystemReporter implements ShotObserver {
           },
         ];
       }
+      case 'keyframe':
+        return [
+          {
+            kind: 'keyframe',
+            labels: step.watch.flatMap((watch) =>
+              context.particles.has(watch.target) ? [watch.target] : [],
+            ),
+            text: localizedText(
+              `ключевой кадр ${step.name}: ${step.watch
+                .map((watch) => keyframeReading(step.name, watch, context))
+                .join(', ')}`,
+              `keyframe ${step.name}: ${step.watch
+                .map((watch) => keyframeReading(step.name, watch, context))
+                .join(', ')}`,
+            ),
+          },
+        ];
       case 'measurePosition': {
         const position = ['x', 'y', 'z'].map(
           (axis) => context.numeric.get(`${step.record}.${axis}`) ?? Number.NaN,

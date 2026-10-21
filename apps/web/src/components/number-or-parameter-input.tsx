@@ -1,4 +1,5 @@
-/* NumberOrParameterInput: one value field with a source switch instead of three controls: a typed number, a plan {{parameter}} shown with its current value, or a physical preset named under the field; the switch is a chip at the right edge. */
+/* NumberOrParameterInput: one value field with a source switch instead of three controls: a typed number, a plan {{parameter}} shown with its current value, or a physical preset named under the field; the switch is a chip at the right edge.
+   A scale binds to the number itself or, for a {{parameter}}, to the value of that plan parameter. */
 import type { NumberOrParameter, ParameterReference, Preset } from '@standard-model/contracts';
 import { createContext, useContext } from 'react';
 import { formatNumber } from '../format';
@@ -10,6 +11,30 @@ const PRESET_PREFIX = 'preset:';
 const PARAMETER_REFERENCE = /^\{\{(.+)\}\}$/;
 
 export const PlanParametersContext = createContext<Readonly<Record<string, number>>>({});
+export const PlanParameterSetterContext = createContext<
+  ((name: string, value: number) => void) | null
+>(null);
+
+export interface ScaleBinding {
+  readonly value: number;
+  readonly set: (value: number) => void;
+}
+
+export function scaleBinding(
+  value: unknown,
+  setNumber: (value: number) => void,
+  parameterValues: Readonly<Record<string, number>>,
+  setParameter: ((name: string, value: number) => void) | null,
+): ScaleBinding | null {
+  if (typeof value === 'number') {
+    return { value, set: setNumber };
+  }
+  const reference = typeof value === 'string' ? PARAMETER_REFERENCE.exec(value)?.[1] : undefined;
+  const resolved = reference === undefined ? undefined : parameterValues[reference];
+  return reference === undefined || resolved === undefined || setParameter === null
+    ? null
+    : { value: resolved, set: (next) => setParameter(reference, next) };
+}
 
 interface Props {
   readonly value: NumberOrParameter;

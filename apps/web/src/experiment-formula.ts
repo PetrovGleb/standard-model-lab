@@ -441,6 +441,16 @@ function stepLines(
           ),
         },
       ];
+    case 'keyframe':
+      return [
+        {
+          latex: `\\mathcal{K}_{\\text{${step.name}}} = \\{\\, ${step.watch.map((watch) => `\\text{${watch.target}.${watch.quantity}}`).join(',\\ ')} \\,\\},\\qquad \\Delta q = q_{k+1} - q_k,\\quad \\dot q = \\frac{\\Delta q}{\\Delta t}`,
+          note: say(
+            `Ключевой кадр ${step.name}: значения без коллапса; между двумя кадрами — изменение, мощность и скорость нагрева`,
+            `Keyframe ${step.name}: values without collapse; between two keyframes, the change, the power and the heating rate`,
+          ),
+        },
+      ];
     case 'measurePosition':
       return [
         {

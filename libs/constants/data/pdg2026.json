@@ -105,13 +105,15 @@
       { "products": ["hadrons"], "value": 0.69911, "uncertainty": 0.00056 }
     ],
     "higgsBoson": [
-      { "products": ["bottom", "antiBottom"], "value": 0.53, "uncertainty": 0.08 },
-      { "products": ["wPlus", "wMinus"], "value": 0.257, "uncertainty": 0.025 },
-      { "products": ["tau", "antiTau"], "value": 0.06, "uncertainty": 0.008 },
-      { "products": ["zBoson", "zBoson"], "value": 0.028, "uncertainty": 0.003 },
-      { "products": ["photon", "photon"], "value": 0.0025, "uncertainty": 0.0002 },
-      { "products": ["zBoson", "photon"], "value": 0.0034, "uncertainty": 0.0011 },
-      { "products": ["muon", "antiMuon"], "value": 0.0003, "uncertainty": 0.00009 }
+      { "products": ["bottom", "antiBottom"], "value": 0.5809, "uncertainty": 0.0076 },
+      { "products": ["wPlus", "wMinus"], "value": 0.2152, "uncertainty": 0.0033 },
+      { "products": ["gluon", "gluon"], "value": 0.0818, "uncertainty": 0.0042 },
+      { "products": ["tau", "antiTau"], "value": 0.06256, "uncertainty": 0.001 },
+      { "products": ["charm", "antiCharm"], "value": 0.02884, "uncertainty": 0.0016 },
+      { "products": ["zBoson", "zBoson"], "value": 0.02641, "uncertainty": 0.0004 },
+      { "products": ["photon", "photon"], "value": 0.00227, "uncertainty": 0.000048 },
+      { "products": ["zBoson", "photon"], "value": 0.001541, "uncertainty": 0.00009 },
+      { "products": ["muon", "antiMuon"], "value": 0.0002171, "uncertainty": 0.0000037 }
     ],
     "neutron": [
       {

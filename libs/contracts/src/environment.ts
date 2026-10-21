@@ -27,7 +27,7 @@ export interface MediumComponent {
   readonly crossSectionInSquareMeters: number;
 }
 
-export const BODY_SHAPES = ['ball', 'box'] as const;
+export const BODY_SHAPES = ['ball', 'box', 'cylinder'] as const;
 
 export type BodyShape = (typeof BODY_SHAPES)[number];
 
@@ -35,9 +35,13 @@ export interface BodyGeometry {
   readonly shape: BodyShape;
   readonly centerInMeters: Vector3;
   readonly sizeInMeters: number;
+  readonly heightInMeters?: number;
 }
 
+export const MEDIUM_NAME_PATTERN = /^[\p{L}_][\p{L}\p{N}_-]*$/u;
+
 export interface MediumAspect {
+  readonly name?: string;
   readonly components: readonly MediumComponent[];
   readonly temperatureInKelvin: number;
   readonly bulkVelocityInMetersPerSecond: Vector3;

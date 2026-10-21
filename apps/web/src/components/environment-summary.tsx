@@ -1,14 +1,23 @@
-/* EnvironmentSummary: the environment of a frame as cards, one per aspect, shared or for a named group of particles: the medium's conditions (thickness and absorbed energy of a finite ball
-   included) as key and value, its components as rows with an avatar in their family colour and their density, the reaction mode underneath; fields and temperatures as one line; every item explains itself on hover. */
-import type { SystemFrame } from '@standard-model/contracts';
-import { formatNumber } from '../format';
-import { PARTICLE_GLOSSARY } from '../glossary';
+/* EnvironmentSummary: the environment of a frame as cards, one per aspect, shared or for a named group of particles: a medium under its name with its conditions (thickness or body size and
+   absorbed energy included), its components with an avatar in their family colour and their density and the reaction mode; every body in space as a card of its own with its shape,
+   centre and the parent medium it lies in; fields and temperatures as one line; every item explains itself on hover. */
+import type { MediumAspect, SystemFrame } from '@standard-model/contracts';
+import { bodyTree } from '../cube-scene';
+import { formatLength, formatNumber } from '../format';
+import { BODY_SHAPE_LABELS, PARTICLE_GLOSSARY } from '../glossary';
 import { ASPECT_HINTS, HINTS } from '../hints';
 import { environmentVisual, type SymbolOf } from '../influence-visual';
 import { say } from '../language';
 import { SmlIcon } from './sml-icon';
 
 interface MediumValue {
+  readonly name?: string;
+  readonly geometry?: {
+    readonly shape?: string;
+    readonly sizeInMeters?: number;
+    readonly heightInMeters?: number;
+    readonly centerInMeters?: { readonly x: number; readonly y: number; readonly z: number };
+  };
   readonly components?: readonly {
     readonly species?: string;
     readonly numberDensityPerCubicMeter?: number;
@@ -30,10 +39,30 @@ interface Entry {
   readonly aspect: string;
   readonly value: unknown;
   readonly members: readonly string[] | null;
+  readonly body?: { readonly title: string; readonly parent: string | null };
+}
+
+type Row = readonly [string, string, string];
+
+function bodyEntries(entry: Entry): readonly Entry[] {
+  const bodies =
+    (entry.value as { readonly bodies?: readonly MediumAspect[] } | null)?.bodies ?? [];
+  const titleOf = (index: number): string =>
+    bodies[index]?.name ?? say(`тело ${String(index + 1)}`, `body ${String(index + 1)}`);
+  return bodyTree(bodies).map((node) => ({
+    aspect: 'medium',
+    value: node.medium,
+    members: entry.members,
+    body: {
+      title: titleOf(node.index),
+      parent: node.parent === null ? null : titleOf(node.parent),
+    },
+  }));
 }
 
 const ASPECT_NAMES: Readonly<Record<string, readonly [string, string]>> = {
   medium: ['Среда', 'Medium'],
+  bodies: ['Тела в пространстве', 'Bodies in space'],
   temperature: ['Температура', 'Temperature'],
   magneticField: ['Магнитное поле', 'Magnetic field'],
   electricField: ['Электрическое поле', 'Electric field'],
@@ -41,7 +70,7 @@ const ASPECT_NAMES: Readonly<Record<string, readonly [string, string]>> = {
   neutrinoMixing: ['Смешивание нейтрино', 'Neutrino mixing'],
 };
 
-function conditions(medium: MediumValue): readonly (readonly [string, string, string])[] {
+function conditions(medium: MediumValue, extra: readonly Row[] = []): readonly Row[] {
   const flow = medium.bulkVelocityInMetersPerSecond;
   const speed = Math.hypot(flow?.x ?? 0, flow?.y ?? 0, flow?.z ?? 0);
   const optional = (
@@ -52,6 +81,7 @@ function conditions(medium: MediumValue): readonly (readonly [string, string, st
   ): readonly (readonly [string, string, string])[] =>
     value === undefined ? [] : [[key, `${formatNumber(value)} ${unit}`, hint]];
   return [
+    ...extra,
     ['T', `${formatNumber(medium.temperatureInKelvin)} ${say('К', 'K')}`, HINTS.temperature],
     ...optional(medium.pressureInPascals, 'P', say('Па', 'Pa'), HINTS.pressure),
     ...optional(
@@ -67,6 +97,24 @@ function conditions(medium: MediumValue): readonly (readonly [string, string, st
       say('м', 'm'),
       HINTS.thickness,
     ),
+    ...(medium.geometry?.sizeInMeters === undefined
+      ? []
+      : [
+          [
+            medium.geometry.shape === 'box' ? say('ребро', 'edge') : say('диаметр', 'diameter'),
+            formatLength(medium.geometry.sizeInMeters),
+            HINTS.bodySize,
+          ] as const,
+        ]),
+    ...(medium.geometry?.shape === 'cylinder'
+      ? [
+          [
+            say('высота', 'height'),
+            formatLength(medium.geometry.heightInMeters ?? medium.geometry.sizeInMeters ?? 0),
+            HINTS.bodyHeight,
+          ] as const,
+        ]
+      : []),
     ...optional(
       medium.absorbedEnergyInJoules,
       say('поглощено', 'absorbed'),
@@ -86,6 +134,61 @@ function speciesName(name: string, symbol: string, family: string): string {
     : family === 'nucleus'
       ? say(`ядро ${symbol}`, `nucleus ${symbol}`)
       : say(`атом ${symbol}`, `atom ${symbol}`);
+}
+
+function MediumDetails({
+  medium,
+  symbolOf,
+  familyOf,
+  extra = [],
+}: {
+  readonly medium: MediumValue;
+  readonly symbolOf: SymbolOf;
+  readonly familyOf: (name: string) => string;
+  readonly extra?: readonly Row[];
+}) {
+  return (
+    <>
+      <dl className="environment-conditions">
+        {conditions(medium, extra).map(([key, value, hint]) => (
+          <div key={key} data-tooltip={hint}>
+            <dt>{key}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))}
+      </dl>
+      <ul className="environment-components">
+        {(medium.components ?? []).map((component, index) => {
+          const species = component.species ?? '—';
+          const symbol = symbolOf(species);
+          const family = familyOf(species);
+          return (
+            <li key={index} className={`fam-${family}`}>
+              <span className="species-avatar" data-tooltip={HINTS.avatar}>
+                {symbol}
+              </span>
+              <span className="species-name">{speciesName(species, symbol, family)}</span>
+              <span className="species-density" data-tooltip={HINTS.componentDensity}>
+                {formatNumber(component.numberDensityPerCubicMeter)} {say('м⁻³', 'm⁻³')}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+      {medium.reactionMode !== undefined && (
+        <p
+          className="environment-footer"
+          data-tooltip={
+            medium.reactionMode === 'allReactionsInStep' ? HINTS.reactionAll : HINTS.reactionOne
+          }
+        >
+          {medium.reactionMode === 'allReactionsInStep'
+            ? say('Все реакции за шаг', 'All reactions in a step')
+            : say('Одна реакция за шаг', 'One reaction per step')}
+        </p>
+      )}
+    </>
+  );
 }
 
 export function EnvironmentSummary({
@@ -111,7 +214,7 @@ export function EnvironmentSummary({
       value: region.value,
       members: region.members,
     })),
-  ];
+  ].flatMap((entry) => (entry.aspect === 'bodies' ? bodyEntries(entry) : [entry]));
   if (entries.length === 0) {
     return null;
   }
@@ -135,11 +238,49 @@ export function EnvironmentSummary({
             : say(`только ${entry.members.join(', ')}`, `only ${entry.members.join(', ')}`);
         const medium =
           entry.aspect === 'medium' && entry.value !== null ? (entry.value as MediumValue) : null;
+        const body = entry.body;
+        const center = medium?.geometry?.centerInMeters;
+        const extra: readonly Row[] =
+          body === undefined || medium === null
+            ? []
+            : [
+                ...(body.parent === null
+                  ? []
+                  : [
+                      [
+                        say('родительская среда', 'parent medium'),
+                        body.parent,
+                        HINTS.bodyParent,
+                      ] as const,
+                    ]),
+                [
+                  say('форма', 'shape'),
+                  BODY_SHAPE_LABELS[
+                    (medium.geometry?.shape ?? 'ball') as keyof typeof BODY_SHAPE_LABELS
+                  ],
+                  HINTS.bodySize,
+                ] as const,
+                ...(center === undefined || (center.x === 0 && center.y === 0 && center.z === 0)
+                  ? []
+                  : [
+                      [
+                        say('центр', 'centre'),
+                        `(${formatLength(center.x)}, ${formatLength(center.y)}, ${formatLength(center.z)})`,
+                        HINTS.bodyCenter,
+                      ] as const,
+                    ]),
+              ];
         return (
           <div key={position} className={`environment-card tone-${visual.tone}`}>
             <div className="environment-card-head">
               <SmlIcon name={visual.icon} size={16} aria-hidden="true" />
-              <strong data-tooltip={ASPECT_HINTS[entry.aspect]}>{say(...name)}</strong>
+              <strong data-tooltip={ASPECT_HINTS[entry.aspect]}>
+                {body !== undefined
+                  ? `${say(...name)} «${body.title}»`
+                  : medium?.name === undefined
+                    ? say(...name)
+                    : `${say(...name)} «${medium.name}»`}
+              </strong>
               <span
                 className="environment-scope"
                 data-tooltip={entry.members === null ? HINTS.scopeWhole : HINTS.scopeOnly}
@@ -152,48 +293,12 @@ export function EnvironmentSummary({
                 {visual.detail}
               </p>
             ) : (
-              <>
-                <dl className="environment-conditions">
-                  {conditions(medium).map(([key, value, hint]) => (
-                    <div key={key} data-tooltip={hint}>
-                      <dt>{key}</dt>
-                      <dd>{value}</dd>
-                    </div>
-                  ))}
-                </dl>
-                <ul className="environment-components">
-                  {(medium.components ?? []).map((component, index) => {
-                    const species = component.species ?? '—';
-                    const symbol = symbolOf(species);
-                    const family = familyOf(species);
-                    return (
-                      <li key={index} className={`fam-${family}`}>
-                        <span className="species-avatar" data-tooltip={HINTS.avatar}>
-                          {symbol}
-                        </span>
-                        <span className="species-name">{speciesName(species, symbol, family)}</span>
-                        <span className="species-density" data-tooltip={HINTS.componentDensity}>
-                          {formatNumber(component.numberDensityPerCubicMeter)} {say('м⁻³', 'm⁻³')}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
-                {medium.reactionMode !== undefined && (
-                  <p
-                    className="environment-footer"
-                    data-tooltip={
-                      medium.reactionMode === 'allReactionsInStep'
-                        ? HINTS.reactionAll
-                        : HINTS.reactionOne
-                    }
-                  >
-                    {medium.reactionMode === 'allReactionsInStep'
-                      ? say('Все реакции за шаг', 'All reactions in a step')
-                      : say('Одна реакция за шаг', 'One reaction per step')}
-                  </p>
-                )}
-              </>
+              <MediumDetails
+                medium={medium}
+                symbolOf={symbolOf}
+                familyOf={familyOf}
+                extra={extra}
+              />
             )}
           </div>
         );

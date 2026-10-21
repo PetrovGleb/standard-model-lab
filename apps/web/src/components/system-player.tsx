@@ -21,7 +21,7 @@ import { EnvironmentLayer, legendExtent } from './environment-layer';
 import { InfluenceZone } from './influence-zone';
 import { environmentBadges } from '../environment-envelopes';
 import { SpaceView } from './space-view';
-import { bodyAt } from '../cube-scene';
+import { bodyAt, mediumPath, placedBodies } from '../cube-scene';
 import { ParticleCard } from './particle-card';
 import { ConservedTiles, StepCard } from './step-card';
 import { EnvironmentSummary } from './environment-summary';
@@ -332,12 +332,25 @@ function readCubeFirst(): boolean {
 function conditionsOf(
   frame: SystemFrame,
   label: string,
-): { readonly temperatureInKelvin: number | null; readonly pressureInPascals: number | null } {
+): {
+  readonly temperatureInKelvin: number | null;
+  readonly pressureInPascals: number | null;
+  readonly mediumPath: readonly string[];
+} {
   const region = frame.regions?.find(
     (candidate) => candidate.aspect === 'medium' && candidate.members.includes(label),
   );
   const view = frame.particles.find((particle) => particle.label === label);
   const body = view === undefined ? undefined : bodyAt(frame, view);
+  const bodies = placedBodies(frame);
+  const mediumNames = (view === undefined ? [] : mediumPath(frame, view)).map(
+    (medium) =>
+      medium.name ??
+      say(
+        `тело ${String(bodies.indexOf(medium) + 1)}`,
+        `body ${String(bodies.indexOf(medium) + 1)}`,
+      ),
+  );
   const medium = (body ?? (region === undefined ? frame.environment.medium : region.value)) as
     | { readonly temperatureInKelvin?: number; readonly pressureInPascals?: number }
     | null
@@ -345,6 +358,7 @@ function conditionsOf(
   return {
     temperatureInKelvin: medium?.temperatureInKelvin ?? null,
     pressureInPascals: medium?.pressureInPascals ?? null,
+    mediumPath: mediumNames,
   };
 }
 
@@ -716,7 +730,10 @@ export function SystemPlayer({
                 <span className="segment-bar" />
                 <span className="segment-label">
                   <Icon size={13} aria-hidden="true" />
-                  {number} · {(OPERATION_TITLES[operation] ?? operation).toLowerCase()}
+                  {number} ·{' '}
+                  {step.step?.operation === 'keyframe'
+                    ? step.step.name
+                    : (OPERATION_TITLES[operation] ?? operation).toLowerCase()}
                 </span>
               </button>
             );
@@ -726,87 +743,90 @@ export function SystemPlayer({
           {index} / {frames.length - 1}
         </span>
       </div>
-      {cubeFirst && cubeView}
       <div className="player-body">
-        <div className="stage-frame">
-          <ZoomToolbar
-            zoom={view.zoom}
-            minimumZoom={MINIMUM_ZOOM}
-            maximumZoom={MAXIMUM_ZOOM}
-            onZoomBy={(factor) => {
-              panZoom.zoomBy(factor);
-            }}
-            onFit={() => setCamera({ ...camera, follow: true })}
-            fitted={camera.follow}
-            onCenter={centerCamera}
-            fitTooltip={say(
-              'Следить за центром системы и уместить кадр целиком',
-              'Follow the system center and fit the whole frame',
-            )}
-          />
-          <div className="stage-viewport" ref={panZoom.attachWheel} {...panZoom.gestures}>
-            <svg
-              className="stage"
-              viewBox={[viewLeft, viewTop, viewWidth, viewHeight].map(String).join(' ')}
-              role="img"
-              aria-label={title}
-            >
-              <defs>
-                <pattern
-                  id={gridId}
-                  width={GRID_CELL}
-                  height={GRID_CELL}
-                  patternUnits="userSpaceOnUse"
-                >
-                  <path
-                    className="stage-grid-line"
-                    d={`M ${String(GRID_CELL)} 0 L 0 0 0 ${String(GRID_CELL)}`}
-                  />
-                </pattern>
-              </defs>
-              <rect
-                x={viewLeft}
-                y={viewTop}
-                width={viewWidth}
-                height={viewHeight}
-                fill={`url(#${gridId})`}
-              />
-              <EnvironmentLayer
-                frame={frame}
-                boxes={boxes}
-                nodes={nodes}
-                badges={badges}
-                frameIndex={index}
-                symbolOf={symbolOf}
-              />
-              {frame.step?.operation === 'influence' && !environmentChanged && (
-                <InfluenceZone
-                  key={index}
-                  step={frame.step}
-                  photonEnergyPerHertzInEv={photonEnergyPerHertz}
-                  nodes={nodes}
-                  nodeY={NODE_Y}
-                  viewLeft={viewLeft}
-                  viewRight={viewLeft + viewWidth}
-                  height={STAGE_HEIGHT}
+        <div className="player-main">
+          {cubeFirst && cubeView}
+          <div className="stage-frame">
+            <ZoomToolbar
+              zoom={view.zoom}
+              minimumZoom={MINIMUM_ZOOM}
+              maximumZoom={MAXIMUM_ZOOM}
+              onZoomBy={(factor) => {
+                panZoom.zoomBy(factor);
+              }}
+              onFit={() => setCamera({ ...camera, follow: true })}
+              fitted={camera.follow}
+              onCenter={centerCamera}
+              fitTooltip={say(
+                'Следить за центром системы и уместить кадр целиком',
+                'Follow the system center and fit the whole frame',
+              )}
+            />
+            <div className="stage-viewport" ref={panZoom.attachWheel} {...panZoom.gestures}>
+              <svg
+                className="stage"
+                viewBox={[viewLeft, viewTop, viewWidth, viewHeight].map(String).join(' ')}
+                role="img"
+                aria-label={title}
+              >
+                <defs>
+                  <pattern
+                    id={gridId}
+                    width={GRID_CELL}
+                    height={GRID_CELL}
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <path
+                      className="stage-grid-line"
+                      d={`M ${String(GRID_CELL)} 0 L 0 0 0 ${String(GRID_CELL)}`}
+                    />
+                  </pattern>
+                </defs>
+                <rect
+                  x={viewLeft}
+                  y={viewTop}
+                  width={viewWidth}
+                  height={viewHeight}
+                  fill={`url(#${gridId})`}
                 />
-              )}
-              <Links frame={frame} nodes={nodes} />
-              {nodes.map((node) => (
-                <StageNodeView key={node.key} node={node} frame={frame} onToggle={toggleGroup} />
-              ))}
-              {nodes.length === 0 && (
-                <text
-                  className="stage-empty"
-                  x={STAGE_WIDTH / 2}
-                  y={STAGE_HEIGHT / 2}
-                  textAnchor="middle"
-                >
-                  {say('частиц пока нет', 'no particles yet')}
-                </text>
-              )}
-            </svg>
+                <EnvironmentLayer
+                  frame={frame}
+                  boxes={boxes}
+                  nodes={nodes}
+                  badges={badges}
+                  frameIndex={index}
+                  symbolOf={symbolOf}
+                />
+                {frame.step?.operation === 'influence' && !environmentChanged && (
+                  <InfluenceZone
+                    key={index}
+                    step={frame.step}
+                    photonEnergyPerHertzInEv={photonEnergyPerHertz}
+                    nodes={nodes}
+                    nodeY={NODE_Y}
+                    viewLeft={viewLeft}
+                    viewRight={viewLeft + viewWidth}
+                    height={STAGE_HEIGHT}
+                  />
+                )}
+                <Links frame={frame} nodes={nodes} />
+                {nodes.map((node) => (
+                  <StageNodeView key={node.key} node={node} frame={frame} onToggle={toggleGroup} />
+                ))}
+                {nodes.length === 0 && (
+                  <text
+                    className="stage-empty"
+                    x={STAGE_WIDTH / 2}
+                    y={STAGE_HEIGHT / 2}
+                    textAnchor="middle"
+                  >
+                    {say('частиц пока нет', 'no particles yet')}
+                  </text>
+                )}
+              </svg>
+            </div>
           </div>
+          {!cubeFirst && cubeView}
         </div>
         <aside
           className="player-side"
@@ -852,7 +872,6 @@ export function SystemPlayer({
           </div>
         </aside>
       </div>
-      {!cubeFirst && cubeView}
     </section>
   );
 }

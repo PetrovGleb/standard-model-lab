@@ -1,5 +1,6 @@
 /* Checks neutron transport and fission from ENDF/B-VIII.0: the generated data against values of the evaluation (σ_f and ν̄ of uranium-235 at 1 MeV, yields summing to two), fission and capture
-   conserving charge and baryon number with the target taken from the medium, a chain that grows in a large uranium-235 ball and dies in a small one and in natural uranium. */
+   conserving charge and baryon number with the target taken from the medium, a chain that grows in a large uranium-235 ball and dies in a small one and in natural uranium, named bodies
+   recorded under their names, the water around a core heated by neutron scattering, and a medium name that must be one word. */
 import { fissionYields, neutronData } from '@standard-model/constants';
 import { describe, expect, it } from 'vitest';
 import {
@@ -95,4 +96,75 @@ describe('neutron reactions in uranium', () => {
     });
     expect(last(natural.reportValues)).toBeLessThan(2 * SEED_NEUTRONS);
   }, 300_000);
+});
+
+const WATER_MOLECULE = 'molecule:8-16,1-1,1-1;0-1-1,0-2-1';
+const WATER_MOLECULES = 3.34e28;
+const POOL_SHOTS = 20;
+const POOL_FRAME_IN_SECONDS = 1e-7;
+const POOL_TIMEOUT_IN_MILLISECONDS = 120_000;
+const POOL_EDGE_IN_METERS = 0.6;
+const CORE_DIAMETER_IN_METERS = 0.15;
+const ROOM_TEMPERATURE_IN_KELVIN = 293;
+const SEED_MOMENTUM_IN_GEV = 0.0613;
+
+function pool(waterDensity: number) {
+  return runExperiment(
+    experiment('pool')
+      .influence('placeBody', {
+        name: 'water',
+        shape: 'box',
+        sizeInMeters: POOL_EDGE_IN_METERS,
+        components: [{ species: WATER_MOLECULE, numberDensityPerCubicMeter: waterDensity }],
+        temperatureInKelvin: ROOM_TEMPERATURE_IN_KELVIN,
+      })
+      .influence('placeBody', {
+        name: 'uranium',
+        shape: 'ball',
+        sizeInMeters: CORE_DIAMETER_IN_METERS,
+        components: [{ species: 'atom:92:235:0', numberDensityPerCubicMeter: URANIUM_METAL }],
+        temperatureInKelvin: ROOM_TEMPERATURE_IN_KELVIN,
+      })
+      .create('neutron', 'neutron', {
+        momentumInGev: { x: 0, y: 0, z: SEED_MOMENTUM_IN_GEV },
+        count: SEED_NEUTRONS,
+      })
+      .evolve(POOL_FRAME_IN_SECONDS)
+      .measureSystem('after')
+      .report('mean', ['after.water.absorbedEnergyInJoules'], 'water')
+      .report('mean', ['after.uranium.absorbedEnergyInJoules'], 'uranium')
+      .build(),
+    { shots: POOL_SHOTS },
+  ).reportValues;
+}
+
+describe('named bodies of media', () => {
+  it(
+    'records each body under its name and hands the energy of neutron scattering to the water around the core',
+    () => {
+      const withWater = pool(WATER_MOLECULES);
+      const dry = pool(0);
+      expect(withWater['water']).toBeGreaterThan(0);
+      expect(dry['water']).toBe(0);
+      expect(withWater['uranium']).toBeGreaterThan(0);
+    },
+    POOL_TIMEOUT_IN_MILLISECONDS,
+  );
+
+  it('refuses a medium name that is not one word', () => {
+    expect(() =>
+      runExperiment(
+        experiment('badName')
+          .influence('setMedium', {
+            name: 'two words',
+            components: [{ species: 'hydrogenAtom', numberDensityPerCubicMeter: 1 }],
+            temperatureInKelvin: ROOM_TEMPERATURE_IN_KELVIN,
+          })
+          .measureSystem('after')
+          .report('frequency', ['after.phase'], 'phase')
+          .build(),
+        { shots: 1 },
+      ),
+    ).toThrow(/one word/);
+  });
 });

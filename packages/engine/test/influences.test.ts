@@ -1,5 +1,5 @@
-/* Checks the influence commands and their registry: temperature bounds, a medium that takes the new temperature with its ideal-gas pressure, field aspects, boost, spin rotation, thermalize and
-   evolve through the context. */
+/* Checks the influence commands and their registry: temperature bounds, a medium that takes the new temperature with its ideal-gas pressure (a given pressure scales with the temperature),
+   field aspects, boost, spin rotation, thermalize and evolve through the context. */
 import type { MediumComponent } from '@standard-model/contracts';
 import { describe, expect, it } from 'vitest';
 import {
@@ -20,6 +20,7 @@ import {
 
 const SEED = 13;
 const PRECISION = 12;
+const ATMOSPHERE_IN_PASCALS = 101325;
 
 describe('temperature influences', () => {
   it('sets, heats and cools without crossing absolute zero', () => {
@@ -54,6 +55,20 @@ describe('temperature influences', () => {
     expect(hot.get('medium')?.temperatureInKelvin).toBe(1200);
     expect(hot.get('medium')?.pressureInPascals).toBeCloseTo(
       idealGasPressureInPascals(components, 1200),
+      PRECISION,
+    );
+    const water = createEnvironment({
+      medium: {
+        components,
+        temperatureInKelvin: 300,
+        pressureInPascals: ATMOSPHERE_IN_PASCALS,
+        bulkVelocityInMetersPerSecond: { x: 0, y: 0, z: 0 },
+        reactionMode: 'oneReactionPerStep',
+      },
+    });
+    const warmWater = heat(30).apply([], engine.contextFor(water, [])).environment;
+    expect(warmWater.get('medium')?.pressureInPascals).toBeCloseTo(
+      (ATMOSPHERE_IN_PASCALS * 330) / 300,
       PRECISION,
     );
     const reset = new SetTemperature(600).apply([], engine.contextFor(hot, [])).environment;

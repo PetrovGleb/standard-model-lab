@@ -37,6 +37,7 @@ import {
 } from '../glossary';
 import { SmlIcon, sml } from './sml-icon';
 import {
+  Fragment,
   useContext,
   useEffect,
   useMemo,
@@ -55,6 +56,10 @@ import {
   influenceParameters,
   isInfluenceScalar,
   isCreation,
+  isMediumStep,
+  placedAsBody,
+  type KeyframeTarget,
+  type KeyframeTargetKind,
 } from '../plan-edits';
 import { momentumPresets, presetsForParameter, scaleLandmarks, unitOfParameter } from '../presets';
 import { speciesSymbolResolver, type SpeciesSymbolOf } from '../species';
@@ -67,9 +72,15 @@ import { MatterStepFields } from './matter-step-fields';
 import { EnvironmentPresetPicker } from './environment-preset-picker';
 import { ScaleSlider } from './scale-slider';
 import { MomentumField } from './momentum-field';
-import { NumberOrParameterInput, PlanParametersContext } from './number-or-parameter-input';
+import {
+  NumberOrParameterInput,
+  PlanParameterSetterContext,
+  PlanParametersContext,
+  scaleBinding,
+} from './number-or-parameter-input';
 import { ParticlePicker } from './particle-picker';
 import { Select } from './select';
+import { KeyframeEditor } from './keyframe-editor';
 import { TargetPicker } from './target-picker';
 import { say } from '../language';
 
@@ -144,6 +155,8 @@ interface Props {
   readonly placed: readonly string[];
   readonly collisionEnergyInGev: number | null;
   readonly onToggle: () => void;
+  readonly keyframeTargets?: readonly KeyframeTarget[];
+  readonly keyframeQuantities?: (kind: KeyframeTargetKind) => readonly string[];
 }
 
 type InfluenceParameterValues = Record<string, InfluenceStepValue>;
@@ -214,6 +227,7 @@ function InfluenceParameterField({
 }) {
   const current = values[spec.name];
   const planParameters = useContext(PlanParametersContext);
+  const setPlanParameter = useContext(PlanParameterSetterContext);
   const [picking, setPicking] = useState(false);
   const title = PARAMETER_GLOSSARY[spec.name] ?? spec.name;
   const set = (value: InfluenceStepValue | undefined): void => {
@@ -240,6 +254,16 @@ function InfluenceParameterField({
         {below}
       </label>
     );
+  if (spec.kind === 'text') {
+    return wrap(
+      <input
+        type="text"
+        value={typeof current === 'string' ? current : ''}
+        placeholder={say('одно слово, например вода', 'one word, for example water')}
+        onChange={(event) => set(event.target.value === '' ? undefined : event.target.value)}
+      />,
+    );
+  }
   if (spec.kind === 'particleName') {
     const name = String(current ?? '');
     return wrap(
@@ -291,12 +315,6 @@ function InfluenceParameterField({
     const densityLandmarks = fields.some((field) => field.name === DENSITY_FIELD)
       ? scaleLandmarks(catalog.environmentScales, DENSITY_FIELD)
       : undefined;
-    const numeric = records.flatMap((record, index) => {
-      const density = record[DENSITY_FIELD];
-      return typeof density === 'number'
-        ? [{ index, density, species: String(record.species ?? '') }]
-        : [];
-    });
     return (
       <Subsection
         className="wide-field"
@@ -315,41 +333,70 @@ function InfluenceParameterField({
             ))}
             <span />
           </div>
-          {records.map((record, index) => (
-            <div key={index} className="list-table-row">
-              <span className="row-index">{index + 1}</span>
-              {fields.map((field) => (
-                <InfluenceParameterField
-                  key={field.name}
-                  bare
-                  spec={field}
-                  values={record}
-                  parameters={parameters}
-                  catalog={catalog}
-                  symbolOf={symbolOf}
-                  onChange={(next) =>
-                    setRecords(
-                      records.map((existing, position) =>
-                        position === index
-                          ? (next as Record<string, InfluenceStepScalar>)
-                          : existing,
-                      ),
-                    )
-                  }
-                />
-              ))}
-              <button
-                type="button"
-                className="icon-button round danger"
-                aria-label={MEDIUM_COMPONENT_ACTIONS.removeMediumComponent}
-                data-tooltip={MEDIUM_COMPONENT_ACTIONS.removeMediumComponent}
-                disabled={records.length <= 1}
-                onClick={() => setRecords(records.filter((unused, position) => position !== index))}
-              >
-                <SmlIcon name="delete" size={16} aria-hidden="true" />
-              </button>
-            </div>
-          ))}
+          {records.map((record, index) => {
+            const density = scaleBinding(
+              record[DENSITY_FIELD],
+              (value) =>
+                setRecords(
+                  records.map((existing, position) =>
+                    position === index ? { ...existing, [DENSITY_FIELD]: value } : existing,
+                  ),
+                ),
+              planParameters,
+              setPlanParameter,
+            );
+            return (
+              <Fragment key={index}>
+                <div className="list-table-row">
+                  <span className="row-index">{index + 1}</span>
+                  {fields.map((field) => (
+                    <InfluenceParameterField
+                      key={field.name}
+                      bare
+                      spec={field}
+                      values={record}
+                      parameters={parameters}
+                      catalog={catalog}
+                      symbolOf={symbolOf}
+                      onChange={(next) =>
+                        setRecords(
+                          records.map((existing, position) =>
+                            position === index
+                              ? (next as Record<string, InfluenceStepScalar>)
+                              : existing,
+                          ),
+                        )
+                      }
+                    />
+                  ))}
+                  <button
+                    type="button"
+                    className="icon-button round danger"
+                    aria-label={MEDIUM_COMPONENT_ACTIONS.removeMediumComponent}
+                    data-tooltip={MEDIUM_COMPONENT_ACTIONS.removeMediumComponent}
+                    disabled={records.length <= 1}
+                    onClick={() =>
+                      setRecords(records.filter((unused, position) => position !== index))
+                    }
+                  >
+                    <SmlIcon name="delete" size={16} aria-hidden="true" />
+                  </button>
+                </div>
+                {densityLandmarks !== undefined && density !== null && (
+                  <div className="list-row-scale">
+                    <ScaleSlider
+                      handles={[
+                        { value: density.value, label: symbolOf(String(record.species ?? '')) },
+                      ]}
+                      landmarks={densityLandmarks}
+                      unit={unitOfParameter(DENSITY_FIELD)}
+                      onChange={(unused, value) => density.set(value)}
+                    />
+                  </div>
+                )}{' '}
+              </Fragment>
+            );
+          })}
         </div>
         <button
           type="button"
@@ -384,29 +431,6 @@ function InfluenceParameterField({
             onClose={() => setPicking(false)}
           />
         )}
-        {densityLandmarks !== undefined && numeric.length > 0 && (
-          <div className="list-scale">
-            <span className="hint">
-              {say('Концентрации на шкале плотностей', 'Concentrations on the density scale')}
-            </span>
-            <ScaleSlider
-              handles={numeric.map((entry) => ({
-                value: entry.density,
-                label: symbolOf(entry.species),
-              }))}
-              landmarks={densityLandmarks}
-              unit={unitOfParameter(DENSITY_FIELD)}
-              onChange={(handle, value) => {
-                const target = numeric[handle]?.index;
-                setRecords(
-                  records.map((record, position) =>
-                    position === target ? { ...record, [DENSITY_FIELD]: value } : record,
-                  ),
-                );
-              }}
-            />
-          </div>
-        )}
       </Subsection>
     );
   }
@@ -414,6 +438,7 @@ function InfluenceParameterField({
   const canBeAbsent = !spec.required && spec.defaultValue === undefined;
   const landmarks = scaleLandmarks(catalog.environmentScales, spec.name);
   const unit = unitOfParameter(spec.name);
+  const binding = scaleBinding(current, set, planParameters, setPlanParameter);
   return wrap(
     <>
       {canBeAbsent && (
@@ -444,12 +469,12 @@ function InfluenceParameterField({
         />
       )}
     </>,
-    !bare && landmarks !== undefined && typeof current === 'number' ? (
+    !bare && landmarks !== undefined && binding !== null ? (
       <ScaleSlider
-        handles={[{ value: current }]}
+        handles={[{ value: binding.value }]}
         landmarks={landmarks}
         unit={unit}
-        onChange={(unused, value) => set(value)}
+        onChange={(unused, value) => binding.set(value)}
       />
     ) : null,
   );
@@ -492,18 +517,58 @@ function InfluenceFields({
   const picked = step.targets?.length ?? 0;
   return (
     <>
+      {groups.scalars.filter((spec) => spec.kind === 'text').map(field)}
+      {isMediumStep(step) && (
+        <div className="medium-place wide-field">
+          <FieldLabel icon={sml('medium-gas')}>
+            {say('Где среда', 'Where the medium is')}
+          </FieldLabel>
+          <span
+            className="segmented"
+            role="group"
+            aria-label={say('Где среда', 'Where the medium is')}
+          >
+            <button
+              type="button"
+              className={step.influence === 'setMedium' ? 'active' : ''}
+              aria-pressed={step.influence === 'setMedium'}
+              data-tooltip={say(
+                'Среда заполняет все пространство; следующая такая среда ее заменит',
+                'The medium fills all space; the next such medium replaces it',
+              )}
+              onClick={() => onChange(placedAsBody(step, false))}
+            >
+              {say('все пространство', 'all space')}
+            </button>
+            <button
+              type="button"
+              className={step.influence === 'placeBody' ? 'active' : ''}
+              aria-pressed={step.influence === 'placeBody'}
+              data-tooltip={say(
+                'Среда заполняет тело — шар или куб с размером и центром; тела вкладываются друг в друга',
+                'The medium fills a body, a ball or a box with a size and a centre; bodies nest in each other',
+              )}
+              onClick={() => onChange(placedAsBody(step, true))}
+            >
+              {say('тело: шар или куб', 'a body: ball or box')}
+            </button>
+          </span>
+        </div>
+      )}
       {(step.influence === 'setMedium' || step.influence === 'placeBody') &&
         catalog.environments.length > 0 && (
           <EnvironmentPresetPicker step={step} presets={catalog.environments} onChange={onChange} />
         )}
       {groups.lists.map(field)}
-      {groups.scalars.length > 0 && (
+      {groups.scalars.some((spec) => spec.kind !== 'text') && (
         <Subsection
           className="wide-field"
           icon={sml('temperature')}
           title={say('Условия', 'Conditions')}
         >
-          <div className="form-grid">{groups.scalars.map(field)}</div>
+          <div className="form-grid">
+            {groups.scalars.filter((spec) => spec.kind !== 'text').map(field)}
+          </div>
         </Subsection>
       )}
       <div className="subsection-row wide-field">
@@ -599,6 +664,8 @@ export function StepEditor({
   space,
   placed,
   collisionEnergyInGev,
+  keyframeTargets = [],
+  keyframeQuantities = () => [],
 }: Props) {
   const symbolOf = useMemo(() => speciesSymbolResolver(catalog), [catalog]);
   const collisionTargets = step.operation === 'collide' ? step.targets : [];
@@ -1414,6 +1481,15 @@ export function StepEditor({
                 onChange={(event) => onChange({ ...step, record: event.target.value })}
               />
             </label>
+          )}
+          {step.operation === 'keyframe' && (
+            <KeyframeEditor
+              step={step}
+              targets={keyframeTargets}
+              quantitiesOf={keyframeQuantities}
+              symbolOf={symbolOf}
+              onChange={onChange}
+            />
           )}
           {step.operation === 'measurePosition' && (
             <>
